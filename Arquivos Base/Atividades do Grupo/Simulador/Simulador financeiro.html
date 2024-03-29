@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
+    <title>Simulador Financeiro</title>
+</head>
+
+<body>
+    <main>
+        <div class="conteudoinicial">
+            <div class="textos_iniciais">
+                <h1 class="titulo">Simulador Financeiro</h1><br>
+                <p class="paragrafo">Já reparou que as temperaturas elevadas e a umidade elevada, levam você, produtor de alface a
+                    <strong>perdas de até 60% do total do seu platio?</strong><br>
+                    Segundo Liliane Corrêa Maistro (Universidade Metodista de Piracicaba, Faculdade de Ciências da Saúde, Brasil) "Temperaturas elevadas associadas a alta pluviosidade levam o produtor de alface a perdas de até 60%, justamente no período de maior demanda de consumo".<br>
+                    </p>
+            </div>
+        </div>
+
+        <div class="perguntas" id="exibir">
+            <p class="paragrafo2">Esta ferramenta foi desenvolvida especialmente para ajudar você a descobrir o quanto
+                realmente suas perdas por temperatura e umidade lhe afeta e a ver o quanto pode ganhar se ultilizar a solução <b>ALFA FOLIUM</b> da <i><b>Áquila Tecnology</i></b>. <b>Simule agora!</b></p>
+                <br><br>
+            <h3>Quantas unidades produzidas de alface no mês passado?</h3>
+            <input class="inputs" id="input_alface"><br>
+            <h3>Digite o valor da sua unidade</h3>
+            <input class="inputs" id="input_ganho"><br>
+        </div><br>
+
+        <div id="btn">
+            <button onclick="Resultado()">Descobrir</button><br>
+        </div>
+    </main>
+</body>
+
+</html>
+
+<script>
+    function Resultado() {
+        let alface = Number(input_alface.value);
+        let ganho = Number(input_ganho.value);
+
+        let total = alface * ganho;
+        let reducao = alface * 0.6
+        let reduzida = total * 0.6;
+        let perda = reducao * ganho;
+        let agora = total - perda;
+
+        exibir.innerHTML = `Com a solução <b>ALFA FOLIUM</b> você deixará de perder aproximadamente R$${perda} por mês. 
+        Pois sem a <b>ALFA FOLIUM</b> você continuará perdendo ${reducao} unidades por mês.
+        <br>Use a solução da <b>ALFA FOLIUM</b> e reduza as suas perdas!<br><br>`;
+
+        btn.innerHTML = `<div id="btn">
+            <button onclick="voltar()">Voltar ao programa</button><br>
+        </div>`
+    }
+
+    function voltar() {
+        location.reload()
+    }
+</script>

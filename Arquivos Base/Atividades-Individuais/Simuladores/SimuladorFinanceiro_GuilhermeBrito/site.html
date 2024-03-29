@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Simulador</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body> 
+    <div class="cabeçalho"> 
+    <div class="Apresentacao"> 
+    <h1 class="titulo">Simulador de perda financeira</h1>
+    <p class="paragrafo1">Com esse Simulador, voçê é capaz de calcular o quanto de dinheiro está perdendo na sua plantação</p>
+    <p class="paragrafo2">1. O preço da unidade de alface varia de R$1 á R$3.50 <br> 
+                          2. Os custo de plantação normalmente não passam de 45% do valor do seu alface <br>
+                          3. 80% do seu local de produção é destinado para a sua plantação</p>
+    </div> 
+
+    <div class="conta">
+        Informe o valor que voçê vende a unidade do seu alface:
+        <input class="input" id="input_valorAlface"> <br>
+        Informe de 0 a 100 o custo de plantar 1 semente:
+        <input class="input" id="input_custoSemente"> <br>
+        Informe a area total do seu local de produção em metros quadrados (M²):
+        <input class="input" id="input_area"> <br>
+        Informe a estação de de agora (Verão, Outono, Inverno, Primavera):
+        <input class="input" id="input_mes"> <br>
+        <button onclick="calcularAlface()">Calcular</button>
+        
+    </div>
+
+    <div class="pai">
+        <div class="exibir" id="exibir"></div>
+    </div>
+    </div>
+    
+
+    
+    
+</body>
+
+</html>
+
+<script>
+    function calcularAlface() {
+        var valor = Number(input_valorAlface.value)
+        var custo = Number(input_custoSemente.value) / 100
+        var area = Number(input_area.value) 
+        var mes = (input_mes.value)
+
+        var lucro = valor - (valor * custo)
+        var areaPlantacao = area * 0.8
+        var lucroarea = (lucro * areaPlantacao).toFixed(2)
+
+        exibir.innerHTML = `Voçê vende seu Alface á R$${valor} <br> 
+        tem um custo de ${input_custoSemente.value}% <br> e sua area total é de ${area}M² <br> <br>
+        O preço do alface sem o custo fica R$${lucro} <br> voce tem ${areaPlantacao}M² de area cultivavel <br> e seu lucro final é de R$${lucroarea} <br> <br>`
+
+        if (mes == 'Verão') {
+                var desconto = lucroarea - (lucroarea * 0.6)
+                var resto = lucroarea - desconto
+                exibir.innerHTML += `Por você estar no mês ${mes} você pode chegar a perder 60% da sua plantação <br>
+                Você está ganhando apenas R$${desconto} nesse mês <br> 
+                Com o nosso projeto você deixará de perder ${resto}`
+        }
+
+        if (mes == 'Primavera') {
+                var desconto = lucroarea - (lucroarea * 0.1)
+                var resto = lucroarea - desconto
+                exibir.innerHTML += `Por você estar no mês ${mes} você pode chegar a perder 60% da sua plantação <br>
+                Você está ganhando apenas R$${desconto} nesse mês <br> 
+                Com o nosso projeto você deixará de perder ${resto}`
+        }
+
+        if (mes == 'Outono') {
+                var desconto = lucroarea - (lucroarea * 0.2)
+                var resto = lucroarea - desconto
+                exibir.innerHTML += `Por você estar no mês ${mes} você pode chegar a perder 60% da sua plantação <br>
+                Você está ganhando apenas R$${desconto} nesse mês <br> 
+                Com o nosso projeto você deixará de perder ${resto}`
+        }
+
+        if (mes == 'Inverno') {
+                var desconto = lucroarea - (lucroarea * 0.4)
+                var resto = lucroarea - desconto
+                exibir.innerHTML += `Por você estar no mês ${mes} você pode chegar a perder 60% da sua plantação <br>
+                Você está ganhando apenas R$${desconto} nesse mês <br> 
+                Com o nosso projeto você deixará de perder ${resto}`
+        }
+    }
+</script>

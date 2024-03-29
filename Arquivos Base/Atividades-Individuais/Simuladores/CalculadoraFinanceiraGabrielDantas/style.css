@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Ubuntu:wght@400;500;700&display=swap');
+body{
+    margin: 0
+}
+
+.content{
+    display: flex;
+    flex-direction: row; 
+    width: 100%;
+    height: 100vh;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 100%;
+    background-color: #536D32 ;
+    align-items: center;
+    justify-content: center;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    box-shadow: #151e18 10px 0 15px;
+}
+
+.inputDiv{
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 22px;
+    }
+
+.input{
+    padding-left:12px ;
+    height: 35px;
+    width: 500px;
+    border-radius: 10px;
+    border: 0px;
+    outline: none;
+    color: #051f00;
+    font-size: 16px;
+    
+    transition: all .3s ease-in-out;
+    border: transparent 4px solid ;
+}
+.input:focus{
+    box-shadow: #151e18 0 0 13px;
+    border: #759436 4px solid;
+}
+.submit{
+    height: 40px;
+    width: 200px;
+
+    border-radius: 10px;
+    border: 0px;
+   
+    margin-top: 40px;
+
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 17px;
+    color: #051f00;
+
+    background-color: #fff;
+}
+
+.submit:hover{
+    background-color: #051f00;
+    color: #fff;
+    box-shadow: #151e18 0 0 13px;
+    transition: all .4s ease-in-out;
+}
+
+#resultado{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 100px 0;
+    
+}
+.titleDiv{
+    width: 700px;
+}
+.title{
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 20px;
+}
+.perda{
+    color:#FF3636
+}
+
+.ganho{
+    color:#5EFC8D 
+}
+
+.table{
+    width: 700px;
+    border: 5px solid #759436
+}
+
+.tableHead{
+    display: flex;
+    padding: 0 20px;
+    justify-content: space-between;
+    background-color:#fff ;
+    font-family: Roboto;
+    font-weight: 700;
+}
+
+.line{
+    display: flex;
+    padding: 0 20px;
+    justify-content: space-between;
+    background-color:#d9d9d9 ;
+    font-family: Roboto;
+    font-weight: 400;
+}
+
+.Description{
+    padding: 0px 80px;
+    color: #fff;
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 17px;
+    margin-bottom: 50px;
+}

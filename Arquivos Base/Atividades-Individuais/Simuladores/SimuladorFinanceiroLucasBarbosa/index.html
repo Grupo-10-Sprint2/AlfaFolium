@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
+    <title>Simulador Financeiro</title>
+</head>
+
+<body>
+    <div class="conteudo" id="conteudo">
+        <div class="container">
+            <h2>Simulador Finaneiro</h2>
+            <p>Este simulador serve para avaliar o quanto você pode estar ganhando ou perdendo na sua plantação de
+                alface devido a falta de controle da temperatura e umidade de suas estufas, vale mencionar que é um
+                valor aproximado</p>
+            <p>Insira as seguintes informações para que o calculo seja feito: </p>
+            <div class="div_input">
+                <input id="input_nome" placeholder="Seu nome">
+                <input id="input_qtd_alface" placeholder="Quantidade aproximada de alfaces produzidas">
+                <input id="input_custo_producao" placeholder="Custo de investimento para produzir sua plantação">
+                <button onclick="calculo()">Efetuar calculo</button>
+            </div>
+        </div>
+        <div class="container_resultado" id="container_resultado">
+            <h2>Resutado</h2>
+            <div id="div_resultado"></div>
+        </div>
+    </div>
+</body>
+
+</html>
