@@ -1,0 +1,177 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    margin: 0;
+    height: 100%;
+    color: #FBE0C0;
+}
+
+.bgImgBox{
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Alterado para enviar para trás */
+}
+
+.bgImg{
+    opacity: 15%;
+    width: 100%;
+    height: 100%;
+}
+
+.positionBox{
+    display: flex;
+}
+
+.logoBox {
+    width: 250px;
+    height: 250px;
+    padding-bottom: 20px; /* Adiciona padding na parte inferior */
+  }
+  
+
+  
+.logoImg {
+    width: 100%;
+    height: auto;
+    position: relative;
+    bottom: 20px; /* Compensa o padding na parte inferior */
+    cursor: pointer;
+}
+
+
+
+.headerBox{
+    background-color: #414C30;
+    height: 140px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.6);
+}
+
+.buttonsBox{
+    height: 140px;
+    width: 800px;
+    margin: 50px 0 0 200px;
+    justify-content: center;
+}
+
+
+.navText{
+    color: #FFFFFF;
+    font-family: "Poppins", sans-serif;
+    font-size: 30px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    cursor: pointer;
+    text-shadow: 2px 3px 2px rgba(0,0,0,0.6);
+}
+
+.txt1:hover,.txt2:hover,.txt3:hover,.txt4:hover{
+    color: #0e1503;
+    transition-duration: 0.2s;
+    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0);
+}
+
+.loginButton{
+    height: 50px;
+    width: 100px;
+    margin-left: 500px;
+    margin-top: 40px;
+    display: flex;
+    padding-left: 20px;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    cursor: pointer;
+    background-color: #1B3606;
+    border: 3px solid #FFFFFF;
+    box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.6);
+    transition-duration: 0.2s;
+}
+
+
+.loginButton p {
+    cursor: pointer;
+    color: #FFFFFF;
+    font-size: 30px;
+    font-weight: 400;
+    transition-duration: 0.2s;
+}
+
+.loginButton:hover{
+    background-color: #FFFFFF;
+    transition-duration: 0.2s; 
+}
+
+.loginButton:hover p {
+    color: #1B3606;
+    transition-duration: 0.2s; 
+}
+
+.boxContent{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+
+
+.calculator1{
+    width: 680px;
+    height: 680px;
+    background-color: #1e2f11;
+    margin-right: 5px;
+    box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.6);
+    opacity: 80%;
+}
+
+.calculator1 .titleBox{
+    text-align: center;
+    padding-top: 20px;
+}
+
+.calculator1 h1{
+    color: #FFFFFF;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.calculator2{
+    width: 680px;
+    height: 680px;
+    background-color: #1e2f11;
+    margin-left: 5px;
+    box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.6);
+    opacity: 80%;
+}
+
+.selectBox{
+    margin-top: 5px;
+    padding-left: 20px;
+}
+
+.selectBox h3{
+    font-weight: 400;
+}
+
+#select_types{
+    margin-top: 8px;
+    width: 200px;
+    height: 30px;
+    border-radius: 8px;
+    font-size: 20px;
+}
