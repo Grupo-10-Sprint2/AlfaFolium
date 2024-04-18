@@ -2,22 +2,41 @@ CREATE DATABASE AlfaFolium;
 
 USE AlfaFolium;
 
+CREATE TABLE Empresa (
+	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
+	Nome VARCHAR (45),
+    CEP CHAR (9),
+    Numero VARCHAR (45),
+    CNPJ CHAR (18));
+    
+INSERT INTO Empresa (Nome, CEP, Numero, CNPJ) VALUE (
+	'ALFA_ce', '1234567_0', '120', '12.345.678/0001-90'),
+    ('Alface&Cia', '1234567_1', '130', '12.121.212/0002.00'),
+    ('AlfaCon', '1234567_2', '140', '13.321.312/0003.30'),
+    ('Fazenda', '1234567_3', '150', '52.145.985/0056.50'),
+    ('AgroFace', '1234567_4', '160', '16.211.092/0087.54');
+    
+SELECT * FROM Empresa;
+
 CREATE TABLE Usuario (
-	IdUsuario INT PRIMARY KEY AUTO_INCREMENT,
+	idUsuario INT PRIMARY KEY AUTO_INCREMENT,
     CPF CHAR (45),
     Nome VARCHAR (45),
     Email VARCHAR (45),
     Senha VARCHAR (45),
-    Telefone VARCHAR (45)
-    );
+    Telefone VARCHAR (45),
+    fkEmpresa INT,
+		CONSTRAINT fkEmpresaUsuario FOREIGN KEY (fkEmpresa)
+			REFERENCES Empresa (idEmpresa));
     
-INSERT INTO Usuario (CPF, Nome, Email, Senha, Telefone) VALUE (
-	'11122233300', 'KauanFrança', 'Kauan.frança@sptech.school', 'Fazenda000', '5511912345670'),
-    ('11122233301', 'Giovanna', 'Giovanna.gomes@sptech.school', 'Fazenda001', '5511912345671'),
-    ('11122233302', 'Guilherme', 'Guilherme.neris@sptech.school', 'Fazenda002', '5511912345672'),
-    ('11122233303', 'Anilmar', 'Anilmar.choque@sptech.school', 'Fazenda003', '5511912345673'),
-    ('11122233304', 'Diogo', 'Diogo.polastrine@sptech.school', 'Fazenda004', '5511912345674'),
-    ('11122233305', 'Kako', 'Kako.marques@sptech.school', 'Fazenda005', '5511912345675');
+    
+INSERT INTO Usuario (CPF, Nome, Email, Senha, Telefone, fkEmpresa) VALUE (
+	'11122233300', 'KauanFrança', 'Kauan.frança@sptech.school', 'Fazenda000', '5511912345670', 1),
+    ('11122233301', 'Giovanna', 'Giovanna.gomes@sptech.school', 'Fazenda001', '5511912345671', 1),
+    ('11122233302', 'Guilherme', 'Guilherme.neris@sptech.school', 'Fazenda002', '5511912345672', 2),
+    ('11122233303', 'Anilmar', 'Anilmar.choque@sptech.school', 'Fazenda003', '5511912345673', 3),
+    ('11122233304', 'Diogo', 'Diogo.polastrine@sptech.school', 'Fazenda004', '5511912345674', 4),
+    ('11122233305', 'Kako', 'Kako.marques@sptech.school', 'Fazenda005', '5511912345675', 5);
     
 SELECT * FROM Usuario;
     
@@ -26,10 +45,11 @@ CREATE TABLE Estufa (
     Tamanho VARCHAR (45),
     TipoAlface VARCHAR (45),
     Funcionando VARCHAR (45),
-    fkUsuario VARCHAR (45),
+    fkUsuario INT,
     Horario DATETIME,
-    CONSTRAINT chkFuncionamentoEstufa CHECK (Funcionando IN ('Sim', 'Não'))
-    );
+    CONSTRAINT chkFuncionamentoEstufa CHECK (Funcionando IN ('Sim', 'Não')),
+    CONSTRAINT fkUsuarioEstufa FOREIGN KEY (fkUsuario)
+		REFERENCES Usuario (idUsuario));
     
 INSERT INTO Estufa (Tamanho, TipoAlface, Funcionando, fkUsuario, Horario) VALUE (
 	'80', 'Crespa', 'Sim', '1', '2024-04-09 22:05:22'),
@@ -52,8 +72,9 @@ CREATE TABLE Temperatura (
 	fkEstufa INT,
 	TemperaturaIdeal VARCHAR (45),
 	TemperaturaAtual VARCHAR (45),
-    Horario DATETIME
-);
+    Horario DATETIME,
+    CONSTRAINT fkTemperaturaEstufa FOREIGN KEY (fkEstufa)
+		REFERENCES Estufa (idEstufa));
 
 INSERT INTO Temperatura (fkEstufa, TemperaturaIdeal, TemperaturaAtual, Horario) VALUE (
 	'1', '20', '23', '2024-04-09 22:05:22'),
@@ -76,8 +97,9 @@ CREATE TABLE Umidade (
     fkEstufa INT,
     UmidadeIdeal VARCHAR (45),
     UmidadeAtual VARCHAR (45),
-    Horario DATETIME
-);
+    Horario DATETIME,
+    CONSTRAINT fkUmidadeEstufa FOREIGN KEY (fkEstufa)
+		REFERENCES Estufa (idEstufa));
 
 INSERT INTO Umidade (fkEstufa, UmidadeIdeal, UmidadeAtual, Horario) VALUE (
 	'1', '70', '35', '2024-04-09 22:05:22'),
@@ -104,4 +126,3 @@ FROM Usuario JOIN Estufa
 ON Usuario.idUsuario = fkUsuario
 JOIN Temperatura ON Temperatura.fkEstufa = idEstufa
 JOIN Umidade ON Umidade.fkEstufa = idEstufa;
-
