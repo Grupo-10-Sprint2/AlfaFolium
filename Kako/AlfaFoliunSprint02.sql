@@ -24,8 +24,8 @@ CREATE TABLE Usuario (
     Email VARCHAR (45),
     Senha VARCHAR (12),
     Telefone VARCHAR (45),
-    TipoUsuario VARCHAR(45),
-		CONSTRAINT chkTipoUsuario CHECK (TipoUsuario IN ('Dono', 'ADM', 'Funcionarios')),
+    TipoUsuario VARCHAR(45)
+		CONSTRAINT chkTipoUsuario CHECK (TipoUsuario IN ('Dono', 'Funcionarios')),
     fkEmpresa INT,
 		CONSTRAINT fkUsuarioEmpresa FOREIGN KEY (fkEmpresa) 
 			REFERENCES Empresa(idEmpresa)
@@ -33,16 +33,16 @@ CREATE TABLE Usuario (
     
 INSERT INTO Usuario (Nome, CPF, Email, Senha, Telefone, TipoUsuario, fkEmpresa) VALUE
 		('Kauan', '123.456.789-00', 'kauan.silva@sptech.school', '12345678900@', '11911223344', 'Dono', '1'),
-        ('KauanFrança', '987.654.321-00', 'kauan.franca@sptech.school', '98765432100@', '11988776655', 'ADM', '1'),
+        ('KauanFrança', '987.654.321-00', 'kauan.franca@sptech.school', '98765432100@', '11988776655', 'Funcionarios', '1'),
         ('CauãGouveira', '123.321.123-00', 'caua.gouveira@sptech.school', '12332112300@', '11992837465', 'Funcionarios', '1'),
         ('Giovanna', '456.654.456-00', 'giovanna.gomes@sptech.school', '45665445600@', '11978456723', 'Dono', '2'),
-        ('Guilherme', '987.789.987-00', 'guilherme.neris@sptech.school', '98778998700@', '11998513123', 'ADM', '2'),
+        ('Guilherme', '987.789.987-00', 'guilherme.neris@sptech.school', '98778998700@', '11998513123', 'Funcionarios', '2'),
         ('Anilmar', '246.642.246-00', 'Anilmar.choque@sptech.school', '24664224600@', '11908468213', 'Funcionarios', '2'),
         ('Diogo', '222.333.444-00', 'diogo.polastrien@sptech.school', '22233344400@', '1199067356', 'Dono', '3'),
-        ('Rayanne', '111.555.777-00', 'rayanne.reis@sptech.school', '11155577700@', '11990128923', 'ADM', '3'),
+        ('Rayanne', '111.555.777-00', 'rayanne.reis@sptech.school', '11155577700@', '11990128923', 'Funcionarios', '3'),
         ('Mayara', '888.999.111-00', 'mayara.damas@sptech.school', '88899911100@', '11978235623', 'Funcionarios', '3'),
         ('Sophia', '999.876.555-00', 'sophia.neves@sptech.school', '99987655500@', '11990218734', 'Dono', '4'),
-        ('Matheus', '111.456.777-00', 'matheus.soares@sptech.school', '11145677700@', '11976360523', 'ADM', '4'),
+        ('Matheus', '111.456.777-00', 'matheus.soares@sptech.school', '11145677700@', '11976360523', 'Funcionarios', '4'),
         ('Samuel', '555.321.567-00', 'samuel.theodoro@sptech.school', '55532156700@', '11990786543', 'Funcionarios', '4');
         
 SELECT * FROM Usuario;
