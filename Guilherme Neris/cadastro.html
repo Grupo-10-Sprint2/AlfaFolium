@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - Alfa Folium</title>
+    <title>Cadastro de Empresa - Alfa Folium</title>
 </head>
 
 <body>
@@ -38,6 +38,12 @@
             <button onclick="CadastrarEmpresa()" class="botaoCadastroEmpresa">
                 Cadastrar Empresa
             </button>
+             <br>
+             <br>
+            <button onclick="JaTenhoUmaConta()" id="jaTenhoConta" class="Cadastro">
+                Já tenho uma conta
+            </button>
+            
 
         </div>
     </div>
@@ -104,12 +110,15 @@
             alert('Erro ao validar cadastro. o campo cep deve conter o hifem')
         }else{
 
-            alert('Cadastro Realizado com sucesso!')
+            alert('Cadastro realizado com sucesso!')
             window.location.href = 'usuario.html';
         }
 
+    }
 
 
+    function JaTenhoUmaConta() {
+        window.location.href = 'login.html'
     }
 </script>
 
@@ -151,7 +160,22 @@
         cursor: pointer;
     }
 
+    
+
     .boxCadastro button:hover {
         background-color: #00b31e;
     }
+
+    #jaTenhoConta {
+        width: 100%;
+        padding-left: 200px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #dd1b1b;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
 </style>
