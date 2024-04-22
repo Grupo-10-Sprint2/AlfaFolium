@@ -9,15 +9,13 @@ body{
     height: 100%;
     color: #FBE0C0;
     background-color: #FBE0C0;
-    background-image: url(./imgs/fundoretro.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
+    height: 5649px;
 }
 
 .logoBox {
     width: 250px;
     height: 250px;
+    z-index: 2;
 }
   
 .logoImg {
@@ -28,7 +26,6 @@ body{
     cursor: pointer;
 }
 
-
 .headerBox{
     display: flex;
     background-color: #414C30;
@@ -36,13 +33,6 @@ body{
     width: 100%;
     box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.6);
 }
-
-/* .buttonsBox{
-    height: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-} */
 
 .text-nav{
     display: flex;
@@ -96,56 +86,91 @@ body{
     transition-duration: 0.2s;  
 }
 
-
-/* .primeira-main{
+.page-principal {
+    background-image: linear-gradient(to bottom, rgba(251, 224, 192, 0.2), rgba(251, 224, 192, 1)), url('./imgs/image.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    mix-blend-mode: luminosity;
     display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    align-items: center;
-    height: 700px;
+    justify-content: center;
+    z-index: 1;
 }
 
-.main-img img{
-    position: relative;
-    top: 190px;
-    width: 50vw;
-}
-
-.main-txt{
-    margin-left: 50px;
-    padding-bottom: 350px;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    padding-top: 450px;
-}
-
-.main-txt p{
-    font-size: 40px;
-    color: #1B3606;
-    align-items: center;
-    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0.205);
+.page-principal img{
+    height: 528px;
+    margin-top: 5%;
 }
 
 .segunda-main{
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
-.main-txt2{
+.segunda-txt{
+    position: absolute;
     display: flex;
-    flex-direction: column;
-    margin-right: 50px;
+    justify-content: center;
+    width: 50%;
+    z-index: 1;
+    background-color: #414C30;
+    box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.24);
 }
 
-.main-img2 img{
-    width: 50vw;
+.segunda-txt p{
+    margin: 0 100px;
+    font-family: 'Podkova';
+    font-size: 45px;
+    color: #FFF;
 }
 
-.main-txt2 p{
-    font-size: 40px;
-    color: #1B3606;
+.segunda-img{
+    width: 60%;
+    z-index: 2;
+}
+
+.segunda-img img{
+    width: 100%;
+    margin-left: 66%;
+}
+
+.terceira-main{
+    display: flex;
+    align-items: center;
+}
+
+.inverso{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.terceira-txt{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 53.5%;
+    z-index: 1;
+    background-color: #414C30;
+    box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.24);
+}
+
+.terceira-txt p{
+    margin: 0 100px;
+    font-family: 'Podkova';
+    font-size: 45px;
     text-align: right;
-} */
+    color: #FFF;
+}
 
+.terceira-img{
+    width: 60%;
+    z-index: 2;
+}
+
+.terceira-img img{
+    width: 100%;
+
+}
