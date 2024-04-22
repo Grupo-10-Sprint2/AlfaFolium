@@ -26,9 +26,9 @@
                 <input id="input_cep" placeholder="00000-000"> <br>
             </div>
 
-            Endereço: <br>
+            Nº do Endereço: <br>
             <div class="campo-3">
-                <input id="input_endereco" placeholder="Onde encontramos a empresa? "> <br>
+                <input id="input_numeroEndereco" placeholder="Onde encontramos a empresa? "> <br>
             </div>
 
             CNPJ: <br>
@@ -85,9 +85,9 @@
             input.style.borderColor = 'red';
             alert('Você deve informar o cep da Empresa para prosseguir!')
         } else if (Endereco == '') {
-            var input = document.getElementById('input_endereco');
+            var input = document.getElementById('input_numeroEndereco');
             input.style.borderColor = 'red';
-            alert('Você deve informar o endereço da Empresa para prosseguir!')
+            alert('Você deve informar o Nº do endereço da Empresa para prosseguir!')
         } else if (Cnpj == '') {
             var input = document.getElementById('input_cnpj');
             input.style.borderColor = 'red';

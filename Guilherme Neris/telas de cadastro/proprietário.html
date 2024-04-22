@@ -7,7 +7,7 @@
 </head>
 <body>
     <div class="divTitulo">
-        <h1>Cadastro de Usuário</h1>
+        <h1>Cadastro Proprietário</h1>
     </div>
 
 
@@ -16,7 +16,7 @@
             Nome: <br>
             <div class="campo-1">
                 <input id="input_nomeUser" placeholder="Nome completo"> <br>
-            </div>
+            </div>73.799.114/0001-17
 
             Email: <br>
             <div class="campo-2">
@@ -40,18 +40,6 @@
             <input id="input_telefoneUser" placeholder="(00)000000000">
             <br>
 
-            Tipo de Usuario: <br>
-
-            <select id="select_tipoUser">
-                <option value="0">--</option>
-                <option value="1">Dono</option>
-                <option value="2">Administrador</option>
-                <option value="3">Funcionário</option>
-            </select>
-            
-            <br>
-
-
             <button onclick="CadastrarUsuario()" class="botaoCadastroEmpresa">
                 Cadastrar-se
             </button>
@@ -59,7 +47,7 @@
 </html>
 
 <script>
-    function CadastrarUsuario(){
+    function cadastrarUsuario(){
 
        // Definindo as variaveis dos inputs e dos .indexOf() e .length
 
@@ -147,7 +135,7 @@
             alert('Você deve informar o telefone para prosseguir!')
             var input = document.getElementById('input_telefoneUser');
             input.style.borderColor = 'red';
-        }else if(tamanhoCPF != 14){
+        }else if(tamanhoCPF != 14) {
             alert('O CPF deve conter 14 caracteres!')
             var input = document.getElementById('input_cpfUser');
             input.style.borderColor = 'red'; 
@@ -180,7 +168,7 @@
             var select = document.getElementById('select_tipoUser');
             select.style.borderColor = 'red';
         }else{
-            alert('Cadastro reaalizado com sucesso!')
+            alert('Cadastro realizado com sucesso!')
             window.location.href = 'login.html';
         }
     }

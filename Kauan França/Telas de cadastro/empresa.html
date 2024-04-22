@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Empresa - Alfa Folium</title>
+</head>
+
+<body>
+
+    <div class="divTitulo">
+        <h1>Cadastro da Empresa</h1>
+    </div>
+
+
+    <div class="divCadastro">
+        <div class="boxCadastro">
+            Empresa: <br>
+            <div class="campo-1">
+                <input id="input_empresa" placeholder="Digite o nome da Empresa"> <br>
+            </div>
+
+            CEP: <br>
+            <div class="campo-2">
+                <input id="input_cep" placeholder="00000-000"> <br>
+            </div>
+
+            Nº do Endereço: <br>
+            <div class="campo-3">
+                <input id="input_numeroEndereco" placeholder="Onde encontramos a empresa? "> <br>
+            </div>
+
+            CNPJ: <br>
+            <input id="input_cnpj" placeholder="X.XXX.XXX/YYYY-ZZ.">
+            <br>
+
+            <button onclick="CadastrarEmpresa()" class="botaoCadastroEmpresa">
+                Cadastrar Empresa
+            </button>
+             <br>
+             <br>
+            <button onclick="JaTenhoUmaConta()" id="jaTenhoConta" class="Cadastro">
+                Já tenho uma conta
+            </button>
+            
+
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+
+    function CadastrarEmpresa() {
+        let Nome = input_empresa.value
+        let Cep = input_cep.value
+        let Endereco = input_endereco.value
+        let Cnpj = input_cnpj.value
+        let indiceTraco = Cep.indexOf("-")
+        let tamanhoCep = Cep.length
+        let tamanhoCnpj = Cnpj.length
+
+        let Num0 = Cep.indexOf("0")
+        let Num1 = Cep.indexOf("1")
+        let Num2 = Cep.indexOf("2")
+        let Num3 = Cep.indexOf("3")
+        let Num4 = Cep.indexOf("4")
+        let Num5 = Cep.indexOf("5")
+        let Num6 = Cep.indexOf("6")
+        let Num7 = Cep.indexOf("7")
+        let Num8 = Cep.indexOf("8")
+        let Num9 = Cep.indexOf("9")
+
+
+
+        if (Nome == '') {
+            var input = document.getElementById('input_empresa');
+            input.style.borderColor = 'red';
+            alert('Você deve informar o nome da Empresa para prosseguir!')
+        } else if (Cep == '') {
+            var input = document.getElementById('input_cep');
+            input.style.borderColor = 'red';
+            alert('Você deve informar o cep da Empresa para prosseguir!')
+        } else if (Endereco == '') {
+            var input = document.getElementById('input_numeroEndereco');
+            input.style.borderColor = 'red';
+            alert('Você deve informar o Nº do endereço da Empresa para prosseguir!')
+        } else if (Cnpj == '') {
+            var input = document.getElementById('input_cnpj');
+            input.style.borderColor = 'red';
+            alert('Você deve informar o CNPJ da Empresa para prosseguir!')
+        } else if (tamanhoCep != 9) {
+            var input = document.getElementById('input_cep');
+            input.style.borderColor = 'red';
+            alert('Erro ao validar cadastro. O cep deve conter 9 caracteres!')
+        } else if (tamanhoCnpj != 18) {
+            var input = document.getElementById('input_cnpj');
+            input.style.borderColor = 'red';
+            alert('Erro ao validar cadastro. O cnpj deve conter 18 caracteres!')
+        } else if (Num0 == -1 && Num1 == -1 && Num2 == -1 && Num3 == -1 && Num4 == -1 && Num5 == -1 && Num6 == -1 && Num7 == -1 && Num8 == -1 && Num9 == -1) {
+            var input = document.getElementById('input_cep');
+            input.style.borderColor = 'red';
+            alert('O cep deve conter apenas números e o hifem de separação! (EX: 12345-678)')
+        } else if (indiceTraco == -1) {
+            var input = document.getElementById('input_cep');
+            input.style.borderColor = 'red';
+            alert('Erro ao validar cadastro. o campo cep deve conter o hifem')
+        }else{
+
+            alert('Cadastro realizado com sucesso!')
+            window.location.href = 'usuario.html';
+        }
+
+    }
+
+
+    function JaTenhoUmaConta() {
+        window.location.href = 'login.html'
+    }
+</script>
+
+<style>
+    .divTitulo {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .divTitulo h1 {
+        color: #333;
+    }
+
+    .divCadastro {
+        width: 300px;
+        margin: 0 auto;
+        font-size: large;
+    }
+
+    .boxCadastro input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+
+    .boxCadastro button {
+        width: 100%;
+        padding-left: 200px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #3cdd1b;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    
+
+    .boxCadastro button:hover {
+        background-color: #00b31e;
+    }
+
+    #jaTenhoConta {
+        width: 100%;
+        padding-left: 200px;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #dd1b1b;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+</style>
