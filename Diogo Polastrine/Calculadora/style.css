@@ -82,8 +82,7 @@ body{
 
 .txt1:hover,.txt2:hover,.txt3:hover,.txt4:hover{
     color: #0e1503;
-    transition-duration: 0.2s;
-    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0);
+        text-shadow: 2px 3px 2px rgba(0, 0, 0, 0);
 }
 
 
@@ -104,9 +103,8 @@ body{
     transition-duration: 0.2s;
 }
 
-.titleBox h1{
-    color: #0e1503;
-}
+
+
 .loginButton p {
     cursor: pointer;
     color: #FFFFFF;
@@ -132,7 +130,22 @@ body{
     margin: auto;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 80px;
+}
+
+
+.imgAlface{
+    position: absolute;
+    top: 900px;
+    left: -90px;
+    z-index: 4;
+    display: flex;
+    transition: transform 0.8s ease;
+}
+
+
+.imgAlface img{
+    width: 500px;
 }
 
 
@@ -143,25 +156,25 @@ body{
     box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.6);
     position: absolute;
     z-index: 3;
+    border-radius: 15px;
 }
 
 .title-container{
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 35px;
 }
 
 .titleBox{
     position: absolute;
     text-align: center;
-    padding: 5px;
+    padding: 5;
     z-index: 3;
 }
 
-.calculator1 h1{
-    color: #FFFFFF;
-    font-size: 22px;
-    font-weight: 500;
+.titleBox h1{
+    color: #0e1503;
+    font-size: 35px;
 }
 
 .calculator2{
@@ -171,26 +184,29 @@ body{
     box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.6);
     position: relative;
     z-index: 2;
+    border-radius: 15px;
 }
 
 
 .fieldsBox{
     display: flex;
     flex-direction: column;
+    gap: 4px;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 
 .fieldsBox h3{
+    font-size: 22px;
     font-weight: 500;
 }
 
 .inputsCalculadora{
     margin-top: 8px;
-    width: 200px;
+    width: 250px;
     height: 30px;
     border-radius: 15px;
-    font-size: 20px;
+    font-size: 25px;
     border: 2px solid #ffffff;
     color: #000000;
     opacity: 40%;
@@ -225,7 +241,47 @@ body{
 
 .calculator1, .calculator2{
     transition: transform 0.8s ease;
-    
+}
+
+.resultsBox{
+    padding: 30px;
+    margin-left: 5px;
+    font-size: 22px;
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.buttonSolucao{
+    height: 70px;
+    width: 230px;
+    font-size: 20px;
+    font-weight: 600;
+    box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.6);
+    color: #ffffff;
+    border-radius: 35px;
+    border: 2px solid #3c7926;
+    background-color: #297e1e;
+    animation: pulse 0.5s infinite;
+    transition: 0.2s;
+}
+
+.buttonSolucao:hover{
+    background-color: #0e1503;
+    border: 2px solid #142704;
+    transition: 0.2s;
+    animation: pulse 0.5s infinite;
 }
 
 

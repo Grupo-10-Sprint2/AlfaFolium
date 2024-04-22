@@ -45,33 +45,39 @@
     </div>
 
     <div class="boxContent">
-        <div class="calculator1">
 
+        <div class="imgAlface">
+            <img src="./assets/alface.png">
+        </div>
+
+        <div class="calculator1">
             <div id="fieldsBox" class="fieldsBox">
                 <br>
                 <h3>Quantidade de estufas de alface na empresa:</h3>
-                <input type="number" id="input_qntdEstufas" class="inputsCalculadora">
+                <input type="number" id="input_qntdEstufas" class="inputsCalculadora" placeholder="---">
                 <br>
                 <h3>Quantidade de alfaces por estufa:</h3>
-                <input type="number" id="input_qntdAlfaces" class="inputsCalculadora">
+                <input type="number" id="input_qntdAlfaces" class="inputsCalculadora" placeholder="---">
                 <br>
-                <h3>Estimativa percentual de perda de alfaces:</h3>
-                <input type="number" id="input_percentualPerda" class="inputsCalculadora">
+                <h3>Porcentagem de perda mensal de alfaces:</h3>
+                <input type="number" id="input_percentualPerda" class="inputsCalculadora" placeholder="%">
                 <br>
-                <h3>Preço de venda da unidade do alface:</h3>
-                <input type="number" id="input_percentualPerda" class="inputsCalculadora">
+                <h3>Custo de produção mensal por alface:</h3>
+                <input type="number" id="input_custoProducao" class="inputsCalculadora" placeholder="R$">
             </div>
 
 
             <div class="buttonBox">
-                <button id="button_simulation" class="buttonSimulation" onclick="animacaoBox()"> SIMULAR </button>
+                <button id="button_simulation" class="buttonSimulation" onclick="exibirCalculos()"> SIMULAR </button>
             </div>
 
         </div>
 
 
         <div class="calculator2">
+            <div class="resultsBox">
 
+            </div>
         </div>
 
     </div>
