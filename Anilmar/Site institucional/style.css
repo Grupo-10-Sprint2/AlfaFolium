@@ -12,6 +12,7 @@ body{
     height: 5649px;
 }
 
+/* ------------------Navbar------------------ */
 .logoBox {
     width: 250px;
     height: 250px;
@@ -86,6 +87,7 @@ body{
     transition-duration: 0.2s;  
 }
 
+/* ------------------Pagina Principal------------------ */
 .page-principal {
     background-image: linear-gradient(to bottom, rgba(251, 224, 192, 0.2), rgba(251, 224, 192, 1)), url('./imgs/image.png');
     background-repeat: no-repeat;
@@ -103,6 +105,7 @@ body{
     margin-top: 5%;
 }
 
+/* ------------------Segunda Pagina------------------ */
 .segunda-main{
     display: flex;
     align-items: center;
@@ -121,7 +124,7 @@ body{
 .segunda-txt p{
     margin: 0 100px;
     font-family: 'Podkova';
-    font-size: 45px;
+    font-size: 60px;
     color: #FFF;
 }
 
@@ -135,6 +138,7 @@ body{
     margin-left: 66%;
 }
 
+/* ------------------Terceira Pagina------------------ */
 .terceira-main{
     display: flex;
     align-items: center;
@@ -151,16 +155,17 @@ body{
     position: absolute;
     display: flex;
     justify-content: center;
-    width: 53.5%;
+    width: 100%;
     z-index: 1;
     background-color: #414C30;
     box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.24);
 }
 
 .terceira-txt p{
-    margin: 0 100px;
+    margin-left: 55%;
+    margin-right: 50px;
     font-family: 'Podkova';
-    font-size: 45px;
+    font-size: 55px;
     text-align: right;
     color: #FFF;
 }
@@ -174,3 +179,48 @@ body{
     width: 100%;
 
 }
+
+/* ------------------Quarta Pagina------------------ */
+.quarta-main{
+    display: flex;
+    justify-content: space-between;
+}
+
+.primeira-imagem{
+    position: absolute;
+    width: 55%;
+}
+
+.primeira-imagem img{
+    width: 100%;
+}
+
+.camera{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: end;
+    z-index: 2;
+}
+
+.camera img{
+    width: 15%;
+    height: 25%;
+}
+
+.segunda-imagem{
+    right: 0;
+    position: absolute;
+    width: 50%;
+}
+
+.segunda-imagem img{
+    width: 100%;
+}
+
+/* .gradiante{
+    background: linear-gradient(133.74deg, rgba(76, 87, 59, 0) 23.13%, rgba(114, 88, 75, 0.76) 78.92%);
+    width: 100%;
+} */
