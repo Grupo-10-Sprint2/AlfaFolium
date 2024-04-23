@@ -9,10 +9,17 @@ body{
     height: 100%;
     color: #FBE0C0;
     background-color: #FBE0C0;
-    height: 5649px;
 }
 
 /* ------------------Navbar------------------ */
+
+header{
+    position: fixed;
+    z-index: 3;
+    width: 100%;
+    height: 140px;
+}
+
 .logoBox {
     width: 250px;
     height: 250px;
@@ -101,8 +108,8 @@ body{
 }
 
 .page-principal img{
-    height: 528px;
-    margin-top: 5%;
+    height: 408px;
+    margin-top: 15%;
 }
 
 /* ------------------Segunda Pagina------------------ */
@@ -136,6 +143,11 @@ body{
 .segunda-img img{
     width: 100%;
     margin-left: 66%;
+}
+
+.negrito{
+    font-family: 'Podkova';
+    font-weight: bold;
 }
 
 /* ------------------Terceira Pagina------------------ */
@@ -184,6 +196,7 @@ body{
 .quarta-main{
     display: flex;
     justify-content: space-between;
+    height: 120vh;
 }
 
 .primeira-imagem{
@@ -220,7 +233,138 @@ body{
     width: 100%;
 }
 
-/* .gradiante{
+/* main{
     background: linear-gradient(133.74deg, rgba(76, 87, 59, 0) 23.13%, rgba(114, 88, 75, 0.76) 78.92%);
-    width: 100%;
+
 } */
+
+/* ------------------Quinta Pagina------------------ */
+.papelao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.papelao img{
+    width: 70%;
+}
+
+.papelao p{
+    font-family: 'Podkova';
+    width: 50%;
+    position: absolute;
+    color: #1B3606;
+    font-size: 35px;
+    text-align: center;
+}
+
+/* ------------------Sexta Pagina------------------ */
+.sexta-main{
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 100px;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    margin: 0px 5%;
+}
+
+.container-img{
+    height: 322px;
+    z-index: 2;
+    
+}
+
+.container-img img{
+    height: 322px;
+    filter: drop-shadow(5px 10px 10px rgba(0, 0, 0, 0.8));
+}
+
+.container-txt{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    background-color: #434F31;
+    height: 150px;
+    left: 10%;
+    right: 50px;
+    z-index: 1;
+}
+
+.container-txt p{
+    font-size: 25px;
+    margin-left: 270px;
+}
+
+/* ------------------Footer------------------ */
+footer{
+    height: 313px;
+    background-color: #414C30;
+    color: #FFFFFF;
+    font-weight: lighter;
+}
+
+.conteudo{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 85%;
+}
+
+.conteudo-logo img{
+    height: 280px;
+}
+
+.conteudo-legal p{
+    font-size: 30px;
+}
+
+.conteudo-legal ul{
+    list-style: none;
+}   
+
+.conteudo-legal a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.conteudo-contatos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 60%;
+}
+
+.conteudo-contatos p{
+    font-size: 30px;
+}
+
+.conteudo-contatos img{
+    height: 67px;
+}
+
+.legislacao{
+    display: flex;
+    justify-content: space-around;
+    border-top: solid 1px #FFFFFF;
+    margin: 0 80px;
+    font-size: 20px;
+}
+
+.legislacao-termos ul{
+    display: flex;
+    list-style: none;
+}
+
+.legislacao-termos li{
+    margin: 0 20px;
+}
+
+.legislacao-termos a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
