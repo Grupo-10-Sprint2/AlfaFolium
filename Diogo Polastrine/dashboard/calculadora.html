@@ -26,9 +26,25 @@
                 <div class="logoBox">
                     <a href="./calculadora.html"><img class="logoImg" src="./assets/logoPrincipal.png"></a>
                 </div>
+
+                <div class="navBarTxt">
+                  <div class="textEstufa">
+                      <h1>Estufa:</h1>
+                  </div>
+                  <div class="nomeEstufa">
+                      <h1>01X_2024</h1>
+                  </div>
+                      
+                </div>
+                
                 <div class="navBarContent">
+                    
                     <div class="loginButton" onclick="menuAbrir()">
-                        <p>Fernanda Caramico</p>
+                        <div class="usuarioIcon">
+                          <i class="fa-solid fa-user fa-xl" style="color: #000000;"></i>
+                        </div>
+                        <p>Fernanda</p>
+                        <br>
                     </div>
                 </div>
             </div>
@@ -49,6 +65,18 @@
           <h2>(80%)</h2>
         </div>
         <div class="card3">
+          <div class="card3_h1">
+            <h1>Parâmetros Ideais:</h1> 
+            <h1>Temperatura Climática:</h1>
+          </div>
+          <div class="card3_h2">
+            <div class="textsCard3">
+              <h2>Temperatura: 24°C a 28°C</h2>
+              <h2>Umidade: 60% a 80%</h2>
+            </div>
+            <h2 class="h2_2">32°C</h2>
+          </div>
+          
 
         </div>
       </div>
@@ -82,14 +110,90 @@
 <script>
     const ctx1 = document.getElementById('myChart1');
     const ctx2 = document.getElementById('myChart2');
+
+
+    let numLeituras1 = 0; // Variável para rastrear o número de leituras
+    let numLeituras2 = 0; // Variável para rastrear o número de leituras
+
+
+
+function adicionarDadosAleatorios() {
+
+  if(numLeituras1 % 10 == 0){
+    graficoTemp.data.labels = [];
+
+    // Atualiza o gráfico
+    graficoTemp.update();
+
+  } else {
+
+    let dadosAleatorios = Number((Math.random() * 30).toFixed(2));
+
+    // Adiciona os dados ao array de dados
+    graficoTemp.data.datasets[0].data.push(dadosAleatorios);
+
+    // Atualiza os rótulos usando o número de leituras
+    graficoTemp.data.labels.push(`Leitura ${numLeituras1}`);
+
+    // Atualiza o gráfico
+    graficoTemp.update();
+
+  }
+    numLeituras1++
+
+
+    if(numLeituras2 % 10 == 0){
+      graficoBarras.data.labels = [];
+
+      // Atualiza o gráfico
+      graficoBarras.update();
+
+    } else {
+
+      let dadosAleatorios = Number((Math.random() * 35).toFixed(2));
+
+      // Adiciona os dados ao array de dados
+      graficoBarras.data.datasets[0].data.push(dadosAleatorios);
+
+      // Atualiza os rótulos usando o número de leituras
+      graficoBarras.data.labels.push(`Leitura ${numLeituras2}`);
+
+      // Atualiza o gráfico
+      graficoBarras.update();
+
+    }
+      numLeituras2++
+
+
+
+
+
+
+
+
+
+
+  }
+
+
+
   
-    new Chart(ctx1, {
+    
+  
+
+setInterval(adicionarDadosAleatorios, 2000);
+
+// Restante do código do gráfico permanece o mesmo
+
+    
+  
+  var graficoTemp = new Chart(ctx1, {
   type: 'line',
   data: {
-    labels: ['Janeiro', 'Feveireiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+    labels: [],
     datasets: [{
       label: 'Temperatura (°C)',
-      data: [12, 19, 3, 5, 2, 3],
+      data: [],
       borderColor: '#ffffff', // Cor da linha branca
       borderWidth: 3
     }]
@@ -128,14 +232,14 @@
 
 
 
-new Chart(ctx2, {
+var graficoBarras = new Chart(ctx2, {
   type: 'bar',
   data: {
-    labels: ['Janeiro', 'Feveireiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+    labels: [],
     datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
-      backgroundColor: '#1B3606', // Cor de fundo forte
+      label: 'Umidade (%)',
+      data: [],
+      backgroundColor: '#ffffff', // Cor de fundo forte
       borderColor: '#ffffff', // Cor da borda branca
       borderWidth: 3
     }]
