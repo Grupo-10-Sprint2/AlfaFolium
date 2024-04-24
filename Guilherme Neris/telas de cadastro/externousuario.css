@@ -1,0 +1,87 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.divTitulo {
+    text-align: center;
+}
+
+.divTitulo h1 {
+    color: #333;
+}
+
+.divCadastro {
+    width: 300px;
+    margin: 0 auto;
+    font-size: large;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    z-index: 2;   
+}
+
+.imgfundo{  
+    background-image:url("./assets/fundoretro\ \(1\).png");
+    background-image:url("./assets/sujeirasfundo.png");
+    background-position: center center;
+    background-size: cover;
+    background-color:#1C3707;
+    display:flex;
+    position: absolute;
+    z-index: 1;
+
+}
+.imgfundo img {
+    max-width: 100vw;
+    max-height: 150vh;
+    align-self: center;
+    justify-self: center;
+
+}
+
+.boxCadastro input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    position: relative;
+
+}
+
+.boxCadastro_position{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
+.boxCadastro button {
+    width: 100%;
+    padding-left: 200px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3cdd1b;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.boxCadastro button:hover {
+    background-color: #00b31e;
+}
+
+.boxCadastro select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
