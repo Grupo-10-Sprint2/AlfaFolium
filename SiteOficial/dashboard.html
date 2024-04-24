@@ -104,7 +104,7 @@
 
 </html>
 
-<script src="./script.js"></script>
+<script src="./scriptDashboard.js"></script>
 
 // Gráficos
 <script>
@@ -123,7 +123,7 @@ function adicionarDadosAleatorios() {
     graficoTemp.data.labels = [];
 
     // Atualiza o gráfico
-    graficoTemp.update();qAQAAq 
+    graficoTemp.update();
 
   } else {
 
@@ -163,30 +163,12 @@ function adicionarDadosAleatorios() {
 
     }
       numLeituras2++
-
-
-
-
-
-
-
-
-
-
   }
 
+setInterval(adicionarDadosAleatorios, 5000);
 
 
-  
-    
-  
 
-setInterval(adicionarDadosAleatorios, 2000);
-
-// Restante do código do gráfico permanece o mesmo
-
-    
-  
   var graficoTemp = new Chart(ctx1, {
   type: 'line',
   data: {

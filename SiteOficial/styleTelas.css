@@ -100,10 +100,29 @@ body {
     transform: scale(105%);
 }
 
-.botaovoltar img {
-    width: 100px;
-}
 
 .botaovoltar {
-    width: 100px;
+    width: 80px;
+    height: 80px;
+    background-color: #FBE0C0;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botaovoltar a{
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.botaovoltar:hover {
+    transform: scale(110%);
+    background-color: #3c6a27;
+    transition: 0.3s;
 }
