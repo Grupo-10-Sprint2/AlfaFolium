@@ -4,7 +4,37 @@
     padding: 0;
 }
 
+.header{
+width: 100%;
+height: 110px;
+background-color: #4C5939;
+position: absolute;
 
+}
+.logo img {
+    width: 150px;
+    justify-content: left;
+    align-items: start;
+    padding: 0%;
+}
+.fernanda img {
+    width: 350px;
+    left: 100%;
+    top: 50%;
+    position: absolute;
+    
+}
+.centro{
+    display:flex;
+    justify-content:left;
+    align-items: left;
+    width: 50%;
+    height: 100%;
+    background-color:#4C5939 ;
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%); 
+    padding-top: 30px;
+}
 
 .divTitulo {
     text-align: center;
@@ -16,18 +46,23 @@
 
 .divCadastro {
     width: 300px;
-    margin: 0 auto;
+    height: 100vh;
+    margin-top: 0 ;
     font-size: large;
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
-    z-index: 2;   
+    z-index: 2; 
+    align-items: center;  
+    display: flex;
+    padding-top: 0px;
+
+    
 }
 
 .imgfundo{  
-    background-image:url("./assets/fundoretro\ \(1\).png");
-    background-image:url("./assets/sujeirasfundo.png");
+  
     background-position: center center;
     background-size: cover;
     background-color:#1C3707;
@@ -53,6 +88,15 @@
     font-size: 16px;
     position: relative;
 
+    
+
+}
+.divTitulo{
+    text-align: center;
+    margin-top: 0px;
+    padding: 0px;
+    display: flex;
+    justify-content: start;
 }
 
 .boxCadastro_position{
