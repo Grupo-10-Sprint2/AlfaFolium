@@ -9,63 +9,66 @@
 </head>
 
 <body>
+    <div class="fundo">
 
     <div class="header">
         <div class="logo">
-        <img src="./assets/logo.png">
-        <div class="fernanda">
+            <img src="./assets/logo.png">
+        </div>
+        <div class="nomeusuario">
             <img src="./assets/Group 6.png" >
         </div>
     </div>
+   
+    <div class="titulo">
+            <p> Insira os dados da empresa:</p>
+
 
     </div>
-   
-    </div>
 
-   
+    <div class="centro">    
+        <div class="campos">
+            <div class="boxCadastro">
+                
+                    
+                    <div class="campo-1">
+                        <p>Nome da Empresa:</p>
+                        <input id="input_empresa" placeholder="Digite o nome da Empresa"> <br>
+                    </div>
 
-    <div class="centro">
+                
+                    <div class="campo-2">
+                        <p>Cep:</p>
+                        <input id="input_cep" placeholder="00000-000"> <br>
+                    </div>
 
-    <div class="campos">
+                    <div class="campo-3">
+                        <p>Endereço</p>
+                        <input id="input_endereco" placeholder="Onde encontramos a empresa? "> <br>
+                    </div>
 
-    <!-- <div class="divCadastro"> -->
-        
-        <div class="boxCadastro">
-            Empresa: <br>
-            <div class="campo-1">
-                <input id="input_empresa" placeholder="Digite o nome da Empresa"> <br>
+                    <div class="campo-4">
+                        
+                        <p>CNPJ:</p>
+                        <input id="input_cnpj" placeholder="X.XXX.XXX/YYYY-ZZ.">
+                        
+                    </div>
+                    <br>
+
+                    <button onclick="CadastrarEmpresa()" class="botaoCadastroEmpresa">
+                        Cadastrar Empresa
+                    </button>
+                    <br>
+                    <br>
+                    <button onclick="JaTenhoUmaConta()" id="jaTenhoConta" class="Cadastro">
+                        Já tenho uma conta
+                    </button>
+             
+
             </div>
-
-            CEP: <br>
-            <div class="campo-2">
-                <input id="input_cep" placeholder="00000-000"> <br>
-            </div>
-
-            Endereço: <br>
-            <div class="campo-3">
-                <input id="input_endereco" placeholder="Onde encontramos a empresa? "> <br>
-            </div>
-
-            CNPJ: <br>
-            <input id="input_cnpj" placeholder="X.XXX.XXX/YYYY-ZZ.">
-            <br>
-
-            <button onclick="CadastrarEmpresa()" class="botaoCadastroEmpresa">
-                Cadastrar Empresa
-            </button>
-             <br>
-             <br>
-            <button onclick="JaTenhoUmaConta()" id="jaTenhoConta" class="Cadastro">
-                Já tenho uma conta
-            </button>
-            
-
         </div>
     </div>
 </div>
-</div>
-
-
 </body>
 
 </html>
