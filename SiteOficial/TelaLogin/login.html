@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Alfa Folium</title>
+    <link rel="stylesheet" href="externologin.css">
+</head>
+
+<body>
+
+    <div class="botaovoltar">
+        <a href="./index.html">
+            <img src="./assets/voltar.imagem.png">
+        </a>
+
+    </div>
+    
+    <div class="logo">
+        <img src="./assets/logoAlfa-Folium.png">
+    </div>
+
+    <div class="boxCadastro">
+       
+        <div class="campo1">
+            <p>Email:</p>
+            <input id="input_emailUser" placeholder="SeuEmail@Dominio.com">
+        </div>
+
+        <br>
+        
+        <div class="campo2">
+            <p>Senha:</p>
+            <input id="input_senhaUser" type="password" placeholder="********">
+        </div>
+        
+        <button onclick="LoginUsuario()" class="botaoCadastroEmpresa">
+            Entrar
+        </button>
+    
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    function LoginUsuario() {
+
+        let email = input_emailUser.value
+        let senha = input_senhaUser.value
+        let cpf = input_cpfUser.value
+        let indiceArroba = email.indexOf("@")
+        let tamanhoCPF = cpf.length
+        let tamanhoSenha = senha.length
+
+        let Num0 = senha.indexOf("0")
+        let Num1 = senha.indexOf("1")
+        let Num2 = senha.indexOf("2")
+        let Num3 = senha.indexOf("3")
+        let Num4 = senha.indexOf("4")
+        let Num5 = senha.indexOf("5")
+        let Num6 = senha.indexOf("6")
+        let Num7 = senha.indexOf("7")
+        let Num8 = senha.indexOf("8")
+        let Num9 = senha.indexOf("9")
+
+        let num0 = cpf.indexOf("0")
+        let num1 = cpf.indexOf("1")
+        let num2 = cpf.indexOf("2")
+        let num3 = cpf.indexOf("3")
+        let num4 = cpf.indexOf("4")
+        let num5 = cpf.indexOf("5")
+        let num6 = cpf.indexOf("6")
+        let num7 = cpf.indexOf("7")
+        let num8 = cpf.indexOf("8")
+        let num9 = cpf.indexOf("9")
+
+
+        if (email == '') {
+            alert('Você deve informar o seu email para prosseguir!')
+            var input = document.getElementById('input_emailUser');
+            input.style.borderColor = 'red';
+        } else if (senha == '') {
+            alert('Você deve informar uma senha para prosseguir!')
+            var input = document.getElementById('input_senhaUser');
+            input.style.borderColor = 'red';
+        } else if (cpf == '') {
+            alert('Você deve informar o seu CPF para prosseguir!')
+            var input = document.getElementById('input_cpfUser');
+            input.style.borderColor = 'red';
+        } else if (indiceArroba == -1) {
+            alert('O seu email deve ter arroba!')
+            var input = document.getElementById('input_emailUser');
+            input.style.borderColor = 'red';
+        } else if (Num0 == -1 && Num1 == -1 && Num2 == -1 && Num3 == -1 && Num4 == -1 && Num5 == -1 && Num6 == -1 && Num7 == -1 && Num8 == -1 && Num9 == -1) {
+            alert('A senha deve conter pelo menos um número!')
+            var input = document.getElementById('input_senhaUser');
+            input.style.borderColor = 'red';
+        } else if (tamanhoCPF != 14) {
+            alert('O CPF deve conter 14 caracteres!')
+            var input = document.getElementById('input_cpfUser');
+            input.style.borderColor = 'red';
+        } else if (num0 == -1 && num1 == -1 && num2 == -1 && num3 == -1 && num4 == -1 && num5 == -1 && num6 == -1 && num7 == -1 && num8 == -1 && num9 == -1) {
+            alert('O CPF deve conter os números e os pontos de separação. comforme o exemplo dado no campo')
+            var input = document.getElementById('input_cpfUser');
+            input.style.borderColor = 'red';
+        } else if (tamanhoSenha <= 5) {
+            alert('A senha deve ter mais de 5 caracteres!')
+            var input = document.getElementById('input_senhaUser');
+            input.style.borderColor = 'red';
+        } else {
+            alert("SUCESSO: REDIRECIONAR PARA TELA DE USUARIO LOGADO ->>>")
+        }
+    }
+
+
+    function voltarCadastro() {
+        window.location.href = 'cadastro.html';
+    }
+</script>
