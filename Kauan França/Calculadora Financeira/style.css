@@ -1,0 +1,248 @@
+@font-face {
+    font-family: 'Kawus';
+    src: url('./Kawus.otf') format('opentype');
+
+    font-family: 'Fritch';
+    src: url('./FRITCH.ttf') format('truetype');
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    margin: 0;
+    height: 100%;
+    background-color: #FBE0C0;
+    color: #FBE0C0;
+    overflow: hidden;
+}
+
+.bgImgBox{
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Alterado para enviar para trás */
+}
+
+.bgImg{
+    opacity: 15%;
+    width: 100%;
+    height: 100%;
+}
+
+.positionBox{
+    display: flex;
+}
+
+.logoBox {
+    width: 250px;
+    height: 250px;
+    padding-bottom: 20px; /* Adiciona padding na parte inferior */
+  }
+  
+
+  
+.logoImg {
+    width: 100%;
+    height: auto;
+    position: relative;
+    bottom: 20px; /* Compensa o padding na parte inferior */
+    cursor: pointer;
+}
+
+
+
+.headerBox{
+    background-color: #38412A;
+    height: 140px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.6);
+}
+
+.buttonsBox{
+    height: 140px;
+    width: 800px;
+    margin: 50px 0 0 200px;
+    justify-content: center;
+}
+
+
+.navText{
+    color: #FFFFFF;
+    font-family: "Poppins", sans-serif;
+    font-size: 30px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    cursor: pointer;
+    text-shadow: 2px 2px 10px 0px rgba(0,0,0,0.6);
+    transition-duration: 0.2s;
+
+}
+
+.txt1:hover,.txt2:hover,.txt3:hover,.txt4:hover{
+    color: #0e1503;
+    transition-duration: 0.2s;
+    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0);
+}
+
+
+.loginButton{
+    height: 50px;
+    width: 100px;
+    position: relative;
+    right: 20px;
+    margin-left: 500px;
+    margin-top: 40px;
+    display: flex;
+    padding-left: 20px;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    background-color: #1B3606;
+    border: 3px solid #FFFFFF;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.6);
+    transition-duration: 0.2s;
+}
+
+.titleBox h1{
+    color: #0e1503;
+    font-family: 'Fritch';
+    font-size: 40px;
+    letter-spacing: 4.5px;
+    padding-top: 6px;
+}
+.loginButton p {
+    cursor: pointer;
+    color: #FFFFFF;
+    font-size: 30px;
+    font-weight: 400;
+    transition-duration: 0.2s;
+}
+
+.loginButton:hover{
+    background-color: #FFFFFF;
+    transition-duration: 0.2s;  
+}
+
+.loginButton:hover p {
+    color: #1B3606;
+    transition-duration: 0.2s; 
+}
+
+.boxContent{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+}
+
+
+.calculator1{
+    width: 680px;
+    height: 650px;
+    background-color: #1e2f11;
+    box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.6);
+    position: absolute;
+    z-index: 3;
+}
+
+.title-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.titleBox{
+    position: absolute;
+    text-align: center;
+    padding: 5px;
+    z-index: 3;
+}
+
+.calculator1 h1{
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.calculator2{
+    width: 680px;
+    height: 650px;
+    background-color: #1e2f11;
+    box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.6);
+    position: relative;
+    z-index: 2;
+}
+
+
+.fieldsBox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.fieldsBox h3{
+    font-weight: 500;
+}
+
+.inputsCalculadora{
+    margin-top: 8px;
+    width: 200px;
+    height: 30px;
+    border-radius: 15px;
+    font-size: 20px;
+    border: 2px solid #ffffff;
+    color: #000000;
+    opacity: 40%;
+    font-weight: 600;
+    padding-left: 10px;
+}
+
+.buttonBox{
+    display: flex;
+    justify-content: center;
+    margin-top: 55px;
+}
+
+.buttonSimulation{
+    height: 60px;
+    width: 210px;
+    font-size: 30px;
+    font-weight: 600;
+    box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.6);
+    color: #2c3d10;
+    border-radius: 35px;
+    border: 2px solid #ffffff;
+    transition: 0.2s;
+}
+
+.buttonSimulation:hover{
+    background-color: #0e1503;
+    color: #ffffff;
+    border: 2px solid #142704;
+    transition: 0.2s;
+}
+
+.calculator1, .calculator2{
+    transition: transform 0.8s ease;
+    
+}
+
+
+
+

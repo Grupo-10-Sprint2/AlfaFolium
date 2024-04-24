@@ -10,6 +10,9 @@
 
     font-family: 'ShoCard';
     src: url('./fonts/sho-card-caps.regular.otf') format('truetype');
+
+    font-family: '';
+    src: url('./fonts/state-wide-rough-medium.ttf') format('truetype');
 }
 
 :root {
@@ -73,7 +76,7 @@ header{
     color: var(--bege-background);
     font-size: 1.6rem;
     letter-spacing: 0.9px;
-    font-family: 'ShoCard';
+    font-family: 'StateWide';
     font-size: 30px;
 }
 
