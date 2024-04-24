@@ -69,53 +69,78 @@
         let tamanhoCep = Cep.length
         let tamanhoCnpj = Cnpj.length
 
-        let Num0 = Cep.indexOf("0")
-        let Num1 = Cep.indexOf("1")
-        let Num2 = Cep.indexOf("2")
-        let Num3 = Cep.indexOf("3")
-        let Num4 = Cep.indexOf("4")
-        let Num5 = Cep.indexOf("5")
-        let Num6 = Cep.indexOf("6")
-        let Num7 = Cep.indexOf("7")
-        let Num8 = Cep.indexOf("8")
-        let Num9 = Cep.indexOf("9")
+        // Validação de números no campo CEP
+        var input = document.getElementById('input_cep').value;
+        var temNumeroCep = false;
+
+        for (var i = 0; i < input.length; i++) {
+            var caractere = input[i];
+            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
+                temNumeroCep = true;
+                break;
+            }
+        }
+
+        // Validação de números no campo CNPJ
+        var input1 = document.getElementById('input_cnpj').value;
+        var temNumeroCnpj = false;
+
+        for (var i = 0; i < input1.length; i++) {
+            var caractere = input1[i];
+            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
+                temNumeroCnpj = true;
+                break;
+            }
+        }
 
 
-
-        if (Nome == '') {
+        if(Nome == '' && Cep == '' && Endereco == '' && Cnpj == ''){
+            alert('Você deve preencher todos os campos para prosseguir!')
             var input = document.getElementById('input_empresa');
+            var input2 = document.getElementById('input_cep');
+            var input3 = document.getElementById('input_endereco');
+            var input4 = document.getElementById('input_cnpj');
             input.style.borderColor = 'red';
+            input2.style.borderColor = 'red';
+            input3.style.borderColor = 'red';
+            input4.style.borderColor = 'red';
+        } else if (Nome == '') {
             alert('Você deve informar o nome da Empresa para prosseguir!')
+            var input = document.getElementById('input_empresa');
+            input.style.borderColor = 'red';  
         } else if (Cep == '') {
-            var input = document.getElementById('input_cep');
-            input.style.borderColor = 'red';
             alert('Você deve informar o cep da Empresa para prosseguir!')
+            var input = document.getElementById('input_cep');
+            input.style.borderColor = 'red';   
         } else if (Endereco == '') {
-            var input = document.getElementById('input_endereco');
-            input.style.borderColor = 'red';
             alert('Você deve informar o endereço da Empresa para prosseguir!')
+            var input = document.getElementById('input_endereco');
+            input.style.borderColor = 'red';       
         } else if (Cnpj == '') {
-            var input = document.getElementById('input_cnpj');
-            input.style.borderColor = 'red';
             alert('Você deve informar o CNPJ da Empresa para prosseguir!')
-        } else if (tamanhoCep != 9) {
-            var input = document.getElementById('input_cep');
-            input.style.borderColor = 'red';
-            alert('Erro ao validar cadastro. O cep deve conter 9 caracteres!')
-        } else if (tamanhoCnpj != 18) {
             var input = document.getElementById('input_cnpj');
             input.style.borderColor = 'red';
+        } else if (tamanhoCep != 9) {
+            alert('Erro ao validar cadastro. O cep deve conter 9 caracteres!')
+            var input = document.getElementById('input_cep');
+            input.style.borderColor = 'red';  
+        } else if (tamanhoCnpj != 18) {
             alert('Erro ao validar cadastro. O cnpj deve conter 18 caracteres!')
-        } else if (Num0 == -1 && Num1 == -1 && Num2 == -1 && Num3 == -1 && Num4 == -1 && Num5 == -1 && Num6 == -1 && Num7 == -1 && Num8 == -1 && Num9 == -1) {
-            var input = document.getElementById('input_cep');
+            var input = document.getElementById('input_cnpj');
+            input.style.borderColor = 'red';          
+        } else if (temNumeroCnpj == false) {
+            alert('O cnpj deve conter apenas números e os pontos de separação! como o exemplo dado no campo')
+            var input = document.getElementById('input_cnpj');
             input.style.borderColor = 'red';
+        } else if (temNumeroCep == false) {
             alert('O cep deve conter apenas números e o hifem de separação! (EX: 12345-678)')
-        } else if (indiceTraco == -1) {
             var input = document.getElementById('input_cep');
-            input.style.borderColor = 'red';
+            input.style.borderColor = 'red';    
+        } else if (indiceTraco == -1) {
             alert('Erro ao validar cadastro. o campo cep deve conter o hifem')
+            var input = document.getElementById('input_cep');
+            input.style.borderColor = 'red';   
         }else{
-
             alert('Cadastro realizado com sucesso!')
             window.location.href = 'usuario.html';
         }
