@@ -4,6 +4,10 @@
     font-family: "Poppins", sans-serif;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 body{
     margin: 0;
     height: 100%;
@@ -24,6 +28,7 @@ body{
     position: relative;
     bottom: 20px;
     cursor: pointer;
+    filter: drop-shadow(6px 6px 16px rgba(0, 0, 0, 0.6));
 }
 
 .headerBox{
@@ -94,26 +99,18 @@ body{
 .page-principal {
     background-image: linear-gradient(to bottom, rgba(251, 224, 192, 0.2), rgba(251, 224, 192, 1)), url('./assetsIndex/image.png');
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center center;
     background-size: cover;
     height: 100vh;
     mix-blend-mode: luminosity;
     display: flex;
     justify-content: center;
     z-index: 1;
-    margin-top: 100px
-}
-
-.slogan-txt{
-    height: 170px;
-    margin-top: 10%;
-    z-index: 2;
 }
 
 .slogan-img{
-    position: absolute;
     height: 300px;
-    margin-top: 5%;
+    margin-top: 10%;
 }
 
 /* ------------------Segunda Pagina------------------ */
@@ -217,7 +214,7 @@ body{
     position: absolute;
     display: flex;
     width: 100%;
-    height: 120%;
+    height: 100%;
     justify-content: center;
     align-items: end;
     z-index: 2;
@@ -237,11 +234,6 @@ body{
 .segunda-imagem img{
     width: 100%;
 }
-
-/* main{
-    background: linear-gradient(133.74deg, rgba(76, 87, 59, 0) 23.13%, rgba(114, 88, 75, 0.76) 78.92%);
-
-} */
 /* ------------------Quinta Pagina------------------ */
 .papelao{
     display: flex;
