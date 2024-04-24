@@ -2,19 +2,43 @@
 *{
     margin: 0;
     padding: 0;
+    
    
     
 }
-.fundo{
-    background-color: #FBE0C0;
+.quadrado_titulo{
+
+    width: 400px;
+    padding-right: 30px;
+    height: 50px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    margin-top: 60px;
+    text-align: center;
+   background-color: #1C3707;
+   
 }
+.titulo{
+    font-size: 30px;
+    color: white;
+    font-family:"poppins",sans-serif;
+    margin: auto;
+    
+
+}
+.fundo{
+    background-image: url(./assets/fundo.sujeira.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+    
 
 .header{
     display: flex;
     justify-content: space-between;
     width: 100%;
     height: 110px;
-    background-color: #4C5939;
+    background-color: #1C3707;
     position: absolute;
     z-index: 3;
 }
@@ -51,9 +75,7 @@
     height: 100vh;
     
     
-    /* position: absolute; top: 50%; left: 50%;
-    transform: translate(-50%,-50%); 
-    padding-top: 30px; */
+  
 }
 
 .campos{
@@ -62,7 +84,7 @@
     
 }
 .fundo{
-    background-color: #FBE0C0   ;
+    background-color:#FBE0C0   ;
 }
 
 .titulo{
@@ -71,7 +93,7 @@
 }
 
 .boxCadastro {
-    width: 1200px;
+    width: 1400px;
     height: 100vh;
     margin-top: 0 ;
     font-size: large;
@@ -85,25 +107,28 @@
     display: flex;
     padding-top: 0px;
     background-color: #1C3707;
-    background-image: url(./assets/fundo.sujeira.png);
+    background-color: rgba(28, 55, 7, 80%);
 }
 .campos{
     padding-top: 0%;
     margin-top: 0%;
 }
 
-.campo-1{
+.campo-1 {
     color: white;
     align-items: center;
     text-align: center;
     width: 400px;
+    font-family:"poppins",sans-serif;
 
 }
+
 .campo-2{
     color: white;
     align-items: center;
     text-align: center;
     width: 400px;
+    font-family:"poppins",sans-serif;
 }
 
 .campo-3{
@@ -112,6 +137,7 @@
     align-items: center;
     text-align: center;
     width: 400px;
+    font-family:"poppins",sans-serif;
 
 }
 
@@ -120,34 +146,19 @@
     align-items: center;
     text-align: center;
     width: 400px;
+    font-family:"poppins",sans-serif;
 
 }
 ::-webkit-input-placeholder{
     color: #1C3707;
 }
-/* .imgfundo{  
-  
-    background-position: center center;
-    background-size: cover;
-    background-color:#1C3707;
-    display:flex;
-    position: absolute;
-    z-index: 1;
 
-}
-.imgfundo img {
-    max-width: 100vw;
-    max-height: 150vh;
-    align-self: center;
-    justify-self: center;
-
-} */
 
 .boxCadastro input {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid #1C3707;
     border-radius: 5px;
     font-size: 16px;
     position: relative;
@@ -167,27 +178,43 @@
     justify-content: center;
 }
 
-.boxCadastro button {
-    width: 100%;
+.botaoCadastroEmpresa {
+    width: 300px;
+
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1C3707;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    align-items: center;
+    font-family:"poppins",sans-serif;
+}
+
+.botaoCadastroEmpresa button:hover {
+    background-color: #00b31e;
+    width: 400px;
+
+}
+
+#tenhoconta button:hover{
+    background-color: #75885A;
+    width: 410px;
+
+}
+.tenhoconta{
+    width: 300px;
     padding-left: 200px;
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #3cdd1b;
+    background-color: #1C3707;
     color: #fff;
     font-size: 16px;
     cursor: pointer;
+    align-self: center;
+    font-family:"poppins",sans-serif;
 }
 
-.boxCadastro button:hover {
-    background-color: #00b31e;
-}
 
-.boxCadastro select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}

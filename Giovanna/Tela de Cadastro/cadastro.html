@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Empresa - Alfa Folium</title>
     <link rel="stylesheet" href="externoempresa.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
 </head>
+
 
 <body>
     <div class="fundo">
@@ -20,15 +24,17 @@
         </div>
     </div>
    
-    <div class="titulo">
-            <p> Insira os dados da empresa:</p>
-
-
-    </div>
+    
 
     <div class="centro">    
         <div class="campos">
             <div class="boxCadastro">
+                <div class="quadrado_titulo">
+                <div class="titulo">
+                    <p> Insira os dados da empresa:</p></div><br><br>
+        
+        
+            </div>
                 
                     
                     <div class="campo-1">
@@ -60,7 +66,7 @@
                     </button>
                     <br>
                     <br>
-                    <button onclick="JaTenhoUmaConta()" id="jaTenhoConta" class="Cadastro">
+                    <button onclick="JaTenhoUmaConta()" class="tenhoconta" >
                         Já tenho uma conta
                     </button>
              
@@ -143,60 +149,3 @@
     }
 </script>
 
-<style>
-    .divTitulo {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .divTitulo h1 {
-        color: #333;
-    }
-
-    .divCadastro {
-        width: 300px;
-        margin: 0 auto;
-        font-size: large;
-    }
-
-    .boxCadastro input {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-    }
-
-
-    .boxCadastro button {
-        width: 100%;
-        padding-left: 200px;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        background-color: #3cdd1b;
-        color: #fff;
-        font-size: 16px;
-        cursor: pointer;
-    }
-
-    
-
-    .boxCadastro button:hover {
-        background-color: #00b31e;
-    }
-
-    #jaTenhoConta {
-        width: 100%;
-        padding-left: 200px;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        background-color: #dd1b1b;
-        color: #fff;
-        font-size: 16px;
-        cursor: pointer;
-    }
-
-</style>
