@@ -277,7 +277,7 @@ body{
     border-radius: 35px;
     border: 2px solid #3C7926;
     background-color: #297E1E;
-    animation: pulse 0.9s infinite;
+    animation: pulse 1s infinite;
     transition: 0.2s;
 }
 
@@ -287,7 +287,3 @@ body{
     transition: 0.2s;
     animation: pulse 0.5s infinite;
 }
-
-
-
-
