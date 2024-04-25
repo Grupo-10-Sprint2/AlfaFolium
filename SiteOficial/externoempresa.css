@@ -1,42 +1,33 @@
-
-*{
+* {
     margin: 0;
     padding: 0;
-    
-   
-    
+    font-family: "poppins", sans-serif;
 }
-.quadrado_titulo{
 
-    width: 400px;
-    padding-right: 30px;
-    height: 50px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    margin-top: 60px;
-    text-align: center;
-   background-color: #1C3707;
-   
-}
-.titulo{
-    color: #FBE0C0;
-    align-items: center;
-    text-align: center;
-    width: 400px;
-    font-family:"poppins",sans-serif;
-    font-size: large;
-    font-weight: bold;
-    
-
-}
-.fundo{
-    background-image: url(./assets/fundo.sujeira.png);
+.fundo {
+    background-image: url(./assetsCadastro/fundo.sujeira.png);
     background-repeat: no-repeat;
     background-size: cover;
+    background-color: #FBE0C0;
 }
-    
 
-.header{
+.quadrado_titulo {
+    position: relative;
+    top: -40px;
+    width: 500px;
+    height: 50px;
+    background-color: #1C3707;
+    display: flex;
+}
+
+.titulo {
+    font-size: 25px;
+    font-weight: bold;
+    color: #FFFFFF;
+    margin: auto;
+}
+
+.box-logo {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -45,129 +36,68 @@
     position: absolute;
     z-index: 3;
 }
+
+
+
 .logo img {
-    width: 150px;
     justify-content: left;
     align-items: start;
-    padding: 0%;
+    width: 270px;
+    height: 250px;
 }
-.nomeusuario{
+
+.nomeusuario {
     justify-content: flex-end;
     display: flex;
-    margin-top: 0px  ;
-    padding: 0%;
-
 }
 
-.nomeusuario img{
-
+.nomeusuario img {
     justify-content: flex-end;
     display: flex;
-    margin-top: 0px;
-    padding:0%;
-
 }
 
-    
-
-.centro{
+.centro {
     display:flex;
     justify-content:center;
     align-items: center;
     width: 100%;
     height: 100vh;
-    
-    
-  
 }
 
-.campos{
-    
+.campos {
     display: flex;
-    
-}
-.fundo{
-    background-color:#FBE0C0   ;
-}
-
-.titulo{
-    color: #FBE0C0;
-    align-items: center;
-    text-align: center;
-    width: 400px;
-    font-family:"poppins",sans-serif;
-    font-size: large;
-    font-weight: bold;
 }
 
 .boxCadastro {
     width: 1400px;
     height: 100vh;
-    margin-top: 0 ;
     font-size: large;
-    background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
     flex-direction: column;
     justify-content: center;
-    z-index: 2; 
+    z-index: 2;
     align-items: center;  
     display: flex;
-    padding-top: 0px;
     background-color: #1C3707;
     background-color: rgba(28, 55, 7, 80%);
 }
-.campos{
-    padding-top: 0%;
-    margin-top: 0%;
-}
-    
-.campo-1 {
-    color: #FBE0C0;
+
+.campo-1, .campo-2, .campo-3, .campo-4 {
+    color: #FFFFFF;
     align-items: center;
     text-align: center;
     width: 400px;
-    font-family:"poppins",sans-serif;
-    font-size: large;
-    font-weight: bold;
 }
 
-.campo-2{
-    color: #FBE0C0;
-    align-items: center;
-    text-align: center;
-    width: 400px;
-    font-family:"poppins",sans-serif;
-    font-size: large;
-    font-weight: bold;
+.campo-1 p, .campo-2 p, .campo-3 p, .campo-4 p {
+    padding-bottom: 10px;
+    font-size: 20px;
 }
 
-.campo-3{
-
-    color: #FBE0C0;
-    align-items: center;
-    text-align: center;
-    width: 400px;
-    font-family:"poppins",sans-serif;
-    font-size: large;
-    font-weight: bold;
-
-}
-
-.campo-4{
-    color: #FBE0C0;
-    align-items: center;
-    text-align: center;
-    width: 400px;
-    font-family:"poppins",sans-serif;
-    font-size: large;
-    font-weight: bold;
-
-}
-::-webkit-input-placeholder{
+::-webkit-input-placeholder {
     color: #1C3707;
 }
-
 
 .boxCadastro input {
     width: 100%;
@@ -179,66 +109,31 @@
     position: relative;
     background-color: #75885A;
 }
-.divTitulo{
-    text-align: center;
-    margin-top: 0px;
-    padding: 0px;
-    display: flex;
-    justify-content: start;
-}
-
-.boxCadastro_position{
-    display: flex;
-    margin: auto;
-    justify-content: center;
-}
 
 .botaoCadastroEmpresa {
-    width: 300px;
-
+    position: relative;
+    top: 60px;
+    width: 400px;
     padding: 10px;
     border: none;
     border-radius: 5px;
     background-color: #1C3707;
+    color: #FFFFFF;
+    font-size: 22px;
     cursor: pointer;
     align-items: center;
-    font-family:"poppins",sans-serif;
-    color: #FBE0C0;
-    align-items: center;
-    text-align: center;
+}
+
+.tenhoconta {
+    position: relative;
+    top: 40px;
     width: 400px;
-    font-family:"poppins",sans-serif;
-    font-size: large;
-    font-weight: bold;
-}
-
-.botaoCadastroEmpresa button:hover {
-    background-color: #00b31e;
-    width: 400px;
-
-}
-
-#tenhoconta button:hover{
-    background-color: #75885A;
-    width: 410px;
-
-}
-.tenhoconta{
-    width: 300px;
-    padding-left: 200px;
     padding: 10px;
     border: none;
     border-radius: 5px;
     background-color: #1C3707;
+    color: #FFFFFF;
+    font-size: 22px;
     cursor: pointer;
     align-self: center;
-    color: #FBE0C0;
-    align-items: center;
-    text-align: center;
-    width: 400px;
-    font-family:"poppins",sans-serif;
-    font-size: large;
-    font-weight: bold;
 }
-
-

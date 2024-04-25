@@ -80,7 +80,7 @@
             var input = document.getElementById('input_senhaUser');
             input.style.borderColor = 'red';
         }  else if (indiceArroba == -1) {
-            alert('O seu email deve ter arroba!')
+            alert('O seu email está inválido!')
             var input = document.getElementById('input_emailUser');
             input.style.borderColor = 'red';
         } else if (temNumeroSenha == false) {
@@ -91,16 +91,16 @@
             alert('A senha deve ter mais de 5 caracteres!')
             var input = document.getElementById('input_senhaUser');
             input.style.borderColor = 'red';
-        } else {
-            alert("SUCESSO: REDIRECIONAR PARA TELA DE USUARIO LOGADO ->>>")
+        } else { 
+
+            window.location.href = 'dashboard.html';
+
         }
-    }
+}
 
-
-    function acessarHome() {
-        console.log('Funciona')
-        window.location.href = './index.html';
-    }
-
+function acessarHome(){
+    window.location.href = 'index.html';
+}
+    
 
 </script>
