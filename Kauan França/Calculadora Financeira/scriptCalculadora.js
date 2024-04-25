@@ -129,7 +129,7 @@ function exibirSolucao(){
     let rentabilidadeInvestimentos_formatado = rentabilidadeInvestimentos.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'});
 
     document.querySelector('.resultsBox').style.fontSize = '30px';
-
+    
     document.querySelector('.resultsBox').innerHTML = ''
 
     document.querySelector('.resultsBox').innerHTML += `<h3> Alfaces Perdidos: </h3>

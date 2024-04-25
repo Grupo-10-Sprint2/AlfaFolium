@@ -25,13 +25,13 @@
                 </div>
                 <div class="buttonsBox">
                     <ul class="navText">
-                        <li class="txt1" onclick="acessarHome()">Home</li>
-                        <li class="txt2" onclick="acessarServicos()">Serviços</li>
-                        <li class="txt3" onclick="acessarSimulador()">Simulador</li>
-                        <li class="txt4" onclick="acessarSobre()">Sobre Nós</li>
+                        <li class="txt1">Home</li>
+                        <li class="txt2">Serviços</li>
+                        <li class="txt3">Simulador</li>
+                        <li class="txt4">Sobre Nós</li>
                     </ul>
                 </div>
-                <div class="loginButton" onclick="acessarLogin()">
+                <div class="loginButton">
                     <p>Login</p>
                 </div>
             </div>
@@ -40,7 +40,7 @@
 
     <div class="title-container">
         <div class="titleBox">
-            <h1>Sistema de Projeção Financeira</h1>
+            <h1>Sistema de Projeção Financeiro</h1>
         </div>
     </div>
 
@@ -54,10 +54,10 @@
             <div id="fieldsBox" class="fieldsBox">
                 <br>
                 <h3>Quantidade de estufas de alface na empresa:</h3>
-                <input type="number" id="input_qntdEstufas" class="inputsCalculadora" placeholder="---">
+                <input type="number" id="input_qntdEstufas" class="inputsCalculadora" placeholder="Insira um valor">
                 <br>
                 <h3>Quantidade de alfaces por estufa:</h3>
-                <input type="number" id="input_qntdAlfaces" class="inputsCalculadora" placeholder="---">
+                <input type="number" id="input_qntdAlfaces" class="inputsCalculadora" placeholder="Insira um valor">
                 <br>
                 <h3>Porcentagem de perda mensal de alfaces:</h3>
                 <input type="number" id="input_percentualPerda" class="inputsCalculadora" placeholder="%">
@@ -97,28 +97,3 @@
 </html>
 
 <script src="./scriptCalculadora.js"></script>
-
-
-<script>
-    function acessarHome(){
-        window.location.href = './index.html'
-    }
-
-    function acessarServicos(){
-        window.location.href = './index.html'
-    }
-
-    function acessarSimulador(){
-        window.location.href = './calculadora.html'
-    }
-
-    function acessarSobre(){
-        window.location.href = './index.html'
-    }
-
-    function acessarLogin(){
-        window.location.href = './login.html'
-    }
-
-
-</script>

@@ -7,74 +7,71 @@
     <title>Cadastro de Empresa - Alfa Folium</title>
     <link rel="stylesheet" href="externoempresa.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap"
+        rel="stylesheet">
 </head>
 
 
 <body>
     <div class="fundo">
 
-    <div class="header">
-        <div class="logo">
-            <img src="./assets/logo.png">
-        </div>
-        <div class="nomeusuario">
-            <img src="./assets/Group 6.png" >
-        </div>
-    </div>
-   
-    
-
-    <div class="centro">    
-        <div class="campos">
-            <div class="boxCadastro">
-                <div class="quadrado_titulo">
-                <div class="titulo">
-                    <p> Insira os dados da empresa:</p></div><br><br>
-        
-        
+        <div class="header">
+            <div class="logo">
+                <img src="./assets/logo.png">
             </div>
-                
-                    
-                    <div class="campo-1">
-                        <p>Nome da Empresa:</p>
-                        <input id="input_empresa" placeholder="Digite o nome da Empresa"> <br>
+            <div class="nomeusuario">
+                <img src="./assets/Group 6.png">
+            </div>
+        </div>
+
+
+
+        <div class="centro">
+            <div class="campos">
+                <div class="boxCadastro">
+                    <div class="quadrado_titulo">
+                        
+                        <div class="titulo">
+                            <p> Insira os dados da empresa</p>
+                        </div>                        
                     </div>
 
-                
+                    <div class="campo-1">
+                        <p>Nome da Empresa:</p>
+                        <input id="input_empresa" placeholder="Digite o nome da Empresa" class="class_empresa"> <br>
+                    </div>
+
                     <div class="campo-2">
                         <p>Cep:</p>
-                        <input id="input_cep" placeholder="00000-000"> <br>
+                        <input id="input_cep" placeholder="00000-000" class="class_cep"> <br>
                     </div>
 
                     <div class="campo-3">
                         <p>Endereço</p>
-                        <input id="input_endereco" placeholder="Onde encontramos a empresa? "> <br>
+                        <input id="input_endereco" placeholder="Onde encontramos a empresa?" class="class_endereco"> <br>
                     </div>
 
                     <div class="campo-4">
-                        
                         <p>CNPJ:</p>
-                        <input id="input_cnpj" placeholder="X.XXX.XXX/YYYY-ZZ.">
-                        
+                        <input id="input_cnpj" placeholder="X.XXX.XXX/YYYY-ZZ." class="class_cnpj">
                     </div>
-                    <br>
 
                     <button onclick="CadastrarEmpresa()" class="botaoCadastroEmpresa">
                         Cadastrar Empresa
                     </button>
                     <br>
                     <br>
-                    <button onclick="JaTenhoUmaConta()" class="tenhoconta" >
+                    <button onclick="JaTenhoUmaConta()" class="tenhoconta">
                         Já tenho uma conta
                     </button>
-             
 
+
+                </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 
 </html>
@@ -135,7 +132,7 @@
             var input = document.getElementById('input_cep');
             input.style.borderColor = 'red';
             alert('Erro ao validar cadastro. o campo cep deve conter o hifem')
-        }else{
+        } else {
 
             alert('Cadastro realizado com sucesso!')
             window.location.href = 'usuario.html';
@@ -148,4 +145,3 @@
         window.location.href = 'login.html'
     }
 </script>
-

@@ -5,9 +5,10 @@
 }
 
 body{
+    background-color: #FBE0C0;
     margin: 0;
     height: 100%;
-    color: #FBE0C0;
+    color: #FFFFFF;
     overflow: hidden;
 }
 
@@ -49,7 +50,7 @@ body{
 
 
 .headerBox{
-    background-color: #414C30;
+    background-color: #38412A;
     height: 140px;
     width: 100%;
     position: relative;
@@ -61,7 +62,6 @@ body{
     height: 140px;
     width: 800px;
     margin: 50px 0 0 200px;
-    justify-content: center;
 }
 
 
@@ -73,23 +73,23 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+    left: 100px; /* Deixa os textos da NavBar mais para direita*/
     list-style: none;
     cursor: pointer;
     text-shadow: 2px 2px 10px 0px rgba(0,0,0,0.6);
     transition-duration: 0.2s;
-
 }
-
 
 .txt1:hover,.txt2:hover,.txt3:hover,.txt4:hover{
-    color: #0e1503;
-    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0);
-    transition: 0.3s;
+    color: #0E1503;
+        text-shadow: 2px 3px 2px rgba(0, 0, 0, 0);
 }
-    
 
 
 .loginButton{
+    position: relative;
+    right: 20px;
     height: 50px;
     width: 100px;
     margin-left: 500px;
@@ -102,6 +102,7 @@ body{
     cursor: pointer;
     background-color: #1B3606;
     border: 3px solid #FFFFFF;
+    border-radius: 5px;
     box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.6);
     transition-duration: 0.2s;
 }
@@ -155,7 +156,7 @@ body{
 .calculator1{
     width: 680px;
     height: 650px;
-    background-color: #1e2f11;
+    background-color: #1E2F11;
     box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.6);
     position: absolute;
     z-index: 3;
@@ -183,7 +184,7 @@ body{
 .calculator2{
     width: 680px;
     height: 650px;
-    background-color: #1e2f11;
+    background-color: #1E2F11;
     box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.6);
     position: relative;
     z-index: 2;
@@ -210,7 +211,7 @@ body{
     height: 30px;
     border-radius: 15px;
     font-size: 25px;
-    border: 2px solid #ffffff;
+    border: 2px solid #FFFFFF;
     color: #000000;
     opacity: 40%;
     font-weight: 600;
@@ -231,13 +232,13 @@ body{
     box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.6);
     color: #2c3d10;
     border-radius: 35px;
-    border: 2px solid #ffffff;
+    border: 2px solid #FFFFFF;
     transition: 0.2s;
 }
 
 .buttonSimulation:hover{
-    background-color: #0e1503;
-    color: #ffffff;
+    background-color: #0E1503;
+    color: #FFFFFF;
     border: 2px solid #142704;
     transition: 0.2s;
 }
@@ -272,16 +273,16 @@ body{
     font-size: 20px;
     font-weight: 600;
     box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.6);
-    color: #ffffff;
+    color: #FFFFFF;
     border-radius: 35px;
-    border: 2px solid #3c7926;
-    background-color: #297e1e;
-    animation: pulse 0.5s infinite;
+    border: 2px solid #3C7926;
+    background-color: #297E1E;
+    animation: pulse 0.9s infinite;
     transition: 0.2s;
 }
 
 .buttonSolucao:hover{
-    background-color: #0e1503;
+    background-color: #0E1503;
     border: 2px solid #142704;
     transition: 0.2s;
     animation: pulse 0.5s infinite;

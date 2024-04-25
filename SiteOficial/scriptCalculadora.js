@@ -53,11 +53,11 @@ function exibirCalculos(){
             
             
 
-            document.querySelector('.resultsBox').innerHTML += `<p> A sua empresa, considerada de pequeno porte, com <b>${qntdEstufas} estufa(s)</b>, contendo <b>${qntdAlfacesTotal} alfaces</b> em produção total e com uma estimativa de perda de <b>${taxaPerda}%</b>, contem um prejuízo aproximado de <b>${Math.trunc(alfacesPerdidos)}</b> unidades de alfaces mensalmente.<p>
+            document.querySelector('.resultsBox').innerHTML += `<p> A sua empresa, considerada de pequeno porte, com <b>${qntdEstufas} estufa(s)</b>, contendo <b>${qntdAlfacesTotal} alfaces</b> em produção total e com uma estimativa de perda de <b style="color:#FF6961;">${taxaPerda}%</b>, contem um prejuízo aproximado de <b>${Math.trunc(alfacesPerdidos)}</b> unidades de alfaces mensalmente.<p>
             <br>
-            <p>Equivalente a <b>${alfaceVendas}</b> reais que poderiam ter sido arrecadados todo mês.</p> 
+            <p>Equivalente a <b style="color:#FF6961;">${alfaceVendas}</b> reais que poderiam ter sido arrecadados todo mês.</p> 
             <br>
-            <p>Com investimentos de <b>${custoProducao_formatado}</b> reais mensais para a produção, a projeção de perda a longo prazo, contando com a <b>inflação anual</b> e o <b>aumento dessas despesas</b>, pode chegar a <b>${prejuizoTotal_formatado}</b> reais anualmente.
+            <p>Com investimentos de <b>${custoProducao_formatado}</b> reais mensais para a produção, a projeção de perda a longo prazo, contando com a <b>inflação anual</b> e o <b>aumento dessas despesas</b>, pode chegar a <b style="color:#FF6961;">${prejuizoTotal_formatado}</b> reais anualmente.
             `
             
             document.querySelector('.resultsBox').innerHTML += `<div class="buttonBox">
@@ -72,11 +72,11 @@ function exibirCalculos(){
             const prejuizoTotal_formatado = prejuizoTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'});
 
 
-            document.querySelector('.resultsBox').innerHTML += `<p> A sua empresa, considerada de pequeno porte, com <b>${qntdEstufas} estufa(s)</b>, contendo <b>${qntdAlfacesTotal} alfaces</b> em produção total e com uma estimativa de perda de <b>${taxaPerda}%</b>, contem um prejuízo aproximado de <b>${Math.trunc(alfacesPerdidos)}</b> unidades de alfaces mensalmente.<p>
+            document.querySelector('.resultsBox').innerHTML += `<p> A sua empresa, considerada de médio porte, com <b>${qntdEstufas} estufa(s)</b>, contendo <b>${qntdAlfacesTotal} alfaces</b> em produção total e com uma estimativa de perda de <b style="color:#FF6961;">${taxaPerda}%</b>, contem um prejuízo aproximado de <b>${Math.trunc(alfacesPerdidos)}</b> unidades de alfaces mensalmente.<p>
             <br>
-            <p>Equivalente a <b>${alfaceVendas}</b> reais que poderiam ter sido arrecadados todo mês.</p> 
+            <p>Equivalente a <b style="color:#FF6961;">${alfaceVendas}</b> reais que poderiam ter sido arrecadados todo mês.</p> 
             <br>
-            <p>Com investimentos de <b>${custoProducao_formatado}</b> reais mensais para a produção, a projeção de perda a longo prazo, contando com a <b>inflação anual</b> e o <b>aumento dessas despesas</b>, pode chegar a <b>${prejuizoTotal_formatado}</b> reais anualmente.
+            <p>Com investimentos de <b>${custoProducao_formatado}</b> reais mensais para a produção, a projeção de perda a longo prazo, contando com a <b>inflação anual</b> e o <b>aumento dessas despesas</b>, pode chegar a <b style="color:#FF6961;">${prejuizoTotal_formatado}</b> reais anualmente.
             `
 
             document.querySelector('.resultsBox').innerHTML += `<div class="buttonBox">
@@ -91,11 +91,11 @@ function exibirCalculos(){
             const prejuizoTotal_formatado = prejuizoTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'});
 
 
-            document.querySelector('.resultsBox').innerHTML += `<p> A sua empresa, considerada de pequeno porte, com <b>${qntdEstufas} estufa(s)</b>, contendo <b>${qntdAlfacesTotal} alfaces</b> em produção total e com uma estimativa de perda de <b>${taxaPerda}%</b>, contem um prejuízo aproximado de <b>${Math.trunc(alfacesPerdidos)}</b> unidades de alfaces mensalmente.<p>
+            document.querySelector('.resultsBox').innerHTML += `<p> A sua empresa, considerada de grande porte, com <b>${qntdEstufas} estufa(s)</b>, contendo <b>${qntdAlfacesTotal} alfaces</b> em produção total e com uma estimativa de perda de <b style="color:#FF6961;">${taxaPerda}%</b>, contem um prejuízo aproximado de <b>${Math.trunc(alfacesPerdidos)}</b> unidades de alfaces mensalmente.<p>
             <br>
-            <p>Equivalente a <b>${alfaceVendas}</b> reais que poderiam ter sido arrecadados todo mês.</p> 
+            <p>Equivalente a <b style="color:#FF6961;">${alfaceVendas}</b> reais que poderiam ter sido arrecadados todo mês.</p> 
             <br>
-            <p>Com investimentos de <b>${custoProducao_formatado}</b> reais mensais para a produção, a projeção de perda a longo prazo, contando com a <b>inflação anual</b> e o <b>aumento dessas despesas</b> pode chegar a <b>${prejuizoTotal_formatado}</b> reais anualmente.
+            <p>Com investimentos de <b>${custoProducao_formatado}</b> reais mensais para a produção, a projeção de perda a longo prazo, contando com a <b>inflação anual</b> e o <b>aumento dessas despesas</b> pode chegar a <b style="color:#FF6961;">${prejuizoTotal_formatado}</b> reais anualmente.
             `
 
             document.querySelector('.resultsBox').innerHTML += `<div class="buttonBox">
@@ -133,15 +133,11 @@ function exibirSolucao(){
     document.querySelector('.resultsBox').innerHTML = ''
 
     document.querySelector('.resultsBox').innerHTML += `<h3> Alfaces Perdidos: </h3>
-    <p> - ${Math.trunc(alfacesRecuperados)} unidades</p>
-    <p> - Com a solução: ${Math.trunc(alfacesRecuperados)*0.5} unidades (Metade das perdas)</p> 
+    <p style="color:#FF6961;"> - ${Math.trunc(alfacesRecuperados)} unidades</p>
+    <p> - Com a solução: <b style="color:#90EE90;">${Math.trunc(alfacesRecuperados)*0.5}</b> unidades (<b style="color:#90EE90;">Redução de 50% em perdas</b>)</p> 
     <br>
-    <h3> Estimativas mensais em cima da redução de perdas: </h3>
-    <p> - Estimativa de arrecadação anual: ${valorArrecadado_formatado}</p>
-    <p> - Rentabilidade estimada dos investimentos: ${rentabilidadeInvestimentos_formatado}</p>
-    `
+    <h3> Estimativas em cima da redução de perdas: </h3>
+    <p> - Estimativa de arrecadação anual: <b style="color:#90EE90;">${valorArrecadado_formatado}</b></p>
+    <p> - Rentabilidade estimada dos investimentos: <b style="color:#90EE90;">${rentabilidadeInvestimentos_formatado}</b></p>
+    ` // Math.trunc usado para remover casas decimais sem arrendondar o valor obtido. 
 }
-
-
-
-

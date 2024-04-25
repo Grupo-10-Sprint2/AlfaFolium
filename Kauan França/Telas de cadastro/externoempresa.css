@@ -75,6 +75,7 @@
 .titulo {
     color: white;
     font-size: large;
+    font-weight: bold;
 }
 
 .boxCadastro {
@@ -108,23 +109,12 @@
     font-family:"poppins",sans-serif;
 }
 
-.campo-1 p {
-    padding-bottom: 10px;
-}
-
-.class_empresa {
-    padding: 1000px;
-}
 .campo-2 {
     color: white;
     align-items: center;
     text-align: center;
     width: 400px;
     font-family:"poppins",sans-serif;
-}
-
-.campo-2 p {
-    padding-bottom: 10px;
 }
 
 .campo-3 {
@@ -135,10 +125,6 @@
     font-family:"poppins",sans-serif;
 }
 
-.campo-3 p {
-    padding-bottom: 10px;
-}
-
 .campo-4 {
     color: white;
     align-items: center;
@@ -147,8 +133,9 @@
     font-family:"poppins",sans-serif;
 }
 
-.campo-4 p {
+.campo-1, .campo-2, .campo-3, .campo-4 p {
     padding-bottom: 10px;
+    
 }
 
 ::-webkit-input-placeholder {
