@@ -16,7 +16,7 @@
             Nome: <br>
             <div class="campo-1">
                 <input id="input_nomeUser" placeholder="Nome completo"> <br>
-            </div>73.799.114/0001-17
+            </div>
 
             Email: <br>
             <div class="campo-2">
@@ -40,7 +40,7 @@
             <input id="input_telefoneUser" placeholder="(00)000000000">
             <br>
 
-            <button onclick="CadastrarUsuario()" class="botaoCadastroEmpresa">
+            <button onclick="cadastrarUsuario()" class="botaoCadastroEmpresa">
                 Cadastrar-se
             </button>
 </body>
@@ -57,7 +57,6 @@
         let senha2x = input_confirmacaoSenha.value
         let cpf = input_cpfUser.value
         let telefone = input_telefoneUser.value
-        let tipoUser = select_tipoUser.value
         let indiceArroba = email.indexOf("@")
         let indiceParentesesAberto = telefone.indexOf("(")
         let indiceParentesesFechado = telefone.indexOf(")")
@@ -65,41 +64,49 @@
         let tamanhoTelefone = telefone.length
         let tamanhoSenha = senha.length
 
+        input_nomeUser.style.borderColor = '';
+        input_emailUser.style.borderColor = '';
+        input_senhaUser.style.borderColor = '';
+        input_confirmacaoSenha.style.borderColor = '';
+        input_cpfUser.style.borderColor = '';
+        input_telefoneUser.style.borderColor = '';
+
 
        // variaveis para validação de números nos campos nescessários (EX: telefone, CPF e senha)
 
-        let Num0 = senha.indexOf("0") 
-        let Num1 = senha.indexOf("1")
-        let Num2 = senha.indexOf("2")
-        let Num3 = senha.indexOf("3")
-        let Num4 = senha.indexOf("4")
-        let Num5 = senha.indexOf("5")
-        let Num6 = senha.indexOf("6")
-        let Num7 = senha.indexOf("7")
-        let Num8 = senha.indexOf("8")
-        let Num9 = senha.indexOf("9")
+        var inputCpf = document.getElementById('input_cpfUser').value;
+        var temNumeroCpf = false;
 
-        let Num00 = telefone.indexOf("0") 
-        let Num01 = telefone.indexOf("1")
-        let Num02 = telefone.indexOf("2")
-        let Num03 = telefone.indexOf("3")
-        let Num04 = telefone.indexOf("4")
-        let Num05 = telefone.indexOf("5")
-        let Num06 = telefone.indexOf("6")
-        let Num07 = telefone.indexOf("7")
-        let Num08 = telefone.indexOf("8")
-        let Num09 = telefone.indexOf("9")
+        for (var i = 0; i < inputCpf.length; i++) {
+            var caractere = inputCpf[i];
+            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
+                temNumeroCpf = true;
+                break;
+            }
+        }
+
+        var inputSenha = document.getElementById('input_senhaUser').value;
+        var temNumeroSenha = false;
+
+        for (var i = 0; i < inputSenha.length; i++) {
+            var caractere = inputSenha[i];
+            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
+                temNumeroSenha = true;
+                break;
+            }
+        }
+
         
-        let num0 = cpf.indexOf("0") 
-        let num1 = cpf.indexOf("1")
-        let num2 = cpf.indexOf("2")
-        let num3 = cpf.indexOf("3")
-        let num4 = cpf.indexOf("4")
-        let num5 = cpf.indexOf("5")
-        let num6 = cpf.indexOf("6")
-        let num7 = cpf.indexOf("7")
-        let num8 = cpf.indexOf("8")
-        let num9 = cpf.indexOf("9")
+        var inputTel = document.getElementById('input_telefoneUser').value;
+        var temNumeroTel = false;
+
+        for (var i = 0; i < inputTel.length; i++) {
+            var caractere = inputTel[i];
+            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
+                temNumeroTel = true;
+                break;
+            }
+        }
          
         // Validações da tela de cadastro
 
@@ -123,7 +130,7 @@
              alert('A senha deve ter mais de 5 caracteres!')
              var input = document.getElementById('input_senhaUser');
             input.style.borderColor = 'red';
-        }else if(Num0 == -1 && Num1 == -1 && Num2 == -1 && Num3 == -1 && Num4 == -1 && Num5 == -1 && Num6 == -1 && Num7 == -1 && Num8 == -1 && Num9 == -1){
+        }else if(temNumeroSenha == false){
             alert('A senha deve conter pelo menos um número!')
             var input = document.getElementById('input_senhaUser');
             input.style.borderColor = 'red';
@@ -155,21 +162,17 @@
             alert('O seu email deve ter arroba!')
             var input = document.getElementById('input_emailUser');
             input.style.borderColor = 'red';
-        }else if(Num00 == -1 && Num01 == -1 && Num02 == -1 && Num03 == -1 && Num04 == -1 && Num05 == -1 && Num06 == -1 && Num07 == -1 && Num08 == -1 && Num09 == -1){
+        }else if(temNumeroTel == false){
             alert('O telefone deve conter apenas números. conforme o exemplo dado no campo')
             var input = document.getElementById('input_telefoneUser');
             input.style.borderColor = 'red';
-        }else if(num0 == -1 && num1 == -1 && num2 == -1 && num3 == -1 && num4 == -1 && num5 == -1 && num6 == -1 && num7 == -1 && num8 == -1 && num9 == -1){
-            alert('O CPF deve conter os números e os pontos de separação. comforme o exemplo dado no campo')
+        }else if(temNumeroCpf == false){
+            alert('O CPF deve conter os números e os pontos de separação. conforme o exemplo dado no campo')
             var input = document.getElementById('input_cpfUser');
             input.style.borderColor = 'red';
-        }else if(tipoUser == '0'){
-            alert('Erro ao validar cadastro. você deve informar qual é o nivel de privilégios que o usuário terá!')
-            var select = document.getElementById('select_tipoUser');
-            select.style.borderColor = 'red';
         }else{
             alert('Cadastro realizado com sucesso!')
-            window.location.href = 'login.html';
+            
         }
     }
 </script>

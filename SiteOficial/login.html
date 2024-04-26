@@ -50,52 +50,63 @@
 
         let email = input_emailUser.value
         let senha = input_senhaUser.value
-        let indiceArroba = email.indexOf("@")
-        let tamanhoSenha = senha.length
 
-        // Validação de numeros no campo Senha
-        var input = document.getElementById('input_senhaUser').value;
-        var temNumeroSenha = false;
-
-        for (var i = 0; i < input.length; i++) {
-            var caractere = input[i];
-            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
-                temNumeroSenha = true;
-                break;
-            }
-        }
-
-        if(email == '' && senha == ''){
-            alert('Você deve preencher todos os campos para prosseguir!')
-            var input = document.getElementById('input_emailUser');
-            var input1 = document.getElementById('input_senhaUser');
-            input.style.borderColor = 'red';
-            input1.style.borderColor = 'red';
-        } else if (email == '') {
-            alert('Você deve informar o seu email para prosseguir!')
-            var input = document.getElementById('input_emailUser');
-            input.style.borderColor = 'red';
-        } else if (senha == '') {
-            alert('Você deve informar uma senha para prosseguir!')
-            var input = document.getElementById('input_senhaUser');
-            input.style.borderColor = 'red';
-        }  else if (indiceArroba == -1) {
-            alert('O seu email está inválido!')
-            var input = document.getElementById('input_emailUser');
-            input.style.borderColor = 'red';
-        } else if (temNumeroSenha == false) {
-            alert('A senha deve conter pelo menos um número!')
-            var input = document.getElementById('input_senhaUser');
-            input.style.borderColor = 'red';
-        } else if (tamanhoSenha <= 5) {
-            alert('A senha deve ter mais de 5 caracteres!')
-            var input = document.getElementById('input_senhaUser');
-            input.style.borderColor = 'red';
-        } else { 
-
+        if(email == 'fernandacaramico@alfa.folium' && senha == 'Caramico2024'){
             window.location.href = 'dashboard.html';
-
         }
+        else if(email == 'alfaFolium@alfa.folium' && senha == 'AlfaFolium2024'){
+            window.location.href = 'cadastro.html';
+        }
+        else{
+            alert("E-mail ou senha incorretos")
+        }
+
+        input_senhaUser.value = ''
+
+        // let indiceArroba = email.indexOf("@")
+        // let tamanhoSenha = senha.length
+
+        // // Validação de numeros no campo Senha
+        // var input = document.getElementById('input_senhaUser').value;
+        // var temNumeroSenha = false;
+
+        // for (var i = 0; i < input.length; i++) {
+        //     var caractere = input[i];
+        //     if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
+        //         temNumeroSenha = true;
+        //         break;
+        //     }
+        // }
+
+        // if(email == '' && senha == ''){
+        //     alert('Você deve preencher todos os campos para prosseguir!')
+        //     var input = document.getElementById('input_emailUser');
+        //     var input1 = document.getElementById('input_senhaUser');
+        //     input.style.borderColor = 'red';
+        //     input1.style.borderColor = 'red';
+        // } else if (email == '') {
+        //     alert('Você deve informar o seu email para prosseguir!')
+        //     var input = document.getElementById('input_emailUser');
+        //     input.style.borderColor = 'red';
+        // } else if (senha == '') {
+        //     alert('Você deve informar uma senha para prosseguir!')
+        //     var input = document.getElementById('input_senhaUser');
+        //     input.style.borderColor = 'red';
+        // }  else if (indiceArroba == -1) {
+        //     alert('O seu email está inválido!')
+        //     var input = document.getElementById('input_emailUser');
+        //     input.style.borderColor = 'red';
+        // } else if (temNumeroSenha == false) {
+        //     alert('A senha deve conter pelo menos um número!')
+        //     var input = document.getElementById('input_senhaUser');
+        //     input.style.borderColor = 'red';
+        // } else if (tamanhoSenha <= 5) {
+        //     alert('A senha deve ter mais de 5 caracteres!')
+        //     var input = document.getElementById('input_senhaUser');
+        //     input.style.borderColor = 'red';
+        // } else { 
+        //     window.location.href = 'dashboard.html';
+        // }
 }
 
 function acessarHome(){

@@ -83,14 +83,14 @@
     background-color: rgba(28, 55, 7, 80%);
 }
 
-.campo-1, .campo-2, .campo-3, .campo-4 {
+.campo-1, .campo-2, .campo-3, .campo-4, .campo-5, .campo-6 {
     color: #FFFFFF;
     align-items: center;
     text-align: center;
     width: 400px;
 }
 
-.campo-1 p, .campo-2 p, .campo-3 p, .campo-4 p {
+.campo-1 p, .campo-2 p, .campo-3 p, .campo-4 p, .campo-5 p, .campo-6 p {
     padding-bottom: 10px;
     font-size: 20px;
 }
@@ -136,4 +136,42 @@
     font-size: 22px;
     cursor: pointer;
     align-self: center;
+}
+
+.navBarContent{
+    display: flex;
+    width: 1600px;
+    height: 140px;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 100px;
+    text-align: center;
+}
+
+.loginButton{
+    height: 50px;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #FFFFFF;
+    background-color: #FFFFFF;
+    box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.6);
+    transition-duration: 0.2s;
+}
+
+.usuarioIcon{
+    margin: 0 auto 0;
+    border-radius: 100%;
+    padding: 10px;
+    background-color: #99ae79;
+}
+
+.loginButton p {
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+    transition-duration: 0.2s;
+    color: #414C30;
 }

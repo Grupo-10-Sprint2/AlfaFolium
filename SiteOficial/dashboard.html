@@ -72,10 +72,16 @@
         <div class="card1" id="card1">
           <h1>Temperatura Atual da Estufa:</h1>
           <h2 class="alertTemp" id="alertTemp">0°C</h2>
+          <div id="imgAlertaTemp">
+            
+          </div>
         </div>
         <div class="card2" id="card2">
           <h1>Umidade Atual da Estufa:</h1>
           <h2 class="alertUmi" id="alertUmi">0%</h2>
+          <div id="imgAlertaUmidade">
+            
+          </div>
         </div>
         <div class="card3">
           <div class="card3_h1">
@@ -152,14 +158,17 @@ function adicionarDadosAleatorios() {
           document.getElementById('card1').style.backgroundColor = '#ffa500';
           document.getElementById('alertTemp').style.color = '#ffa500';
           caixaTexto.innerHTML = `${dadosAleatorios_formatado2}°C`;
+          imgAlertaTemp.innerHTML = '';
       } else if (dadosAleatorios_formatado2 <= 20 || dadosAleatorios_formatado2 >= 32 ){
           document.getElementById('card1').style.backgroundColor = 'red';
           document.getElementById('alertTemp').style.color = 'red';
           caixaTexto.innerHTML = `${dadosAleatorios_formatado2}°C`;
+          imgAlertaTemp.innerHTML = '<img src="./assetsDashboard/alerta-1.png" width="40px" alt="">';
       } else {
           document.getElementById('card1').style.backgroundColor = 'green';
           document.getElementById('alertTemp').style.color = 'green';
           caixaTexto.innerHTML = `${dadosAleatorios_formatado2}°C`;
+          imgAlertaTemp.innerHTML = '';
       }
 
     // Adiciona os dados ao array de dados
@@ -194,14 +203,17 @@ function adicionarDadosAleatorios() {
           document.getElementById('card2').style.backgroundColor = '#ffa500';
           document.getElementById('alertUmi').style.color = '#ffa500';
           caixaTexto.innerHTML = `${dadosAleatorios_formatado2}%`;
+          imgAlertaUmidade.innerHTML = '';
       } else if (dadosAleatorios_formatado2 <= 56 || dadosAleatorios_formatado2 >= 86){
           document.getElementById('card2').style.backgroundColor = 'red';
           document.getElementById('alertUmi').style.color = 'red';
           caixaTexto.innerHTML = `${dadosAleatorios_formatado2}%`;
+          imgAlertaUmidade.innerHTML = '<img src="./assetsDashboard/alerta-1.png" width="40px" alt="">';
       } else {
           document.getElementById('card2').style.backgroundColor = 'green';
           document.getElementById('alertUmi').style.color = 'green';
           caixaTexto.innerHTML = `${dadosAleatorios_formatado2}%`;
+          imgAlertaUmidade.innerHTML = '';
       }
 
       caixaTexto.innerHTML = `${dadosAleatorios_formatado2}%`;
@@ -219,7 +231,7 @@ function adicionarDadosAleatorios() {
       numLeituras2++
   }
 
-setInterval(adicionarDadosAleatorios, 5000);
+setInterval(adicionarDadosAleatorios, 3000);
 
 
 
