@@ -53,7 +53,7 @@ function exibirCalculos(){
             
             
 
-            document.querySelector('.resultsBox').innerHTML += `<p> A sua empresa, considerada de pequeno porte, com <b>${qntdEstufas} estufa(s)</b>, contendo <b>${qntdAlfacesTotal} alfaces</b> em produção total e com uma estimativa de perda de <b style="color:#FF6961;">${taxaPerda}%</b>, contem um prejuízo aproximado de <b>${Math.trunc(alfacesPerdidos)}</b> unidades de alfaces mensalmente.<p>
+            document.querySelector('.resultsBox').innerHTML += `<p> A sua empresa, considerada de pequeno porte, com <b>${qntdEstufas} estufa(s)</b>, contendo <b>${qntdAlfacesTotal} alfaces</b> em produção total e com uma estimativa de perda de <b style="color:#FF6961;">${Number(input_percentualPerda.value)}%</b>, contem um prejuízo aproximado de <b style="color:#FF6961;">${Math.trunc(alfacesPerdidos)}</b> unidades de alfaces mensalmente.<p>
             <br>
             <p>Equivalente a <b style="color:#FF6961;">${alfaceVendas}</b> reais que poderiam ter sido arrecadados todo mês.</p> 
             <br>
@@ -72,7 +72,7 @@ function exibirCalculos(){
             const prejuizoTotal_formatado = prejuizoTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'});
 
 
-            document.querySelector('.resultsBox').innerHTML += `<p> A sua empresa, considerada de médio porte, com <b>${qntdEstufas} estufa(s)</b>, contendo <b>${qntdAlfacesTotal} alfaces</b> em produção total e com uma estimativa de perda de <b style="color:#FF6961;">${taxaPerda}%</b>, contem um prejuízo aproximado de <b>${Math.trunc(alfacesPerdidos)}</b> unidades de alfaces mensalmente.<p>
+            document.querySelector('.resultsBox').innerHTML += `<p> A sua empresa, considerada de médio porte, com <b>${qntdEstufas} estufa(s)</b>, contendo <b>${qntdAlfacesTotal} alfaces</b> em produção total e com uma estimativa de perda de <b style="color:#FF6961;">${Number(input_percentualPerda.value)}%</b>, contem um prejuízo aproximado de <b style="color:#FF6961;">${Math.trunc(alfacesPerdidos)}</b> unidades de alfaces mensalmente.<p>
             <br>
             <p>Equivalente a <b style="color:#FF6961;">${alfaceVendas}</b> reais que poderiam ter sido arrecadados todo mês.</p> 
             <br>
@@ -91,7 +91,7 @@ function exibirCalculos(){
             const prejuizoTotal_formatado = prejuizoTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'});
 
 
-            document.querySelector('.resultsBox').innerHTML += `<p> A sua empresa, considerada de grande porte, com <b>${qntdEstufas} estufa(s)</b>, contendo <b>${qntdAlfacesTotal} alfaces</b> em produção total e com uma estimativa de perda de <b style="color:#FF6961;">${taxaPerda}%</b>, contem um prejuízo aproximado de <b>${Math.trunc(alfacesPerdidos)}</b> unidades de alfaces mensalmente.<p>
+            document.querySelector('.resultsBox').innerHTML += `<p> A sua empresa, considerada de grande porte, com <b>${qntdEstufas} estufa(s)</b>, contendo <b>${qntdAlfacesTotal} alfaces</b> em produção total e com uma estimativa de perda de <b style="color:#FF6961;">${Number(input_percentualPerda.value)}%</b>, contem um prejuízo aproximado de <b style="color:#FF6961;">${Math.trunc(alfacesPerdidos)}</b> unidades de alfaces mensalmente.<p>
             <br>
             <p>Equivalente a <b style="color:#FF6961;">${alfaceVendas}</b> reais que poderiam ter sido arrecadados todo mês.</p> 
             <br>
@@ -116,8 +116,6 @@ function exibirSolucao(){
     let qntdAlfacesTotal = (qntdEstufas * qntdAlfacesEstufa);
 
     let custoProducao = Number(input_custoProducao.value);
-    let custoProducao_formatado = custoProducao.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL'});
-
     let taxaPerda = Number(input_percentualPerda.value/100);
     let alfacesPerdidos = Number(qntdAlfacesTotal*taxaPerda);
     let alfacesRecuperados = alfacesPerdidos*0.5
@@ -133,8 +131,8 @@ function exibirSolucao(){
     document.querySelector('.resultsBox').innerHTML = ''
 
     document.querySelector('.resultsBox').innerHTML += `<h3> Alfaces Perdidos: </h3>
-    <p style="color:#FF6961;"> - ${Math.trunc(alfacesRecuperados)} unidades</p>
-    <p> - Com a solução: <b style="color:#90EE90;">${Math.trunc(alfacesRecuperados)*0.5}</b> unidades (<b style="color:#90EE90;">Redução de 50% em perdas</b>)</p> 
+    <p style="color:#FF6961;"> - ${alfacesPerdidos} unidades</p>
+    <p> - Com a solução: <b style="color:#90EE90;">${Math.trunc(alfacesPerdidos)*0.5}</b> unidades (<b style="color:#90EE90;">Redução de 50% em perdas</b>)</p> 
     <br>
     <h3> Estimativas em cima da redução de perdas: </h3>
     <p> - Estimativa de arrecadação anual: <b style="color:#90EE90;">${valorArrecadado_formatado}</b></p>

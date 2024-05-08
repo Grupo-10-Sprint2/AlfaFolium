@@ -24,7 +24,7 @@
         <div class="headerBox">
             <div class="positionBox">
                 <div class="logoBox">
-                    <a href="./calculadora.html"><img class="logoImg" src="./assetsDashboard/logoPrincipal.png"></a>
+                    <a href="./dashboard.html"><img class="logoImg" src="./assetsDashboard/logoPrincipal.png"></a>
                 </div>
 
                 <div class="navBarTxt">
@@ -33,6 +33,21 @@
                   </div>
                   <div class="nomeEstufa">
                       <h1>01X_2024</h1>
+                  </div>
+
+                  <div class="legendaBox">
+                    <h1>Legenda:</h1>
+                    <div class="legendas">
+                      <div class="alertaLeg">
+                        <p> Alerta </p>
+                      </div>
+                      <div class="atencaoLeg">
+                        <p> Atenção </p>
+                      </div>
+                      <div class="estavelLeg">
+                        <p> Estável </p>
+                      </div>
+                    </div>
                   </div>
                       
                 </div>
@@ -54,15 +69,19 @@
 
     <div class="boxContent">
       <div class="cards">
-        <div class="card1">
-          <h1>Temperatura Atual:</h1>
-          <h2>Estável</h2>
-          <h2>(26°C)</h2>
+        <div class="card1" id="card1">
+          <h1>Temperatura Atual da Estufa:</h1>
+          <h2 class="alertTemp" id="alertTemp">0°C</h2>
+          <div id="imgAlertaTemp">
+            
+          </div>
         </div>
-        <div class="card2">
-          <h1>Umidade Atual:</h1>
-          <h2>Estável</h2>
-          <h2>(80%)</h2>
+        <div class="card2" id="card2">
+          <h1>Umidade Atual da Estufa:</h1>
+          <h2 class="alertUmi" id="alertUmi">0%</h2>
+          <div id="imgAlertaUmidade">
+            
+          </div>
         </div>
         <div class="card3">
           <div class="card3_h1">
@@ -100,6 +119,7 @@
         <img class="bgImg" src="./assetsDashboard/bgimage.png">
     </div>
 
+
 </body>
 
 </html>
@@ -126,8 +146,30 @@ function adicionarDadosAleatorios() {
     graficoTemp.update();
 
   } else {
+    const min = 18
+    const max = 34
 
-    let dadosAleatorios = Number((Math.random() * 30).toFixed(2));
+    let dadosAleatorios = Math.floor(Math.random() * (max - min + 1) + min );
+    let dadosAleatorios_formatado1 = Number(dadosAleatorios.toFixed(2));
+    let dadosAleatorios_formatado2 = Math.trunc(dadosAleatorios_formatado1);
+    const caixaTexto = document.getElementById('alertTemp');
+
+    if( dadosAleatorios_formatado2 >= 29  && dadosAleatorios_formatado2 <= 31 || (dadosAleatorios_formatado2 >= 21 && dadosAleatorios_formatado2 <= 23)){
+          document.getElementById('card1').style.backgroundColor = '#ffa500';
+          document.getElementById('alertTemp').style.color = '#ffa500';
+          caixaTexto.innerHTML = `${dadosAleatorios_formatado2}°C`;
+          imgAlertaTemp.innerHTML = '';
+      } else if (dadosAleatorios_formatado2 <= 20 || dadosAleatorios_formatado2 >= 32 ){
+          document.getElementById('card1').style.backgroundColor = 'red';
+          document.getElementById('alertTemp').style.color = 'red';
+          caixaTexto.innerHTML = `${dadosAleatorios_formatado2}°C`;
+          imgAlertaTemp.innerHTML = '<img src="./assetsDashboard/alerta-1.png" width="40px" alt="">';
+      } else {
+          document.getElementById('card1').style.backgroundColor = 'green';
+          document.getElementById('alertTemp').style.color = 'green';
+          caixaTexto.innerHTML = `${dadosAleatorios_formatado2}°C`;
+          imgAlertaTemp.innerHTML = '';
+      }
 
     // Adiciona os dados ao array de dados
     graficoTemp.data.datasets[0].data.push(dadosAleatorios);
@@ -149,8 +191,32 @@ function adicionarDadosAleatorios() {
       graficoBarras.update();
 
     } else {
+      const min = 55
+      const max = 88
 
-      let dadosAleatorios = Number((Math.random() * 35).toFixed(2));
+      let dadosAleatorios = Math.floor(Math.random() * (max - min + 1) + min );
+      let dadosAleatorios_formatado1 = Number(dadosAleatorios.toFixed(2));
+      let dadosAleatorios_formatado2 = Math.trunc(dadosAleatorios_formatado1);
+      const caixaTexto = document.getElementById('alertUmi');
+
+      if( dadosAleatorios_formatado2 >= 57 && dadosAleatorios_formatado2 <= 59 || (dadosAleatorios_formatado2 >= 81 && dadosAleatorios_formatado2 <= 85)){
+          document.getElementById('card2').style.backgroundColor = '#ffa500';
+          document.getElementById('alertUmi').style.color = '#ffa500';
+          caixaTexto.innerHTML = `${dadosAleatorios_formatado2}%`;
+          imgAlertaUmidade.innerHTML = '';
+      } else if (dadosAleatorios_formatado2 <= 56 || dadosAleatorios_formatado2 >= 86){
+          document.getElementById('card2').style.backgroundColor = 'red';
+          document.getElementById('alertUmi').style.color = 'red';
+          caixaTexto.innerHTML = `${dadosAleatorios_formatado2}%`;
+          imgAlertaUmidade.innerHTML = '<img src="./assetsDashboard/alerta-1.png" width="40px" alt="">';
+      } else {
+          document.getElementById('card2').style.backgroundColor = 'green';
+          document.getElementById('alertUmi').style.color = 'green';
+          caixaTexto.innerHTML = `${dadosAleatorios_formatado2}%`;
+          imgAlertaUmidade.innerHTML = '';
+      }
+
+      caixaTexto.innerHTML = `${dadosAleatorios_formatado2}%`;
 
       // Adiciona os dados ao array de dados
       graficoBarras.data.datasets[0].data.push(dadosAleatorios);
@@ -165,7 +231,7 @@ function adicionarDadosAleatorios() {
       numLeituras2++
   }
 
-setInterval(adicionarDadosAleatorios, 5000);
+setInterval(adicionarDadosAleatorios, 3000);
 
 
 

@@ -32,7 +32,7 @@ function menuAbrir() {
                 <p>Contato</p>
             </div>
             <br>
-            <div class="text5Menu">
+            <div class="text5Menu" onclick="acessarHome()">
                 <i class="fa-solid fa-right-from-bracket" style="color: #000000;"></i>
                 <p>Sair</p>
             </div>
@@ -57,5 +57,9 @@ function menuFechar() {
     document.querySelector('.loginButton').style.width = '100px';
     document.querySelector('.loginButton').style.height = '50px';
 }           
+
+function acessarHome(){
+    window.location.href = './index.html'
+}
 
 

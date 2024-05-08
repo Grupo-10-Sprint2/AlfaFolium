@@ -25,13 +25,13 @@
                 </div>
                 <div class="buttonsBox">
                     <ul class="navText">
-                        <li class="txt1">Home</li>
-                        <li class="txt2">Serviços</li>
-                        <li class="txt3">Simulador</li>
-                        <li class="txt4">Sobre Nós</li>
+                        <li class="txt1" onclick="acessarHome()">Home</li>
+                        <li class="txt2" onclick="acessarHome()">Serviços</li>
+                        <li class="txt3" onclick="acessarHome()">Simulador</li>
+                        <li class="txt4" onclick="acessarHome()">Sobre Nós</li>
                     </ul>
                 </div>
-                <div class="loginButton">
+                <div class="loginButton" onclick="acessarLogin()">
                     <p>Login</p>
                 </div>
             </div>
@@ -90,10 +90,20 @@
 
     </footer>
 
-
-
 </body>
 
 </html>
 
 <script src="./scriptCalculadora.js"></script>
+
+
+<script>
+
+    function acessarHome(){
+        window.location.href = './index.html'
+    }
+
+    function acessarLogin(){
+        window.location.href = './login.html'
+    }
+</script>
