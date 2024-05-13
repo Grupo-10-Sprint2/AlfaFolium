@@ -1,0 +1,371 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: 0;
+    height: 100%;
+    color: #1a1919;
+    background-color: #FBE0C0;
+}
+
+/* ------------------Navbar------------------ */
+.logoBox {
+    width: 250px;
+    height: 250px;
+    z-index: 2;
+}
+  
+.logoImg {
+    width: 100%;
+    height: auto;
+    position: relative;
+    bottom: 20px;
+    cursor: pointer;
+    filter: drop-shadow(6px 6px 16px rgba(0, 0, 0, 0.6));
+}
+
+.headerBox{
+    display: flex;
+    background-color: #414C30;
+    height: 100px;
+    width: 100%;
+    box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.6);
+    position: fixed;
+    z-index: 3;
+    top: 0;
+}
+
+.text-nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.navText{
+    width: 80%;
+    color: #FFFFFF;
+    font-family: "Poppins", sans-serif;
+    font-size: 24px;
+    font-weight: 300;
+    display: flex;
+    justify-content: space-around; 
+    list-style: none;
+    cursor: pointer;
+    text-shadow: 2px 2px 10px 0px rgba(0,0,0,0.6);
+    transition-duration: 0.2s;
+
+}
+
+.txt1 a,.txt2 a,.txt3 a,.txt4 a{
+    text-decoration: none;
+    color: #FFFFFF;
+
+}
+
+.txt1 a:hover,.txt2 a:hover,.txt3 a:hover,.txt4 a:hover{
+    color: #0e1503;
+    transition-duration: 0.2s;
+    text-shadow: 2px 3px 2px rgba(0, 0, 0, 0);
+}
+
+.loginButton button{
+    height: 50px;
+    width: 100px;
+    cursor: pointer;
+    background-color: #1B3606;
+    border: 3px solid #FFFFFF;
+    box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.6);
+    transition-duration: 0.2s;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.loginButton button:hover{
+    background-color: #FFFFFF;
+    color: #1B3606;
+    transition-duration: 0.2s;  
+}
+
+/* ------------------Pagina Principal------------------ */
+.page-principal {
+    background-image: linear-gradient(to bottom, rgba(251, 224, 192, 0.2), rgba(251, 224, 192, 1)), url('./assetsIndex/image.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+    mix-blend-mode: luminosity;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+}
+
+.slogan-img{
+    height: 300px;
+    margin-top: 10%;
+}
+
+/* ------------------Segunda Pagina------------------ */
+.segunda-main{
+    display: flex;
+    align-items: center;
+}
+
+.segunda-txt{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    z-index: 1;
+    background-color: #414C30;
+    box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.24);
+}
+
+.segunda-txt p{
+    margin: 0 100px;
+    font-family: 'Podkova';
+    font-size: 50px;
+    margin-right: 50%;
+    color: #FFF;
+}
+
+.segunda-img{
+    width: 50%;
+    z-index: 2;
+}
+
+.segunda-img img{
+    width: 100%;
+    margin-left: 100%;
+}
+
+.negrito{
+    font-family: 'Podkova';
+    font-weight: bold;
+}
+
+/* ------------------Terceira Pagina------------------ */
+.terceira-main{
+    display: flex;
+    align-items: center;
+}
+
+.inverso{
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.terceira-txt{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    z-index: 1;
+    background-color: #414C30;
+    box-shadow: 0px 15px 10px rgba(0, 0, 0, 0.24);
+}
+
+.terceira-txt p{
+    margin-left: 46%;
+    margin-right: 50px;
+    font-family: 'Podkova';
+    font-size: 45px;
+    text-align: right;
+    color: #FFF;
+}
+
+.terceira-img{
+    width: 50%;
+    z-index: 2;
+}
+
+.terceira-img img{
+    width: 100%;
+
+}
+
+/* ------------------Quarta Pagina------------------ */
+.quarta-main{
+    display: flex;
+    justify-content: space-between;
+    height: 120vh;
+}
+
+.primeira-imagem{
+    position: absolute;
+    width: 55%;
+}
+
+.primeira-imagem img{
+    width: 100%;
+}
+
+.camera{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: end;
+    z-index: 2;
+}
+
+.camera img{
+    width: 15%;
+    height: 25%;
+}
+
+.segunda-imagem{
+    right: 0;
+    position: absolute;
+    width: 50%;
+}
+
+.segunda-imagem img{
+    width: 100%;
+}
+/* ------------------Quinta Pagina------------------ */
+.papelao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.papelao img{
+    width: 70%;
+}
+
+.papelao p{
+    font-family: 'Podkova';
+    width: 50%;
+    position: absolute;
+    color: #1B3606;
+    font-size: 35px;
+    text-align: center;
+}
+
+/* ------------------Sexta Pagina------------------ */
+.sobre-nos{
+    width: 100%;
+    height: 100px;
+    
+}
+
+.sexta-main{
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 100px;
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    margin: 20px 15%;
+}
+
+.container-img{
+    height: 150px;
+    z-index: 2;
+    
+}
+
+.container-img img{
+    height: 150px;
+    filter: drop-shadow(5px 10px 10px rgba(0, 0, 0, 0.8));
+}
+
+.container-txt{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    background-color: #434F31;
+    height: 100px;
+    left: 20%;
+    right: 100px;
+    z-index: 1;
+}
+
+.container-txt p{
+    font-size: 20px;
+    margin-left: 100px;
+}
+
+/* ------------------Footer------------------ */
+footer{
+    height: 313px;
+    background-color: #414C30;
+    color: #FFFFFF;
+}
+
+.conteudo{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 85%;
+}
+
+.conteudo-logo img{
+    height: 280px;
+}
+
+.conteudo-legal p{
+    font-size: 25px;
+}
+
+.conteudo-legal ul{
+    list-style: none;
+}   
+
+.conteudo-legal a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.conteudo-contatos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 60%;
+}
+
+.conteudo-contatos p{
+    font-size: 25px;
+}
+
+.conteudo-contatos img{
+    height: 67px;
+}
+
+.legislacao{
+    display: flex;
+    justify-content: space-around;
+    border-top: solid 1px #FFFFFF;
+    margin: 0 80px;
+    font-size: 17px;
+}
+
+.legislacao-termos ul{
+    display: flex;
+    list-style: none;
+}
+
+.legislacao-termos li{
+    margin: 0 20px;
+}
+
+.legislacao-termos a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
