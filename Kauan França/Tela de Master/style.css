@@ -1,0 +1,23 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background-color: #4C5939;
+}
+
+.headerBox {
+    background-color: #4C5939;
+    padding: 100px;
+    
+}
+
+.logoBox {
+    display: flex;
+    /* justify-content: flex-start; */
+}
+
+.logoImg {
+    height: 300px;
+}

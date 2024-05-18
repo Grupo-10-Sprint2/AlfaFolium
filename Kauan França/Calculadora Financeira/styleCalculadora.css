@@ -157,8 +157,12 @@ body{
     background-color: #1E2F11;
     box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.6);
     position: absolute;
+<<<<<<< HEAD:Kauan França/Calculadora Financeira/style.css
+    z-index: 3; 
+=======
     z-index: 3;
     border-radius: 15px;
+>>>>>>> ecaae84c02eea0fae4f1d635d9c5741c99873465:Kauan França/Calculadora Financeira/styleCalculadora.css
 }
 
 .title-container{
