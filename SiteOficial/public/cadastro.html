@@ -1,49 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Usuário - Alfa folium</title>
+    <title>Cadastro de Proprietário - Alfa Folium</title>
+    <link rel="stylesheet" href="externoProprietario.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap"
+        rel="stylesheet">
+
+        <script src="https://kit.fontawesome.com/800a4bbd88.js" crossorigin="anonymous"></script>
 </head>
+
+
 <body>
-    <div class="divTitulo">
-        <h1>Cadastro Proprietário</h1>
+    <div class="fundo">
+
+        <div class="box-logo">
+            <div class="logo">
+                <img src="./assetsCadastro/logo.png">
+            </div>
+            <div class="navBarContent">
+                    
+                <div class="loginButton">
+                    <div class="usuarioIcon">
+                      <i class="fa-solid fa-user fa-xl" style="color: #000000;"></i>
+                    </div>
+                    <p>Alfa Folium</p>
+                    <br>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="centro">
+            <div class="campos">
+                <div class="boxCadastro">
+                    <div class="quadrado_titulo">
+                        
+                        <div class="titulo">
+                            <p>Insira os dados do proprietário</p>
+                        </div>                        
+                    </div>
+
+                    <div class="campo-1">
+                        <p>Nome:</p>
+                        <input id="input_nomeUser" placeholder="Nome completo"> <br>
+                    </div>
+
+                    <div class="campo-2">
+                        <p>E-mail:</p>
+                        <input id="input_emailUser" placeholder="usuario@email.com"> <br>
+                    </div>
+
+                    <div class="campo-3">
+                        <p>Senha:</p>
+                        <input id="input_senhaUser" type="password" placeholder="Digite uma senha forte"> <br>
+                    </div>
+
+                    <div class="campo-4">
+                        <p>Repetir Senha:</p>
+                        <input id="input_confirmacaoSenha" type="password" placeholder="Digite sua senha novamente"> <br>
+                    </div>
+
+                    <div class="campo-5">
+                        <p>CPF:</p>
+                        <input id="input_cpfUser" placeholder="000.000.000-00"> <br>
+                    </div>
+
+                    <div class="campo-6">
+                        <p>Telefone:</p>
+                        <input id="input_telefoneUser" placeholder="(00)000000000">
+                    </div>
+
+                    <button onclick="cadastrarUsuario()" class="botaoCadastroEmpresa">
+                        Cadastrar Empresa
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-
-
-    <div class="divCadastro">
-        <div class="boxCadastro">
-            Nome: <br>
-            <div class="campo-1">
-                <input id="input_nomeUser" placeholder="Nome completo"> <br>
-            </div>
-
-            Email: <br>
-            <div class="campo-2">
-                <input id="input_emailUser" placeholder="usuario@email.com"> <br>
-            </div>
-
-            Senha: <br>
-            <div class="campo-3">
-                <input id="input_senhaUser" type="password" placeholder="Digite uma senha forte"> <br>
-            </div>
-
-            Repetir Senha: <br>
-            <input id="input_confirmacaoSenha" type="password" placeholder="Digite sua senha novamente">
-            <br>
-
-            CPF: <br>
-            <input id="input_cpfUser" placeholder="000.000.000-00">
-            <br>
-
-            Telefone: <br>
-            <input id="input_telefoneUser" placeholder="(00)000000000">
-            <br>
-
-            <button onclick="cadastrarUsuario()" class="botaoCadastroEmpresa">
-                Cadastrar-se
-            </button>
 </body>
+
 </html>
 
 <script>
@@ -172,61 +214,7 @@
             input.style.borderColor = 'red';
         }else{
             alert('Cadastro realizado com sucesso!')
-            
+            window.location.href = 'login.html';
         }
-    }
+    }  
 </script>
-
-
-<style>
-
-     .divTitulo {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .divTitulo h1 {
-        color: #333;
-    }
-
-    .divCadastro {
-        width: 300px;
-        margin: 0 auto;
-        font-size: large;
-    }
-
-    .boxCadastro input {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-    }
-
-
-    .boxCadastro button {
-        width: 100%;
-        padding-left: 200px;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        background-color: #3cdd1b;
-        color: #fff;
-        font-size: 16px;
-        cursor: pointer;
-    }
-
-    .boxCadastro button:hover {
-        background-color: #00b31e;
-    }
-
-    .boxCadastro select {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        font-size: 16px;
-    }
-</style>

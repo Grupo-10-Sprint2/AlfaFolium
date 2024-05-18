@@ -13,17 +13,29 @@ void setup() {
 }
 
 void loop() {
-  float umidade = dht_1.readHumidity();
-  float temperatura = dht_1.readTemperature();
+  float umidade = (dht_1.readHumidity()+10);
+  float temperatura = (dht_1.readTemperature()-10);
   if(isnan(temperatura) or isnan(umidade)){
     Serial.println("Erro ao ler"); 
   } else {
-    Serial.print("Umidade: ");
+    
     Serial.print(umidade);
-    Serial.print(" % ");
-    Serial.print(" Temperatura: ");
-    Serial.print(temperatura);
-    Serial.println(" ºC");
+    Serial.print(";");
+    Serial.println(temperatura);
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
   }
   delay(2000);
 }

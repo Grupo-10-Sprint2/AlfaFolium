@@ -1,31 +1,33 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: "poppins", sans-serif;
+}
+
+.fundo {
+    background-image: url(./assetsCadastro/fundo.sujeira.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #FBE0C0;
 }
 
 .quadrado_titulo {
     position: relative;
     top: -40px;
-    width: 400px;
-    height: 40px;
+    width: 500px;
+    height: 50px;
     background-color: #1C3707;
     display: flex;
 }
 
 .titulo {
-    font-size: 30px;
-    color: white;
-    font-family:"poppins",sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    color: #FFFFFF;
     margin: auto;
 }
 
-.fundo {
-    background-image: url(./assets/fundo.sujeira.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.header {
+.box-logo {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -35,25 +37,23 @@
     z-index: 3;
 }
 
+
+
 .logo img {
-    width: 150px;
     justify-content: left;
     align-items: start;
-    padding: 0%;
+    width: 270px;
+    height: 250px;
 }
 
 .nomeusuario {
     justify-content: flex-end;
     display: flex;
-    margin-top: 0px  ;
-    padding: 0%;
 }
 
 .nomeusuario img {
     justify-content: flex-end;
     display: flex;
-    margin-top: 0px;
-    padding:0%;
 }
 
 .centro {
@@ -68,87 +68,31 @@
     display: flex;
 }
 
-.fundo {
-    background-color:#FBE0C0   ;
-}
-
-.titulo {
-    color: white;
-    font-size: large;
-}
-
 .boxCadastro {
     width: 1400px;
     height: 100vh;
-    margin-top: 0 ;
     font-size: large;
-    background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
     flex-direction: column;
     justify-content: center;
-    z-index: 2; 
+    z-index: 2;
     align-items: center;  
     display: flex;
-    padding-top: 0px;
     background-color: #1C3707;
     background-color: rgba(28, 55, 7, 80%);
 }
 
-.campos {
-    padding-top: 0%;
-    margin-top: 0%;
-}
-
-.campo-1 {
-    color: white;
+.campo-1, .campo-2, .campo-3, .campo-4, .campo-5, .campo-6 {
+    color: #FFFFFF;
     align-items: center;
     text-align: center;
     width: 400px;
-    font-family:"poppins",sans-serif;
 }
 
-.campo-1 p {
+.campo-1 p, .campo-2 p, .campo-3 p, .campo-4 p, .campo-5 p, .campo-6 p {
     padding-bottom: 10px;
-}
-
-.class_empresa {
-    padding: 1000px;
-}
-.campo-2 {
-    color: white;
-    align-items: center;
-    text-align: center;
-    width: 400px;
-    font-family:"poppins",sans-serif;
-}
-
-.campo-2 p {
-    padding-bottom: 10px;
-}
-
-.campo-3 {
-    color: white;
-    align-items: center;
-    text-align: center;
-    width: 400px;
-    font-family:"poppins",sans-serif;
-}
-
-.campo-3 p {
-    padding-bottom: 10px;
-}
-
-.campo-4 {
-    color: white;
-    align-items: center;
-    text-align: center;
-    width: 400px;
-    font-family:"poppins",sans-serif;
-}
-
-.campo-4 p {
-    padding-bottom: 10px;
+    font-size: 20px;
 }
 
 ::-webkit-input-placeholder {
@@ -168,39 +112,66 @@
 
 .botaoCadastroEmpresa {
     position: relative;
-    top: 20px;
-    width: 300px;
+    top: 60px;
+    width: 400px;
     padding: 10px;
     border: none;
     border-radius: 5px;
     background-color: #1C3707;
-    color: #fff;
-    font-size: 16px;
+    color: #FFFFFF;
+    font-size: 22px;
     cursor: pointer;
     align-items: center;
-    font-family:"poppins",sans-serif;
-}
-
-.botaoCadastroEmpresa button:hover {
-    background-color: #00b31e;
-    width: 400px;
-}
-
-#tenhoconta button:hover {
-    background-color: #75885A;
-    width: 410px;
 }
 
 .tenhoconta {
-    width: 300px;
-    padding-left: 200px;
+    position: relative;
+    top: 40px;
+    width: 400px;
     padding: 10px;
     border: none;
     border-radius: 5px;
     background-color: #1C3707;
-    color: #fff;
-    font-size: 16px;
+    color: #FFFFFF;
+    font-size: 22px;
     cursor: pointer;
     align-self: center;
-    font-family:"poppins",sans-serif;
+}
+
+.navBarContent{
+    display: flex;
+    width: 1600px;
+    height: 140px;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 100px;
+    text-align: center;
+}
+
+.loginButton{
+    height: 50px;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid #FFFFFF;
+    background-color: #FFFFFF;
+    box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.6);
+    transition-duration: 0.2s;
+}
+
+.usuarioIcon{
+    margin: 0 auto 0;
+    border-radius: 100%;
+    padding: 10px;
+    background-color: #99ae79;
+}
+
+.loginButton p {
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+    transition-duration: 0.2s;
+    color: #414C30;
 }

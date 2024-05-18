@@ -4,8 +4,8 @@
 }
 
 body {
-    background-image: url('./assets/fundoretro.png');
-    background-image: url('./assets/fundo.sujeira.png');
+    background-image: url('./assetsTelas/fundoretro.png');
+    background-image: url('./assetsTelas/fundo.sujeira.png');
     background-position: center center;
     background-size: cover;
     background-color: #1C3707;
@@ -35,10 +35,11 @@ body {
     justify-content: flex-start;
     border-radius: 50px;
     margin: 10px;
+    
 }
 
 .divTitulo h1 {
-    color: #333333;
+    color: #333;
 }
 
 .boxCadastro input {
@@ -51,12 +52,14 @@ body {
     border-radius: 50px;
     font-size: 16px;
     text-align: center;
+
 }
 
 .campo1, .campo2 p {
     color: #FBE0C0;
     font-size: large;
     font-weight: bold;
+    font-family: "Poppins", sans-serif;;
 }
 
 .boxCadastro {
@@ -88,6 +91,7 @@ body {
     align-items: center;
     margin: 20px;
     transition: 0.3s;
+    font-family: "Poppins", sans-serif;;
 }
 
 .boxCadastro button:hover {
@@ -100,10 +104,29 @@ body {
     transform: scale(105%);
 }
 
-.botaovoltar img {
-    width: 100px;
-}
 
 .botaovoltar {
-    width: 100px;
+    width: 80px;
+    height: 80px;
+    background-color: #FBE0C0;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.botaovoltar a{
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.botaovoltar:hover {
+    transform: scale(110%);
+    background-color: #3c6a27;
+    transition: 0.3s;
 }
