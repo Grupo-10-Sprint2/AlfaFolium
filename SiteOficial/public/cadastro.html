@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Proprietário - Alfa Folium</title>
-    <link rel="stylesheet" href="externoProprietario.css">
+    <link rel="stylesheet" href="styleCadastroUsuario.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -17,28 +17,37 @@
 
 
 <body>
-    <div class="fundo">
-
-        <div class="box-logo">
-            <div class="logo">
-                <img src="./assetsCadastro/logo.png">
+        <div class="headerBox">
+            <div class="boxLogo">
+  
+              <img src="./assetsDashboard/logoNav.png">
+              
             </div>
-            <div class="navBarContent">
-                    
-                <div class="loginButton">
-                    <div class="usuarioIcon">
-                      <i class="fa-solid fa-user fa-xl" style="color: #000000;"></i>
-                    </div>
-                    <p>Alfa Folium</p>
-                    <br>
+            <div class="boxMenu">
+  
+              <nav role="navigation">
+                <div id="menuToggle">
+                   <input type="checkbox">
+                   
+                   <span></span>
+                   <span></span>
+                   <span></span>
+                   
+                   <ul id="menu">
+                      <li>Home</li>
+                      <li>Suporte</li>
+                      <li>Sair</li>
+                   </ul>
                 </div>
+             </nav>
+  
             </div>
-        </div>
+          </div>
 
 
 
-        <div class="centro">
-            <div class="campos">
+        <div class="boxContent">
+            <div class="boxGreen">
                 <div class="boxCadastro">
                     <div class="quadrado_titulo">
                         
@@ -47,7 +56,14 @@
                         </div>                        
                     </div>
 
-                    <div class="campo-1">
+                    <div class="boxInputs">
+                    <input placeholder="Type here..." class="input" name="text" type="text">
+                    <input placeholder="Type here..." class="input" name="text" type="text">
+                    <input placeholder="Type here..." class="input" name="text" type="text">
+                    <input placeholder="Type here..." class="input" name="text" type="text">
+                    </div>
+
+                    <!-- <div class="campo-1">
                         <p>Nome:</p>
                         <input id="input_nomeUser" placeholder="Nome completo"> <br>
                     </div>
@@ -79,7 +95,7 @@
 
                     <button onclick="cadastrarUsuario()" class="botaoCadastroEmpresa">
                         Cadastrar Empresa
-                    </button>
+                    </button> -->
                 </div>
             </div>
         </div>
