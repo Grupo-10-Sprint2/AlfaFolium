@@ -35,21 +35,6 @@ body{
 }
 
 
-
-.loginButton{
-    height: 50px;
-    width: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    border: 3px solid #FFFFFF;
-    background-color: #FFFFFF;
-    box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.6);
-    transition-duration: 0.2s;
-}
-
 .boxGreen{
     background-color: #1b3606ad;
     width: 1750px;
