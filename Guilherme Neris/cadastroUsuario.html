@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="boxCadastro">
+        <div class="campo-1">
+            <p>Nome:</p><br>
+            <input id="input_nomeUser">
+            <br>
+        </div>
+        <div class="campo-2">
+            <p>Email:</p> <br>
+            <input id="input_emailUser">
+            <br>
+        </div>
+        <div class="campo-3">
+            <p>Senha:</p> <br>
+            <input id="input_senhaUser">
+            <br>
+        </div>
+        <div class="campo-4">
+            <p>Confirmar Senha:</p> <br>
+            <input id="input_senhaUser2x">
+            <br>
+        </div>
+        <div class="campo-5">
+            <p>Tel(fixo):</p> <br>
+            <input id="input_telefoneUser">
+            <br>
+        </div>
+        <div class="campo-6">
+            <p>Tel(Celular):</p> <br>
+            <input id="input_celularUser">
+            <br>
+        </div>
+        <div class="campo-7">
+            <p>id Empresa:</p> <br>
+            <select id="idEmpresa">
+                <option value="vazio"> -- </option>
+                <option value="empresa1"> Empresa 1</option>
+                <option value="empresa2"> Empresa 2</option>
+            </select>
+            <br>
+        </div>
+        <div class="boxCadastro">
+            <button onclick="Cadastrar()">
+                Cadastrar Usuario
+            </button>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    function Cadastrar() {
+        let nomeUser = input_nomeUser.value
+        let emailUser = input_emailUser.value
+        let senhaUser = input_senhaUser.value
+        let senhaUser2x = input_senhaUser2x.value
+        let telefoneUser = input_telefoneUser.value
+        let celularUser = input_celularUser.value
+        let EmpresaUser = idEmpresa.value
+        let tamanhoTel = telefoneUser.length
+        let tamanhoCel = celularUser.length
+
+        telefoneUser = document.getElementById('input_telefoneUser').value;
+        let temNumeroTelefone = false;
+
+        for (let i = 0; i < telefoneUser.length; i++) {
+            let caractere = telefoneUser[i];
+            if (!isNaN(caractere) && caractere !== '') {
+                temNumeroTelefone = true;
+                break;
+            }
+        }
+
+        if (nomeUser == '' && emailUser == '' && senhaUser == '' && senhaUser2x == '' && telefoneUser == '' && celularUser == '' && EmpresaUser == "vazio") {
+            alert('Preencha todos os campos!');
+        } else if (nomeUser == ''){
+            alert('Informe seu nome para continuar!');
+        } else if(emailUser == ''){
+            alert('Informe seu email para continuar!');
+        } else if(senhaUser == ''){
+            alert('informe uma senha para continuar!');
+        } else if(senhaUser2x == ''){
+            alert('comfirme sua senha para continuar!');
+        } else if (emailUser.indexOf('@') == -1 || emailUser.indexOf('.') == -1) {
+            alert(' Insira um email válido!')
+        } else if (temNumeroTelefone = false) {
+            alert('Seu telefone deve conter numeros')
+        } else if(EmpresaUser == "vazio"){
+            alert('Selecione uma empresa para continuar!')
+        } else if(tamanhoTel < 12){
+            alert('O seu numero de telefone deve ter pelo menos 12 caracteres numéricos!')
+        } else if(tamanhoCel < 12){
+            alert('O seu numero de celular deve ter pelo menos 12 caracteres numéricos!')
+        } else {
+            let tamanhoSenha = senhaUser.length;
+            let listaCaracteres = [
+                '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/',
+                ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_', '`', '{', '|', '}', '~'
+            ];
+
+            if (tamanhoSenha < 6) {
+                alert('Sua senha deve ter no mínimo 6 caracteres')
+
+            } else {
+                let temMaiusculo = false;
+                let temNumero = false;
+                let temCaractereEspecial = false;
+
+                for (let posicaoLetra = 0; posicaoLetra < tamanhoSenha; posicaoLetra++) {
+                    let letra = senhaUser[posicaoLetra];
+
+                    if (letra >= 'A' && letra <= 'Z') {
+                        temMaiusculo = true;
+                    }
+
+                    if (letra >= '0' && letra <= '9') {
+                        temNumero = true;
+                    }
+
+                    if (listaCaracteres.includes(letra)) {
+                        temCaractereEspecial = true;
+                    }
+                }
+                if (!temMaiusculo) {
+                    alert(' Sua senha deve ter pelo menos uma letra maiúscula');
+
+                } else if (!temNumero) {
+                    alert(' Sua senha deve ter pelo menos um número');
+
+                } else if (!temCaractereEspecial) {
+                    alert(' Sua senha deve ter pelo menos um caractere especial');
+
+                } else if (senhaUser !== senhaUser2x) {
+                    alert('Confirmação de senha inválida!');
+                } else {
+                    alert('Cadastro Realizado: redirecionando para proxima tela ->>>')
+                }
+            }
+
+        }
+    }
+
+
+</script>
