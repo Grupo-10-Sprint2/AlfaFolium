@@ -13,12 +13,38 @@ body {
     overflow: hidden;
 }
 
+@keyframes opacity {
+    0% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+.boxCadastro {
+    background: linear-gradient(rgba(15, 32, 2, 0.7), rgba(15, 32, 2, 0));
+    /* Define o degradê de opacidade */
+    border-radius: 50px;
+    width: 600px;
+    height: 800px;
+    margin: auto;
+    bottom: 50px;
+    position: relative;
+    box-shadow: -1px 8px 27px -4px rgba(0, 0, 0, 0.75),
+        /* Sombra original */
+        inset 0px 0px 50px 20px rgba(15, 32, 2, 0.7);
+    /* Sombra interna com degradê de opacidade */
+    transform: translateY(-200%);
+    animation: opacity 1.8s ease-in-out;
+}
+
 .logo {
     display: flex;
     justify-content: center;
-    height: 400px;
+    height: 500px;
     position: relative;
-    top: -125px;
 }
 
 
@@ -27,7 +53,6 @@ body {
     margin-bottom: 20px;
 }
 
-
 #divcampo1 {
     text-align: start;
     align-items: left;
@@ -35,48 +60,50 @@ body {
     justify-content: flex-start;
     border-radius: 50px;
     margin: 10px;
-    
 }
 
 .divTitulo h1 {
     color: #333;
 }
 
-.boxCadastro input {
+.boxCampos input {
     background-color: rgba(251, 224, 192, 60%);
-    color: #1B3606;
+    color: #0a1601;
     width: 350px;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #CCCCCC;
     border-radius: 50px;
     font-size: 16px;
-    text-align: center;
-
+    padding-left: 20px;
 }
 
-.campo1, .campo2 p {
+.campo1,
+.campo2 p {
     color: #FBE0C0;
     font-size: large;
     font-weight: bold;
-    font-family: "Poppins", sans-serif;;
+    font-family: "Poppins", sans-serif;
+    ;
 }
 
-.boxCadastro {
+.boxCampos {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding-bottom: 100px;
     position: relative;
-    top: -175px;
+    bottom: 50px;
 }
 
 ::-webkit-input-placeholder {
-    color: #1B3606;
+    color: #1b36064b;
 }
 
-.boxCadastro button {
-    width: 100px;
+.boxCampos button {
+    width: 180px;
+    height: 50px;
     padding: 7px;
     border-color: #1B3606;
     border-style: solid;
@@ -91,10 +118,11 @@ body {
     align-items: center;
     margin: 20px;
     transition: 0.3s;
-    font-family: "Poppins", sans-serif;;
+    font-family: "Poppins", sans-serif;
+    ;
 }
 
-.boxCadastro button:hover {
+.boxCampos button:hover {
     background-color: #1B3606;
     color: #FBE0C0;
     border-color: #FBE0C0;
@@ -104,10 +132,9 @@ body {
     transform: scale(105%);
 }
 
-
 .botaovoltar {
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     background-color: #FBE0C0;
     border-radius: 100%;
     display: flex;
@@ -117,16 +144,19 @@ body {
     position: relative;
     z-index: 2;
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.8s;
+    box-shadow: -1px 8px 27px -4px rgba(0, 0, 0, 0.75);
+    transform: translateX(-200%);
+    animation: opacity 1.8s ease-in-out;
 }
 
-.botaovoltar a{
+.botaovoltar a {
     font-weight: bold;
     font-size: 40px;
 }
 
 .botaovoltar:hover {
     transform: scale(110%);
-    background-color: #3c6a27;
+    background-color: #1B3606;
     transition: 0.3s;
 }
