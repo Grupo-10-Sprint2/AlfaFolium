@@ -2,101 +2,125 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard AlfaFolium</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard AlfaFolium</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
 
-    <link rel="stylesheet" href="./styleDashboard.css">
-    <script src="https://kit.fontawesome.com/800a4bbd88.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="./styleDashboard.css">
+  <script src="https://kit.fontawesome.com/800a4bbd88.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
 
-    <header>
-        <div class="headerBox">
-          <div class="boxLogo">
+  <header>
+    <div class="headerBox">
+      <div class="boxLogo">
 
-            <img src="./assetsDashboard/logoNav.png">
-            
-          </div>
-          <div class="boxMenu">
-
-            <nav role="navigation">
-              <div id="menuToggle">
-                 <input type="checkbox">
-                 
-                 <span></span>
-                 <span></span>
-                 <span></span>
-                 
-                 <ul id="menu">
-                    <li>Home</li>
-                    <li>Suporte</li>
-                    <li>Sair</li>
-                 </ul>
-              </div>
-           </nav>
-
-          </div>
-        </div>
-    </header>
-
-
-    <div class="boxGreen">  
-      <div class="boxContent">
-        <div class="boxInfos1">
-          <div class="boxLegenda">
-            <p>Legendas</p>
-          </div>
-          <div class="boxLegendaNome">
-          <p></p>
-            <div class="boxNome">
-              <p>Estufa:1X_estf</p>
-
-            </div>
-            
-          </div>
-          <div class="boxDadosCapturados">
-            <div class="cardTemp">
-               <div class="cardTempTitle">
-                  <h2>Temperatura Atual da Estufa</h2>
-               </div>
-            </div>
-            <div class="cardUmi">
-               <div class="cardUmiTitle">
-                     <h2>Umidade Atual da Estufa</h2>
-               </div>
-            </div>
-          </div>
-        </div>
-        <div class="boxInfos2">
-          
-        </div>
+        <img src="./assetsDashboard/logoNav.png">
       </div>
-        
-      <div class="graficosContent">
-              <div class="grafico1">
-                  <div>
-                      <canvas id="myChart1"></canvas>
-                  </div>
-              </div>
-              <div class="grafico2">
-                  <div>
-                      <canvas id="myChart2"></canvas>
-                  </div>
-              </div>
+      <div class="boxMenu">
+
+        <nav role="navigation">
+          <div id="menuToggle">
+            <input type="checkbox">
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu">
+              <li>Home</li>
+              <li>Suporte</li>
+              <li>Sair</li>
+            </ul>
+          </div>
+        </nav>
+
       </div>
     </div>
+  </header>
 
-    
+  <div class="boxGreen">
+    <div class="boxContent">
+      <div class="boxInfos1">
+        <div class="boxLegenda">
+          <p>Legendas</p>
+        </div>
+        <div class="boxLegendaNome">
+          <p></p>
+          <div class="boxNome">
+            <p>Estufa:1X_estf</p>
+
+          </div>
+        </div>
+        <div class="boxDadosCapturados">
+          <div class="cardTemp">
+            <div class="cardTempTitle">
+              <h2>Temperatura Atual da Estufa</h2>
+            </div>
+          </div>
+          <div class="cardUmi">
+            <div class="cardUmiTitle">
+              <h2>Umidade Atual da Estufa</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="boxInfos2">
+        <div class="boxDadosNecessarios">
+          <div class="boxTitleDados">
+            <h1> Dados Necessários </h1>
+          </div>
+          <div class="boxVerdeDados">
+            <div class="boxVerdeDados1">
+              <div class="boxParametrosIdeais">
+                <div class="parametrosTitle">
+                  <h2> Parâmetros Ideais da Estufa </h2>
+                </div>
+              </div>  
+            </div>
+            <div class="boxVerdeDados2">
+              <div class="boxVerdeDados2_2">
+                <div class="boxTempExterna">
+                  <div class="tempExtTitle">
+                    <h3> Temperatura Externa </h3>
+                  </div>
+                </div>
+                <div class="boxLocalidade">
+                  <div class="localidadeTitle">
+                    <h3> Localidade </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="boxHorario">
+                <div class="horarioTitle">
+                  <h3> Horário </h3>
+                </div>
+              </div>  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="graficosContent">
+      <div class="grafico1">
+        <div>
+          <canvas id="myChart1"></canvas>
+        </div>
+      </div>
+      <div class="grafico2">
+        <div>
+          <canvas id="myChart2"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 </body>
 
@@ -106,63 +130,60 @@
 
 // Gráficos
 <script>
-    const ctx1 = document.getElementById('myChart1');
-    const ctx2 = document.getElementById('myChart2');
+  const ctx1 = document.getElementById('myChart1');
+  const ctx2 = document.getElementById('myChart2');
+
+  let numLeituras1 = 0; // Variável para rastrear o número de leituras
+  let numLeituras2 = 0; // Variável para rastrear o número de leituras
 
 
-    let numLeituras1 = 0; // Variável para rastrear o número de leituras
-    let numLeituras2 = 0; // Variável para rastrear o número de leituras
+  function adicionarDadosAleatorios() {
 
+    if (numLeituras1 % 10 == 0) {
+      graficoTemp.data.labels = [];
 
+      // Atualiza o gráfico
+      graficoTemp.update();
 
-function adicionarDadosAleatorios() {
+    } else {
+      const min = 18
+      const max = 34
 
-  if(numLeituras1 % 10 == 0){
-    graficoTemp.data.labels = [];
+      let dadosAleatorios = Math.floor(Math.random() * (max - min + 1) + min);
+      let dadosAleatorios_formatado1 = Number(dadosAleatorios.toFixed(2));
+      let dadosAleatorios_formatado2 = Math.trunc(dadosAleatorios_formatado1);
+      // const caixaTexto = document.getElementById('alertTemp');
 
-    // Atualiza o gráfico
-    graficoTemp.update();
-
-  } else {
-    const min = 18
-    const max = 34
-
-    let dadosAleatorios = Math.floor(Math.random() * (max - min + 1) + min );
-    let dadosAleatorios_formatado1 = Number(dadosAleatorios.toFixed(2));
-    let dadosAleatorios_formatado2 = Math.trunc(dadosAleatorios_formatado1);
-    // const caixaTexto = document.getElementById('alertTemp');
-
-    if( dadosAleatorios_formatado2 >= 29  && dadosAleatorios_formatado2 <= 31 || (dadosAleatorios_formatado2 >= 21 && dadosAleatorios_formatado2 <= 23)){
-          // document.getElementById('card1').style.backgroundColor = '#ffa500';
-          // document.getElementById('alertTemp').style.color = '#ffa500';
-          // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}°C`;
-          // imgAlertaTemp.innerHTML = '';
-      } else if (dadosAleatorios_formatado2 <= 20 || dadosAleatorios_formatado2 >= 32 ){
-          // document.getElementById('card1').style.backgroundColor = 'red';
-          // document.getElementById('alertTemp').style.color = 'red';
-          // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}°C`;
-          // imgAlertaTemp.innerHTML = '<img src="./assetsDashboard/alerta-1.png" width="40px" alt="">';
+      if (dadosAleatorios_formatado2 >= 29 && dadosAleatorios_formatado2 <= 31 || (dadosAleatorios_formatado2 >= 21 && dadosAleatorios_formatado2 <= 23)) {
+        // document.getElementById('card1').style.backgroundColor = '#ffa500';
+        // document.getElementById('alertTemp').style.color = '#ffa500';
+        // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}°C`;
+        // imgAlertaTemp.innerHTML = '';
+      } else if (dadosAleatorios_formatado2 <= 20 || dadosAleatorios_formatado2 >= 32) {
+        // document.getElementById('card1').style.backgroundColor = 'red';
+        // document.getElementById('alertTemp').style.color = 'red';
+        // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}°C`;
+        // imgAlertaTemp.innerHTML = '<img src="./assetsDashboard/alerta-1.png" width="40px" alt="">';
       } else {
-          // document.getElementById('card1').style.backgroundColor = 'green';
-          // document.getElementById('alertTemp').style.color = 'green';
-          // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}°C`;
-          // imgAlertaTemp.innerHTML = '';
+        // document.getElementById('card1').style.backgroundColor = 'green';
+        // document.getElementById('alertTemp').style.color = 'green';
+        // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}°C`;
+        // imgAlertaTemp.innerHTML = '';
       }
 
-    // Adiciona os dados ao array de dados
-    graficoTemp.data.datasets[0].data.push(dadosAleatorios);
+      // Adiciona os dados ao array de dados
+      graficoTemp.data.datasets[0].data.push(dadosAleatorios);
 
-    // Atualiza os rótulos usando o número de leituras
-    graficoTemp.data.labels.push(`Leitura ${numLeituras1}`);
+      // Atualiza os rótulos usando o número de leituras
+      graficoTemp.data.labels.push(`Leitura ${numLeituras1}`);
 
-    // Atualiza o gráfico
-    graficoTemp.update();
+      // Atualiza o gráfico
+      graficoTemp.update();
 
-  }
+    }
     numLeituras1++
 
-
-    if(numLeituras2 % 10 == 0){
+    if (numLeituras2 % 10 == 0) {
       graficoBarras.data.labels = [];
 
       // Atualiza o gráfico
@@ -172,26 +193,26 @@ function adicionarDadosAleatorios() {
       const min = 55
       const max = 88
 
-      let dadosAleatorios = Math.floor(Math.random() * (max - min + 1) + min );
+      let dadosAleatorios = Math.floor(Math.random() * (max - min + 1) + min);
       let dadosAleatorios_formatado1 = Number(dadosAleatorios.toFixed(2));
       let dadosAleatorios_formatado2 = Math.trunc(dadosAleatorios_formatado1);
       // const caixaTexto = document.getElementById('alertUmi');
 
-      if( dadosAleatorios_formatado2 >= 57 && dadosAleatorios_formatado2 <= 59 || (dadosAleatorios_formatado2 >= 81 && dadosAleatorios_formatado2 <= 85)){
-          // document.getElementById('card2').style.backgroundColor = '#ffa500';
-          // document.getElementById('alertUmi').style.color = '#ffa500';
-          // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}%`;
-          // imgAlertaUmidade.innerHTML = '';
-      } else if (dadosAleatorios_formatado2 <= 56 || dadosAleatorios_formatado2 >= 86){
-          // document.getElementById('card2').style.backgroundColor = 'red';
-          // document.getElementById('alertUmi').style.color = 'red';
-          // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}%`;
-          // imgAlertaUmidade.innerHTML = '<img src="./assetsDashboard/alerta-1.png" width="40px" alt="">';
+      if (dadosAleatorios_formatado2 >= 57 && dadosAleatorios_formatado2 <= 59 || (dadosAleatorios_formatado2 >= 81 && dadosAleatorios_formatado2 <= 85)) {
+        // document.getElementById('card2').style.backgroundColor = '#ffa500';
+        // document.getElementById('alertUmi').style.color = '#ffa500';
+        // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}%`;
+        // imgAlertaUmidade.innerHTML = '';
+      } else if (dadosAleatorios_formatado2 <= 56 || dadosAleatorios_formatado2 >= 86) {
+        // document.getElementById('card2').style.backgroundColor = 'red';
+        // document.getElementById('alertUmi').style.color = 'red';
+        // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}%`;
+        // imgAlertaUmidade.innerHTML = '<img src="./assetsDashboard/alerta-1.png" width="40px" alt="">';
       } else {
-          // document.getElementById('card2').style.backgroundColor = 'green';
-          // document.getElementById('alertUmi').style.color = 'green';
-          // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}%`;
-          // imgAlertaUmidade.innerHTML = '';
+        // document.getElementById('card2').style.backgroundColor = 'green';
+        // document.getElementById('alertUmi').style.color = 'green';
+        // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}%`;
+        // imgAlertaUmidade.innerHTML = '';
       }
 
       // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}%`;
@@ -206,99 +227,96 @@ function adicionarDadosAleatorios() {
       graficoBarras.update();
 
     }
-      numLeituras2++
+    numLeituras2++
   }
 
-setInterval(adicionarDadosAleatorios, 3000);
-
+  setInterval(adicionarDadosAleatorios, 3000);
 
 
   var graficoTemp = new Chart(ctx1, {
-  type: 'line',
-  data: {
-    labels: [],
-    datasets: [{
-      label: 'Temperatura (°C)',
-      data: [],
-      borderColor: '#ffffff', // Cor da linha branca
-      borderWidth: 3
-    }]
-  },
-  options: {
-    plugins: {
-      legend: {
-        labels: {
-          color: '#ffffff' // Cor das fontes da legenda
-        }
-      }
+    type: 'line',
+    data: {
+      labels: [],
+      datasets: [{
+        label: 'Temperatura (°C)',
+        data: [],
+        borderColor: '#ffffff', // Cor da linha branca
+        borderWidth: 3
+      }]
     },
-    scales: {
-      y: {
-        beginAtZero: true,
-        ticks: {
-          color: '#ffffff', // Cor das fontes do eixo y
-          fontSize: 14 // Tamanho da fonte para o eixo y
-        },
-        grid: {
-          color: '#ffffff' // Cor dos traços de fundo do eixo y
+    options: {
+      plugins: {
+        legend: {
+          labels: {
+            color: '#ffffff' // Cor das fontes da legenda
+          }
         }
       },
-      x: {
-        ticks: {
-          color: '#ffffff', // Cor das fontes do eixo x
-          fontSize: 14 // Tamanho da fonte para o eixo x
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: '#ffffff', // Cor das fontes do eixo y
+            fontSize: 14 // Tamanho da fonte para o eixo y
+          },
+          grid: {
+            color: '#ffffff' // Cor dos traços de fundo do eixo y
+          }
         },
-        grid: {
-          color: '#ffffff' // Cor dos traços de fundo do eixo x
+        x: {
+          ticks: {
+            color: '#ffffff', // Cor das fontes do eixo x
+            fontSize: 14 // Tamanho da fonte para o eixo x
+          },
+          grid: {
+            color: '#ffffff' // Cor dos traços de fundo do eixo x
+          }
         }
       }
     }
-  }
-});
+  });
 
 
-
-var graficoBarras = new Chart(ctx2, {
-  type: 'bar',
-  data: {
-    labels: [],
-    datasets: [{
-      label: 'Umidade (%)',
-      data: [],
-      backgroundColor: '#ffffff', // Cor de fundo forte
-      borderColor: '#ffffff', // Cor da borda branca
-      borderWidth: 3
-    }]
-  },
-  options: {
-    plugins: {
-      legend: {
-        labels: {
-          color: '#ffffff' // Cor das fontes da legenda
-        }
-      }
+  var graficoBarras = new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: [],
+      datasets: [{
+        label: 'Umidade (%)',
+        data: [],
+        backgroundColor: '#ffffff', // Cor de fundo forte
+        borderColor: '#ffffff', // Cor da borda branca
+        borderWidth: 3
+      }]
     },
-    scales: {
-      y: {
-        beginAtZero: true,
-        ticks: {
-          color: '#ffffff', // Cor das fontes do eixo y
-        },
-        grid: {
-          color: '#ffffff' // Cor dos traços de fundo do eixo y
+    options: {
+      plugins: {
+        legend: {
+          labels: {
+            color: '#ffffff' // Cor das fontes da legenda
+          }
         }
       },
-      x: {
-        ticks: {
-          color: '#ffffff', // Cor das fontes do eixo x
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            color: '#ffffff', // Cor das fontes do eixo y
+          },
+          grid: {
+            color: '#ffffff' // Cor dos traços de fundo do eixo y
+          }
         },
-        grid: {
-          color: '#ffffff' // Cor dos traços de fundo do eixo x
+        x: {
+          ticks: {
+            color: '#ffffff', // Cor das fontes do eixo x
+          },
+          grid: {
+            color: '#ffffff' // Cor dos traços de fundo do eixo x
+          }
         }
       }
     }
-  }
-});
-
+  });
 
 </script>
