@@ -97,7 +97,7 @@ body{
 
 /* ------------------Pagina Principal------------------ */
 .page-principal {
-    background-image: linear-gradient(to bottom, rgba(251, 224, 192, 0.2), rgba(251, 224, 192, 1)), url('./assetsIndex/image.png');
+    background-image: linear-gradient(to bottom, rgba(251, 224, 192, 0.2), rgba(251, 224, 192, 1)), url('../assets/assetsIndex/image.png');
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;

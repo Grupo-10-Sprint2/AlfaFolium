@@ -4,8 +4,8 @@
 }
 
 body {
-    background-image: url('./assetsTelas/fundoretro.png');
-    background-image: url('./assetsTelas/fundo.sujeira.png');
+    background-image: url('./assets/assetsTelas/fundoretro.png');
+    background-image: url('./assets/assetsTelas/fundo.sujeira.png');
     background-position: center center;
     background-size: cover;
     background-color: #1C3707;

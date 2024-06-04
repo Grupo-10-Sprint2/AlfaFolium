@@ -9,7 +9,7 @@ body {
    height: 100%;
    color: #FBE0C0;
    overflow: hidden;
-   background-image: url(./assetsDashboard/bgdDash.png);
+   background-image: url(../assets/assetsDashboard/bgdDash.png);
    background-repeat: no-repeat;
    background-size: cover;
 }
