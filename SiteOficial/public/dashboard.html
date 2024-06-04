@@ -13,11 +13,12 @@
     rel="stylesheet">
 
   <link rel="stylesheet" href="./styleDashboard.css">
+  <link rel="stylesheet" href="./styleRelogio.css">
   <script src="https://kit.fontawesome.com/800a4bbd88.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
+<body onload="contar()">
 
   <header>
     <div class="headerBox">
@@ -101,6 +102,9 @@
                 <div class="horarioTitle">
                   <h3> Horário </h3>
                 </div>
+                <div id="relogio">
+                  <h1 id="hora">00:00:00</h1>
+                </div>
               </div>  
             </div>
           </div>
@@ -127,6 +131,7 @@
 </html>
 
 <script src="./scriptDashboard.js"></script>
+<script src="./scriptRelogio.js"></script>
 
 // Gráficos
 <script>

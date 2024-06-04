@@ -1,0 +1,45 @@
+
+
+#relogio{
+  width: 100%;
+}
+
+#hora{
+  font-size: 40px;
+  text-align: center;
+  color: rgb(255, 255, 255); 
+}
+
+#data{
+  font-size: 17px;
+  font-weight: 500;
+  position: relative;
+  left: 41.7%;
+  bottom: 30px;
+  color: rgb(134, 134, 134);
+}
+
+#am-pm{
+ font-size: 30px;
+ margin-left: 4px;
+}
+
+#configuracao{
+  width: 20px;
+  position: absolute;
+  -webkit-user-drag: none; 
+  cursor: pointer;
+  top: 90%;
+  right: 50%;
+  left: auto; 
+  /*Efeito de transição para voltar a posição inicial*/
+  transition: 400ms;
+  transform: rotate(0deg); 
+}
+
+#configuracao:hover{
+  /*Efeito de transição para rotacionar*/
+  transition: 400ms;
+  transform: rotate(90deg); 
+}
+
