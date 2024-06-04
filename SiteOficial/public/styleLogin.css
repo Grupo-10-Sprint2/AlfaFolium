@@ -24,9 +24,9 @@ body {
 }
 
 .boxCadastro {
-    background: linear-gradient(rgba(15, 32, 2, 0.7), rgba(15, 32, 2, 0));
+    background: linear-gradient(rgba(15, 32, 2, 0.589), rgba(15, 32, 2, 0));
     /* Define o degradê de opacidade */
-    border-radius: 50px;
+    border-radius: 200px;
     width: 600px;
     height: 800px;
     margin: auto;
@@ -38,6 +38,7 @@ body {
     /* Sombra interna com degradê de opacidade */
     transform: translateY(-200%);
     animation: opacity 1.8s ease-in-out;
+    backdrop-filter: blur(10px);
 }
 
 .logo {

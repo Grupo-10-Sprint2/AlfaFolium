@@ -183,6 +183,7 @@ body {
    border: 5px solid #1B3606;
    margin-top: 20px;
    border-radius: 50px;
+   display: flex;
 }
 
 .boxNome {
@@ -192,6 +193,46 @@ body {
    border: 5px 5px solid #1B3606;
    border-radius: 50px 0 0 50px;
    transform: scale(115%);
+}
+
+.legendas{
+   width: 60%;
+   height: 100%;
+   padding-left: 60px;
+   gap: 40px;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+}
+
+.legendaAlerta{
+   background-color: rgb(255, 0, 0);
+   width: 120px;
+   height: 30px;
+   border-radius: 20px;
+   text-align: center;
+   padding: 5px;
+   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.247);
+}
+
+.legendaAtencao{
+   background-color: rgb(255, 174, 0);
+   width: 120px;
+   height: 30px;
+   border-radius: 20px;
+   text-align: center;
+   padding: 5px;
+   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.247);
+}
+
+.legendaEstavel{
+   background-color: rgb(16, 196, 0);
+   width: 120px;
+   height: 30px;
+   border-radius: 20px;
+   text-align: center;
+   padding: 5px;
+   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.247);
 }
 
 .boxDadosCapturados {
@@ -324,6 +365,9 @@ body {
    height: 80%;
    border-radius: 20px;
    border: 3px solid #1B3606;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
 
 .parametrosTitle{
@@ -364,6 +408,10 @@ body {
    height: 110px;
    border-radius: 20px;
    border: 3px solid #1B3606;
+   text-align: center;
+   display: flex;
+   flex-direction: column;
+   gap: 12px;
 }
 
 .boxLocalidade{
@@ -372,6 +420,10 @@ body {
    height: 110px;
    border-radius: 20px;
    border: 3px solid #1B3606;
+   display: flex;
+   flex-direction: column;
+   gap: 20px;
+   text-align: center;
 }
 
 .boxHorario{
@@ -439,3 +491,120 @@ body {
    font-size: 24px;
    line-height: 18px;
 }
+
+.parametroTemp{
+   width: 180px;
+   height: 50px;
+   background-color: #75885a2c;
+   margin-top: 15px;
+   border-radius: 100px;
+   display: flex;
+   gap: 60px;
+   justify-content: center;
+}
+
+.parametroTempMax{
+   width: 80px;
+   height: 45px;
+   background-color: #FBE0C0;
+   border-radius: 25px 0 100% 100%;
+   position: relative;
+   top: 18px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.parametroTempMax h3{
+   color: #132b0a;
+}
+
+.parametroTempMin{
+   width: 80px;
+   height: 45px;
+   background-color: #FBE0C0;
+   border-radius: 0 25px 100% 100%;
+   position: relative;
+   top: 18px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.parametroTempMin h3{
+   color: #132b0a;
+}
+
+.parametroTempTitle{
+   width: 180px;
+   background-color: #FBE0C0;
+   text-align: center;
+   border-radius: 80px 80px 10px 10px;
+   position: absolute;
+   box-shadow: -1px 6px 10px -4px rgba(0, 0, 0, 0.75);
+   border: 3px solid #1B3606;
+}
+
+.parametroTempTitle h3{
+   color: #132b0a;
+   font-size: 12px;
+}
+
+.parametroUmi{
+   width: 180px;
+   height: 50px;
+   background-color: #75885a2c;
+   margin-top: 30px;
+   border-radius: 100px;
+   display: flex;
+   gap: 60px;
+   justify-content: center;
+}
+
+.parametroUmiTitle{
+   width: 180px;
+   background-color: #FBE0C0;
+   text-align: center;
+   border-radius: 80px 80px 10px 10px;
+   position: absolute;
+   box-shadow: -1px 6px 10px -4px rgba(0, 0, 0, 0.75);
+   border: 3px solid #1B3606;
+}
+
+.parametroUmiTitle h3{
+   color: #132b0a;
+   font-size: 12px;
+}
+
+.parametroUmiMax{
+   width: 80px;
+   height: 45px;
+   background-color: #FBE0C0;
+   border-radius: 25px 0 100% 100%;
+   position: relative;
+   top: 18px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.parametroUmiMax h3{
+   color: #132b0a;
+}
+
+.parametroUmiMin{
+   width: 80px;
+   height: 45px;
+   background-color: #FBE0C0;
+   border-radius: 0 25px 100% 100%;
+   position: relative;
+   top: 18px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.parametroUmiMin h3{
+   color: #132b0a;
+}
+
