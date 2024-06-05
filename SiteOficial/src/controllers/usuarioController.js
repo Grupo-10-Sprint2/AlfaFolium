@@ -1,9 +1,8 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
 
 function autenticar(req, res) {
     let email = req.body.emailServer;
-    let senha = req.body.senhaServer
+    let senha = req.body.senhaServer;
 
     if (email == undefined) {
         res.status(400).send("Seu email está undefined!");
@@ -21,13 +20,15 @@ function autenticar(req, res) {
                         console.log(resultadoAutenticar);
 
                         res.json({
-                            id: resultadoAutenticar[0].id,
+                            idUsuario: resultadoAutenticar[0].idUsuario,
                             nome: resultadoAutenticar[0].nome,
                             email: resultadoAutenticar[0].email,
-                            cpf: resultadoAutenticar[0].cpf,
+                            CPF: resultadoAutenticar[0].CPF,
                             telFixo: resultadoAutenticar[0].telFixo,
-                            telCel: resultadoAutenticar[0].telCel,
-                            empresa: resultadoAutenticar[0].idEmpresa
+                            telCelular: resultadoAutenticar[0].telCelular,
+                            dataCriacao: resultadoAutenticar[0].dataCriacao,
+                            idEmpresa: resultadoAutenticar[0].fkEmpresa,
+                            idTipoUsuario: resultadoAutenticar[0].fkTipoUsuario
                         });
 
                     } else if (resultadoAutenticar.length == 0) {
@@ -54,6 +55,7 @@ function cadastrar(req, res) {
     let telFixo = req.body.telFixoServer;
     let telCel = req.body.telCelServer;
     let idEmpresa = req.body.idEmpresaServer;
+    let idTipoUsuario = req.body.idTipoUsuarioServer;
 
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -67,9 +69,11 @@ function cadastrar(req, res) {
         res.status(400).send("Seu telefone celular está indefinido!");
     } else if (idEmpresa == undefined) {
         res.status(400).send("Sua empresa está indefinido!");
+    } else if (idTipoUsuario == undefined) {
+        res.status(400).send("Sua função está indefinida!");
     } else {
 
-        usuarioModel.cadastrar(cpf, nome, email, telFixo, telCel, idEmpresa)
+        usuarioModel.cadastrar(nome, cpf, email, telFixo, telCel, idEmpresa, idTipoUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
