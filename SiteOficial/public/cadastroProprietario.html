@@ -12,102 +12,95 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap"
         rel="stylesheet">
 
-        <script src="https://kit.fontawesome.com/800a4bbd88.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/800a4bbd88.js" crossorigin="anonymous"></script>
 </head>
 
 
 <body>
-        <div class="headerBox">
-            <div class="boxLogo">
-  
-              <img src="./assets/assetsDashboard/logoNav.png">
-              
-            </div>
-            <div class="boxMenu">
-  
-              <nav role="navigation">
+    <div class="headerBox">
+        <div class="boxLogo">
+
+            <img src="./assets/assetsDashboard/logoNav.png">
+
+        </div>
+        <div class="boxMenu">
+
+            <nav role="navigation">
                 <div id="menuToggle">
-                   <input type="checkbox">
-                   
-                   <span></span>
-                   <span></span>
-                   <span></span>
-                   
-                   <ul id="menu">
-                      <li>Home</li>
-                      <li>Suporte</li>
-                      <li>Sair</li>
-                   </ul>
+                    <input type="checkbox">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                    <ul id="menu">
+                        <li>Home</li>
+                        <li>Suporte</li>
+                        <li>Sair</li>
+                    </ul>
                 </div>
-             </nav>
-  
-            </div>
-          </div>
+            </nav>
+
+        </div>
+    </div>
 
 
 
-        <div class="boxContent">
-            <div class="boxGreen">
-                <div class="boxCadastro">
-                    <div class="quadrado_titulo">
-                        
-                        <div class="titulo">
-                            <p>Insira os dados do proprietário</p>
-                        </div>                        
+    <div class="boxContent">
+        <div class="boxGreen">
+            <div class="boxCadastro">
+                <div class="quadrado_titulo">
+                    <div class="titulo">
+                        <p>Insira os dados do proprietário</p>
                     </div>
-
-                    <div class="boxInputs">
-                    <input placeholder="Type here..." class="input" name="text" type="text">
-                    <input placeholder="Type here..." class="input" name="text" type="text">
-                    <input placeholder="Type here..." class="input" name="text" type="text">
-                    <input placeholder="Type here..." class="input" name="text" type="text">
+                </div>
+                <div class="boxInputs">
+                    <div class="boxInput">
+                        <h3>Nome:</h3>
+                        <input placeholder="João Pessoa" class="input" name="text" type="text">
                     </div>
-
-                    <!-- <div class="campo-1">
-                        <p>Nome:</p>
-                        <input id="input_nomeUser" placeholder="Nome completo"> <br>
+                    <div class="boxInput">
+                        <h3>Email:</h3>
+                        <input placeholder="joao@email.com" class="input" name="text" type="text">
                     </div>
-
-                    <div class="campo-2">
-                        <p>E-mail:</p>
-                        <input id="input_emailUser" placeholder="usuario@email.com"> <br>
+                    <div class="boxInput">
+                        <h3>CPF:</h3>
+                        <input placeholder="012.345.678-90" class="input" name="text" type="text">
                     </div>
-
-                    <div class="campo-3">
-                        <p>Senha:</p>
-                        <input id="input_senhaUser" type="password" placeholder="Digite uma senha forte"> <br>
+                    <div class="boxInput">
+                        <h3>TelFixo:</h3>
+                        <input placeholder="(00)12345-6789" class="input" name="text" type="text">
                     </div>
-
-                    <div class="campo-4">
-                        <p>Repetir Senha:</p>
-                        <input id="input_confirmacaoSenha" type="password" placeholder="Digite sua senha novamente"> <br>
+                    <div class="boxInput">
+                        <h3>TelCel:</h3>
+                        <input placeholder="(00)1234-5678" class="input" name="text" type="text">
                     </div>
-
-                    <div class="campo-5">
-                        <p>CPF:</p>
-                        <input id="input_cpfUser" placeholder="000.000.000-00"> <br>
+                    <div class="boxInput">
+                        <h3>Empresa:</h3>
+                        <select class="select" name="text" type="text">
+                            <option value=""> --- </option>
+                        </select>
                     </div>
-
-                    <div class="campo-6">
-                        <p>Telefone:</p>
-                        <input id="input_telefoneUser" placeholder="(00)000000000">
-                    </div>
-
-                    <button onclick="cadastrarUsuario()" class="botaoCadastroEmpresa">
-                        Cadastrar Empresa
-                    </button> -->
+                    <button class="btn_cadastrar">
+                        <h3> Cadastrar </h3>
+                    </button>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </body>
 
 </html>
 
-<script>
-    function cadastrarUsuario(){
+<script src="./js/scriptCadastroUsuario.js"></script>
 
-       // Definindo as variaveis dos inputs e dos .indexOf() e .length
+<script>
+
+
+    function cadastrarUsuario() {
+
+        // Definindo as variaveis dos inputs e dos .indexOf() e .length
 
         let nome = input_nomeUser.value
         let email = input_emailUser.value
@@ -130,7 +123,7 @@
         input_telefoneUser.style.borderColor = '';
 
 
-       // variaveis para validação de números nos campos nescessários (EX: telefone, CPF e senha)
+        // variaveis para validação de números nos campos nescessários (EX: telefone, CPF e senha)
 
         var inputCpf = document.getElementById('input_cpfUser').value;
         var temNumeroCpf = false;
@@ -154,7 +147,7 @@
             }
         }
 
-        
+
         var inputTel = document.getElementById('input_telefoneUser').value;
         var temNumeroTel = false;
 
@@ -165,70 +158,70 @@
                 break;
             }
         }
-         
+
         // Validações da tela de cadastro
 
-        if(nome == ''){
+        if (nome == '') {
             alert('Você deve informar o nome completo do usuario para prosseguir!')
             var input = document.getElementById('input_nomeUser');
             input.style.borderColor = 'red';
-        }else if(email == ''){
+        } else if (email == '') {
             alert('Você deve informar o seu email para prosseguir!')
             var input = document.getElementById('input_emailUser');
             input.style.borderColor = 'red';
-        }else if(senha == ''){
+        } else if (senha == '') {
             alert('Você deve informar uma senha para prosseguir!')
             var input = document.getElementById('input_senhaUser');
             input.style.borderColor = 'red';
-        }else if(senha != senha2x){
+        } else if (senha != senha2x) {
             alert('A senha que você digitou não condiz com a confimação de senha. por favor verifique se você digitou os campos corretamente')
             var input = document.getElementById('input_confirmacaoSenha');
             input.style.borderColor = 'red';
-        }else if(tamanhoSenha <= 5){
-             alert('A senha deve ter mais de 5 caracteres!')
-             var input = document.getElementById('input_senhaUser');
+        } else if (tamanhoSenha <= 5) {
+            alert('A senha deve ter mais de 5 caracteres!')
+            var input = document.getElementById('input_senhaUser');
             input.style.borderColor = 'red';
-        }else if(temNumeroSenha == false){
+        } else if (temNumeroSenha == false) {
             alert('A senha deve conter pelo menos um número!')
             var input = document.getElementById('input_senhaUser');
             input.style.borderColor = 'red';
-        }else if(cpf == ''){
+        } else if (cpf == '') {
             alert('Você deve informar o seu CPF para prosseguir!')
             var input = document.getElementById('input_cpfUser');
             input.style.borderColor = 'red';
-        }else if(telefone == ''){
+        } else if (telefone == '') {
             alert('Você deve informar o telefone para prosseguir!')
             var input = document.getElementById('input_telefoneUser');
             input.style.borderColor = 'red';
-        }else if(tamanhoCPF != 14) {
+        } else if (tamanhoCPF != 14) {
             alert('O CPF deve conter 14 caracteres!')
             var input = document.getElementById('input_cpfUser');
-            input.style.borderColor = 'red'; 
-        }else if (tamanhoTelefone != 13){
+            input.style.borderColor = 'red';
+        } else if (tamanhoTelefone != 13) {
             alert('O telefone deve conter 13 caracteres!')
             var input = document.getElementById('input_telefoneUser');
             input.style.borderColor = 'red';
-        }else if(indiceParentesesAberto == -1){
+        } else if (indiceParentesesAberto == -1) {
             alert('Você deve digitar o número com os parênteses do DDD!')
             var input = document.getElementById('input_telefoneUser');
             input.style.borderColor = 'red';
-        }else if(indiceParentesesFechado == -1){
+        } else if (indiceParentesesFechado == -1) {
             alert('Você deve digitar o número com os parênteses do DDD!')
             var input = document.getElementById('input_telefoneUser');
             input.style.borderColor = 'red';
-        }else if(indiceArroba == -1){
+        } else if (indiceArroba == -1) {
             alert('O seu email deve ter arroba!')
             var input = document.getElementById('input_emailUser');
             input.style.borderColor = 'red';
-        }else if(temNumeroTel == false){
+        } else if (temNumeroTel == false) {
             alert('O telefone deve conter apenas números. conforme o exemplo dado no campo')
             var input = document.getElementById('input_telefoneUser');
             input.style.borderColor = 'red';
-        }else if(temNumeroCpf == false){
+        } else if (temNumeroCpf == false) {
             alert('O CPF deve conter os números e os pontos de separação. conforme o exemplo dado no campo')
             var input = document.getElementById('input_cpfUser');
             input.style.borderColor = 'red';
-        }else{
+        } else {
             alert('Cadastro realizado com sucesso!')
             window.location.href = 'login.html';
         }

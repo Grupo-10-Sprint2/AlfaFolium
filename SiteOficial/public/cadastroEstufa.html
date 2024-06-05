@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Proprietário - Alfa Folium</title>
+    <link rel="stylesheet" href="./css/styleCadastroEstufa.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap"
+        rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/800a4bbd88.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+    <div class="headerBox">
+        <div class="boxLogo">
+
+            <img src="./assets/assetsDashboard/logoNav.png">
+
+        </div>
+        <div class="boxMenu">
+
+            <nav role="navigation">
+                <div id="menuToggle">
+                    <input type="checkbox">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                    <ul id="menu">
+                        <li>Home</li>
+                        <li>Suporte</li>
+                        <li>Sair</li>
+                    </ul>
+                </div>
+            </nav>
+
+        </div>
+    </div>
+
+
+
+    <div class="boxContent">
+        <div class="boxGreen">
+            <div class="boxCadastro">
+                <div class="quadrado_titulo">
+                    <div class="titulo">
+                        <p>Insira os dados da estufa</p>
+                    </div>
+                </div>
+                <div class="boxInputs">
+                    <div class="boxInput">
+                        <h3 class="boxInputTitle">Tamanho:</h3>
+                        <input placeholder="Hectares" class="input" name="text" type="text">
+                    </div>
+                    <div class="boxInput">
+                        <h3 class="boxInputTitleS">Status:</h3>
+                        <select placeholder="joao@email.com" class="select" name="text" type="text">
+                            <option value="">---</option>
+                            <option value="ativo">Ativo</option>
+                            <option value="inativo">Inativo</option>
+                        </select>
+                    </div>
+                    <div class="boxInput">
+                        <h3 class="boxInputTitle">Empresa:</h3>
+                        <select placeholder="012.345.678-90" class="select" name="text" type="text">
+                            <option value="">---</option>
+                        </select>
+                    </div>
+                    <div class="boxInput">
+                        <h3 class="titleParametro">Parâmetros:</h3>
+                        <div class="boxParametros">
+                            <div class="boxParametros1">
+                                <div class="tempTitle">
+                                    <h3>Temperatura</h3>    
+                                </div>
+                                <input placeholder="Máx." class="input_Parametro" type="text">
+                                <input placeholder="Mín." class="input_Parametro" type="text">
+                            </div>
+                            <div class="boxParametros2">
+                                <div class="umiTitle">
+                                    <h3>Umidade</h3>    
+                                </div>
+                                <input placeholder="Máx." class="input_Parametro" type="text">
+                                <input placeholder="Mín." class="input_Parametro" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn_cadastrar">
+                        <h3> Cadastrar </h3>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
+
+<script src="./js/scriptCadastroEstufa.js"></script>
+
+<script>
+    function cadastrarUsuario() {
+
+        // Definindo as variaveis dos inputs e dos .indexOf() e .length
+
+        let nome = input_nomeUser.value
+        let email = input_emailUser.value
+        let senha = input_senhaUser.value
+        let senha2x = input_confirmacaoSenha.value
+        let cpf = input_cpfUser.value
+        let telefone = input_telefoneUser.value
+        let indiceArroba = email.indexOf("@")
+        let indiceParentesesAberto = telefone.indexOf("(")
+        let indiceParentesesFechado = telefone.indexOf(")")
+        let tamanhoCPF = cpf.length
+        let tamanhoTelefone = telefone.length
+        let tamanhoSenha = senha.length
+
+        input_nomeUser.style.borderColor = '';
+        input_emailUser.style.borderColor = '';
+        input_senhaUser.style.borderColor = '';
+        input_confirmacaoSenha.style.borderColor = '';
+        input_cpfUser.style.borderColor = '';
+        input_telefoneUser.style.borderColor = '';
+
+
+        // variaveis para validação de números nos campos nescessários (EX: telefone, CPF e senha)
+
+        var inputCpf = document.getElementById('input_cpfUser').value;
+        var temNumeroCpf = false;
+
+        for (var i = 0; i < inputCpf.length; i++) {
+            var caractere = inputCpf[i];
+            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
+                temNumeroCpf = true;
+                break;
+            }
+        }
+
+        var inputSenha = document.getElementById('input_senhaUser').value;
+        var temNumeroSenha = false;
+
+        for (var i = 0; i < inputSenha.length; i++) {
+            var caractere = inputSenha[i];
+            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
+                temNumeroSenha = true;
+                break;
+            }
+        }
+
+
+        var inputTel = document.getElementById('input_telefoneUser').value;
+        var temNumeroTel = false;
+
+        for (var i = 0; i < inputTel.length; i++) {
+            var caractere = inputTel[i];
+            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
+                temNumeroTel = true;
+                break;
+            }
+        }
+
+        // Validações da tela de cadastro
+
+        if (nome == '') {
+            alert('Você deve informar o nome completo do usuario para prosseguir!')
+            var input = document.getElementById('input_nomeUser');
+            input.style.borderColor = 'red';
+        } else if (email == '') {
+            alert('Você deve informar o seu email para prosseguir!')
+            var input = document.getElementById('input_emailUser');
+            input.style.borderColor = 'red';
+        } else if (senha == '') {
+            alert('Você deve informar uma senha para prosseguir!')
+            var input = document.getElementById('input_senhaUser');
+            input.style.borderColor = 'red';
+        } else if (senha != senha2x) {
+            alert('A senha que você digitou não condiz com a confimação de senha. por favor verifique se você digitou os campos corretamente')
+            var input = document.getElementById('input_confirmacaoSenha');
+            input.style.borderColor = 'red';
+        } else if (tamanhoSenha <= 5) {
+            alert('A senha deve ter mais de 5 caracteres!')
+            var input = document.getElementById('input_senhaUser');
+            input.style.borderColor = 'red';
+        } else if (temNumeroSenha == false) {
+            alert('A senha deve conter pelo menos um número!')
+            var input = document.getElementById('input_senhaUser');
+            input.style.borderColor = 'red';
+        } else if (cpf == '') {
+            alert('Você deve informar o seu CPF para prosseguir!')
+            var input = document.getElementById('input_cpfUser');
+            input.style.borderColor = 'red';
+        } else if (telefone == '') {
+            alert('Você deve informar o telefone para prosseguir!')
+            var input = document.getElementById('input_telefoneUser');
+            input.style.borderColor = 'red';
+        } else if (tamanhoCPF != 14) {
+            alert('O CPF deve conter 14 caracteres!')
+            var input = document.getElementById('input_cpfUser');
+            input.style.borderColor = 'red';
+        } else if (tamanhoTelefone != 13) {
+            alert('O telefone deve conter 13 caracteres!')
+            var input = document.getElementById('input_telefoneUser');
+            input.style.borderColor = 'red';
+        } else if (indiceParentesesAberto == -1) {
+            alert('Você deve digitar o número com os parênteses do DDD!')
+            var input = document.getElementById('input_telefoneUser');
+            input.style.borderColor = 'red';
+        } else if (indiceParentesesFechado == -1) {
+            alert('Você deve digitar o número com os parênteses do DDD!')
+            var input = document.getElementById('input_telefoneUser');
+            input.style.borderColor = 'red';
+        } else if (indiceArroba == -1) {
+            alert('O seu email deve ter arroba!')
+            var input = document.getElementById('input_emailUser');
+            input.style.borderColor = 'red';
+        } else if (temNumeroTel == false) {
+            alert('O telefone deve conter apenas números. conforme o exemplo dado no campo')
+            var input = document.getElementById('input_telefoneUser');
+            input.style.borderColor = 'red';
+        } else if (temNumeroCpf == false) {
+            alert('O CPF deve conter os números e os pontos de separação. conforme o exemplo dado no campo')
+            var input = document.getElementById('input_cpfUser');
+            input.style.borderColor = 'red';
+        } else {
+            alert('Cadastro realizado com sucesso!')
+            window.location.href = 'login.html';
+        }
+    }  
+</script>

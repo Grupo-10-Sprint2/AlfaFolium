@@ -180,6 +180,7 @@ body {
 }
 
 .boxCadastro {
+    margin-top: 50px;
     width: 700px;
     height: 98%;
     border-radius: 40px;
@@ -198,6 +199,8 @@ body {
     animation: opacity 1.5s ease-in-out;
     transform: translateY(200%);
 }
+
+
 
 .boxInput h3 {
     color: #FFFFFF;
