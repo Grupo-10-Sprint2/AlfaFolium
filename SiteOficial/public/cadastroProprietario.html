@@ -1,229 +1,216 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Proprietário - Alfa Folium</title>
-    <link rel="stylesheet" href="./css/styleCadastroUsuario.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap"
-        rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastro de Proprietário - Alfa Folium</title>
+        <link rel="stylesheet" href="./css/styleCadastroUsuario.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap"
+            rel="stylesheet">
 
-    <script src="https://kit.fontawesome.com/800a4bbd88.js" crossorigin="anonymous"></script>
-</head>
+        <script src="https://kit.fontawesome.com/800a4bbd88.js" crossorigin="anonymous"></script>
+    </head>
 
 
-<body>
-    <div class="headerBox">
-        <div class="boxLogo">
-
-            <img src="./assets/assetsDashboard/logoNav.png">
+    <body>
+        <div id="blurTela" class="blurTela">
 
         </div>
-        <div class="boxMenu">
 
-            <nav role="navigation">
-                <div id="menuToggle">
-                    <input type="checkbox">
-
-                    <span></span>
-                    <span></span>
-                    <span></span>
-
-                    <ul id="menu">
-                        <li>Home</li>
-                        <li>Suporte</li>
-                        <li>Sair</li>
-                    </ul>
-                </div>
-            </nav>
-
+        <div class="alertaBox">
+            <h1> Cadastro inválido! </h1>
+            <div onclick="fecharAviso()" class="btnFechar">
+                <h3>X</h3>
+            </div>
+            <div class="mensagemBox">
+            </div>
+            <div class="alfaceAlerta"><img src="./assets/assetsCadastro/alface.png"></div>
         </div>
-    </div>
+
+
+        <div class="headerBox">
+            <div class="boxLogo">
+
+                <img src="./assets/assetsDashboard/logoNav.png">
+
+            </div>
+            <div class="boxMenu">
+
+                <nav role="navigation">
+                    <div id="menuToggle">
+                        <input type="checkbox">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                        <ul id="menu">
+                            <li>Home</li>
+                            <li>Suporte</li>
+                            <li>Sair</li>
+                        </ul>
+                    </div>
+                </nav>
+
+            </div>
+        </div>
 
 
 
-    <div class="boxContent">
-        <div class="boxGreen">
-            <div class="boxCadastro">
-                <div class="quadrado_titulo">
-                    <div class="titulo">
-                        <p>Insira os dados do proprietário</p>
+        <div class="boxContent">
+            <div class="boxGreen">
+                <div class="boxCadastro">
+                    <div class="quadrado_titulo">
+                        <div class="titulo">
+                            <p>Insira os dados do proprietário</p>
+                        </div>
                     </div>
-                </div>
-                <div class="boxInputs">
-                    <div class="boxInput">
-                        <h3>Nome:</h3>
-                        <input placeholder="João Pessoa" class="input" name="text" type="text">
+                    <div class="boxInputs">
+                        <div class="boxInput">
+                            <h3>Nome:</h3>
+                            <input placeholder="João Pessoa" class="input" id="input_nomeUsuario" type="text">
+                        </div>
+                        <div class="boxInput">
+                            <h3>Email:</h3>
+                            <input placeholder="joao@email.com" class="input" id="input_emailUsuario" type="text">
+                        </div>
+                        <div class="boxInput">
+                            <h3>CPF:</h3>
+                            <input placeholder="012.345.678-90" class="input" id="input_cpfUsuario" type="text">
+                        </div>
+                        <div class="boxInput">
+                            <h3>TelFixo:</h3>
+                            <input placeholder="(00)1234-5678" class="input" id="input_telFixoUsuario" type="text">
+                        </div>
+                        <div class="boxInput">
+                            <h3>TelCel:</h3>
+                            <input placeholder="(00)12345-6789" class="input" id="input_telCelUsuario" type="text">
+                        </div>
+                        <div class="boxInput">
+                            <h3>Empresa:</h3>
+                            <select class="select" id="input_empresaUsuario" type="text">
+                                <option value=""> --- </option>
+                                <option value="macacaco">macaco</option>
+                            </select>
+                        </div>
+                        <button onclick="cadastrarUsuario()" class="btn_cadastrar">
+                            <h3> Cadastrar </h3>
+                        </button>
                     </div>
-                    <div class="boxInput">
-                        <h3>Email:</h3>
-                        <input placeholder="joao@email.com" class="input" name="text" type="text">
-                    </div>
-                    <div class="boxInput">
-                        <h3>CPF:</h3>
-                        <input placeholder="012.345.678-90" class="input" name="text" type="text">
-                    </div>
-                    <div class="boxInput">
-                        <h3>TelFixo:</h3>
-                        <input placeholder="(00)12345-6789" class="input" name="text" type="text">
-                    </div>
-                    <div class="boxInput">
-                        <h3>TelCel:</h3>
-                        <input placeholder="(00)1234-5678" class="input" name="text" type="text">
-                    </div>
-                    <div class="boxInput">
-                        <h3>Empresa:</h3>
-                        <select class="select" name="text" type="text">
-                            <option value=""> --- </option>
-                        </select>
-                    </div>
-                    <button class="btn_cadastrar">
-                        <h3> Cadastrar </h3>
-                    </button>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
-</body>
+        </div>
+    </body>
 
-</html>
+    </html>
 
-<script src="./js/scriptCadastroUsuario.js"></script>
+    <script src="https://unpkg.com/vanilla-masker/build/vanilla-masker.min.js"></script>
+    <script src="./js/scriptCadastroUsuario.js"></script>
 
-<script>
+    <script>
 
+    document.addEventListener('DOMContentLoaded', function () {
+        VMasker(document.querySelector("#input_cpfUsuario")).maskPattern("999.999.999-99");
+        VMasker(document.querySelector("#input_telFixoUsuario")).maskPattern("(99)9999-9999");
+        VMasker(document.querySelector("#input_telCelUsuario")).maskPattern("(99)99999-9999");
+    });
+
+    function mostrarAlerta(mensagemAlerta) {
+        let boxAlerta = document.querySelector('.alertaBox');
+        let boxMensagem = document.querySelector('.mensagemBox');
+        let blurTela = document.getElementById('blurTela');
+
+        boxMensagem.innerHTML = `<p>${mensagemAlerta}</p>`;
+        blurTela.style.display = 'block';
+        boxAlerta.classList.add('aparecer');
+    }
+
+    function fecharAviso() {
+        let boxAlerta = document.querySelector('.alertaBox');
+        let blurTela = document.getElementById('blurTela');
+
+        boxAlerta.classList.remove('aparecer');
+        setTimeout(() => {
+            blurTela.style.display = 'none';
+        }, 500);
+    }
+
+    function marcarErro(input) {
+        input.style.border = 'solid 2px #FF0000';
+        setTimeout(() => {
+            input.style.border = '';
+        }, 3000);
+    }
 
     function cadastrarUsuario() {
+        let nome = document.getElementById('input_nomeUsuario').value;
+        let email = document.getElementById('input_emailUsuario').value;
+        let cpf = document.getElementById('input_cpfUsuario').value;
+        let telFixo = document.getElementById('input_telFixoUsuario').value;
+        let telCel = document.getElementById('input_telCelUsuario').value;
+        let empresa = document.getElementById('input_empresaUsuario').value;
 
-        // Definindo as variaveis dos inputs e dos .indexOf() e .length
+        let nomeInput = document.getElementById('input_nomeUsuario');
+        let emailInput = document.getElementById('input_emailUsuario');
+        let cpfInput = document.getElementById('input_cpfUsuario');
+        let telFixoInput = document.getElementById('input_telFixoUsuario');
+        let telCelInput = document.getElementById('input_telCelUsuario');
+        let empresaInput = document.getElementById('input_empresaUsuario');
 
-        let nome = input_nomeUser.value
-        let email = input_emailUser.value
-        let senha = input_senhaUser.value
-        let senha2x = input_confirmacaoSenha.value
-        let cpf = input_cpfUser.value
-        let telefone = input_telefoneUser.value
-        let indiceArroba = email.indexOf("@")
-        let indiceParentesesAberto = telefone.indexOf("(")
-        let indiceParentesesFechado = telefone.indexOf(")")
-        let tamanhoCPF = cpf.length
-        let tamanhoTelefone = telefone.length
-        let tamanhoSenha = senha.length
+        nomeInput.style.border = '';
+        emailInput.style.border = '';
+        cpfInput.style.border = '';
+        telFixoInput.style.border = '';
+        telCelInput.style.border = '';
+        empresaInput.style.border = '';
 
-        input_nomeUser.style.borderColor = '';
-        input_emailUser.style.borderColor = '';
-        input_senhaUser.style.borderColor = '';
-        input_confirmacaoSenha.style.borderColor = '';
-        input_cpfUser.style.borderColor = '';
-        input_telefoneUser.style.borderColor = '';
+        let validado = true;
 
-
-        // variaveis para validação de números nos campos nescessários (EX: telefone, CPF e senha)
-
-        var inputCpf = document.getElementById('input_cpfUser').value;
-        var temNumeroCpf = false;
-
-        for (var i = 0; i < inputCpf.length; i++) {
-            var caractere = inputCpf[i];
-            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
-                temNumeroCpf = true;
-                break;
-            }
+        if (nome === '') {
+            marcarErro(nomeInput);
+            validado = false;
+        }
+        if (email === '') {
+            marcarErro(emailInput);
+            validado = false;
+        }
+        if (cpf === '') {
+            marcarErro(cpfInput);
+            validado = false;
+        }
+        if (telFixo === '') {
+            marcarErro(telFixoInput);
+            validado = false;
+        }
+        if (telCel === '') {
+            marcarErro(telCelInput);
+            validado = false;
+        }
+        if (empresa === '') {
+            marcarErro(empresaInput);
+            validado = false;
         }
 
-        var inputSenha = document.getElementById('input_senhaUser').value;
-        var temNumeroSenha = false;
-
-        for (var i = 0; i < inputSenha.length; i++) {
-            var caractere = inputSenha[i];
-            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
-                temNumeroSenha = true;
-                break;
-            }
+        if (!validado) {
+            mostrarAlerta('Preencha todos os campos!');
+            return;
         }
 
-
-        var inputTel = document.getElementById('input_telefoneUser').value;
-        var temNumeroTel = false;
-
-        for (var i = 0; i < inputTel.length; i++) {
-            var caractere = inputTel[i];
-            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
-                temNumeroTel = true;
-                break;
-            }
+        if (email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+            marcarErro(emailInput);
+            mostrarAlerta('Insira um email válido!');
+            validado = false;
         }
 
-        // Validações da tela de cadastro
-
-        if (nome == '') {
-            alert('Você deve informar o nome completo do usuario para prosseguir!')
-            var input = document.getElementById('input_nomeUser');
-            input.style.borderColor = 'red';
-        } else if (email == '') {
-            alert('Você deve informar o seu email para prosseguir!')
-            var input = document.getElementById('input_emailUser');
-            input.style.borderColor = 'red';
-        } else if (senha == '') {
-            alert('Você deve informar uma senha para prosseguir!')
-            var input = document.getElementById('input_senhaUser');
-            input.style.borderColor = 'red';
-        } else if (senha != senha2x) {
-            alert('A senha que você digitou não condiz com a confimação de senha. por favor verifique se você digitou os campos corretamente')
-            var input = document.getElementById('input_confirmacaoSenha');
-            input.style.borderColor = 'red';
-        } else if (tamanhoSenha <= 5) {
-            alert('A senha deve ter mais de 5 caracteres!')
-            var input = document.getElementById('input_senhaUser');
-            input.style.borderColor = 'red';
-        } else if (temNumeroSenha == false) {
-            alert('A senha deve conter pelo menos um número!')
-            var input = document.getElementById('input_senhaUser');
-            input.style.borderColor = 'red';
-        } else if (cpf == '') {
-            alert('Você deve informar o seu CPF para prosseguir!')
-            var input = document.getElementById('input_cpfUser');
-            input.style.borderColor = 'red';
-        } else if (telefone == '') {
-            alert('Você deve informar o telefone para prosseguir!')
-            var input = document.getElementById('input_telefoneUser');
-            input.style.borderColor = 'red';
-        } else if (tamanhoCPF != 14) {
-            alert('O CPF deve conter 14 caracteres!')
-            var input = document.getElementById('input_cpfUser');
-            input.style.borderColor = 'red';
-        } else if (tamanhoTelefone != 13) {
-            alert('O telefone deve conter 13 caracteres!')
-            var input = document.getElementById('input_telefoneUser');
-            input.style.borderColor = 'red';
-        } else if (indiceParentesesAberto == -1) {
-            alert('Você deve digitar o número com os parênteses do DDD!')
-            var input = document.getElementById('input_telefoneUser');
-            input.style.borderColor = 'red';
-        } else if (indiceParentesesFechado == -1) {
-            alert('Você deve digitar o número com os parênteses do DDD!')
-            var input = document.getElementById('input_telefoneUser');
-            input.style.borderColor = 'red';
-        } else if (indiceArroba == -1) {
-            alert('O seu email deve ter arroba!')
-            var input = document.getElementById('input_emailUser');
-            input.style.borderColor = 'red';
-        } else if (temNumeroTel == false) {
-            alert('O telefone deve conter apenas números. conforme o exemplo dado no campo')
-            var input = document.getElementById('input_telefoneUser');
-            input.style.borderColor = 'red';
-        } else if (temNumeroCpf == false) {
-            alert('O CPF deve conter os números e os pontos de separação. conforme o exemplo dado no campo')
-            var input = document.getElementById('input_cpfUser');
-            input.style.borderColor = 'red';
-        } else {
-            alert('Cadastro realizado com sucesso!')
-            window.location.href = 'login.html';
+        if(validado){
+            alert('DEU CERTO, PAINHO!')
+            // fetch aqui!
         }
-    }  
-</script>
+    }
+
+    </script>
