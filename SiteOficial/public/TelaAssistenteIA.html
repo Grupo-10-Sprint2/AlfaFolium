@@ -30,7 +30,7 @@
                 <h2>Em casos de dúvidas <p>
                 Pergunte a nossa IA</h2><p></p>
                 
-                <input id="input_pergunta" placeholder="Digite sua dúvida" type="text"> <p></p>
+                <input id="pergunta" placeholder="Digite sua dúvida" type="text"> <p></p>
 
                 <button onclick="Enviar()">Enviar Pergunta</button>
 
@@ -39,27 +39,36 @@
 
                 <div class="fundoVerdeMaisClaro">
 
-                    <div id="resposta" class="Resposta">
-                        <h1>Teste simulando a IA da Marisinha para saber se o texto gerado pela mesma vai caber dentro da div resposta e se a margin do texto, tamanho da fonte e outras coisa que não consigo listar, estão ok, e pelo visto estão.</h1>
-                    </div>
+                    <div id="resposta" class="Resposta"></div>
 
                 </div>
 
             </div>
 
         </div>
-
         
     </main>
 
+    <script>
+        
+        async function gerarResposta() {
+            const pergunta = document.getElementById('pergunta').value;
+
+            const response = await fetch('/perguntar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ pergunta })
+            });
+
+            const data = await response.json();
+
+            resposta.style.display = 'block';
+            document.getElementById('resposta').innerText = data.resultado;
+        }
+
+    </script>
+
 </body>
 </html>
-
-<script>
-
-    function Enviar(){
-
-        let Pergunta = input_pergunta.value
-    }
-
-</script>
