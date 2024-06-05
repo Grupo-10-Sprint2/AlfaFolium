@@ -39,10 +39,11 @@ CREATE TABLE Usuario (
     Nome VARCHAR (45),
     CPF CHAR (14),
     Email VARCHAR (45),
-    Senha CHAR (12),
-    TelFixo CHAR (11),
-    TelCelular CHAR (11),
+    Senha VARCHAR(35),
+    TelFixo CHAR (13),
+    TelCelular CHAR (14),
     TipoUsuario VARCHAR(45),
+    DataCriacao DATE,
 		CONSTRAINT chkTipoUsuario CHECK (TipoUsuario IN ('Master', 'Dono', 'Funcionarios')),
     fkEmpresa INT,
 		CONSTRAINT fkUsuarioEmpresa FOREIGN KEY (fkEmpresa) 
@@ -147,4 +148,4 @@ INSERT INTO Dados VALUE
     
 SELECT * FROM Dados;
             
-SELECT ;
+SHOW TABLES;
