@@ -3,19 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BobIA</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./styleTelaAssistenteIA.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Podkova:wght@400..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="imagex/png" href="./assets/assetsIndex/logosite.png">
+    <title>Alfa Folium</title>
 </head>
 <body>
 
-    <div id="container">
-        <h1>BobIA</h1>
-        <textarea id="pergunta" type="text" placeholder="Digite a pergunta..."></textarea>
-        <br><br>
-        <button onclick="gerarResposta()">Gerar Resposta</button>
-        <h3>Resposta da IA:</h3>
-        <div id="resposta"></div>
-    </div>
+    <header>
+        <div class="headerBox">
+            <div class="logoBox">
+                <img class="logoImg" src="./assets/assetsTelas/Alfa.png">
+            </div>
+        </div>
+    </header>
+    
+    <main>
+
+        <div class="fundoVerde">
+
+            <div class="SuperiorEscuro">
+
+                <h2>Em casos de dúvidas <p>
+                Pergunte a nossa IA</h2><p></p>
+                
+                <input id="pergunta" placeholder="Digite sua dúvida" type="text"> <p></p>
+
+                <button onclick="gerarResposta()">Enviar Pergunta</button>
+
+            </div>
+            <div class="fundoVerdeClaro">
+
+                <div class="fundoVerdeMaisClaro">
+
+                    <div id="resposta" class="Resposta"></div>
+
+                </div>
+
+            </div>
+
+        </div>
+        
+    </main>
 
     <script>
         
@@ -37,6 +69,6 @@
         }
 
     </script>
-    
+
 </body>
 </html>
