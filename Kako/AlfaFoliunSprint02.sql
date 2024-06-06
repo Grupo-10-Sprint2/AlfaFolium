@@ -4,7 +4,7 @@ USE AlfaFolium;
 
 CREATE TABLE endereco (
 	idEndereco INT PRIMARY KEY AUTO_INCREMENT,
-    CEP CHAR(14),
+    CEP CHAR(9),
     numEnd VARCHAR(10)
 );
 
