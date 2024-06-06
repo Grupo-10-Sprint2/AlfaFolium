@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Proprietário - Alfa Folium</title>
+    <title>Cadastro de Empresa - Alfa Folium</title>
     <link rel="stylesheet" href="./css/styleCadastroEmpresa.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +17,22 @@
 
 
 <body>
+
+    <div id="blurTela" class="blurTela">
+
+    </div>
+
+    <div class="alertaBox">
+        <h1 class="textAlerta"> Cadastro inválido! </h1>
+        <div onclick="fecharAviso()" class="btnFechar">
+            <h3>X</h3>
+        </div>
+        <div class="mensagemBox">
+        </div>
+        <div class="alfaceAlerta"><img src="./assets/assetsCadastro/alface.png"></div>
+    </div>
+
+
     <div class="headerBox">
         <div class="boxLogo">
 
@@ -57,21 +73,21 @@
                 <div class="boxInputs">
                     <div class="boxInput">
                         <h3>Nome:</h3>
-                        <input placeholder="João Pessoa" class="input" name="text" type="text">
+                        <input placeholder="João Pessoa" id="input_nome" class="input" name="text" type="text">
                     </div>
                     <div class="boxInput">
-                        <h3>CPNJ:</h3>
-                        <input placeholder="joao@email.com" class="input" name="text" type="text">
+                        <h3>CNPJ:</h3>
+                        <input placeholder="12.345.678/9012-34" id="input_cnpj" class="input" name="text" type="text">
                     </div>
                     <div class="boxInput">
                         <h3>CEP:</h3>
-                        <input placeholder="012.345.678-90" class="input" name="text" type="text">
+                        <input placeholder="012.345.678-90" id="input_cep" class="input" name="text" type="text">
                     </div>
                     <div class="boxInput">
                         <h3>Número:</h3>
-                        <input placeholder="(00)12345-6789" class="input" name="text" type="text">
+                        <input placeholder="32" id="input_numero" class="input" name="text" type="number">
                     </div>
-                    <button class="btn_cadastrar">
+                    <button onclick="cadastrarEstufa()" class="btn_cadastrar">
                         <h3> Cadastrar </h3>
                     </button>
                 </div>
@@ -83,135 +99,124 @@
 
 </html>
 
+
+
+
+<script src="https://unpkg.com/vanilla-masker/build/vanilla-masker.min.js"></script>
 <script src="./js/scriptCadastroEmpresa.js"></script>
 
+
+
+
 <script>
-    function cadastrarUsuario() {
 
-        // Definindo as variaveis dos inputs e dos .indexOf() e .length
-
-        let nome = input_nomeUser.value
-        let email = input_emailUser.value
-        let senha = input_senhaUser.value
-        let senha2x = input_confirmacaoSenha.value
-        let cpf = input_cpfUser.value
-        let telefone = input_telefoneUser.value
-        let indiceArroba = email.indexOf("@")
-        let indiceParentesesAberto = telefone.indexOf("(")
-        let indiceParentesesFechado = telefone.indexOf(")")
-        let tamanhoCPF = cpf.length
-        let tamanhoTelefone = telefone.length
-        let tamanhoSenha = senha.length
-
-        input_nomeUser.style.borderColor = '';
-        input_emailUser.style.borderColor = '';
-        input_senhaUser.style.borderColor = '';
-        input_confirmacaoSenha.style.borderColor = '';
-        input_cpfUser.style.borderColor = '';
-        input_telefoneUser.style.borderColor = '';
+    document.addEventListener('DOMContentLoaded', function () {
+        VMasker(document.querySelector("#input_cnpj")).maskPattern("99.999.999/9999-99");
+        VMasker(document.querySelector("#input_cep")).maskPattern("999.999.999-99");
+    });
 
 
-        // variaveis para validação de números nos campos nescessários (EX: telefone, CPF e senha)
+    function mostrarAlerta(mensagemAlerta) {
+        let boxAlerta = document.querySelector('.alertaBox');
+        let boxMensagem = document.querySelector('.mensagemBox');
+        let blurTela = document.getElementById('blurTela');
 
-        var inputCpf = document.getElementById('input_cpfUser').value;
-        var temNumeroCpf = false;
+        boxMensagem.innerHTML = `<p>${mensagemAlerta}</p>`;
+        blurTela.style.display = 'block';
+        boxAlerta.classList.add('aparecer');
+    }
 
-        for (var i = 0; i < inputCpf.length; i++) {
-            var caractere = inputCpf[i];
-            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
-                temNumeroCpf = true;
-                break;
-            }
+    function fecharAviso() {
+        let boxAlerta = document.querySelector('.alertaBox');
+        let blurTela = document.getElementById('blurTela');
+
+        boxAlerta.classList.remove('aparecer');
+        setTimeout(() => {
+            blurTela.style.display = 'none';
+        }, 500);
+    }
+
+    function marcarErro(input) {
+        input.style.border = 'solid 2px #FF0000';
+        setTimeout(() => {
+            input.style.border = '';
+        }, 3000);
+    }
+
+
+    function cadastrarEstufa() {
+        let nomeInput = document.getElementById('input_nome');
+        let cnpjInput = document.getElementById('input_cnpj');
+        let cepInput = document.getElementById('input_cep');
+        let numeroInput = document.getElementById('input_numero');
+
+        let nome = nomeInput.value;
+        let CNPJ = cnpjInput.value;
+        let CEP = cepInput.value;
+        let numero = Number(numeroInput.value);
+
+        nomeInput.style.border = '';
+        cnpjInput.style.border = '';
+        cepInput.style.border = '';
+        numeroInput.style.border = '';
+
+        let validacao = true;
+        let mensagensAlerta = [];
+
+        if (nome === '') {
+            marcarErro(nomeInput);
+            mensagensAlerta.push('Nome é obrigatório!');
+            validacao = false;
         }
 
-        var inputSenha = document.getElementById('input_senhaUser').value;
-        var temNumeroSenha = false;
-
-        for (var i = 0; i < inputSenha.length; i++) {
-            var caractere = inputSenha[i];
-            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
-                temNumeroSenha = true;
-                break;
-            }
+        if (CNPJ === '' || CNPJ.length !== 18) {
+            marcarErro(cnpjInput);
+            mensagensAlerta.push('CNPJ Inválido!');
+            validacao = false;
         }
 
-
-        var inputTel = document.getElementById('input_telefoneUser').value;
-        var temNumeroTel = false;
-
-        for (var i = 0; i < inputTel.length; i++) {
-            var caractere = inputTel[i];
-            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
-                temNumeroTel = true;
-                break;
-            }
+        if (CEP === '' || CEP.length !== 14) {
+            marcarErro(cepInput);
+            mensagensAlerta.push('CEP Inválido!');
+            validacao = false;
         }
 
-        // Validações da tela de cadastro
+        if (numero === '') {
+            marcarErro(numeroInput);
+            validacao = false;
+        }
 
-        if (nome == '') {
-            alert('Você deve informar o nome completo do usuario para prosseguir!')
-            var input = document.getElementById('input_nomeUser');
-            input.style.borderColor = 'red';
-        } else if (email == '') {
-            alert('Você deve informar o seu email para prosseguir!')
-            var input = document.getElementById('input_emailUser');
-            input.style.borderColor = 'red';
-        } else if (senha == '') {
-            alert('Você deve informar uma senha para prosseguir!')
-            var input = document.getElementById('input_senhaUser');
-            input.style.borderColor = 'red';
-        } else if (senha != senha2x) {
-            alert('A senha que você digitou não condiz com a confimação de senha. por favor verifique se você digitou os campos corretamente')
-            var input = document.getElementById('input_confirmacaoSenha');
-            input.style.borderColor = 'red';
-        } else if (tamanhoSenha <= 5) {
-            alert('A senha deve ter mais de 5 caracteres!')
-            var input = document.getElementById('input_senhaUser');
-            input.style.borderColor = 'red';
-        } else if (temNumeroSenha == false) {
-            alert('A senha deve conter pelo menos um número!')
-            var input = document.getElementById('input_senhaUser');
-            input.style.borderColor = 'red';
-        } else if (cpf == '') {
-            alert('Você deve informar o seu CPF para prosseguir!')
-            var input = document.getElementById('input_cpfUser');
-            input.style.borderColor = 'red';
-        } else if (telefone == '') {
-            alert('Você deve informar o telefone para prosseguir!')
-            var input = document.getElementById('input_telefoneUser');
-            input.style.borderColor = 'red';
-        } else if (tamanhoCPF != 14) {
-            alert('O CPF deve conter 14 caracteres!')
-            var input = document.getElementById('input_cpfUser');
-            input.style.borderColor = 'red';
-        } else if (tamanhoTelefone != 13) {
-            alert('O telefone deve conter 13 caracteres!')
-            var input = document.getElementById('input_telefoneUser');
-            input.style.borderColor = 'red';
-        } else if (indiceParentesesAberto == -1) {
-            alert('Você deve digitar o número com os parênteses do DDD!')
-            var input = document.getElementById('input_telefoneUser');
-            input.style.borderColor = 'red';
-        } else if (indiceParentesesFechado == -1) {
-            alert('Você deve digitar o número com os parênteses do DDD!')
-            var input = document.getElementById('input_telefoneUser');
-            input.style.borderColor = 'red';
-        } else if (indiceArroba == -1) {
-            alert('O seu email deve ter arroba!')
-            var input = document.getElementById('input_emailUser');
-            input.style.borderColor = 'red';
-        } else if (temNumeroTel == false) {
-            alert('O telefone deve conter apenas números. conforme o exemplo dado no campo')
-            var input = document.getElementById('input_telefoneUser');
-            input.style.borderColor = 'red';
-        } else if (temNumeroCpf == false) {
-            alert('O CPF deve conter os números e os pontos de separação. conforme o exemplo dado no campo')
-            var input = document.getElementById('input_cpfUser');
-            input.style.borderColor = 'red';
+        if (!validacao) {
+            let mensagemAlerta = 'Preencha todos os campos!';
+            if (mensagensAlerta.length > 0) {
+                mensagemAlerta = mensagensAlerta.join('<br>');
+            }
+            mostrarAlerta(mensagemAlerta);
         } else {
-            alert('Cadastro realizado com sucesso!')
-            window.location.href = 'login.html';
+
+            fetch('./empresas/cadastrar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    nomeServer: nome,
+                    cnpjServer: CNPJ,
+                    cepServer: CEP,
+                    numeroServer: numero
+                })
+            })
+                .then(function (resposta) {
+                    if (resposta.ok) {
+                        setTimeout(() => {
+                            let mensagemSucesso = 'Empresa Cadastrada com Sucesso.'
+                            let titleAlerta = document.querySelector('.textAlerta')
+
+                            titleAlerta.innerHTML = 'Cadastro Efetuado!'
+                            mostrarAlerta(mensagemSucesso)
+                        }, 1000);
+                    }
+            })
         }
-    }  
+    }
 </script>

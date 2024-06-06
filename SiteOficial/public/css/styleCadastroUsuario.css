@@ -205,7 +205,7 @@ body {
 
 .input {
     font-family: monospace;
-    height: 20px;
+    height: 15px;
     width: 350px;
     outline: none;
     border: 1px solid #dadada;
@@ -220,7 +220,7 @@ body {
 
 .select{
     font-family: monospace;
-    height: 42px;
+    height: 38px;
     width: 370px;
     outline: none;
     border: 1px solid #dadada;
@@ -242,7 +242,7 @@ body {
 .boxInputs {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
 }
 
 .btn_cadastrar {

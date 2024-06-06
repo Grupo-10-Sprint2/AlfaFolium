@@ -1,70 +1,101 @@
--- Arquivo de apoio, caso você queira criar tabelas como as aqui criadas para a API funcionar.
--- Você precisa executar os comandos no banco de dados para criar as tabelas,
--- ter este arquivo aqui não significa que a tabela em seu BD estará como abaixo!
-
-/*
-comandos para mysql server
-*/
-
 CREATE DATABASE AlfaFolium;
 
 USE AlfaFolium;
 
-
-CREATE TABLE Endereco (
+CREATE TABLE endereco (
 	idEndereco INT PRIMARY KEY AUTO_INCREMENT,
     CEP CHAR(9),
-    NumEnd VARCHAR(10),
-    Complemento VARCHAR(45));
+    numEnd VARCHAR(10),
+    complemento VARCHAR(45)
+);
 
 
-CREATE TABLE Empresa (
+CREATE TABLE empresa (
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
-    Nome VARCHAR (45),
+    nome VARCHAR (45),
     CNPJ CHAR (18),
     fkEndereco INT,
 		CONSTRAINT fkEnderecoEmpresa FOREIGN KEY (fkEndereco)
-			REFERENCES Endereco(idEndereco)
+			REFERENCES endereco(idEndereco)
 );
 
 
-CREATE TABLE Parametro (
+CREATE TABLE usuario (
+	idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR (45),
+    CPF CHAR (14),
+    email VARCHAR (45),
+    senha VARCHAR(35),
+    telFixo CHAR (13),
+    telCelular CHAR (14),
+    dataCriacao DATE,
+    fkEmpresa INT,
+    fkTipoUsuario INT,
+    CONSTRAINT fkUsuarioTipoUsuario FOREIGN KEY (fkTipoUsuario)
+		REFERENCES tipoUsuario(idTipoUsuario),
+	CONSTRAINT fkUsuarioEmpresa FOREIGN KEY (fkEmpresa)
+		REFERENCES empresa(idEmpresa)
+);
+        
+        
+CREATE TABLE tipoUsuario (
+	idTipoUsuario INT PRIMARY KEY AUTO_INCREMENT,
+	tipo VARCHAR(45),
+    descricao VARCHAR(20),
+    CONSTRAINT chkTipoUsuario CHECK (tipo IN ('Master', 'Dono', 'Funcionario'))
+);
+
+CREATE TABLE parametro (
 	idParametro INT PRIMARY KEY AUTO_INCREMENT,
-    UmidadeMin DECIMAL (4, 2),
-    UmidadeMax DECIMAL (4, 2),
-    TemperaturaMin DECIMAL (4, 2),
-    TemperaturaMax DECIMAL (4, 2)
+    umidadeMin DECIMAL (4, 2),
+    umidadeMax DECIMAL (4, 2),
+    temperaturaMin DECIMAL (4, 2),
+    temperaturaMax DECIMAL (4, 2)
 );
 
 
-CREATE TABLE Estufa (
+CREATE TABLE estufa (
 	idEstufa INT PRIMARY KEY AUTO_INCREMENT,
-	Tamanho VARCHAR (10),
-	Status VARCHAR (25),
-		CONSTRAINT chkStatus CHECK (Status IN ('Ativa', 'Inativa')),
+	tamanho VARCHAR (10),
+	status VARCHAR (25),
     fkEmpresa INT, 
-		CONSTRAINT fkEstufaEmpresa FOREIGN KEY (fkEmpresa)
-			REFERENCES Empresa (idEmpresa),
 	fkParametro INT,
+		CONSTRAINT chkStatus CHECK (status IN ('Ativa', 'Inativa')),
+		CONSTRAINT fkEstufaEmpresa FOREIGN KEY (fkEmpresa)
+			REFERENCES empresa (idEmpresa),
 		CONSTRAINT fkParametroEstufa FOREIGN KEY (fkParametro)
-			REFERENCES Parametro (idParametro));
+			REFERENCES parametro (idParametro)
+);
+	
 
-		
-CREATE TABLE Sensor (
+CREATE TABLE sensor (
 	idSensor INT,
-    Nome VARCHAR (45),
+    nome VARCHAR (45),
     fkEstufa INT,
-		PRIMARY KEY (idSensor, fkEstufa),
-	FOREIGN KEY (fkEstufa) REFERENCES Estufa (idEstufa));
-
-
-CREATE TABLE Dados (
+	PRIMARY KEY (idSensor, fkEstufa),
+	FOREIGN KEY (fkEstufa) REFERENCES estufa (idEstufa)
+);
+            
+            
+CREATE TABLE dados (
 	idDados INT,
-    Temperatura DECIMAL (4, 2),
-    Umidade DECIMAL (4, 2),
-    Horario DATETIME,
+    temperatura DECIMAL (4, 2),
+    umidade DECIMAL (4, 2),
+    horario DATETIME,
     fkSensor INT,
 		PRIMARY KEY (idDados, fkSensor),
-	FOREIGN KEY (fkSensor) REFERENCES Sensor (idSensor));
-
-
+	FOREIGN KEY (fkSensor) REFERENCES sensor (idSensor)
+);
+            
+SHOW TABLES;  
+  
+SELECT * FROM usuario;
+SELECT * FROM endereco;
+SELECT * FROM empresa;
+SELECT * FROM tipoUsuario;
+SELECT * FROM parametro;
+SELECT * FROM estufa;
+SELECT * FROM sensor;
+SELECT * FROM dados;
+            
+SHOW TABLES;

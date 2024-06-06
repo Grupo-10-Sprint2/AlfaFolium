@@ -94,7 +94,15 @@
                         <h3>Empresa:</h3>
                         <select class="select" id="input_empresaUsuario" type="text">
                             <option value=""> --- </option>
-                            <option value="1">PlantTech</option>
+                        </select>
+                    </div>
+                    <div class="boxInput">
+                        <h3> Função: </h3>
+                        <select class="select" id="input_tipoUsuario">
+                            <option value=""> --- </option>
+                            <option value="1">Master</option>
+                            <option value="2">Dono</option>
+                            <option value="3">Funcionário</option>
                         </select>
                     </div>
                     <button onclick="cadastrarUsuario()" class="btn_cadastrar">
@@ -147,13 +155,36 @@
         }, 3000);
     }
 
+
+    
+    function carregarEmpresas() {
+        fetch('/empresas/listar')
+            .then(response => response.json())
+            .then(data => {
+                let selectEmpresa = document.getElementById('input_empresaUsuario');
+                data.forEach(empresa => {
+                    let option = document.createElement('option');
+                    option.value = empresa.idEmpresa;
+                    option.textContent = empresa.nome;
+                    selectEmpresa.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Erro ao carregar empresas:', error));
+    }
+
+    document.addEventListener('DOMContentLoaded',carregarEmpresas())
+
+
     function cadastrarUsuario() {
+
+
         let nome = document.getElementById('input_nomeUsuario').value;
         let email = document.getElementById('input_emailUsuario').value;
         let cpf = document.getElementById('input_cpfUsuario').value;
         let telFixo = document.getElementById('input_telFixoUsuario').value;
         let telCel = document.getElementById('input_telCelUsuario').value;
         let empresa = document.getElementById('input_empresaUsuario').value;
+        let tipoUsuario = document.getElementById('input_tipoUsuario').value;
 
         let nomeInput = document.getElementById('input_nomeUsuario');
         let emailInput = document.getElementById('input_emailUsuario');
@@ -161,6 +192,7 @@
         let telFixoInput = document.getElementById('input_telFixoUsuario');
         let telCelInput = document.getElementById('input_telCelUsuario');
         let empresaInput = document.getElementById('input_empresaUsuario');
+        let tipoUsuarioInput = document.getElementById('input_tipoUsuario');
 
         nomeInput.style.border = '';
         emailInput.style.border = '';
@@ -168,6 +200,7 @@
         telFixoInput.style.border = '';
         telCelInput.style.border = '';
         empresaInput.style.border = '';
+        tipoUsuarioInput.style.border = '';
 
         let validado = true;
 
@@ -195,7 +228,10 @@
             marcarErro(empresaInput);
             validado = false;
         }
-
+        if (tipoUsuario === '') {
+            marcarErro(tipoUsuarioInput);
+            validado = false;
+        }
         if (!validado) {
             mostrarAlerta('Preencha todos os campos!');
             return;
@@ -219,7 +255,8 @@
                     cpfServer: cpf,
                     telFixoServer: telFixo,
                     telCelServer: telCel,
-                    idEmpresaServer: empresa
+                    idEmpresaServer: empresa,
+                    idTipoUsuarioServer: tipoUsuario
                 }),
             })
                 .then(function (resposta) {
@@ -228,11 +265,11 @@
                     if (resposta.ok) {
                         setTimeout(() => {
                             let mensagemSucesso = 'Usuário Cadastrado com Sucesso.'
-                                let titleAlerta = document.querySelector('.textAlerta')
+                            let titleAlerta = document.querySelector('.textAlerta')
 
-                                titleAlerta.innerHTML = 'Cadastro Efetuado!'
-                                mostrarAlerta(mensagemSucesso)
-                        }, 2000);
+                            titleAlerta.innerHTML = 'Cadastro Efetuado!'
+                            mostrarAlerta(mensagemSucesso)
+                        }, 1000);
                     }
                 })
         }

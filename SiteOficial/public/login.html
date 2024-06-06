@@ -2,42 +2,54 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login - Alfa Folium</title>
-<link rel="stylesheet" href="./css/styleLogin.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Alfa Folium</title>
+    <link rel="stylesheet" href="./css/styleLogin.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
+    <div id="blurTela" class="blurTela">
 
-<div class="botaovoltar" onclick="acessarHome()">
-<h1> < </h1>
-</div>
+    </div>
 
-<div class="boxCadastro">
-<div class="logo">
-<img src="./assets/assetsTelas/logoAlfa-Folium.png">
-</div>
+    <div class="alertaBox">
+        <h1 class="textAlerta"> Cadastro inválido! </h1>
+        <div onclick="fecharAviso()" class="btnFechar">
+            <h3>X</h3>
+        </div>
+        <div class="mensagemBox">
+        </div>
+        <div class="alfaceAlerta"><img src="./assets/assetsCadastro/alface.png"></div>
+    </div>
+    
 
-<div class="boxCampos">
-<div class="campo1">
-<p>Email:</p>
-<input id="input_emailUser" placeholder="SeuEmail@Dominio.com">
-</div>
+    <div class="boxCadastro">
+        <div class="logo">
+            <img src="./assets/assetsTelas/logoAlfa-Folium.png">
+        </div>
 
-<br>
-<div class="campo2">
-<p>Senha:</p>
-<input id="input_senhaUser" type="password" placeholder="********">
-</div>
-<button onclick="LoginUsuario()" class="botaoCadastroEmpresa">
-Entrar
-</button>
-</div>
-</div>
+        <div class="boxCampos">
+            <div class="campo1">
+                <p>Email:</p>
+                <input id="input_emailUsuario" class="input" placeholder="SeuEmail@Dominio.com">
+            </div>
+
+            <br>
+            <div class="campo2">
+                <p>Senha:</p>
+                <input id="input_senhaUsuario" class="input" type="password" placeholder="********">
+            </div>
+            <button onclick="acessar()" class="botaoCadastroEmpresa">
+                Entrar
+            </button>
+        </div>
+    </div>
 
 </body>
 
@@ -45,23 +57,22 @@ Entrar
 
 <script src="./js/scriptLogin.js"></script>
 <script>
-function LoginUsuario() {
 
-let email = input_emailUser.value
-let senha = input_senhaUser.value
+    function mostrarAlerta(mensagemAlerta) {
+        let boxAlerta = document.querySelector('.alertaBox');
+        let boxMensagem = document.querySelector('.mensagemBox');
+        let blurTela = document.getElementById('blurTela');
 
-if(email == 'fernandacaramico@alfa.folium' && senha == 'Caramico2024'){
-window.location.href = 'dashboard.html';
-}
-else if(email == 'alfaFolium@alfa.folium' && senha == 'AlfaFolium2024'){
-window.location.href = 'cadastro.html';
-}
-else{
-alert("E-mail ou senha incorretos")
-}
+        boxMensagem.innerHTML = `<p>${mensagemAlerta}</p>`;
+        blurTela.style.display = 'block';
+        boxAlerta.classList.add('aparecer');
+    }
 
-input_senhaUser.value = ''
+    function fecharAviso() {
+        let boxAlerta = document.querySelector('.alertaBox');
+        let blurTela = document.getElementById('blurTela');
 
+<<<<<<< HEAD
 let indiceArroba = email.indexOf("@")
 let tamanhoSenha = senha.length
 
@@ -107,9 +118,102 @@ input.style.borderColor = 'red';
 window.location.href = 'dashboard.html';
 }
 }
+=======
+        boxAlerta.classList.remove('aparecer');
+        setTimeout(() => {
+            blurTela.style.display = 'none';
+        }, 500);
+    }
 
-function acessarHome(){
-window.location.href = 'index.html';
-}
+    function marcarErro(input) {
+        input.style.border = 'solid 2px #FF0000';
+        setTimeout(() => {
+            input.style.border = '';
+        }, 3000);
+    }
+
+
+    function acessar() {
+>>>>>>> 92ceecdda36ca468ff410bac4a4c637b8e675a80
+
+        let emailInput = document.getElementById('input_emailUsuario');
+        let senhaInput = document.getElementById('input_senhaUsuario');
+
+        let email = input_emailUsuario.value;
+        let senha = input_senhaUsuario.value;
+
+        emailInput.style.border = '';
+        senhaInput.style.border = '';
+
+        let validacao = true;
+
+        if (email == '') {
+            marcarErro(emailInput)
+            validacao = false
+        }
+
+        if (senha == '') {
+            marcarErro(senhaInput)
+            validacao = false
+        }
+
+        if (!validacao) {
+            let mensagemAlerta = 'Preencha todos os campos!'
+            mostrarAlerta(mensagemAlerta)
+        } else {
+            fetch('/usuarios/autenticar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    emailServer: email,
+                    senhaServer: senha
+                })
+            })
+                .then(function (resposta) {
+                    if (resposta.ok) {
+                        return resposta.json();
+                    } else if (resposta.status === 403) {
+                        console.log("Email e/ou senha inválido(s)");
+                    } else {
+                        console.log("Houve um erro ao tentar realizar o login!");
+                    }
+                })
+                .then(function (json) {
+                    if (json) {
+                        sessionStorage.ID_USUARIO = json.idUsuario;
+                        sessionStorage.NOME_USUARIO = json.nome;
+                        sessionStorage.EMAIL_USUARIO = json.email;
+                        sessionStorage.CPF_USUARIO = json.CPF;
+                        sessionStorage.TEL_FIXO = json.telFixo;
+                        sessionStorage.TEL_CELULAR = json.telCelular;
+                        sessionStorage.DATA_CRIACAO = json.dataCriacao.slice(0,10);
+                        sessionStorage.ID_EMPRESA = json.idEmpresa;
+                        sessionStorage.TIPO_USUARIO = json.idTipoUsuario;
+
+                        setTimeout(() => {
+                            let mensagemSucesso = 'Acessando a plataforma...'
+                            let titleAlerta = document.querySelector('.textAlerta')
+                            titleAlerta.innerHTML = 'Login Efetuado!'
+                            mostrarAlerta(mensagemSucesso)
+                        }, 1000);
+                        setTimeout(() => {
+                            window.location.href = './cadastroProprietario.html';
+                        }, 2000);
+
+                        
+                    }
+                })
+                .catch(function (erro) {
+                    console.log(erro.message);
+                    mostrarAlerta(erro.message);
+                });
+        }
+    }
+
+    function acessarHome() {
+        window.location.href = 'index.html';
+    }
 
 </script>

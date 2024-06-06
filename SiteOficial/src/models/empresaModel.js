@@ -1,29 +1,30 @@
-// var database = require("../database/config");
+var database = require("../database/config");
 
 
-// buscarPorId()
-// function buscarPorId(id) {
-//   var instrucaoSql = `SELECT * FROM Empresa WHERE id = '${id}'`;
+function cadastrar(nome, CNPJ, CEP, numero) {
+    var instrucaoSql = `
+        INSERT INTO endereco (CEP, numEnd) VALUES ('${CEP}', '${numero}');
+    `;
+    
+    return database.executar(instrucaoSql)
 
-//   return database.executar(instrucaoSql);
-// }
+        .then(result => {
+            var idEndereco = result.insertId;
+            var instrucaoSql = `
+                INSERT INTO empresa (nome, CNPJ, fkEndereco) VALUES ('${nome}', '${CNPJ}', ${idEndereco});
+            `;
+            return database.executar(instrucaoSql);
+        });
+}
 
-// function listar() {
-//   var instrucaoSql = `SELECT * FROM empresa`;
 
-//   return database.executar(instrucaoSql);
-// }
+function listar() {
+    var instrucaoSql = `SELECT idEmpresa, nome FROM empresa;`;
+    return database.executar(instrucaoSql);
+}
 
-// function buscarPorCnpj(cnpj) {
-//   var instrucaoSql = `SELECT * FROM empresa WHERE cnpj = '${cnpj}'`;
 
-//   return database.executar(instrucaoSql);
-// }
-
-// function cadastrar(razaoSocial, cnpj) {
-//   var instrucaoSql = `INSERT INTO empresa (razao_social, cnpj) VALUES ('${razaoSocial}', '${cnpj}')`;
-
-//   return database.executar(instrucaoSql);
-// }
-
-// module.exports = { buscarPorCnpj, buscarPorId, cadastrar, listar };
+module.exports = {
+    cadastrar,
+    listar
+};

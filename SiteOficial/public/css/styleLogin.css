@@ -1,6 +1,7 @@
 * {
     padding: 0;
     margin: 0;
+    font-family: "poppins", sans-serif;
 }
 
 body {
@@ -160,4 +161,85 @@ body {
     transform: scale(110%);
     background-color: #1B3606;
     transition: 0.3s;
+}
+
+.alertaBox {
+    position: absolute;
+    z-index: 1000;
+    width: 400px;
+    height: 200px;
+    background-color: #357e35;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    box-shadow: -1px 8px 27px -4px rgba(0, 0, 0, 0.75), inset 0px 0px 50px 20px rgba(15, 32, 2, 0.295);
+    padding: 10px;
+    border: 5px solid #232323;
+    border-radius: 15px;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.alertaBox.aparecer {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+.alertaBox h1 {
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.mensagemBox {
+    color: #FFFFFF;
+    font-size: 18px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnFechar {
+    width: 25px;
+    height: 25px;
+    background-color: #232323;
+    border-radius: 100%;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.btnFechar:hover {
+    transform: scale(1.1);
+    background-color: #738362;
+    transition: 0.5s;
+}
+
+.btnFechar h3 {
+    color: #FFFFFF;
+}
+
+.alfaceAlerta img {
+    width: 110px;
+    position: absolute;
+    transform: rotate(20deg);
+    left: 360px;
+    top: 150px;
+}
+
+.blurTela {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999;
+    background-color: #6464646e;
+    backdrop-filter: blur(8px);
+    display: none;
+    bottom: 4px;
 }
