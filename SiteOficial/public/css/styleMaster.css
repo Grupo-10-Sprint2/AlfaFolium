@@ -132,3 +132,42 @@ body {
     position: absolute;
     
 }
+
+.cards {
+    height: 40%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card1,.card2,.card3{
+    width: 250px;
+    height: 250px;
+    background-color: #414C30;
+    border-radius: 50px;
+    box-shadow: -1px 8px 27px -4px rgba(0, 0, 0, 0.75), inset 0px 0px 50px 20px rgba(15, 32, 2, 0.295);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card1Title,.card2Title{
+    margin-top: 35px;
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.card3Title{
+    margin-top: 25px;
+    color: #FFFFFF;
+    line-height: 20px;
+}
+
+.card3Title .cadastradas{
+    text-decoration: underline;
+}
