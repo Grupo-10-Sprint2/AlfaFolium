@@ -1,47 +1,49 @@
 var empresaModel = require("../models/empresaModel");
 
-function buscarPorCnpj(req, res) {
-  var cnpj = req.query.cnpj;
 
-  empresaModel.buscarPorCnpj(cnpj).then((resultado) => {
-    res.status(200).json(resultado);
-  });
+function cadastrar(req, res) {
+  var nome = req.body.nomeServer;
+  var CNPJ = req.body.cnpjServer;
+  var CEP = req.body.cepServer;
+  var numero = req.body.numeroServer;
+
+  if (nome == undefined) {
+    res.status(400).send("Seu nome está undefined!");
+  } else if (CNPJ == undefined) {
+    res.status(400).send("Seu CNPJ está undefined!");
+  } else if (CEP == undefined) {
+    res.status(400).send("Seu CEP está undefined!");
+  } else if (numero == undefined) {
+    res.status(400).send("O numero da sua empresa está undefined!");
+  } else {
+
+    empresaModel.cadastrar(nome, CNPJ, CEP, numero)
+      .then(function (resultadoCadastrar) {
+        res.json(resultadoCadastrar);
+      })
+      .catch(function (erro) {
+        console.log(erro);
+        console.log(
+          "\nHouve um erro ao realizar o cadastro! Erro: ",
+          erro.sqlMessage
+        );
+        res.status(500).json(erro.sqlMessage);
+      })
+  }
 }
 
 function listar(req, res) {
-  empresaModel.listar().then((resultado) => {
-    res.status(200).json(resultado);
-  });
-}
-
-function buscarPorId(req, res) {
-  var id = req.params.id;
-
-  empresaModel.buscarPorId(id).then((resultado) => {
-    res.status(200).json(resultado);
-  });
-}
-
-function cadastrar(req, res) {
-  var cnpj = req.body.cnpj;
-  var razaoSocial = req.body.razaoSocial;
-
-  empresaModel.buscarPorCnpj(cnpj).then((resultado) => {
-    if (resultado.length > 0) {
-      res
-        .status(401)
-        .json({ mensagem: `a empresa com o cnpj ${cnpj} já existe` });
-    } else {
-      empresaModel.cadastrar(razaoSocial, cnpj).then((resultado) => {
-        res.status(201).json(resultado);
+  empresaModel.listar()
+      .then(function (resultado) {
+          res.json(resultado);
+      })
+      .catch(function (erro) {
+          console.log(erro);
+          res.status(500).json(erro.sqlMessage);
       });
-    }
-  });
 }
 
 module.exports = {
-  buscarPorCnpj,
-  buscarPorId,
   cadastrar,
-  listar,
+  listar
 };

@@ -94,7 +94,6 @@
                         <h3>Empresa:</h3>
                         <select class="select" id="input_empresaUsuario" type="text">
                             <option value=""> --- </option>
-                            <option value="1">AlfaFolium</option>
                         </select>
                     </div>
                     <div class="boxInput">
@@ -156,7 +155,29 @@
         }, 3000);
     }
 
+
+    
+    function carregarEmpresas() {
+        fetch('/empresas/listar')
+            .then(response => response.json())
+            .then(data => {
+                let selectEmpresa = document.getElementById('input_empresaUsuario');
+                data.forEach(empresa => {
+                    let option = document.createElement('option');
+                    option.value = empresa.idEmpresa;
+                    option.textContent = empresa.nome;
+                    selectEmpresa.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Erro ao carregar empresas:', error));
+    }
+
+    document.addEventListener('DOMContentLoaded',carregarEmpresas())
+
+
     function cadastrarUsuario() {
+
+
         let nome = document.getElementById('input_nomeUsuario').value;
         let email = document.getElementById('input_emailUsuario').value;
         let cpf = document.getElementById('input_cpfUsuario').value;
@@ -207,7 +228,7 @@
             marcarErro(empresaInput);
             validado = false;
         }
-        if(tipoUsuario === ''){
+        if (tipoUsuario === '') {
             marcarErro(tipoUsuarioInput);
             validado = false;
         }
@@ -244,10 +265,10 @@
                     if (resposta.ok) {
                         setTimeout(() => {
                             let mensagemSucesso = 'Usuário Cadastrado com Sucesso.'
-                                let titleAlerta = document.querySelector('.textAlerta')
+                            let titleAlerta = document.querySelector('.textAlerta')
 
-                                titleAlerta.innerHTML = 'Cadastro Efetuado!'
-                                mostrarAlerta(mensagemSucesso)
+                            titleAlerta.innerHTML = 'Cadastro Efetuado!'
+                            mostrarAlerta(mensagemSucesso)
                         }, 1000);
                     }
                 })
