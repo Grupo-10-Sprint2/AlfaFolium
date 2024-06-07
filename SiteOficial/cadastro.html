@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Empresa - Alfa Folium</title>
+    <link rel="stylesheet" href="externoempresa.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap"
+        rel="stylesheet">
+</head>
+
+
+<body>
+    <div class="fundo">
+
+        <div class="box-logo">
+            <div class="logo">
+                <img src="./assetsCadastro/logo.png">
+            </div>
+            <div class="nomeusuario">
+                <img src="./assetsCadastro/Group 6.png">
+            </div>
+        </div>
+
+
+
+        <div class="centro">
+            <div class="campos">
+                <div class="boxCadastro">
+                    <div class="quadrado_titulo">
+                        
+                        <div class="titulo">
+                            <p>Insira os dados da empresa</p>
+                        </div>                        
+                    </div>
+
+                    <div class="campo-1">
+                        <p>Nome da Empresa:</p>
+                        <input id="input_empresa" placeholder="Digite o nome da Empresa"> <br>
+                    </div>
+
+                    <div class="campo-2">
+                        <p>CEP:</p>
+                        <input id="input_cep" placeholder="00000-000"> <br>
+                    </div>
+
+                    <div class="campo-3">
+                        <p>Endereço:</p>
+                        <input id="input_endereco" placeholder="Onde encontramos a empresa?"> <br>
+                    </div>
+
+                    <div class="campo-4">
+                        <p>CNPJ:</p>
+                        <input id="input_cnpj" placeholder="X.XXX.XXX/YYYY-ZZ.">
+                    </div>
+
+                    <button onclick="CadastrarEmpresa()" class="botaoCadastroEmpresa">
+                        Cadastrar Empresa
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    function CadastrarEmpresa() {
+        let Nome = input_empresa.value
+        let Cep = input_cep.value
+        let Endereco = input_endereco.value
+        let Cnpj = input_cnpj.value
+        let indiceTraco = Cep.indexOf("-")
+        let tamanhoCep = Cep.length
+        let tamanhoCnpj = Cnpj.length
+
+        var inputCep = document.getElementById('input_cep').value;
+        var temNumeroCep = false;
+
+        for (var i = 0; i < inputCep.length; i++) {
+            var caractere = inputCep[i];
+            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
+                temNumeroCep = true;
+                break;
+            }
+        }
+
+        var input = document.getElementById('input_cnpj').value;
+        var temNumeroCnpj = false;
+
+        for (var i = 0; i < input.length; i++) {
+            var caractere = input[i];
+            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
+                temNumeroCnpj = true;
+                break;
+            }
+        }
+
+        if(Nome == '' && Cep == '' && Endereco == '' && Cnpj == '') {
+            var input1 = document.getElementById('input_empresa');
+            var input2 = document.getElementById('input_cep');
+            var input3 = document.getElementById('input_endereco');
+            var input4 = document.getElementById('input_cnpj');
+
+            input1.style.borderColor = 'red';
+            input2.style.borderColor = 'red';
+            input3.style.borderColor = 'red';
+            input4.style.borderColor = 'red';
+
+            alert("Todos os campos devem ser preenchidos para prosseguir!")
+
+        } else if (Nome == '') {
+            var input = document.getElementById('input_empresa');
+            input.style.borderColor = 'red';
+            alert('Você deve informar o nome da Empresa para prosseguir!')
+        } else if (Cep == '') {
+            var input = document.getElementById('input_cep');
+            input.style.borderColor = 'red';
+            alert('Você deve informar o cep da Empresa para prosseguir!')
+        } else if (Endereco == '') {
+            var input = document.getElementById('input_endereco');
+            input.style.borderColor = 'red';
+            alert('Você deve informar o endereço da Empresa para prosseguir!')
+        } else if (Cnpj == '') {
+            var input = document.getElementById('input_cnpj');
+            input.style.borderColor = 'red';
+            alert('Você deve informar o CNPJ da Empresa para prosseguir!')
+        } else if (tamanhoCep != 9) {
+            var input = document.getElementById('input_cep');
+            input.style.borderColor = 'red';
+            alert('Erro ao validar cadastro. O cep deve conter 9 caracteres!')
+        } else if (tamanhoCnpj != 18) {
+            var input = document.getElementById('input_cnpj');
+            input.style.borderColor = 'red';
+            alert('Erro ao validar cadastro. O cnpj deve conter 18 caracteres!')
+        } else if (temNumeroCep == false) {
+            var input = document.getElementById('input_cep');
+            input.style.borderColor = 'red';
+            alert('O cep deve conter apenas números e o hifem de separação! (EX: 12345-678)')
+        } else if (temNumeroCnpj == false){
+            var input = document.getElementById('input_cnpj');
+            input.style.borderColor = 'red';
+            alert('O cnpj deve conter apenas números e os pontos de separação!')
+        } else if (indiceTraco == -1) {
+            var input = document.getElementById('input_cep');
+            input.style.borderColor = 'red';
+            alert('Erro ao validar cadastro. o campo cep deve conter o hifem')
+        } else {
+            alert('Cadastro realizado com sucesso!')
+        }
+
+    }
+
+</script>

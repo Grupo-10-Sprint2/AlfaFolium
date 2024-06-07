@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Alfa Folium</title>
+    <link rel="stylesheet" href="styleTelas.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+
+<body >
+
+    <div  class="botaovoltar" onclick="acessarHome()">
+        <h1> < </h1>
+    </div>
+    
+    <div class="logo">
+        <img src="./assetsTelas/logoAlfa-Folium.png">
+    </div>
+
+    <div class="boxCadastro">
+       
+        <div class="campo1">
+            <p>Email:</p>
+            <input id="input_emailUser" placeholder="SeuEmail@Dominio.com">
+        </div>
+
+        <br>
+        
+        <div class="campo2">
+            <p>Senha:</p>
+            <input id="input_senhaUser" type="password" placeholder="********">
+        </div>
+        
+        <button onclick="LoginUsuario()" class="botaoCadastroEmpresa">
+            Entrar
+        </button>
+    
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    function LoginUsuario() {
+
+        let email = input_emailUser.value
+        let senha = input_senhaUser.value
+        let indiceArroba = email.indexOf("@")
+        let tamanhoSenha = senha.length
+
+        // Validação de numeros no campo Senha
+        var input = document.getElementById('input_senhaUser').value;
+        var temNumeroSenha = false;
+
+        for (var i = 0; i < input.length; i++) {
+            var caractere = input[i];
+            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
+                temNumeroSenha = true;
+                break;
+            }
+        }
+
+        if(email == '' && senha == ''){
+            alert('Você deve preencher todos os campos para prosseguir!')
+            var input = document.getElementById('input_emailUser');
+            var input1 = document.getElementById('input_senhaUser');
+            input.style.borderColor = 'red';
+            input1.style.borderColor = 'red';
+        } else if (email == '') {
+            alert('Você deve informar o seu email para prosseguir!')
+            var input = document.getElementById('input_emailUser');
+            input.style.borderColor = 'red';
+        } else if (senha == '') {
+            alert('Você deve informar uma senha para prosseguir!')
+            var input = document.getElementById('input_senhaUser');
+            input.style.borderColor = 'red';
+        }  else if (indiceArroba == -1) {
+            alert('O seu email está inválido!')
+            var input = document.getElementById('input_emailUser');
+            input.style.borderColor = 'red';
+        } else if (temNumeroSenha == false) {
+            alert('A senha deve conter pelo menos um número!')
+            var input = document.getElementById('input_senhaUser');
+            input.style.borderColor = 'red';
+        } else if (tamanhoSenha <= 5) {
+            alert('A senha deve ter mais de 5 caracteres!')
+            var input = document.getElementById('input_senhaUser');
+            input.style.borderColor = 'red';
+        } else { 
+
+            window.location.href = 'dashboard.html';
+
+        }
+}
+
+function acessarHome(){
+    window.location.href = 'index.html';
+}
+    
+
+</script>
