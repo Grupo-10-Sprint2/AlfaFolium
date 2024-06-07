@@ -17,6 +17,21 @@
 
 
 <body>
+
+    <div id="blurTela" class="blurTela">
+
+    </div>
+
+    <div class="alertaBox">
+        <h1 class="textAlerta"> Cadastro inválido! </h1>
+        <div onclick="fecharAviso()" class="btnFechar">
+            <h3>X</h3>
+        </div>
+        <div class="mensagemBox">
+        </div>
+        <div class="alfaceAlerta"><img src="./assets/assetsCadastro/alface.png"></div>
+    </div>
+
     <div class="headerBox">
         <div class="boxLogo">
 
@@ -57,19 +72,19 @@
                 <div class="boxInputs">
                     <div class="boxInput">
                         <h3 class="boxInputTitle">Tamanho:</h3>
-                        <input placeholder="Hectares" class="input" name="text" type="text">
+                        <input placeholder="Hectares" class="input" id="input_tamanhoEstufa" type="number">
                     </div>
                     <div class="boxInput">
                         <h3 class="boxInputTitleS">Status:</h3>
-                        <select placeholder="joao@email.com" class="select" name="text" type="text">
+                        <select placeholder="joao@email.com" class="select" id="select_statusEstufa" type="text">
                             <option value="">---</option>
-                            <option value="ativo">Ativo</option>
-                            <option value="inativo">Inativo</option>
+                            <option value="Ativa">Ativa</option>
+                            <option value="Inativa">Inativa</option>
                         </select>
                     </div>
                     <div class="boxInput">
                         <h3 class="boxInputTitle">Empresa:</h3>
-                        <select placeholder="012.345.678-90" class="select" name="text" type="text">
+                        <select placeholder="012.345.678-90" class="select" id="select_empresa" type="text">
                             <option value="">---</option>
                         </select>
                     </div>
@@ -80,19 +95,19 @@
                                 <div class="tempTitle">
                                     <h3>Temperatura</h3>    
                                 </div>
-                                <input placeholder="Máx." class="input_Parametro" type="text">
-                                <input placeholder="Mín." class="input_Parametro" type="text">
+                                <input placeholder="Máx." class="input_Parametro" type="text" id="input_TemperaturaMax">
+                                <input placeholder="Mín." class="input_Parametro" type="text" id="input_TemperaturaMin">
                             </div>
                             <div class="boxParametros2">
                                 <div class="umiTitle">
                                     <h3>Umidade</h3>    
                                 </div>
-                                <input placeholder="Máx." class="input_Parametro" type="text">
-                                <input placeholder="Mín." class="input_Parametro" type="text">
+                                <input placeholder="Máx." class="input_Parametro" type="text" id="input_umidadeMax">
+                                <input placeholder="Mín." class="input_Parametro" type="text" id="input_umidadeMIn">
                             </div>
                         </div>
                     </div>
-                    <button class="btn_cadastrar">
+                    <button class="btn_cadastrar" onclick="cadastrarEstufa()">
                         <h3> Cadastrar </h3>
                     </button>
                 </div>
@@ -107,132 +122,147 @@
 <script src="./js/scriptCadastroEstufa.js"></script>
 
 <script>
-    function cadastrarUsuario() {
-
-        // Definindo as variaveis dos inputs e dos .indexOf() e .length
-
-        let nome = input_nomeUser.value
-        let email = input_emailUser.value
-        let senha = input_senhaUser.value
-        let senha2x = input_confirmacaoSenha.value
-        let cpf = input_cpfUser.value
-        let telefone = input_telefoneUser.value
-        let indiceArroba = email.indexOf("@")
-        let indiceParentesesAberto = telefone.indexOf("(")
-        let indiceParentesesFechado = telefone.indexOf(")")
-        let tamanhoCPF = cpf.length
-        let tamanhoTelefone = telefone.length
-        let tamanhoSenha = senha.length
-
-        input_nomeUser.style.borderColor = '';
-        input_emailUser.style.borderColor = '';
-        input_senhaUser.style.borderColor = '';
-        input_confirmacaoSenha.style.borderColor = '';
-        input_cpfUser.style.borderColor = '';
-        input_telefoneUser.style.borderColor = '';
 
 
-        // variaveis para validação de números nos campos nescessários (EX: telefone, CPF e senha)
+    function mostrarAlerta(mensagemAlerta) {
+        let boxAlerta = document.querySelector('.alertaBox');
+        let boxMensagem = document.querySelector('.mensagemBox');
+        let blurTela = document.getElementById('blurTela');
 
-        var inputCpf = document.getElementById('input_cpfUser').value;
-        var temNumeroCpf = false;
+        boxMensagem.innerHTML = `<p>${mensagemAlerta}</p>`;
+        blurTela.style.display = 'block';
+        boxAlerta.classList.add('aparecer');
+    }
 
-        for (var i = 0; i < inputCpf.length; i++) {
-            var caractere = inputCpf[i];
-            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
-                temNumeroCpf = true;
-                break;
+    function fecharAviso() {
+        let boxAlerta = document.querySelector('.alertaBox');
+        let blurTela = document.getElementById('blurTela');
+
+        boxAlerta.classList.remove('aparecer');
+        setTimeout(() => {
+            blurTela.style.display = 'none';
+        }, 500);
+    }
+
+    function marcarErro(input) {
+        input.style.border = 'solid 2px #FF0000';
+        setTimeout(() => {
+            input.style.border = '';
+        }, 3000);
+    }
+
+
+    function carregarEmpresas() {
+        fetch('/empresas/listar')
+            .then(response => response.json())
+            .then(data => {
+                let selectEmpresa = document.getElementById('select_empresa');
+                data.forEach(empresa => {
+                    let option = document.createElement('option');
+                    option.value = empresa.idEmpresa;
+                    option.textContent = empresa.nome;
+                    selectEmpresa.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Erro ao carregar empresas:', error));
+    }
+
+    document.addEventListener('DOMContentLoaded',carregarEmpresas())
+
+
+    function cadastrarEstufa() {
+        let tamanhoInput = document.getElementById('input_tamanhoEstufa');
+        let statusInput = document.getElementById('select_statusEstufa');
+        let empresaInput = document.getElementById('select_empresa');
+        let tempMaxInput = document.getElementById('input_TemperaturaMax');
+        let tempMinInput = document.getElementById('input_TemperaturaMin');
+        let UmidMaxInput = document.getElementById('input_umidadeMax');
+        let UmidMinInput = document.getElementById('input_umidadeMIn');
+
+        let tamanhoEstufa = tamanhoInput.value;
+        let statusEstufa = statusInput.value;
+        let idEmpresa = empresaInput.value;
+        let TempMaxima = tempMaxInput.value;
+        let TempMinima = tempMinInput.value;
+        let UmidMaxima = UmidMaxInput.value;
+        let UmidMinima = UmidMinInput.value;
+
+        tamanhoInput.style.borderColor = '';
+        statusInput.style.borderColor = '';
+        empresaInput.style.borderColor = '';
+        tempMaxInput.style.borderColor = '';
+        tempMinInput.style.borderColor = '';
+        UmidMaxInput.style.borderColor = '';
+        UmidMinInput.style.borderColor = '';
+        
+
+        let validacao = true;
+        let mensagensAlerta = [];
+
+        if (tamanhoEstufa === '') {
+            marcarErro(tamanhoInput);
+            mensagensAlerta.push('Tamanho inválido!');
+            validacao = false;
+        }
+
+        if (statusEstufa === '' ) {
+            marcarErro(statusInput);
+            mensagensAlerta.push('Insira um status!');
+            validacao = false;
+        }
+
+        if (idEmpresa === '') {
+            marcarErro(empresaInput);
+            mensagensAlerta.push('Insira uma empresa!');
+            validacao = false;
+        }
+
+        if (TempMaxima === '' || TempMinima === '' || UmidMaxima === '' || UmidMinima === '') {
+            marcarErro(tempMaxInput);
+            marcarErro(tempMinInput);
+            marcarErro(UmidMaxInput);
+            marcarErro(UmidMinInput);
+            mensagensAlerta.push('Insira parâmetros válidos!');
+            validacao = false;
+        }
+
+        if (!validacao) {
+            let mensagemAlerta = 'Preencha todos os campos!';
+            if (mensagensAlerta.length > 0) {
+                    mensagemAlerta = mensagensAlerta.join('<br>');   // Pesquisar isso! <-----------
             }
+            mostrarAlerta(mensagemAlerta);
+        }else{
+            fetch('./estufas/cadastrar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    tamanhoServer: tamanhoEstufa,
+                    statusServer: statusEstufa,
+                    empresaServer: idEmpresa,
+                    TempMaximaServer: TempMaxima,
+                    TempMinimaServer: TempMinima,
+                    UmidMaximaServer: UmidMaxima,
+                    UmidMinimaServer: UmidMinima
+
+                })
+            })
+                .then(function (resposta) {
+                    if (resposta.ok) {
+                        setTimeout(() => {
+                            let mensagemSucesso = 'Estufa Cadastrada com Sucesso.'
+                            let titleAlerta = document.querySelector('.textAlerta')
+
+                            titleAlerta.innerHTML = 'Cadastro Efetuado!'
+                            mostrarAlerta(mensagemSucesso)
+                        }, 1000);
+                    }
+            })
         }
-
-        var inputSenha = document.getElementById('input_senhaUser').value;
-        var temNumeroSenha = false;
-
-        for (var i = 0; i < inputSenha.length; i++) {
-            var caractere = inputSenha[i];
-            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
-                temNumeroSenha = true;
-                break;
-            }
-        }
-
-
-        var inputTel = document.getElementById('input_telefoneUser').value;
-        var temNumeroTel = false;
-
-        for (var i = 0; i < inputTel.length; i++) {
-            var caractere = inputTel[i];
-            if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
-                temNumeroTel = true;
-                break;
-            }
-        }
-
-        // Validações da tela de cadastro
-
-        if (nome == '') {
-            alert('Você deve informar o nome completo do usuario para prosseguir!')
-            var input = document.getElementById('input_nomeUser');
-            input.style.borderColor = 'red';
-        } else if (email == '') {
-            alert('Você deve informar o seu email para prosseguir!')
-            var input = document.getElementById('input_emailUser');
-            input.style.borderColor = 'red';
-        } else if (senha == '') {
-            alert('Você deve informar uma senha para prosseguir!')
-            var input = document.getElementById('input_senhaUser');
-            input.style.borderColor = 'red';
-        } else if (senha != senha2x) {
-            alert('A senha que você digitou não condiz com a confimação de senha. por favor verifique se você digitou os campos corretamente')
-            var input = document.getElementById('input_confirmacaoSenha');
-            input.style.borderColor = 'red';
-        } else if (tamanhoSenha <= 5) {
-            alert('A senha deve ter mais de 5 caracteres!')
-            var input = document.getElementById('input_senhaUser');
-            input.style.borderColor = 'red';
-        } else if (temNumeroSenha == false) {
-            alert('A senha deve conter pelo menos um número!')
-            var input = document.getElementById('input_senhaUser');
-            input.style.borderColor = 'red';
-        } else if (cpf == '') {
-            alert('Você deve informar o seu CPF para prosseguir!')
-            var input = document.getElementById('input_cpfUser');
-            input.style.borderColor = 'red';
-        } else if (telefone == '') {
-            alert('Você deve informar o telefone para prosseguir!')
-            var input = document.getElementById('input_telefoneUser');
-            input.style.borderColor = 'red';
-        } else if (tamanhoCPF != 14) {
-            alert('O CPF deve conter 14 caracteres!')
-            var input = document.getElementById('input_cpfUser');
-            input.style.borderColor = 'red';
-        } else if (tamanhoTelefone != 13) {
-            alert('O telefone deve conter 13 caracteres!')
-            var input = document.getElementById('input_telefoneUser');
-            input.style.borderColor = 'red';
-        } else if (indiceParentesesAberto == -1) {
-            alert('Você deve digitar o número com os parênteses do DDD!')
-            var input = document.getElementById('input_telefoneUser');
-            input.style.borderColor = 'red';
-        } else if (indiceParentesesFechado == -1) {
-            alert('Você deve digitar o número com os parênteses do DDD!')
-            var input = document.getElementById('input_telefoneUser');
-            input.style.borderColor = 'red';
-        } else if (indiceArroba == -1) {
-            alert('O seu email deve ter arroba!')
-            var input = document.getElementById('input_emailUser');
-            input.style.borderColor = 'red';
-        } else if (temNumeroTel == false) {
-            alert('O telefone deve conter apenas números. conforme o exemplo dado no campo')
-            var input = document.getElementById('input_telefoneUser');
-            input.style.borderColor = 'red';
-        } else if (temNumeroCpf == false) {
-            alert('O CPF deve conter os números e os pontos de separação. conforme o exemplo dado no campo')
-            var input = document.getElementById('input_cpfUser');
-            input.style.borderColor = 'red';
-        } else {
-            alert('Cadastro realizado com sucesso!')
-            window.location.href = 'login.html';
-        }
-    }  
+    }
+        
+        
+ 
 </script>
