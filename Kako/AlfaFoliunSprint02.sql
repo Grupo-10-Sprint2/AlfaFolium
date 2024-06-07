@@ -5,10 +5,10 @@ USE AlfaFolium;
 CREATE TABLE endereco (
 	idEndereco INT PRIMARY KEY AUTO_INCREMENT,
     CEP CHAR(9),
-    numEnd VARCHAR(10),
-    complemento VARCHAR(45)
+    numEnd VARCHAR(10)
 );
 
+ALTER TABLE endereco MODIFY COLUMN CEP CHAR(14);
 
 CREATE TABLE empresa (
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
@@ -18,6 +18,23 @@ CREATE TABLE empresa (
 		CONSTRAINT fkEnderecoEmpresa FOREIGN KEY (fkEndereco)
 			REFERENCES endereco(idEndereco)
 );
+
+INSERT INTO empresa (nome) VALUES
+	('Alfa Folium');
+
+        
+CREATE TABLE tipoUsuario (
+	idTipoUsuario INT PRIMARY KEY AUTO_INCREMENT,
+	tipo VARCHAR(45),
+    descricao VARCHAR(200),
+    CONSTRAINT chkTipoUsuario CHECK (tipo IN ('Master', 'Dono', 'Funcionario'))
+);
+
+INSERT INTO tipoUsuario (tipo,descricao) VALUES 
+	('Master', 'Usuários pertencententes a equipe de desenvolvimento e produção'),
+    ('Dono', 'Usuário/Cliente responsável pelo controle total da plataforma através da aplicação desenvolvida'),
+    ('Funcionario', 'Usuário responsável pelo controle parcial da plataforma para análises e tomada de decisoes');
+    
 
 
 CREATE TABLE usuario (
@@ -36,19 +53,9 @@ CREATE TABLE usuario (
 	CONSTRAINT fkUsuarioEmpresa FOREIGN KEY (fkEmpresa)
 		REFERENCES empresa(idEmpresa)
 );
-        
-        
-CREATE TABLE tipoUsuario (
-	idTipoUsuario INT PRIMARY KEY AUTO_INCREMENT,
-	tipo VARCHAR(45),
-    descricao VARCHAR(200),
-    CONSTRAINT chkTipoUsuario CHECK (tipo IN ('Master', 'Dono', 'Funcionario'))
-);
 
-INSERT INTO tipoUsuario VALUES 
-	('Master', 'Usuários pertencententes a equipe de desenvolvimento e produção'),
-    ('Dono', 'Usuário/Cliente 
-
+    
+    
 CREATE TABLE parametro (
 	idParametro INT PRIMARY KEY AUTO_INCREMENT,
     umidadeMin DECIMAL (4, 2),
@@ -103,3 +110,7 @@ SELECT * FROM sensor;
 SELECT * FROM dados;
             
 SHOW TABLES;
+
+
+
+

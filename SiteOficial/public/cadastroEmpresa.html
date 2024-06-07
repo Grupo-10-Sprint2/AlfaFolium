@@ -153,7 +153,7 @@
         let nome = nomeInput.value;
         let CNPJ = cnpjInput.value;
         let CEP = cepInput.value;
-        let numero = Number(numeroInput.value);
+        let numero = numeroInput.value;
 
         nomeInput.style.border = '';
         cnpjInput.style.border = '';
@@ -183,6 +183,7 @@
 
         if (numero === '') {
             marcarErro(numeroInput);
+            mensagensAlerta.push('Número Inválido!');
             validacao = false;
         }
 
