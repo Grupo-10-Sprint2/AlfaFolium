@@ -62,7 +62,7 @@ CREATE TABLE parametro (
     umidadeMax DECIMAL (4, 2),
     temperaturaMin DECIMAL (4, 2),
     temperaturaMax DECIMAL (4, 2)
-);
+); 	
 
 
 CREATE TABLE estufa (
