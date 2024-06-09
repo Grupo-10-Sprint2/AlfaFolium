@@ -130,7 +130,6 @@ body {
     width: 100%;
     height: 100%;
     position: absolute;
-    
 }
 
 .cards {
@@ -143,8 +142,7 @@ body {
     align-items: center;
 }
 
-
-.card1,.card2,.card3{
+.container_empresasEstufa {
     width: 250px;
     height: 250px;
     background-color: #414C30;
@@ -156,18 +154,77 @@ body {
     text-align: center;
 }
 
-.card1Title,.card2Title{
+.title_empresasEstufa {
+    width: 80%;
     margin-top: 35px;
     color: #FFFFFF;
-    text-decoration: underline;
+    border-bottom: 2.5px solid #FFFFFF;
+    padding-bottom: 20px;
 }
 
-.card3Title{
-    margin-top: 25px;
+.number_empresasEstufa {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 50px;
+    padding-bottom: 25px;
     color: #FFFFFF;
-    line-height: 20px;
 }
 
-.card3Title .cadastradas{
-    text-decoration: underline;
+.container_usuariosAtivos {
+    width: 250px;
+    height: 250px;
+    background-color: #414C30;
+    border-radius: 50px;
+    box-shadow: -1px 8px 27px -4px rgba(0, 0, 0, 0.75), inset 0px 0px 50px 20px rgba(15, 32, 2, 0.295);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.title_usuariosAtivos {
+    width: 80%;
+    margin-top: 35px;
+    color: #FFFFFF;
+    border-bottom: 2.5px solid #FFFFFF;
+    padding-bottom: 20px;
+}
+
+.number_usuariosAtivos {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 50px;
+    padding-bottom: 25px;
+    color: #FFFFFF;
+}
+
+.container_estufasCadastradas{
+    width: 250px;
+    height: 250px;
+    background-color: #414C30;
+    border-radius: 50px;
+    box-shadow: -1px 8px 27px -4px rgba(0, 0, 0, 0.75), inset 0px 0px 50px 20px rgba(15, 32, 2, 0.295);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.title_estufasCadastradas{
+    width: 80%;
+    margin-top: 35px;
+    color: #FFFFFF;
+    border-bottom: 2.5px solid #FFFFFF;
+    padding-bottom: 20px;
+}
+
+.number_estufasCadastradas {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 50px;
+    padding-bottom: 25px;
+    color: #FFFFFF;
 }
