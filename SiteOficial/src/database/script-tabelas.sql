@@ -42,7 +42,7 @@ CREATE TABLE usuario (
     nome VARCHAR (45),
     CPF CHAR (14),
     email VARCHAR (45),
-    senha VARCHAR(35),
+    senha VARCHAR(200),
     telFixo CHAR (13),
     telCelular CHAR (14),
     dataCriacao DATE,
