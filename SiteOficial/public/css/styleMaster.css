@@ -275,6 +275,7 @@ body {
     font-size: 30px;
     font-weight: bold;
     color: #FFFFFF;
+    z-index: 3;
 }
 
 .box_usuariosCadastrados h3{
@@ -286,11 +287,27 @@ body {
     flex-direction: column;
     align-items: center;
     width: 80%;
+    height: 500px;
     background-color: rgb(251, 224, 192, 0.6);
     border-top: 10px solid #1B3606;
     border-left: 10px solid #1B3606;
     border-right: 10px solid #1B3606;
-    margin-bottom: 200px;
+    margin-bottom: 550px;
+    overflow-y: scroll;
+}
+
+.usuarios_cadastrados::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.usuarios_cadastrados::-webkit-scrollbar {
+    width: 6px;
+    background-color: transparent;
+}
+
+.usuarios_cadastrados::-webkit-scrollbar-thumb {
+    background-color: #ffffff67;
+    border-radius: 50px;
 }
 
 .usuario {
