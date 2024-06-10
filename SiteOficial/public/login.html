@@ -61,8 +61,7 @@
 
 <script src="./js/scriptLogin.js"></script>
 <script>
-
-function mostrarAlerta(mensagemAlerta) {
+    function mostrarAlerta(mensagemAlerta) {
         let boxAlerta = document.querySelector('.alertaBox');
         let boxMensagem = document.querySelector('.mensagemBox');
         let blurTela = document.getElementById('blurTela');
@@ -76,54 +75,21 @@ function mostrarAlerta(mensagemAlerta) {
         let boxAlerta = document.querySelector('.alertaBox');
         let blurTela = document.getElementById('blurTela');
 
-let indiceArroba = email.indexOf("@")
-let tamanhoSenha = senha.length
+        boxAlerta.classList.remove('aparecer');
+        setTimeout(() => {
+            blurTela.style.display = 'none';
+        }, 500);
+    }
 
-// Validação de numeros no campo Senha
-var input = document.getElementById('input_senhaUser').value;
-var temNumeroSenha = false;
+    function marcarErro(input) {
+        input.style.border = 'solid 2px #FF0000';
+        setTimeout(() => {
+            input.style.border = '';
+        }, 3000);
+    }
 
-for (var i = 0; i < input.length; i++) {
-var caractere = input[i];
-if (!isNaN(caractere) && caractere !== '') { // Verifica se é um número e não um espaço em branco
-temNumeroSenha = true;
-break;
-}
-}
 
-if(email == '' && senha == ''){
-alert('Você deve preencher todos os campos para prosseguir!')
-var input = document.getElementById('input_emailUser');
-var input1 = document.getElementById('input_senhaUser');
-input.style.borderColor = 'red';
-input1.style.borderColor = 'red';
-} else if (email == '') {
-alert('Você deve informar o seu email para prosseguir!')
-var input = document.getElementById('input_emailUser');
-input.style.borderColor = 'red';
-} else if (senha == '') {
-alert('Você deve informar uma senha para prosseguir!')
-var input = document.getElementById('input_senhaUser');
-input.style.borderColor = 'red';
-} else if (indiceArroba == -1) {
-alert('O seu email está inválido!')
-var input = document.getElementById('input_emailUser');
-input.style.borderColor = 'red';
-} else if (temNumeroSenha == false) {
-alert('A senha deve conter pelo menos um número!')
-var input = document.getElementById('input_senhaUser');
-input.style.borderColor = 'red';
-} else if (tamanhoSenha <= 5) {
-alert('A senha deve ter mais de 5 caracteres!')
-var input = document.getElementById('input_senhaUser');
-input.style.borderColor = 'red';
-} else { 
-window.location.href = 'dashboard.html';
-}
-}
-
-function acessar(){
-
+    function acessar() {
         let emailInput = document.getElementById('input_emailUsuario');
         let senhaInput = document.getElementById('input_senhaUsuario');
 
@@ -176,7 +142,7 @@ function acessar(){
                         sessionStorage.CPF_USUARIO = json.CPF;
                         sessionStorage.TEL_FIXO = json.telFixo;
                         sessionStorage.TEL_CELULAR = json.telCelular;
-                        sessionStorage.DATA_CRIACAO = json.dataCriacao.slice(0,10);
+                        sessionStorage.DATA_CRIACAO = json.dataCriacao.slice(0, 10);
                         sessionStorage.ID_EMPRESA = json.idEmpresa;
                         sessionStorage.TIPO_USUARIO = json.idTipoUsuario;
 
@@ -187,7 +153,7 @@ function acessar(){
                             mostrarAlerta(mensagemSucesso)
                         }, 1000);
                         setTimeout(() => {
-                            window.location.href = 'telaUsuario.html';
+                            window.location.href = './cadastroProprietario.html';
                         }, 2000);
 
 
@@ -198,11 +164,9 @@ function acessar(){
                     mostrarAlerta(erro.message);
                 });
         }
-    
-}
+    }
 
     function acessarHome() {
         window.location.href = 'index.html';
     }
-
 </script>
