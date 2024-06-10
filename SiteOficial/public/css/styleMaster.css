@@ -33,6 +33,7 @@ body {
 .boxMenu {
     position: relative;
     bottom: 115px;
+    display: flex;
 }
 
 #menuToggle {
@@ -98,7 +99,7 @@ body {
 
 #menu {
     position: absolute;
-    width: 300px;
+    width: 200px;
     margin: -100px 0px 0px -50px;
     padding: 125px 50px 50px 50px;
     border-radius: 20px;
@@ -108,7 +109,10 @@ body {
     -webkit-font-smoothing: antialiased;
     transform-origin: 0% 0%;
     transform: translate(-100%, 0);
-    transition: transform 0.5s ease-in-out
+    transition: transform 0.5s ease-in-out;
+    background-color: #1B3606;
+    height: 100vh;
+    
 }
 
 #menu li {
