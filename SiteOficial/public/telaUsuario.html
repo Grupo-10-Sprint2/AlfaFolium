@@ -54,31 +54,31 @@
             <div class="boxInfoUsuario">
                 <div class="spanNome">
                     <h3>Nome:</h3>
-                    <div class="textNome">
+                    <div class="textNome" id="saidaNome">
                     </div>
                 </div>
                 <div class="spanOutrasInfos">
                     <div class="spanOutrasInfos1">
                         <div class="spanCPF">
                             <h3>CPF:</h3>
-                            <div class="textCPF">
+                            <div class="textCPF" id="saidaCPF">
                             </div>
                         </div>
                         <div class="spanDataCadastro">
                             <h3>Data de Cadastro:</h3>
-                            <div class="textDataCadastro">
+                            <div class="textDataCadastro" id="saida_data_Cadastro">
                             </div>
                         </div>
                     </div>
                     <div class="spanOutrasInfos2">
                         <div class="spanEmpresa">
                             <h3>Empresa:</h3>
-                            <div class="textEmpresa">
+                            <div class="textEmpresa" id="saida_nome_empresa">
                             </div>
                         </div>
                         <div class="spanFuncao">
                             <h3>Função:</h3>
-                            <div class="textFuncao">
+                            <div class="textFuncao" id="saidaFuncao">
                             </div>
                         </div>
                     </div>
@@ -111,10 +111,6 @@
                 <div class="estufa">
                 </div>
             </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> ea9d95cc933dacb3fe6a6fd217e60a48165fe8f1
         </div>
     </div>
 
@@ -125,7 +121,14 @@
 
 
 <script>
-  spanNome.innerHTML = sessionStorage.NOME_USUARIO;
+  saidaNome.innerHTML = sessionStorage.NOME_USUARIO;
+  saidaCPF.innerHTML = sessionStorage.CPF_USUARIO;
+  saida_data_Cadastro.innerHTML = sessionStorage.DATA_CRIACAO;
+  saida_nome_empresa.innerHTML=sessionStorage.NOME_EMPRESA;
+  saidaFuncao.innerHTML=sessionStorage.TIPO_USUARIO;
+
+
+
 
     fetch('/usuarios/autenticar', {
         method: 'POST',
@@ -149,15 +152,14 @@
         .then(function (json) {
             if (json) {
                 sessionStorage.ID_USUARIO = json.idUsuario;
-                sessionStorage.NOME_USUARIO = json.nome;
-                sessionStorage.EMAIL_USUARIO = json.email;
-                sessionStorage.CPF_USUARIO = json.CPF;
-                sessionStorage.DATA_CRIACAO = json.dataCriacao.slice(0, 10);
-                sessionStorage.ID_EMPRESA = json.idEmpresa;
-                sessionStorage.TIPO_USUARIO = json.idTipoUsuario;
-
-
-
+                sessionStorage.NOME_USUARIO = json.nomeUsuario;
+                sessionStorage.EMAIL_USUARIO = json.emailUsuario;
+                sessionStorage.CPF_USUARIO = json.CPFUsuario;
+                sessionStorage.DATA_CRIACAO = json.dataCriacaoUsuario.slice(0, 10);
+                sessionStorage.ID_EMPRESA = json.empresaUsuario;
+                sessionStorage.ID_TIPO_USUARIO = json.idTipoUsuario;
+                sessionStorage.NOME_EMPRESA = json.nomeEmpresa;
+                sessionStorage.TIPO_USUARIO = json.tipoUsuario;
             }
         })
         .catch(function (erro) {

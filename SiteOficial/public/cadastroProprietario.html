@@ -156,7 +156,7 @@
     }
 
 
-    
+
     function carregarEmpresas() {
         fetch('/empresas/listar')
             .then(response => response.json())
@@ -172,7 +172,7 @@
             .catch(error => console.error('Erro ao carregar empresas:', error));
     }
 
-    document.addEventListener('DOMContentLoaded',carregarEmpresas())
+    document.addEventListener('DOMContentLoaded', carregarEmpresas())
 
 
     function cadastrarUsuario() {
@@ -269,10 +269,11 @@
 
                             titleAlerta.innerHTML = 'Cadastro Efetuado!'
                             mostrarAlerta(mensagemSucesso)
-                        window.location
                         }, 1000);
                     }
-                })
+                    window.location.href = "./login.html"
+
+                })                  
         }
     }
 
