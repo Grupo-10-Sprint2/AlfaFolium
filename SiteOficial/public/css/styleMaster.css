@@ -8,8 +8,7 @@ body {
     background-image: url(../assets/assetsDashboard/bgdDash.png);
     background-size: cover;
     background-repeat: no-repeat;
-    overflow-x: hidden;
-    height: 115vh;
+    overflow: hidden;
 }
 
 .headerBox {
@@ -202,6 +201,7 @@ body {
     display: flex;
     align-items: center;
     font-size: 50px;
+    padding-top: 15px;
     color: #FFFFFF;
 }
 
@@ -239,6 +239,7 @@ body {
     align-items: center;
     font-size: 50px;
     padding-bottom: 25px;
+    padding-top: 15px;
     color: #FFFFFF;
 }
 
@@ -256,20 +257,11 @@ body {
 /* --------------- INICIO Card dos Usuários --------------- */
 
 .container_content {
-    height: 100%;
+    height: 115vh;
     display: flex;
     justify-content: center;
-}
-
-.usuarios_cadastrados {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    width: 75%;
-    background-color: rgb(251, 224, 192, 0.6);
-    border-top: 10px solid #1B3606;
-    border-left: 10px solid #1B3606;
-    border-right: 10px solid #1B3606;
+    flex-direction: column;
 }
 
 .box_usuariosCadastrados {
@@ -279,7 +271,7 @@ body {
     border-radius: 45px;
     text-align: center;
     position: relative;
-    bottom: 40px;
+    bottom: -38px;
     font-size: 30px;
     font-weight: bold;
     color: #FFFFFF;
@@ -287,6 +279,18 @@ body {
 
 .box_usuariosCadastrados h3{
     padding-top: 7.5px;
+}
+
+.usuarios_cadastrados {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    background-color: rgb(251, 224, 192, 0.6);
+    border-top: 10px solid #1B3606;
+    border-left: 10px solid #1B3606;
+    border-right: 10px solid #1B3606;
+    margin-bottom: 200px;
 }
 
 .usuario {
@@ -299,15 +303,16 @@ body {
     border-radius: 30px;
 }
 
+
 .title_usuario {
-    width: 20%;
+    width: 23%;
     text-align: center;
     font-size: 18px;
     height: 70px;
     border-radius: 30px;
     position: relative;
     bottom: 50px;
-    margin-left: 40px;
+    margin-left: 50px;
     background-color: #1B3606;
 }
 
@@ -321,7 +326,7 @@ body {
     height: 250px;
     padding-left: 35px;
     position: relative;
-    bottom: 35px;
+    bottom: 42px;
 }
 
 .foto_usuario img {
@@ -329,16 +334,20 @@ body {
     height: 100%;
 }
 
-.container_nome_cpf {
+.container_nome_cpf, .container_empresa_funcao {
     display: flex;
     justify-content: space-around;
     position: relative;
     bottom: 280px;
-    width: 60%;
-    margin-left: 400px;
+    width: 70%;
+    margin-left: 290px;
     font-size: 25px;
     text-align: center;
     gap: 50px;
+}
+
+.container_empresa_funcao {
+    padding-top: 30px;
 }
 
 .box_nome, .box_cpf {
@@ -348,22 +357,11 @@ body {
     border-radius: 20px;
 }
 
-.container_empresa_funcao {
-    display: flex;
-    justify-content: space-around;
-    position: relative;
-    bottom: 250px;
-    width: 60%;
-    margin-left: 400px;
-    font-size: 25px;
-    text-align: center;
-    gap: 50px;
-}
-
 .box_empresa, .box_funcao {
     background-color: #36422D;
     width: 50%;
     border: 6px solid rgb(27, 54, 6, 0.3);
     border-radius: 20px;
+    padding-top: 10px;
 }
 /* --------------- FIM Card dos Usuários --------------- */

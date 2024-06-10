@@ -27,7 +27,11 @@
         </div>
         <div class="alfaceAlerta"><img src="./assets/assetsCadastro/alface.png"></div>
     </div>
-    
+
+    <div class="botaovoltar" onclick="acessarHome()">
+        <h1>
+            < </h1>
+    </div>
 
     <div class="boxCadastro">
         <div class="logo">
@@ -58,7 +62,7 @@
 <script src="./js/scriptLogin.js"></script>
 <script>
 
-    function mostrarAlerta(mensagemAlerta) {
+function mostrarAlerta(mensagemAlerta) {
         let boxAlerta = document.querySelector('.alertaBox');
         let boxMensagem = document.querySelector('.mensagemBox');
         let blurTela = document.getElementById('blurTela');
@@ -72,6 +76,7 @@
         let boxAlerta = document.querySelector('.alertaBox');
         let blurTela = document.getElementById('blurTela');
 
+<<<<<<< HEAD
 let indiceArroba = email.indexOf("@")
 let tamanhoSenha = senha.length
 
@@ -117,6 +122,25 @@ input.style.borderColor = 'red';
 window.location.href = 'dashboard.html';
 }
 }
+=======
+        boxAlerta.classList.remove('aparecer');
+        setTimeout(() => {
+            blurTela.style.display = 'none';
+        }, 500);
+    }
+
+    function marcarErro(input) {
+        input.style.border = 'solid 2px #FF0000';
+        setTimeout(() => {
+            input.style.border = '';
+        }, 3000);
+    }
+
+
+    function acessar() {
+
+
+>>>>>>> ea9d95cc933dacb3fe6a6fd217e60a48165fe8f1
 
         let emailInput = document.getElementById('input_emailUsuario');
         let senhaInput = document.getElementById('input_senhaUsuario');
@@ -181,10 +205,10 @@ window.location.href = 'dashboard.html';
                             mostrarAlerta(mensagemSucesso)
                         }, 1000);
                         setTimeout(() => {
-                            window.location.href = './cadastroProprietario.html';
+                            window.location.href = 'telaUsuario.html';
                         }, 2000);
 
-                        
+
                     }
                 })
                 .catch(function (erro) {
