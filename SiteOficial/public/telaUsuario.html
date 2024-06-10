@@ -103,7 +103,7 @@
             <div class="boxListaEstufas">
 
             </div>
-            
+
         </div>
     </div>
 
@@ -111,3 +111,49 @@
 </body>
 
 </html>
+
+
+<script>
+  spanNome.innerHTML = sessionStorage.NOME_USUARIO;
+
+    fetch('/usuarios/autenticar', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            emailServer: email,
+            senhaServer: senha
+        })
+    })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                return resposta.json();
+            } else if (resposta.status === 403) {
+                console.log("Email e/ou senha inválido(s)");
+            } else {
+                console.log("Houve um erro ao tentar realizar o login!");
+            }
+        })
+        .then(function (json) {
+            if (json) {
+                sessionStorage.ID_USUARIO = json.idUsuario;
+                sessionStorage.NOME_USUARIO = json.nome;
+                sessionStorage.EMAIL_USUARIO = json.email;
+                sessionStorage.CPF_USUARIO = json.CPF;
+                sessionStorage.DATA_CRIACAO = json.dataCriacao.slice(0, 10);
+                sessionStorage.ID_EMPRESA = json.idEmpresa;
+                sessionStorage.TIPO_USUARIO = json.idTipoUsuario;
+
+
+
+            }
+        })
+        .catch(function (erro) {
+            console.log(erro.message);
+            mostrarAlerta(erro.message);
+        });
+
+
+
+</script>

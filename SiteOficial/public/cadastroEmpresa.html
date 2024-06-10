@@ -112,7 +112,7 @@
 
     document.addEventListener('DOMContentLoaded', function () {
         VMasker(document.querySelector("#input_cnpj")).maskPattern("99.999.999/9999-99");
-        VMasker(document.querySelector("#input_cep")).maskPattern("999.999.999-99");
+        VMasker(document.querySelector("#input_cep")).maskPattern("99999-999");
     });
 
 
@@ -175,7 +175,7 @@
             validacao = false;
         }
 
-        if (CEP === '' || CEP.length !== 14) {
+        if (CEP === '' || CEP.length !== 9) {
             marcarErro(cepInput);
             mensagensAlerta.push('CEP Inválido!');
             validacao = false;
