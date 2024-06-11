@@ -16,7 +16,7 @@
 </head>
 
 
-<body>
+<body onload="exibirUsuarios()">
     <div class="headerBox">
         <div class="boxLogo">
 
@@ -94,109 +94,8 @@
                 <h3>Usuários Cadastrados</h3>
             </div>
 
-            <div class="usuarios_cadastrados">
-                <div class="usuario">
-                    <div class="title_usuario">
-                        <h3>Usuário 1</h3>
-                    </div>
+            <div id="plotarUsuarios" class="usuarios_cadastrados">
 
-                    <div class="foto_usuario">
-                        <img src="./assets/assetsMaster/foto de Perfil - Usuário 1.png">
-                    </div>
-
-                    <div class="container_nome_cpf">
-                        <div class="box_nome">
-                            <h4>Nome:</h4>
-                            <h4>Fernando Caramico</h4>
-                        </div>
-
-                        <div class="box_cpf">
-                            <h4>CPF:</h4>
-                            <h4>45685230781</h4>
-                        </div>
-                    </div>
-
-                    <div class="container_empresa_funcao">
-                        <div class="box_empresa">
-                            <h4>Empresa:</h4>
-                            <h4>HondaFolhas</h4>
-                        </div>
-
-                        <div class="box_funcao">
-                            <h4>Função:</h4>
-                            <h4>Dono</h4>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="usuario">
-                    <div class="title_usuario">
-                        <h3>Usuário 2</h3>
-                    </div>
-
-                    <div class="foto_usuario">
-                        <img src="./assets/assetsMaster/foto de Perfil - Usuário 1.png">
-                    </div>
-
-                    <div class="container_nome_cpf">
-                        <div class="box_nome">
-                            <h4>Nome:</h4>
-                            <h4>Fernando Caramico</h4>
-                        </div>
-
-                        <div class="box_cpf">
-                            <h4>CPF:</h4>
-                            <h4>45685230781</h4>
-                        </div>
-                    </div>
-
-                    <div class="container_empresa_funcao">
-                        <div class="box_empresa">
-                            <h4>Empresa:</h4>
-                            <h4>HondaFolhas</h4>
-                        </div>
-
-                        <div class="box_funcao">
-                            <h4>Função:</h4>
-                            <h4>Dono</h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="usuario">
-                    <div class="title_usuario">
-                        <h3>Usuário 2</h3>
-                    </div>
-
-                    <div class="foto_usuario">
-                        <img src="./assets/assetsMaster/foto de Perfil - Usuário 1.png">
-                    </div>
-
-                    <div class="container_nome_cpf">
-                        <div class="box_nome">
-                            <h4>Nome:</h4>
-                            <h4>Fernando Caramico</h4>
-                        </div>
-
-                        <div class="box_cpf">
-                            <h4>CPF:</h4>
-                            <h4>45685230781</h4>
-                        </div>
-                    </div>
-
-                    <div class="container_empresa_funcao">
-                        <div class="box_empresa">
-                            <h4>Empresa:</h4>
-                            <h4>HondaFolhas</h4>
-                        </div>
-
-                        <div class="box_funcao">
-                            <h4>Função:</h4>
-                            <h4>Dono</h4>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -204,3 +103,69 @@
 </body>
 
 </html>
+
+<script>
+    function exibirUsuarios() {
+        fetch("/usuarios/usuariosCadastrados")
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    console.log(`AMIGO ESTOU AQUI`);
+                    return resposta.json();
+                    
+                } else {
+                    console.log(`JSON não coletado`);
+                }
+            })
+            .then(function (json) {
+                console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                var inserirUsuario = document.getElementById("plotarUsuarios");
+
+                for (let qtdUsuarios = 0;
+                    qtdUsuarios < resposta.length;
+                    qtdUsuarios++) {
+
+                    var usuario = resposta[qtdUsuarios];
+
+                    inserirUsuario.innerHTML += `<div class="usuario">
+                    <div class="title_usuario">
+                        <h3>Usuário ${qtdUsuarios}</h3>
+                    </div>
+
+                    <div class="foto_usuario">
+                        <img src="./assets/assetsMaster/foto de Perfil - Usuário 1.png">
+                    </div>
+
+                    <div class="container_nome_cpf">
+                        <div class="box_nome">
+                            <h4>Nome:</h4>
+                            <h4>${usuario.nome}</h4>
+                        </div>
+
+                        <div class="box_cpf">
+                            <h4>CPF:</h4>
+                            <h4>${usuario.cpf}</h4>
+                        </div>
+                    </div>
+
+                    <div class="container_empresa_funcao">
+                        <div class="box_empresa">
+                            <h4>Empresa:</h4>
+                            <h4>${usuario.empresa}</h4>
+                        </div>
+
+                        <div class="box_funcao">
+                            <h4>Função:</h4>
+                            <h4>${usuario.funcao}</h4>
+                        </div>
+                    </div>
+
+                </div>`
+                }
+
+            })
+            .catch (function (resposta) {
+            console.error(resposta);
+        });
+    }
+</script>
