@@ -54,7 +54,8 @@ CREATE TABLE usuario (
 		REFERENCES empresa(idEmpresa)
 );
 
-    
+insert into usuario values
+	(default, 'Kauan França', 15265625203, 'kauanMaster@gmail.com', 'kauan123', 1189503390, 11989503390, now(), 1, 1);
     
 CREATE TABLE parametro (
 	idParametro INT PRIMARY KEY AUTO_INCREMENT,
@@ -63,6 +64,18 @@ CREATE TABLE parametro (
     temperaturaMin DECIMAL (4, 2),
     temperaturaMax DECIMAL (4, 2)
 ); 	
+
+select u.idUsuario,
+        u.nome as nome,
+        u.email as email,
+        u.cpf as cpf,
+        u.telFixo, telFixo, 
+        u.telCelular as telCelular,
+        e.nome as nomeEmpresa,
+        t.tipo as funcao
+        from usuario as u join empresa as e
+        on u.fkEmpresa = e.idEmpresa join tipoUsuario as t
+        on u.fkTipoUsuario = t.idTipoUsuario;
 
 
 CREATE TABLE estufa (
@@ -99,7 +112,8 @@ CREATE TABLE dados (
 );
             
 SHOW TABLES;  
-  
+
+
 SELECT * FROM usuario;
 SELECT * FROM endereco;
 SELECT * FROM empresa;
@@ -110,7 +124,3 @@ SELECT * FROM sensor;
 SELECT * FROM dados;
             
 SHOW TABLES;
-
-
-
-

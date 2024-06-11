@@ -107,65 +107,66 @@
 <script>
     function exibirUsuarios() {
         fetch("/usuarios/usuariosCadastrados")
-            .then(function (resposta) {
+            .then(resposta => {
+                console.log(resposta)
+
                 if (resposta.ok) {
-                    console.log(`AMIGO ESTOU AQUI`);
-                    return resposta.json();
-                    
+                    console.log(`AMIGO ESTOU AQUI`)
+                    resposta.json().then(res => {
+
+                        var inserirUsuario = document.getElementById("plotarUsuarios");
+                        console.log(res[0].empresa);
+                        console.log(res);
+
+                        for (let qtdUsuarios = 0;
+                            qtdUsuarios < res.length;
+                            qtdUsuarios++) {
+
+                            var usuario = res[qtdUsuarios];
+
+                            inserirUsuario.innerHTML += `<div class="usuario">
+                        <div class="title_usuario">
+                            <h3>Usuário ${qtdUsuarios + 1}</h3>
+                        </div>
+
+                        <div class="foto_usuario">
+                            <img src="./assets/assetsMaster/foto de Perfil - Usuário 1.png">
+                        </div>
+
+                        <div class="container_nome_cpf">
+                            <div class="box_nome">
+                                <h4>Nome:</h4>
+                                <h4>${usuario.nome}</h4>
+                            </div>
+
+                            <div class="box_cpf">
+                                <h4>CPF:</h4>
+                                <h4>${usuario.cpf}</h4>
+                            </div>
+                        </div>
+
+                        <div class="container_empresa_funcao">
+                            <div class="box_empresa">
+                                <h4>Empresa:</h4>
+                                <h4>${usuario.empresa}</h4>
+                            </div>
+
+                            <div class="box_funcao">
+                                <h4>Função:</h4>
+                                <h4>${usuario.funcao}</h4>
+                            </div>
+                        </div>
+
+                    </div>`
+                        }
+                    });
+
                 } else {
                     console.log(`JSON não coletado`);
                 }
             })
-            .then(function (json) {
-                console.log("Dados recebidos: ", JSON.stringify(resposta));
-
-                var inserirUsuario = document.getElementById("plotarUsuarios");
-
-                for (let qtdUsuarios = 0;
-                    qtdUsuarios < resposta.length;
-                    qtdUsuarios++) {
-
-                    var usuario = resposta[qtdUsuarios];
-
-                    inserirUsuario.innerHTML += `<div class="usuario">
-                    <div class="title_usuario">
-                        <h3>Usuário ${qtdUsuarios}</h3>
-                    </div>
-
-                    <div class="foto_usuario">
-                        <img src="./assets/assetsMaster/foto de Perfil - Usuário 1.png">
-                    </div>
-
-                    <div class="container_nome_cpf">
-                        <div class="box_nome">
-                            <h4>Nome:</h4>
-                            <h4>${usuario.nome}</h4>
-                        </div>
-
-                        <div class="box_cpf">
-                            <h4>CPF:</h4>
-                            <h4>${usuario.cpf}</h4>
-                        </div>
-                    </div>
-
-                    <div class="container_empresa_funcao">
-                        <div class="box_empresa">
-                            <h4>Empresa:</h4>
-                            <h4>${usuario.empresa}</h4>
-                        </div>
-
-                        <div class="box_funcao">
-                            <h4>Função:</h4>
-                            <h4>${usuario.funcao}</h4>
-                        </div>
-                    </div>
-
-                </div>`
-                }
-
-            })
-            .catch (function (resposta) {
-            console.error(resposta);
-        });
+            .catch(function (resposta) {
+                console.error(resposta);
+            });
     }
 </script>

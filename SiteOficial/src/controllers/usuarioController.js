@@ -52,12 +52,9 @@ function autenticar(req, res) {
 function usuariosCadastrados(req, res) {    
         usuarioModel.usuariosCadastrados()
             .then(function (resultado) {
-                    console.log(`\nResultados encontrados: ${resultado.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultado)}`);
-
                     if (resultado.length >= 1) {
                         console.log(resultado);
-                        res.json();
+                        res.status(200).json(resultado)
                     } else if (resultado.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
