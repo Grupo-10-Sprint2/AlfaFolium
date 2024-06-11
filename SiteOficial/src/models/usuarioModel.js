@@ -43,11 +43,29 @@ function cadastrar(nome, CPF, email, telFixo, telCelular, idEmpresa, idTipoUsuar
 }
 
 
+function infoEstufas() {
+    var instrucaoSql = `
+    SELECT COUNT(e.idEstufa) AS quantidadeEstufas
+    FROM estufa e
+    JOIN sensor s ON e.idEstufa = s.fkEstufa
+    JOIN dados d ON s.idSensor = d.fkSensor
+    WHERE d.temperatura > 28 AND d.umidade > 30;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
+
 
 module.exports = {
     autenticar,
     cadastrar,
+<<<<<<< HEAD
+    infoEstufas
+=======
     usuariosCadastrados
+>>>>>>> 2fd0020da557f46917e7a1c20e6932b007df895c
 };
 
 
