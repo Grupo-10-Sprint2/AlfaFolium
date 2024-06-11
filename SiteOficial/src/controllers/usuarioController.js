@@ -21,14 +21,16 @@ function autenticar(req, res) {
 
                         res.json({
                             idUsuario: resultadoAutenticar[0].idUsuario,
-                            nome: resultadoAutenticar[0].nome,
-                            email: resultadoAutenticar[0].email,
-                            CPF: resultadoAutenticar[0].CPF,
-                            telFixo: resultadoAutenticar[0].telFixo,
-                            telCelular: resultadoAutenticar[0].telCelular,
-                            dataCriacao: resultadoAutenticar[0].dataCriacao,
-                            idEmpresa: resultadoAutenticar[0].fkEmpresa,
-                            idTipoUsuario: resultadoAutenticar[0].fkTipoUsuario
+                            nome: resultadoAutenticar[0].nomeUsuario,
+                            email: resultadoAutenticar[0].emailUsuario,
+                            CPFUsuario: resultadoAutenticar[0].CPFUsuario,
+                            telFixo: resultadoAutenticar[0].telFixoUsuario,
+                            telCelular: resultadoAutenticar[0].telCelularUsuario,
+                            dataCriacao: resultadoAutenticar[0].dataCriacaoUsuario,
+                            idEmpresa: resultadoAutenticar[0].empresaUSuario,
+                            idTipoUsuario: resultadoAutenticar[0].idTipoUsuario,
+                            nomeEmpresa: resultadoAutenticar[0].nomeEmpresa,
+                            funcao: resultadoAutenticar[0].funcaoUsuario
                         });
 
                     } else if (resultadoAutenticar.length == 0) {

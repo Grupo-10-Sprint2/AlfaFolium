@@ -121,52 +121,9 @@
 
 
 <script>
-  saidaNome.innerHTML = sessionStorage.NOME_USUARIO;
-  saidaCPF.innerHTML = sessionStorage.CPF_USUARIO;
-  saida_data_Cadastro.innerHTML = sessionStorage.DATA_CRIACAO;
-  saida_nome_empresa.innerHTML=sessionStorage.NOME_EMPRESA;
-  saidaFuncao.innerHTML=sessionStorage.TIPO_USUARIO;
-
-
-
-
-    fetch('/usuarios/autenticar', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            emailServer: email,
-            senhaServer: senha
-        })
-    })
-        .then(function (resposta) {
-            if (resposta.ok) {
-                return resposta.json();
-            } else if (resposta.status === 403) {
-                console.log("Email e/ou senha inválido(s)");
-            } else {
-                console.log("Houve um erro ao tentar realizar o login!");
-            }
-        })
-        .then(function (json) {
-            if (json) {
-                sessionStorage.ID_USUARIO = json.idUsuario;
-                sessionStorage.NOME_USUARIO = json.nomeUsuario;
-                sessionStorage.EMAIL_USUARIO = json.emailUsuario;
-                sessionStorage.CPF_USUARIO = json.CPFUsuario;
-                sessionStorage.DATA_CRIACAO = json.dataCriacaoUsuario.slice(0, 10);
-                sessionStorage.ID_EMPRESA = json.empresaUsuario;
-                sessionStorage.ID_TIPO_USUARIO = json.idTipoUsuario;
-                sessionStorage.NOME_EMPRESA = json.nomeEmpresa;
-                sessionStorage.TIPO_USUARIO = json.tipoUsuario;
-            }
-        })
-        .catch(function (erro) {
-            console.log(erro.message);
-            mostrarAlerta(erro.message);
-        });
-
-
-
+    saidaNome.innerHTML = sessionStorage.NOME_USUARIO;
+    saidaCPF.innerHTML = sessionStorage.CPF_USUARIO;
+    saida_data_Cadastro.innerHTML = sessionStorage.DATA_CRIACAO;
+    saida_nome_empresa.innerHTML=sessionStorage.NOME_EMPRESA;
+    saidaFuncao.innerHTML=sessionStorage.FUNCAO_USUARIO;
 </script>

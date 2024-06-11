@@ -139,12 +139,14 @@
                         sessionStorage.ID_USUARIO = json.idUsuario;
                         sessionStorage.NOME_USUARIO = json.nome;
                         sessionStorage.EMAIL_USUARIO = json.email;
-                        sessionStorage.CPF_USUARIO = json.CPF;
+                        sessionStorage.CPF_USUARIO = json.CPFUsuario;
                         sessionStorage.TEL_FIXO = json.telFixo;
                         sessionStorage.TEL_CELULAR = json.telCelular;
                         sessionStorage.DATA_CRIACAO = json.dataCriacao.slice(0, 10);
                         sessionStorage.ID_EMPRESA = json.idEmpresa;
-                        sessionStorage.TIPO_USUARIO = json.idTipoUsuario;
+                        sessionStorage.ID_TIPO_USUARIO = json.idTipoUsuario;
+                        sessionStorage.NOME_EMPRESA = json.nomeEmpresa;
+                        sessionStorage.FUNCAO_USUARIO = json.funcao;
 
                         setTimeout(() => {
                             let mensagemSucesso = 'Acessando a plataforma...'
@@ -153,7 +155,14 @@
                             mostrarAlerta(mensagemSucesso)
                         }, 1000);
                         setTimeout(() => {
-                            window.location.href = './cadastroProprietario.html';
+                            if(sessionStorage.FUNCAO_USUARIO == 'Master'){
+                                window.location.href = './telaMaster.html';
+                            }
+                            else
+                            {
+                                window.location.href = './telaUsuario.html'
+                            }
+                            
                         }, 2000);
 
 
