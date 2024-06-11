@@ -13,12 +13,21 @@ function cadastrar(tamanhoEstufa, statusEstufa, idEmpresa, TempMaxima, TempMinim
             INSERT INTO estufa (tamanho, status, fkEmpresa, fkParametro) 
             VALUES (${tamanhoEstufa}, '${statusEstufa}', ${idEmpresa}, ${idParametro});
         `;
-            return database.executar(instrucaoSql);
-        });
+            return database.executar(instrucaoSql)
 
+                .then(result => {
+                    var idEstufa = result.insertId;
+                    var instrucaoSql = `
+                INSERT INTO sensor (idSensor, nome, fkEstufa) 
+                VALUES (${idEstufa}, 'DHT11', ${idEstufa});
+            `;
+                    return database.executar(instrucaoSql)
+                });
+
+        })
 }
 
 
 module.exports = {
-    cadastrar
+cadastrar
 }
