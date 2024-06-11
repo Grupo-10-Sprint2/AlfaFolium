@@ -61,11 +61,8 @@ function infoEstufas() {
 module.exports = {
     autenticar,
     cadastrar,
-<<<<<<< HEAD
-    infoEstufas
-=======
+    infoEstufas,
     usuariosCadastrados
->>>>>>> 2fd0020da557f46917e7a1c20e6932b007df895c
 };
 
 
