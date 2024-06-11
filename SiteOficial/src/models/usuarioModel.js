@@ -13,7 +13,7 @@ function autenticar(email, senha) {
     return database.executar(instrucaoSql);
 }
 
-function usuariosCadastrados() {
+function usuariosCadastrados(req, res) {
     var instrucaoSql = `
         select u.idUsuario,
         u.nome as nome,

@@ -21,7 +21,6 @@ CREATE TABLE empresa (
 
 INSERT INTO empresa (nome) VALUES
 	('Alfa Folium');
-
         
 CREATE TABLE tipoUsuario (
 	idTipoUsuario INT PRIMARY KEY AUTO_INCREMENT,
@@ -42,7 +41,7 @@ CREATE TABLE usuario (
     nome VARCHAR (45),
     CPF CHAR (14),
     email VARCHAR (45),
-    senha VARCHAR(35),
+    senha VARCHAR(200),
     telFixo CHAR (13),
     telCelular CHAR (14),
     dataCriacao DATE,
@@ -64,18 +63,6 @@ CREATE TABLE parametro (
     temperaturaMin DECIMAL (4, 2),
     temperaturaMax DECIMAL (4, 2)
 ); 	
-
-select u.idUsuario,
-        u.nome as nome,
-        u.email as email,
-        u.cpf as cpf,
-        u.telFixo, telFixo, 
-        u.telCelular as telCelular,
-        e.nome as nomeEmpresa,
-        t.tipo as funcao
-        from usuario as u join empresa as e
-        on u.fkEmpresa = e.idEmpresa join tipoUsuario as t
-        on u.fkTipoUsuario = t.idTipoUsuario;
 
 
 CREATE TABLE estufa (
@@ -112,7 +99,6 @@ CREATE TABLE dados (
 );
             
 SHOW TABLES;  
-
 
 SELECT * FROM usuario;
 SELECT * FROM endereco;

@@ -18,24 +18,17 @@
 
 <body>
 
-
-
     <div class="headerBox">
         <div class="boxLogo">
-
             <img src="./assets/assetsDashboard/logoNav.png">
-
         </div>
         <div class="boxMenu">
-
             <nav role="navigation">
                 <div id="menuToggle">
                     <input type="checkbox">
-
                     <span></span>
                     <span></span>
                     <span></span>
-
                     <ul id="menu">
                         <li>Home</li>
                         <li>Suporte</li>
@@ -54,50 +47,48 @@
             <div class="boxInfoUsuario">
                 <div class="spanNome">
                     <h3>Nome:</h3>
-                    <div class="textNome" id="saidaNome">
-                    </div>
+                    <div class="textNome" id="saidaNome"></div>
                 </div>
                 <div class="spanOutrasInfos">
                     <div class="spanOutrasInfos1">
                         <div class="spanCPF">
                             <h3>CPF:</h3>
-                            <div class="textCPF" id="saidaCPF">
-                            </div>
+                            <div class="textCPF" id="saidaCPF"></div>
                         </div>
                         <div class="spanDataCadastro">
                             <h3>Data de Cadastro:</h3>
-                            <div class="textDataCadastro" id="saida_data_Cadastro">
-                            </div>
+                            <div class="textDataCadastro" id="saida_data_Cadastro"></div>
                         </div>
                     </div>
                     <div class="spanOutrasInfos2">
                         <div class="spanEmpresa">
                             <h3>Empresa:</h3>
-                            <div class="textEmpresa" id="saida_nome_empresa">
-                            </div>
+                            <div class="textEmpresa" id="saida_nome_empresa"></div>
                         </div>
                         <div class="spanFuncao">
                             <h3>Função:</h3>
-                            <div class="textFuncao" id="saidaFuncao">
-                            </div>
+                            <div class="textFuncao" id="saidaFuncao"></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="boxEstufas">
-            <div class="boxEstatisticas">
+            <div class="boxEstatisticas" >
                 <div class="boxEstufasAlerta">
                     <div class="titleAlerta">
                         <h2>Total de Estufas</h2>
                         <h2 style="color: rgb(241, 74, 74);">(Alerta)</h2>
                     </div>
+                    <div  id="saida_alerta"></div>
                 </div>
                 <div class="boxEstufasAtencao">
                     <div class="titleAtencao">
                         <h2>Total de Estufas</h2>
                         <h2 style="color: rgb(247, 218, 50);">(Atenção)</h2>
                     </div>
+                    <div  id="saida_atencao"></div>
+
                 </div>
             </div>
             <div class="boxListaEstufas">
@@ -106,24 +97,56 @@
                         <h3>estf_1x</h3>
                     </div>
                 </div>
-                <div class="estufa">
-                </div>
-                <div class="estufa">
-                </div>
+                <div class="estufa"></div>
+                <div class="estufa"></div>
             </div>
         </div>
     </div>
 
+    <script>
+        document.getElementById('saidaNome').innerHTML = sessionStorage.NOME_USUARIO;
+        document.getElementById('saidaCPF').innerHTML = sessionStorage.CPF_USUARIO;
+        document.getElementById('saida_data_Cadastro').innerHTML = sessionStorage.DATA_CRIACAO;
+        document.getElementById('saida_nome_empresa').innerHTML = sessionStorage.NOME_EMPRESA;
+        document.getElementById('saidaFuncao').innerHTML = sessionStorage.FUNCAO_USUARIO;
+
+        const idUsuario = sessionStorage.ID_USUARIO;
+
+        fetch('/usuarios/infoEstufas', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ idUsuario: idUsuario })
+        })
+        .then(response => response.json())
+        .then(data => {
+            const estufasCount = data.estufasCount; 
+            document.getElementById('saida_alerta').innerHTML = estufasCount;
+        })
+        .catch(error => {
+            console.error('Erro ao buscar dados das estufas:', error);
+        });
+        
+        
+
+        fetch('/usuarios/infoEstufasAtencao', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ idUsuario: idUsuario })
+        })
+        .then(response => response.json())
+        .then(data => {
+            const estufasCount = data.estufasCount; 
+            document.getElementById('saida_atencao').innerHTML = estufasCount;
+        })
+        .catch(error => {
+            console.error('Erro ao buscar dados das estufas:', error);
+        });
+    </script>
 
 </body>
 
 </html>
-
-
-<script>
-    saidaNome.innerHTML = sessionStorage.NOME_USUARIO;
-    saidaCPF.innerHTML = sessionStorage.CPF_USUARIO;
-    saida_data_Cadastro.innerHTML = sessionStorage.DATA_CRIACAO;
-    saida_nome_empresa.innerHTML=sessionStorage.NOME_EMPRESA;
-    saidaFuncao.innerHTML=sessionStorage.FUNCAO_USUARIO;
-</script>
