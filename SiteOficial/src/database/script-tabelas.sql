@@ -29,6 +29,7 @@ CREATE TABLE tipoUsuario (
     descricao VARCHAR(200),
     CONSTRAINT chkTipoUsuario CHECK (tipo IN ('Master', 'Dono', 'Funcionario'))
 );
+ALTER TABLE tipoUsuario MODIFY COLUMN descricao VARCHAR (400);
 
 INSERT INTO tipoUsuario (tipo,descricao) VALUES 
 	('Master', 'Usuários pertencententes a equipe de desenvolvimento e produção'),
@@ -42,7 +43,7 @@ CREATE TABLE usuario (
     nome VARCHAR (45),
     CPF CHAR (14),
     email VARCHAR (45),
-    senha VARCHAR(200),
+    senha VARCHAR(35),
     telFixo CHAR (13),
     telCelular CHAR (14),
     dataCriacao DATE,
@@ -62,7 +63,8 @@ CREATE TABLE parametro (
     umidadeMax DECIMAL (4, 2),
     temperaturaMin DECIMAL (4, 2),
     temperaturaMax DECIMAL (4, 2)
-); 	
+); 
+
 
 
 CREATE TABLE estufa (
@@ -77,6 +79,8 @@ CREATE TABLE estufa (
 		CONSTRAINT fkParametroEstufa FOREIGN KEY (fkParametro)
 			REFERENCES parametro (idParametro)
 );
+
+
 	
 
 CREATE TABLE sensor (
@@ -97,8 +101,8 @@ CREATE TABLE dados (
 		PRIMARY KEY (idDados, fkSensor),
 	FOREIGN KEY (fkSensor) REFERENCES sensor (idSensor)
 );
+
             
-SHOW TABLES;  
   
 SELECT * FROM usuario;
 SELECT * FROM endereco;
@@ -109,8 +113,27 @@ SELECT * FROM estufa;
 SELECT * FROM sensor;
 SELECT * FROM dados;
             
-SHOW TABLES;
 
 
+
+SELECT u.idUsuario as idUsuario, u.nome as nomeUsuario, u.CPF as CPFUsuario, u.email as emailUsuario, u.telFixo as telFixoUsuario, u.telCelular as telCelularUsuario, u.dataCriacao as dataCriacaoUsuario, u.fkEmpresa as empresaUSuario, u.fkTipoUsuario as idTipoUsuario , e.nome as nomeEmpresa, t.tipo as tipoUsuario
+        FROM tipoUsuario as t JOIN usuario as u
+		ON t.idTipoUsuario = u.fkTipoUsuario
+        JOIN empresa as e
+        ON u.fkEmpresa = e.idEmpresa;
+        
+SELECT u.idUsuario as idUsuario, u.nome as nomeUsuario, u.CPF as CPFUsuario, u.email as emailUsuario, u.telFixo as telFixoUsuario, u.telCelular as telCelularUsuario, u.dataCriacao as dataCriacaoUsuario, u.fkEmpresa as empresaUSuario, u.fkTipoUsuario as idTipoUsuario , e.nome as nomeEmpresa, t.tipo as funcaoUsuario
+        FROM tipoUsuario as t JOIN usuario as u
+		ON t.idTipoUsuario = u.fkTipoUsuario
+        JOIN empresa as e
+        ON u.fkEmpresa = e.idEmpresa
+        WHERE email = 'guilherme@gmail.com' 
+        AND senha = 'AF#120.125.486-51';  
+        
+        SELECT COUNT( e.idEstufa) AS quantidadeEstufas
+		FROM estufa e
+		JOIN sensor s ON e.idEstufa = s.fkEstufa
+		JOIN dados d ON s.idSensor = d.fkSensor
+		WHERE d.temperatura > 28 AND d.umidade > 30; 
 
 

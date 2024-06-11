@@ -93,10 +93,25 @@ function cadastrar(req, res) {
     }
 }
 
-
+function infoEstufas(req, res) {
+    usuarioModel.infoEstufas()
+    .then(function (resultado) {
+        if (resultado.length > 0) {
+            res.json({ estufasCount: resultado[0].quantidadeEstufas });
+        } else {
+            res.status(404).json({ message: "Nenhum dado encontrado" });
+        }
+    })
+    .catch(function (erro) {
+        console.log(erro);
+        console.log("\nHouve um erro ao realizar a busca! Erro: ", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+}
 
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    infoEstufas
 }
