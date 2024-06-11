@@ -47,31 +47,8 @@ function autenticar(req, res) {
                 }
             );
     }
+
 }
-
-function usuariosCadastrados(req, res) {    
-        usuarioModel.usuariosCadastrados()
-            .then(function (resultado) {
-                    console.log(`\nResultados encontrados: ${resultado.length}`);
-                    console.log(`Resultados: ${JSON.stringify(resultado)}`);
-
-                    if (resultado.length >= 1) {
-                        console.log(resultado);
-                        res.json();
-                    } else if (resultado.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
-                    } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
-                    }
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
 
 function cadastrar(req, res) {
     let nome = req.body.nomeServer
@@ -118,27 +95,38 @@ function cadastrar(req, res) {
 
 function infoEstufas(req, res) {
     usuarioModel.infoEstufas()
-    .then(function (resultado) {
-        if (resultado.length > 0) {
-            res.json({ estufasCount: resultado[0].quantidadeEstufas });
-        } else {
-            res.status(404).json({ message: "Nenhum dado encontrado" });
-        }
-    })
-    .catch(function (erro) {
-        console.log(erro);
-        console.log("\nHouve um erro ao realizar a busca! Erro: ", erro.sqlMessage);
-        res.status(500).json(erro.sqlMessage);
-    });
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.json({ estufasCount: resultado[0].quantidadeEstufas });
+            } else {
+                res.status(404).json({ message: "Nenhum dado encontrado" });
+            }
+        })
+        .catch(function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar a busca! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+function infoEstufasAtencao(req, res) {
+    usuarioModel.infoEstufas()
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.json({ estufasCount: resultado[0].quantidadeEstufas });
+            } else {
+                res.status(404).json({ message: "Nenhum dado encontrado" });
+            }
+        })
+        .catch(function (erro) {
+            console.log(erro);
+            console.log("\nHouve um erro ao realizar a busca! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
 }
 
 
 module.exports = {
     autenticar,
     cadastrar,
-<<<<<<< HEAD
     infoEstufas
-=======
-    usuariosCadastrados
->>>>>>> 2fd0020da557f46917e7a1c20e6932b007df895c
 }
