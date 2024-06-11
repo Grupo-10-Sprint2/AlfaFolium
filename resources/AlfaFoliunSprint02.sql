@@ -19,8 +19,8 @@ CREATE TABLE empresa (
 			REFERENCES endereco(idEndereco)
 );
 
-INSERT INTO empresa (nome) VALUES
-	('Alfa Folium');
+INSERT INTO empresa (nome, CNPJ) VALUES
+	('Alfa Folium', '21.886.895/0001-83');
 
         
 CREATE TABLE tipoUsuario (
@@ -54,7 +54,7 @@ CREATE TABLE usuario (
 		REFERENCES empresa(idEmpresa)
 );
 
-    
+
     
 CREATE TABLE parametro (
 	idParametro INT PRIMARY KEY AUTO_INCREMENT,
