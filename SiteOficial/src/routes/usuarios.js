@@ -20,4 +20,8 @@ router.post("/infoEstufas", function (req, res) {
     usuarioController.infoEstufas(req, res);
 });
 
+router.post("/infoEstufasAtencao", function (req, res) {
+    usuarioController.infoEstufas(req, res);
+});
+
 module.exports = router;
