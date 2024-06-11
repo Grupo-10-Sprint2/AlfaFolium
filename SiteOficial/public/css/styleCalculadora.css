@@ -30,7 +30,7 @@ body{
 .headerBox{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     background-color: #38412A;
     height: 140px;
     width: 100%;
@@ -41,22 +41,14 @@ body{
 .positionBox{
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin: 50px;
+    justify-content: center;
 }
 
 .logoBox {
     width: 250px;
     height: 250px;
-}
-
-.buttonsBox{
-    height: 140px;
-    width: 800px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
+    margin-top: 150px;
+    margin-left: 90px;
 }
   
 .logoImg {
@@ -76,7 +68,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    gap: 160px;
     list-style: none;
     cursor: pointer;
     text-shadow: 2px 2px 10px 0px rgba(0,0,0,0.6);
@@ -92,8 +84,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50px;
-    width: 100px;
+    height: 80px;
+    width: 150px;
     list-style: none;
     cursor: pointer;
     background-color: #1B3606;
@@ -101,12 +93,13 @@ body{
     border-radius: 5px;
     box-shadow: 2px 2px 10px 0px rgba(0,0,0,0.6);
     transition-duration: 0.2s;
+    margin-right: 200px;
 }
 
 .loginButton p {
     cursor: pointer;
     color: #FFFFFF;
-    font-size: 30px;
+    font-size: 40px;
     font-weight: 400;
     transition-duration: 0.2s;
 }
