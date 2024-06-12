@@ -8,6 +8,14 @@ router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
 });
 
+router.get("/totalEmpresas", function (req, res) {
+    usuarioController.totalEmpresas(req, res);
+});
+
+router.get("/usuarios/usuariosAtivos", function (req, res) {
+    usuarioController.usuariosAtivos(req, res);
+})
+
 router.get("/usuariosCadastrados", function (req, res) {
     usuarioController.usuariosCadastrados(req, res);
 });

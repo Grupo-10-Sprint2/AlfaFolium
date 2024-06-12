@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="number_empresasEstufa">
-                    30
+
                 </div>
 
                 <div class="icon_empresas">
@@ -106,16 +106,16 @@
 
 <script>
     function exibirUsuarios() {
+        exibirTotalEmpresas();
+        exibirUsuariosAtivos();
         fetch("/usuarios/usuariosCadastrados")
             .then(resposta => {
                 console.log(resposta)
 
                 if (resposta.ok) {
-                    console.log(`AMIGO ESTOU AQUI`)
                     resposta.json().then(res => {
 
                         var inserirUsuario = document.getElementById("plotarUsuarios");
-                        console.log(res[0].empresa);
                         console.log(res);
 
                         for (let qtdUsuarios = 0;
@@ -148,7 +148,7 @@
                         <div class="container_empresa_funcao">
                             <div class="box_empresa">
                                 <h4>Empresa:</h4>
-                                <h4>${usuario.empresa}</h4>
+                                <h4>${usuario.nomeEmpresa}</h4>
                             </div>
 
                             <div class="box_funcao">
@@ -169,4 +169,45 @@
                 console.error(resposta);
             });
     }
+
+    function exibirTotalEmpresas() {
+        fetch("/usuarios/totalEmpresas")
+            .then(resposta => {
+                console.log(resposta);
+
+                if (resposta.ok) {
+                    resposta.json().then(res => {
+                        let inserirEmpresas = document.querySelector('.number_empresasEstufa');
+                        let empresas = res[0].totalEmpresa;
+                        inserirEmpresas.innerHTML = `${empresas}`;
+                    });
+                } else {
+                    console.log(`JSON não coletado`);
+                }
+            })
+            .catch(function (resposta) {
+                console.error(resposta);
+            });
+    }
+
+    function exibirUsuariosAtivos() {
+        fetch("/usuarios/usuariosAtivos")
+            .then(resposta => {
+                console.log(resposta);
+
+                if (resposta.ok) {
+                    resposta.json();
+
+                    console.log(`CONVERTI O JSON`);
+                    console.log(resposta[0]);
+                } else {
+                    console.log(`JSON não coletado`);
+                }
+            })
+            .catch(function (resposta) {
+                console.error(resposta);
+            });
+    }
+
+
 </script>
