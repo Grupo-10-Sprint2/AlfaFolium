@@ -50,22 +50,58 @@ function autenticar(req, res) {
 
 }
 
+function totalEmpresas(req, res) {
+    usuarioModel.totalEmpresas()
+            .then(function (resultado) {
+                    if (resultado.length >= 1) {
+                        console.log(resultado);
+                        res.status(200).json(resultado);
+                    } else {
+                        res.status(403).send("Nenhuma empresa encontrada.");
+                    }
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao procurar empresas! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+}
+
+function usuariosAtivos(req, res) {
+    usuarioModel.usuariosAtivos()
+            .then(function (resultado) {
+                    if (resultado.length >= 1) {
+                        console.log(resultado);
+                        res.status(200).json(resultado);
+                    } else {
+                        res.status(403).send("Nenhum usuário encontrado.");
+                    }
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao procurar usuários! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+}
+
 function usuariosCadastrados(req, res) {    
         usuarioModel.usuariosCadastrados()
             .then(function (resultado) {
                     if (resultado.length >= 1) {
                         console.log(resultado);
                         res.status(200).json(resultado)
-                    } else if (resultado.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
-                        res.status(403).send("Mais de um usuário com o mesmo login e senha!");
+                        res.status(403).send("Nenhum usuário encontrado.");
                     }
                 }
             ).catch(
                 function (erro) {
                     console.log(erro);
-                    console.log("\nHouve um erro ao realizar o login! Erro: ", erro.sqlMessage);
+                    console.log("\nHouve um erro ao procurar usuários! Erro: ", erro.sqlMessage);
                     res.status(500).json(erro.sqlMessage);
                 }
             );
@@ -133,7 +169,7 @@ function infoEstufasAtencao(req, res) {
     usuarioModel.infoEstufas()
         .then(function (resultado) {
             if (resultado.length > 0) {
-                res.json({ estufasCount: resultado[0].quantidadeEstufas });
+                res.json({ estufasCount: resultado[0].quantidadeEstufas});
             } else {
                 res.status(404).json({ message: "Nenhum dado encontrado" });
             }
@@ -151,5 +187,7 @@ module.exports = {
     cadastrar,
     usuariosCadastrados,
     infoEstufas,
-    infoEstufasAtencao
+    infoEstufasAtencao,
+    totalEmpresas,
+    usuariosAtivos
 }

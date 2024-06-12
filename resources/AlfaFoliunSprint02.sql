@@ -98,7 +98,7 @@ CREATE TABLE dados (
 	FOREIGN KEY (fkSensor) REFERENCES sensor (idSensor)
 );
             
-SHOW TABLES;  
+SHOW TABLES;
 
 SELECT * FROM usuario;
 SELECT * FROM endereco;
@@ -108,5 +108,7 @@ SELECT * FROM parametro;
 SELECT * FROM estufa;
 SELECT * FROM sensor;
 SELECT * FROM dados;
-            
+
+SELECT COUNT(idEmpresa) as totalEmpresa FROM empresa;
+
 SHOW TABLES;

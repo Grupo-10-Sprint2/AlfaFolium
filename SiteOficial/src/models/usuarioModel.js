@@ -13,6 +13,25 @@ function autenticar(email, senha) {
     return database.executar(instrucaoSql);
 }
 
+function totalEmpresas(req, res) {
+    var instrucaoSql = `
+        SELECT COUNT(idEmpresa) as totalEmpresa FROM empresa;
+        `
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function usuariosAtivos(req, res) {
+    var instrucaoSql = `
+    SELECT COUNT(idUsuario) AS totalUsuariosAtivos
+    FROM usuario WHERE fkTipoUsuario > 1;
+    `
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function usuariosCadastrados(req, res) {
     var instrucaoSql = `
         select u.idUsuario,
@@ -25,7 +44,8 @@ function usuariosCadastrados(req, res) {
         t.tipo as funcao
         from usuario as u join empresa as e
         on u.fkEmpresa = e.idEmpresa join tipoUsuario as t
-        on u.fkTipoUsuario = t.idTipoUsuario;`
+        on u.fkTipoUsuario = t.idTipoUsuario;
+        `
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -73,7 +93,9 @@ module.exports = {
     cadastrar,
     infoEstufas,
     infoEstufasAtencao,
-    usuariosCadastrados
+    usuariosCadastrados,
+    totalEmpresas,
+    usuariosAtivos
 };
 
 
