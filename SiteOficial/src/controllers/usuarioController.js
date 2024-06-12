@@ -149,7 +149,7 @@ function infoEstufasAtencao(req, res) {
 module.exports = {
     autenticar,
     cadastrar,
-    infoEstufas,
     usuariosCadastrados,
-    infoEstufas
+    infoEstufas,
+    infoEstufasAtencao
 }
