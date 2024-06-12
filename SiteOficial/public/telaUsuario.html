@@ -112,13 +112,7 @@
 
         const idUsuario = sessionStorage.ID_USUARIO;
 
-        fetch('/usuarios/infoEstufas', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ idUsuario: idUsuario })
-        })
+        fetch('/usuarios/infoEstufas')
         .then(response => response.json())
         .then(data => {
             const estufasCount = data.estufasCount; 
@@ -130,13 +124,7 @@
         
         
 
-        fetch('/usuarios/infoEstufasAtencao', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ idUsuario: idUsuario })
-        })
+        fetch('/usuarios/infoEstufasAtencao')
         .then(response => response.json())
         .then(data => {
             const estufasCount = data.estufasCount; 

@@ -204,9 +204,9 @@ function infoEstufasAtencao(req, res) {
 module.exports = {
     autenticar,
     cadastrar,
-    infoEstufas,
     usuariosCadastrados,
     infoEstufas,
+    infoEstufasAtencao,
     totalEmpresas,
     usuariosAtivos,
     estufasCadastradas

@@ -70,13 +70,45 @@ function cadastrar(nome, CPF, email, telFixo, telCelular, idEmpresa, idTipoUsuar
     return database.executar(instrucaoSql);
 }
 
+function infoEstufas(idUsuario) {
+    var instrucaoSql = `
+    SELECT COUNT( e.idEstufa) AS quantidadeEstufas
+    FROM estufa e
+    JOIN sensor s ON e.idEstufa = s.fkEstufa
+    JOIN dados d ON s.idSensor = d.fkSensor
+    WHERE (d.temperatura < 17 OR d.temperatura > 21) OR (d.umidade < 72 OR d.umidade > 78); 
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
+function infoEstufasAtencao() {
+    var instrucaoSql = `
+    SELECT COUNT( e.idEstufa) AS quantidadeEstufas
+    FROM estufa e
+    JOIN sensor s ON e.idEstufa = s.fkEstufa
+    JOIN dados d ON s.idSensor = d.fkSensor
+    WHERE ((d.temperatura >= 16 AND d.temperatura <= 15) OR (d.temperatura >= 19 AND d.temperatura <= 20)) AND ((d.umidade >= 73 AND d.umidade <= 74) OR (d.umidade >= 76 AND d.umidade <= 77)); 
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+
+
 module.exports = {
     autenticar,
     cadastrar,
+    infoEstufas,
+    infoEstufasAtencao,
     usuariosCadastrados,
     totalEmpresas,
     usuariosAtivos,
     estufasCadastradas
 };
+
+
+
 
 
