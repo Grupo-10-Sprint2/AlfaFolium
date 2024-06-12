@@ -88,6 +88,25 @@ function usuariosAtivos(req, res) {
             );
 }
 
+function estufasCadastradas(req, res) {    
+    usuarioModel.estufasCadastradas()
+        .then(function (resultado) {
+                if (resultado.length >= 1) {
+                    console.log(resultado);
+                    res.status(200).json(resultado)
+                } else {
+                    res.status(403).send("Nenhuma estufa encontrada.");
+                }
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao procurar estufas! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 function usuariosCadastrados(req, res) {    
         usuarioModel.usuariosCadastrados()
             .then(function (resultado) {
@@ -169,7 +188,7 @@ function infoEstufasAtencao(req, res) {
     usuarioModel.infoEstufas()
         .then(function (resultado) {
             if (resultado.length > 0) {
-                res.json({ estufasCount: resultado[0].quantidadeEstufas});
+                res.json({ estufasCount: resultado[0].quantidadeEstufas });
             } else {
                 res.status(404).json({ message: "Nenhum dado encontrado" });
             }
@@ -189,5 +208,6 @@ module.exports = {
     usuariosCadastrados,
     infoEstufas,
     totalEmpresas,
-    usuariosAtivos
+    usuariosAtivos,
+    estufasCadastradas
 }

@@ -26,7 +26,16 @@ function usuariosAtivos(req, res) {
     var instrucaoSql = `
     SELECT COUNT(idUsuario) AS totalUsuariosAtivos
     FROM usuario WHERE fkTipoUsuario > 1;
-    `
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function estufasCadastradas(req, res) {
+    var instrucaoSql = `
+        SELECT COUNT(idEstufa) AS totalEstufasCadastradas from estufa;
+        `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -61,14 +70,13 @@ function cadastrar(nome, CPF, email, telFixo, telCelular, idEmpresa, idTipoUsuar
     return database.executar(instrucaoSql);
 }
 
-
-
 module.exports = {
     autenticar,
     cadastrar,
     usuariosCadastrados,
     totalEmpresas,
-    usuariosAtivos
+    usuariosAtivos,
+    estufasCadastradas
 };
 
 
