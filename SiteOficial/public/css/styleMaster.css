@@ -293,9 +293,9 @@ body {
     width: 80%;
     height: 500px;
     background-color: rgb(251, 224, 192, 0.6);
-    border-top: 10px solid #1B3606;
-    border-left: 10px solid #1B3606;
-    border-right: 10px solid #1B3606;
+    border-top: 7px solid #1B3606;
+    border-left: 7px solid #1B3606;
+    border-right: 7px solid #1B3606;
     margin-bottom: 550px;
     overflow-y: scroll;
 }
