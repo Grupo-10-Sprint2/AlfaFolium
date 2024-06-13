@@ -145,7 +145,7 @@
                   <h3> Horário </h3>
                 </div>
                 <div id="relogio">
-                  <h1 id="hora"></h1>
+                  <h1></h1>
                 </div>
               </div>
             </div>
@@ -174,7 +174,6 @@
 </html>
 
 <script src="./js/scriptDashboard.js"></script>
-<script src="./js/scriptRelogio.js"></script>
 
 
 <script>
@@ -185,8 +184,7 @@
   let numLeituras2 = 0; // Variável para rastrear o número de leituras
 
 
-  setInterval(exibirTemperaturaUmidade, 1500);
-
+  setInterval(exibirTemperaturaUmidade, 3500);
   function adicionarDadosAleatorios() {
 
     if (numLeituras1 % 10 == 0) {
@@ -196,8 +194,8 @@
       graficoTemp.update();
 
     } else {
-      const min = 18
-      const max = 34
+      const min = 18;
+      const max = 34;
 
       let dadosAleatorios = Math.floor(Math.random() * (max - min + 1) + min);
       let dadosAleatorios_formatado1 = Number(dadosAleatorios.toFixed(2));
@@ -387,6 +385,8 @@
             let temperaturaMin = Math.trunc(Number(res[0].temperaturaMin));
             let umidadeMax = Math.trunc(Number(res[0].umidadeMax));
             let umidadeMin = Math.trunc(Number(res[0].umidadeMin));
+            sessionStorage.TEMPERATURA = temperatura;
+            sessionStorage.UMIDADE = umidade;
 
             let exibirTemperatura = document.getElementById("exibirTemperatura");
             let exibirUmidade = document.getElementById("exibirUmidade");
@@ -405,16 +405,22 @@
             exibirUmidadeMin.innerHTML = `${umidadeMin}%`;
 
             let titleTemperatura = document.querySelector(".cardTempTitle");
-            
+
             console.log(`${temperaturaMax - 1}, ${temperaturaMin + 2}, ${temperaturaMin + 3}`);
 
+            let corTemperatura = `#008000`;
+            
+            if ((temperatura <= temperaturaMax - 2 && temperatura >= temperaturaMax - 3) || (temperatura <= temperaturaMin + 1)) {
+              corTemperatura = `#FFA500`;
+              
+            } 
+            
             if (temperatura >= temperaturaMax - 1 || temperatura <= temperaturaMin + 1) {
-              titleTemperatura.style.backgroundColor = "#FF0000";
-            } else if ((temperatura <= temperaturaMax - 2 || temperatura >= temperaturaMax - 3) || (temperatura >= temperaturaMin + 2 || temperatura <= temperaturaMin + 3)) {
-              titleTemperatura.style.backgroundColor = "#FFA500";
-            } else if (temperatura < temperaturaMax - 3 || temperatura > temperaturaMin + 3) {
-              titleTemperatura.style.backgroundColor = "#008000";
+              corTemperatura = `#FF0000`;
             }
+
+            titleTemperatura.style.backgroundColor = `${corTemperatura}`;
+
           });
         } else {
           console.log(`JSON não coletado`);

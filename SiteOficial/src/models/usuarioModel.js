@@ -116,12 +116,6 @@ function infoEstufasAtencao() {
     return database.executar(instrucaoSql);
 }
 
-<<<<<<< Updated upstream
-=======
-
-
-
->>>>>>> Stashed changes
 module.exports = {
     autenticar,
     cadastrar,
