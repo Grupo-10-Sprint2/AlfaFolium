@@ -124,7 +124,7 @@ CREATE TABLE dados (
 );
 
 insert into dados values
-	(default, 22.04, 53.05, now(), 1);
+	(default, 17.04, 53.05, now(), 1);
 
 SELECT * FROM usuario;
 SELECT * FROM endereco;

@@ -385,6 +385,7 @@
             let temperaturaMin = Math.trunc(Number(res[0].temperaturaMin));
             let umidadeMax = Math.trunc(Number(res[0].umidadeMax));
             let umidadeMin = Math.trunc(Number(res[0].umidadeMin));
+            
             sessionStorage.TEMPERATURA = temperatura;
             sessionStorage.UMIDADE = umidade;
 
@@ -404,25 +405,38 @@
             exibirUmidadeMax.innerHTML = `${umidadeMax}%`;
             exibirUmidadeMin.innerHTML = `${umidadeMin}%`;
 
-            let titleTemperatura = document.querySelector(".cardTempTitle");
+            let tituloTemperatura = document.querySelector(".cardTempTitle");
+            let tituloUmidade = document.querySelector(".cardUmiTitle");
 
             console.log(`${temperaturaMax - 1}, ${temperaturaMin + 2}, ${temperaturaMin + 3}`);
 
             let corTemperatura = `#008000`;
-            
-            if ((temperatura <= temperaturaMax - 2 && temperatura >= temperaturaMax - 3) || (temperatura <= temperaturaMin + 1)) {
+
+            // VALIDAÇÃO TEMPERATURA
+            if ((temperatura <= temperaturaMax - 2 && temperatura >= temperaturaMax - 3) || (temperatura >= temperaturaMin + 2 && temperatura <= temperaturaMin + 3)) {
               corTemperatura = `#FFA500`;
-              
             } 
             
             if (temperatura >= temperaturaMax - 1 || temperatura <= temperaturaMin + 1) {
               corTemperatura = `#FF0000`;
             }
 
-            titleTemperatura.style.backgroundColor = `${corTemperatura}`;
+            let corUmidade = `#008000`;
 
+            // VALIDAÇÃO UMIDADE
+            if ((umidade <= umidadeMax - 2 && umidade >= umidadeMax - 3) || (umidade >= umidadeMin + 2 && umidade <= umidadeMin + 3)) {
+              corUmidade = `#FFA500`;
+            } 
+            
+            if (umidade >= umidadeMax - 1 || umidade <= umidadeMin + 1) {
+              corUmidade = `#FF0000`;
+            }
+            
+            // SAÍDA PARA O USUÁRIO
+            tituloTemperatura.style.backgroundColor = `${corTemperatura}`;
+            tituloUmidade.style.backgroundColor = `${corUmidade}`;
           });
-        } else {
+        } else { 
           console.log(`JSON não coletado`);
         }
       })
