@@ -18,7 +18,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body onload="exibirTemperaturaUmidade()">
+<body>
   <header>
     <div class="headerBox">
       <div class="boxLogo">
@@ -72,11 +72,13 @@
           <div class="cardTemp">
             <div class="cardTempTitle">
               <h2>Temperatura Atual da Estufa</h2>
+              <h2 id="exibirTemperatura"></h2>
             </div>
           </div>
           <div class="cardUmi">
             <div class="cardUmiTitle">
               <h2>Umidade Atual da Estufa</h2>
+              <h2 id="exibirUmidade"></h2>
             </div>
           </div>
         </div>
@@ -99,10 +101,12 @@
                     <h3> Temperatura </h3>
                   </div>
                   <div class="parametroTempMin">
-                    <h3> 23°C </h3>
+                    <p>Min</p>
+                    <h3 id="exibirTemperaturaMin"></h3>
                   </div>
                   <div class="parametroTempMax">
-                    <h3> 28°C </h3>
+                    <p>Max</p>
+                    <h3 id="exibirTemperaturaMax"></h3>
                   </div>
                 </div>
                 <div class="parametroUmi">
@@ -110,10 +114,12 @@
                     <h3> Umidade </h3>
                   </div>
                   <div class="parametroUmiMin">
-                    <h3> 60% </h3>
+                    <p>Min</p>
+                    <h3 id="exibirUmidadeMin"></h3>
                   </div>
                   <div class="parametroUmiMax">
-                    <h3> 80% </h3>
+                    <p>Max</p>
+                    <h3 id="exibirUmidadeMax"></h3>
                   </div>
                 </div>
               </div>
@@ -139,7 +145,7 @@
                   <h3> Horário </h3>
                 </div>
                 <div id="relogio">
-                  <h1 id="hora">00:00:00</h1>
+                  <h1 id="hora"></h1>
                 </div>
               </div>
             </div>
@@ -179,6 +185,7 @@
   let numLeituras2 = 0; // Variável para rastrear o número de leituras
 
 
+  setInterval(exibirTemperaturaUmidade, 1500);
 
   function adicionarDadosAleatorios() {
 
@@ -364,14 +371,49 @@
 
 
   function exibirTemperaturaUmidade() {
-    fetch("/usuarios/exibirTemperaturaUmidade")
+    fetch("/grafico/coletarTemperaturaUmidade")
       .then(resposta => {
         console.log(resposta);
 
         if (resposta.ok) {
           resposta.json().then(res => {
             console.log(res[0]);
-          })
+
+            let temperatura = Math.trunc(Number(res[0].temperatura));
+            let umidade = Math.trunc(Number(res[0].umidade));
+            let condicao = res[0].condicao;
+            let horario = res[0].horario;
+            let temperaturaMax = Math.trunc(Number(res[0].temperaturaMax));
+            let temperaturaMin = Math.trunc(Number(res[0].temperaturaMin));
+            let umidadeMax = Math.trunc(Number(res[0].umidadeMax));
+            let umidadeMin = Math.trunc(Number(res[0].umidadeMin));
+
+            let exibirTemperatura = document.getElementById("exibirTemperatura");
+            let exibirUmidade = document.getElementById("exibirUmidade");
+            let exibirCondicao = document.getElementById("exibirCondicao");
+            let exibirHorario = document.getElementById("exibirHorario");
+            let exibirTemperaturaMax = document.getElementById("exibirTemperaturaMax");
+            let exibirTemperaturaMin = document.getElementById("exibirTemperaturaMin");
+            let exibirUmidadeMax = document.getElementById("exibirUmidadeMax");
+            let exibirUmidadeMin = document.getElementById("exibirUmidadeMin");
+
+            exibirTemperatura.innerHTML = `${temperatura}°C`;
+            exibirUmidade.innerHTML = `${umidade}%`;
+            exibirTemperaturaMax.innerHTML = `${temperaturaMax}°C`;
+            exibirTemperaturaMin.innerHTML = `${temperaturaMin}°C`;
+            exibirUmidadeMax.innerHTML = `${umidadeMax}%`;
+            exibirUmidadeMin.innerHTML = `${umidadeMin}%`;
+
+            let titleTemperatura = document.querySelector(".cardTempTitle");
+
+            if (temperatura >= temperaturaMax - 1 || temperatura <= temperaturaMin + 1) {
+              titleTemperatura.style.backgroundColor = "#FF0000";
+            } else if ((temperatura <= temperaturaMax - 2 || temperatura >= temperaturaMax - 3) || (temperatura >= temperaturaMin + 2 || temperatura <= temperaturaMin + 3)) {
+              titleTemperatura.style.backgroundColor = "#FFA500";
+            } else {
+              titleTemperatura.style.backgroundColor = "#008000";
+            }
+          });
         } else {
           console.log(`JSON não coletado`);
         }

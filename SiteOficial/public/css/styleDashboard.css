@@ -205,15 +205,21 @@ body {
    align-items: center;
 }
 
-.legendaAlerta{
+.legendaAlerta {
    background-color: rgb(255, 0, 0);
    width: 120px;
    height: 30px;
    border-radius: 20px;
-   text-align: center;
    padding: 5px;
    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.247);
 }
+
+.legendaAlerta, .legendaAtencao, .legendaEstavel {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
 
 .legendaAtencao{
    background-color: rgb(255, 174, 0);
@@ -509,14 +515,24 @@ body {
    background-color: #FBE0C0;
    border-radius: 25px 0 100% 100%;
    position: relative;
-   top: 18px;
+   top: 19px;
+   color: #000000;
    display: flex;
    align-items: center;
    justify-content: center;
+   flex-direction: column;
 }
 
-.parametroTempMax h3{
-   color: #132b0a;
+.parametroTempMax p {
+   font-size: 12px;
+   font-weight: bold;
+   position: relative;
+   top: -3px;
+}
+
+.parametroTempMax h3 {
+   position: relative;
+   top: -8px;
 }
 
 .parametroTempMin{
@@ -525,14 +541,24 @@ body {
    background-color: #FBE0C0;
    border-radius: 0 25px 100% 100%;
    position: relative;
-   top: 18px;
+   top: 19px;
+   color: #000000;
    display: flex;
    align-items: center;
    justify-content: center;
+   flex-direction: column;
 }
 
-.parametroTempMin h3{
-   color: #132b0a;
+.parametroTempMin p {
+   font-size: 12px;
+   font-weight: bold;
+   position: relative;
+   top: -3px;
+}
+
+.parametroTempMin h3 {
+   position: relative;
+   top: -8px;
 }
 
 .parametroTempTitle{
@@ -582,14 +608,25 @@ body {
    background-color: #FBE0C0;
    border-radius: 25px 0 100% 100%;
    position: relative;
-   top: 18px;
+   top: 19px;
+   color: #000000;
    display: flex;
    align-items: center;
    justify-content: center;
+   flex-direction: column;
 }
 
-.parametroUmiMax h3{
-   color: #132b0a;
+.parametroUmiMax p {
+   font-size: 12px;
+   font-weight: bold;
+   position: relative;
+   top: -3px;
+   color: #000000;
+}
+
+.parametroUmiMax h3 {
+   position: relative;
+   top: -8px;
 }
 
 .parametroUmiMin{
@@ -598,13 +635,36 @@ body {
    background-color: #FBE0C0;
    border-radius: 0 25px 100% 100%;
    position: relative;
-   top: 18px;
+   top: 19px;
+   color: #000000;
    display: flex;
    align-items: center;
    justify-content: center;
+   flex-direction: column;
+   /* text-align: center; */
 }
 
-.parametroUmiMin h3{
-   color: #132b0a;
+.parametroUmiMin p {
+   font-size: 12px;
+   font-weight: bold;
+   position: relative;
+   top: -3px;
+   color: #000000;
 }
 
+.parametroUmiMin h3 {
+   position: relative;
+   top: -8px;
+}
+
+#exibirTemperatura {
+   color: #000000;
+   padding-top: 40px;
+   font-size: 40px;
+}
+
+#exibirUmidade {
+   color: #000000;
+   padding-top: 40px;
+   font-size: 40px;
+}

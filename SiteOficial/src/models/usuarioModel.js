@@ -2,8 +2,8 @@ var database = require("../database/config")
 
 function coletarTemperaturaUmidade(req, res) {
     var instrucaoSql = `
-        select * from dados;';
-        `
+        select * from dados;
+        `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -104,20 +104,6 @@ function infoEstufasAtencao() {
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-
-function estufasCadastradas(idEmpresa,idUsuario) {
-    var instrucaoSql = `
-    SELECT estufa.*
-    FROM estufa 
-    JOIN empresa  ON estufa.fkEmpresa = empresa.idEmpresa
-    JOIN usuario  ON usuario.fkEmpresa = empresa.idEmpresa
-    WHERE empresa.idEmpresa = ${idEmpresa}
-    AND usuario.idUsuario=${idUsuario};`;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
-    return database.executar(instrucaoSql);
-}
-
-
 
 module.exports = {
     autenticar,
