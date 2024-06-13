@@ -67,7 +67,7 @@
                 </div>
 
                 <div class="number_usuariosAtivos">
-                    30
+                    
                 </div>
 
                 <div class="icon_usuariosAtivos">
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="number_estufasCadastradas">
-                    60
+                    
                 </div>
 
                 <div class="icon_estufasCadastradas">
@@ -108,6 +108,8 @@
     function exibirUsuarios() {
         exibirTotalEmpresas();
         exibirUsuariosAtivos();
+        exibirTotalEstufas();
+
         fetch("/usuarios/usuariosCadastrados")
             .then(resposta => {
                 console.log(resposta)
@@ -190,16 +192,43 @@
             });
     }
 
+    function exibirTotalEstufas() {
+        fetch("/usuarios/estufasCadastradas")
+            .then(function (resposta) {
+                console.log("ESTOU NO THEN DO exibirTotalEstufas()!");
+                if (resposta.ok) {
+                    return resposta.json();
+                } else {
+                    console.log(`JSON não coletado`);
+                }
+            })
+            .then(function (json) {
+                console.log("Dados recebidos:", json);
+
+                let inserirEstufasCadastradas = document.querySelector('.number_estufasCadastradas');
+                let estufasCadastradas = json[0].totalEstufasCadastradas;
+
+                inserirEstufasCadastradas.innerHTML = `${estufasCadastradas}`;
+            })
+            .catch(function (erro) {
+                console.error("Erro:", erro);
+            });
+    }
+
     function exibirUsuariosAtivos() {
         fetch("/usuarios/usuariosAtivos")
             .then(resposta => {
                 console.log(resposta);
 
                 if (resposta.ok) {
-                    resposta.json();
+                    resposta.json().then(res => {
+                        console.log(res[0]);
 
-                    console.log(`CONVERTI O JSON`);
-                    console.log(resposta[0]);
+                        let inserirUsuariosAtivos = document.querySelector('.number_usuariosAtivos');
+                        let usuariosAtivos = res[0].totalUsuariosAtivos;
+
+                        inserirUsuariosAtivos.innerHTML = `${usuariosAtivos}`;
+                    })
                 } else {
                     console.log(`JSON não coletado`);
                 }

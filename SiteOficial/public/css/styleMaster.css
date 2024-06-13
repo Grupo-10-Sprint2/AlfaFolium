@@ -177,7 +177,7 @@ body {
     bottom: 45px;
     width: 100px;
     padding-left: 200px;
-    padding-top: 10px;
+    bottom: 25px;
 }
 
 .container_usuariosAtivos {
@@ -290,14 +290,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
-    height: 500px;
-    background-color: rgb(251, 224, 192, 0.6);
-    border-top: 10px solid #1B3606;
-    border-left: 10px solid #1B3606;
-    border-right: 10px solid #1B3606;
-    margin-bottom: 550px;
+    width: 70%;
+    height: 420px;
+    background-color: rgba(251, 224, 192, 0.158);
+    backdrop-filter: blur(4px);
+    border: 7px solid #1B3606;
+    border-radius: 10px;
+    margin-bottom: 600px;
     overflow-y: scroll;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.6);
 }
 
 .usuarios_cadastrados::-webkit-scrollbar-track {

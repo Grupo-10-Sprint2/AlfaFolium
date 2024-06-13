@@ -15,7 +15,7 @@ function autenticar(email, senha) {
 
 function totalEmpresas(req, res) {
     var instrucaoSql = `
-        SELECT COUNT(idEmpresa) as totalEmpresa FROM empresa;
+        SELECT COUNT(idEmpresa) as totalEmpresa FROM empresa WHERE nome != 'Alfa Folium';
         `
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -26,7 +26,16 @@ function usuariosAtivos(req, res) {
     var instrucaoSql = `
     SELECT COUNT(idUsuario) AS totalUsuariosAtivos
     FROM usuario WHERE fkTipoUsuario > 1;
-    `
+    `;
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function estufasCadastradas(req, res) {
+    var instrucaoSql = `
+        SELECT COUNT(idEstufa) AS totalEstufasCadastradas from estufa;
+        `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -44,7 +53,8 @@ function usuariosCadastrados(req, res) {
         t.tipo as funcao
         from usuario as u join empresa as e
         on u.fkEmpresa = e.idEmpresa join tipoUsuario as t
-        on u.fkTipoUsuario = t.idTipoUsuario;
+        on u.fkTipoUsuario = t.idTipoUsuario
+        where u.fkTipoUsuario > 1;
         `
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
