@@ -18,7 +18,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body onload="contar()">
+<body onload="exibirTemperaturaUmidade()">
   <header>
     <div class="headerBox">
       <div class="boxLogo">
@@ -57,9 +57,15 @@
             <p>Estufa:1X_estf</p>
           </div>
           <div class="legendas">
-            <div class="legendaAlerta"><h2>Alerta</h2></div>
-            <div class="legendaAtencao"><h2>Atenção</h2></div>
-            <div class="legendaEstavel"><h2>Estável</h2></div>
+            <div class="legendaAlerta">
+              <h2>Alerta</h2>
+            </div>
+            <div class="legendaAtencao">
+              <h2>Atenção</h2>
+            </div>
+            <div class="legendaEstavel">
+              <h2>Estável</h2>
+            </div>
           </div>
         </div>
         <div class="boxDadosCapturados">
@@ -110,7 +116,7 @@
                     <h3> 80% </h3>
                   </div>
                 </div>
-              </div>  
+              </div>
             </div>
 
             <div class="boxVerdeDados2">
@@ -135,7 +141,7 @@
                 <div id="relogio">
                   <h1 id="hora">00:00:00</h1>
                 </div>
-              </div>  
+              </div>
             </div>
 
           </div>
@@ -171,6 +177,7 @@
 
   let numLeituras1 = 0; // Variável para rastrear o número de leituras
   let numLeituras2 = 0; // Variável para rastrear o número de leituras
+
 
 
   function adicionarDadosAleatorios() {
@@ -355,4 +362,22 @@
     }
   });
 
+
+  function exibirTemperaturaUmidade() {
+    fetch("/usuarios/exibirTemperaturaUmidade")
+      .then(resposta => {
+        console.log(resposta);
+
+        if (resposta.ok) {
+          resposta.json().then(res => {
+            console.log(res[0]);
+          })
+        } else {
+          console.log(`JSON não coletado`);
+        }
+      })
+      .catch(function (resposta) {
+        console.error(resposta);
+      });
+  }
 </script>

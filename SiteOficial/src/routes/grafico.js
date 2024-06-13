@@ -3,8 +3,8 @@ var router = express.Router();
 
 var graficoController = require("../controllers/graficoController");
 
-router.get("/coletarTemperatura", function (req, res) {
-    graficoController.coletarTemperatura(req, res);
+router.get("/coletarTemperaturaUmidade", function (req, res) {
+    graficoController.coletarTemperaturaUmidade(req, res);
 });
 
 module.exports = router;

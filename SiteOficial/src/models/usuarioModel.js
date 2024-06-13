@@ -1,5 +1,14 @@
 var database = require("../database/config")
 
+function coletarTemperaturaUmidade(req, res) {
+    var instrucaoSql = `
+        select * from dados;';
+        `
+
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function autenticar(email, senha) {
     var instrucaoSql = `
         SELECT u.idUsuario as idUsuario, u.nome as nomeUsuario, u.CPF as CPFUsuario, u.email as emailUsuario, u.telFixo as telFixoUsuario, u.telCelular as telCelularUsuario, u.dataCriacao as dataCriacaoUsuario, u.fkEmpresa as empresaUsuario, u.fkTipoUsuario as idTipoUsuario , e.nome as nomeEmpresa, t.tipo as funcaoUsuario
@@ -106,7 +115,8 @@ module.exports = {
     usuariosCadastrados,
     totalEmpresas,
     usuariosAtivos,
-    estufasCadastradas
+    estufasCadastradas,
+    coletarTemperaturaUmidade
 };
 
 

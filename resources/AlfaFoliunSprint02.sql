@@ -8,7 +8,6 @@ CREATE TABLE endereco (
     numEnd VARCHAR(10)
 );
 
-ALTER TABLE endereco MODIFY COLUMN CEP CHAR(14);
 
 CREATE TABLE empresa (
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
@@ -19,8 +18,11 @@ CREATE TABLE empresa (
 			REFERENCES endereco(idEndereco)
 );
 
-INSERT INTO empresa (nome) VALUES
-	('Alfa Folium');
+
+-- Empresa padrão para que os donos do projeto possam acessar:
+INSERT INTO empresa (nome, CNPJ) VALUES
+	('Alfa Folium', '21.886.895/0001-83');
+
         
 CREATE TABLE tipoUsuario (
 	idTipoUsuario INT PRIMARY KEY AUTO_INCREMENT,
@@ -29,12 +31,13 @@ CREATE TABLE tipoUsuario (
     CONSTRAINT chkTipoUsuario CHECK (tipo IN ('Master', 'Dono', 'Funcionario'))
 );
 
+
+-- Insert das funções pré-definidas:
 INSERT INTO tipoUsuario (tipo,descricao) VALUES 
 	('Master', 'Usuários pertencententes a equipe de desenvolvimento e produção'),
     ('Dono', 'Usuário/Cliente responsável pelo controle total da plataforma através da aplicação desenvolvida'),
     ('Funcionario', 'Usuário responsável pelo controle parcial da plataforma para análises e tomada de decisoes');
     
-
 
 CREATE TABLE usuario (
 	idUsuario INT PRIMARY KEY AUTO_INCREMENT,
@@ -53,8 +56,7 @@ CREATE TABLE usuario (
 		REFERENCES empresa(idEmpresa)
 );
 
-insert into usuario values
-	(default, 'Kauan França', 15265625203, 'kauanMaster@gmail.com', 'kauan123', 1189503390, 11989503390, now(), 1, 1);
+
     
 CREATE TABLE parametro (
 	idParametro INT PRIMARY KEY AUTO_INCREMENT,
@@ -69,15 +71,17 @@ CREATE TABLE estufa (
 	idEstufa INT PRIMARY KEY AUTO_INCREMENT,
 	tamanho VARCHAR (10),
 	status VARCHAR (25),
+    condicao VARCHAR(25),
     fkEmpresa INT, 
 	fkParametro INT,
+		CONSTRAINT chkCondicao CHECK (condicao IN ('Estavel', 'Atencao', 'Alerta')),
 		CONSTRAINT chkStatus CHECK (status IN ('Ativa', 'Inativa')),
 		CONSTRAINT fkEstufaEmpresa FOREIGN KEY (fkEmpresa)
 			REFERENCES empresa (idEmpresa),
 		CONSTRAINT fkParametroEstufa FOREIGN KEY (fkParametro)
 			REFERENCES parametro (idParametro)
 );
-	
+
 
 CREATE TABLE sensor (
 	idSensor INT,
@@ -89,7 +93,7 @@ CREATE TABLE sensor (
             
             
 CREATE TABLE dados (
-	idDados INT,
+	idDados INT AUTO_INCREMENT,
     temperatura DECIMAL (4, 2),
     umidade DECIMAL (4, 2),
     horario DATETIME,
@@ -97,8 +101,6 @@ CREATE TABLE dados (
 		PRIMARY KEY (idDados, fkSensor),
 	FOREIGN KEY (fkSensor) REFERENCES sensor (idSensor)
 );
-            
-SHOW TABLES;
 
 SELECT * FROM usuario;
 SELECT * FROM endereco;
@@ -108,7 +110,5 @@ SELECT * FROM parametro;
 SELECT * FROM estufa;
 SELECT * FROM sensor;
 SELECT * FROM dados;
-
-SELECT COUNT(idEmpresa) as totalEmpresa FROM empresa;
-
+            
 SHOW TABLES;

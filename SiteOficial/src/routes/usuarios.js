@@ -18,7 +18,11 @@ router.get("/usuariosAtivos", function (req, res) {
 
 router.get("/estufasCadastradas", function (req, res) {
     usuarioController.estufasCadastradas(req, res);
-})
+});
+
+router.get("/coletarTemperaturaUmidade", function (req, res) {
+    graficoController.coletarTemperaturaUmidade(req, res);
+});
 
 router.get("/usuariosCadastrados", function (req, res) {
     usuarioController.usuariosCadastrados(req, res);

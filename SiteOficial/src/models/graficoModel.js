@@ -1,8 +1,8 @@
 var database = require("../database/config")
 
-function coletarTemperatura(req, res) {
+function coletarTemperaturaUmidade(req, res) {
     var instrucaoSql = `
-        SELECT COUNT(idEmpresa) as totalEmpresa FROM empresa WHERE nome != 'Alfa Folium';
+        select * from dados;';
         `
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -10,5 +10,5 @@ function coletarTemperatura(req, res) {
 }
 
 module.exports = {
-    coletarTemperatura
+    coletarTemperaturaUmidade
 };
