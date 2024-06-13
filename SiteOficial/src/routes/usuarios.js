@@ -31,5 +31,8 @@ router.get("/infoEstufas", function (req, res) {
 router.get("/infoEstufasAtencao", function (req, res) {
     usuarioController.infoEstufas(req, res);
 });
+router.post("/estufasCadastradas", function (req, res) {
+    usuarioController.estufasCadastradas(req, res);
+});
 
 module.exports = router;

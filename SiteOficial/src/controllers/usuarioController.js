@@ -27,7 +27,7 @@ function autenticar(req, res) {
                             telFixo: resultadoAutenticar[0].telFixoUsuario,
                             telCelular: resultadoAutenticar[0].telCelularUsuario,
                             dataCriacao: resultadoAutenticar[0].dataCriacaoUsuario,
-                            idEmpresa: resultadoAutenticar[0].empresaUSuario,
+                            idEmpresa: resultadoAutenticar[0].empresaUsuario,
                             idTipoUsuario: resultadoAutenticar[0].idTipoUsuario,
                             nomeEmpresa: resultadoAutenticar[0].nomeEmpresa,
                             funcao: resultadoAutenticar[0].funcaoUsuario
@@ -182,6 +182,32 @@ function infoEstufasAtencao(req, res) {
 }
 
 
+
+function estufasCadastradas(req, res) {    
+    let idUsuario = req.body.idUsuarioServer;
+    let idEmpresa = req.body.idEmpresaServer;
+
+    usuarioModel.estufasCadastradas(idEmpresa,idUsuario)
+        .then(function (resultado) {
+                if (resultado.length >= 1) {
+                    console.log(resultado);
+                    res.status(200).json(resultado)
+                } else {
+                    res.status(403).send("Nenhum usuário encontrado.");
+                }
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao procurar usuários! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+
+
+
 module.exports = {
     autenticar,
     cadastrar,
@@ -189,5 +215,6 @@ module.exports = {
     infoEstufas,
     infoEstufasAtencao,
     totalEmpresas,
-    usuariosAtivos
+    usuariosAtivos,
+    estufasCadastradas
 }
