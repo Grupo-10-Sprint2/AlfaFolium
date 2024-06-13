@@ -71,10 +71,8 @@ CREATE TABLE estufa (
 	idEstufa INT PRIMARY KEY AUTO_INCREMENT,
 	tamanho VARCHAR (10),
 	status VARCHAR (25),
-    condicao VARCHAR(25),
     fkEmpresa INT, 
 	fkParametro INT,
-		CONSTRAINT chkCondicao CHECK (condicao IN ('Estavel', 'Atencao', 'Alerta')),
 		CONSTRAINT chkStatus CHECK (status IN ('Ativa', 'Inativa')),
 		CONSTRAINT fkEstufaEmpresa FOREIGN KEY (fkEmpresa)
 			REFERENCES empresa (idEmpresa),
@@ -102,6 +100,8 @@ CREATE TABLE dados (
 	FOREIGN KEY (fkSensor) REFERENCES sensor (idSensor)
 );
 
+
+
   
 SELECT * FROM usuario;
 SELECT * FROM endereco;
@@ -113,3 +113,10 @@ SELECT * FROM sensor;
 SELECT * FROM dados;
             
 SHOW TABLES;
+
+
+
+
+
+
+

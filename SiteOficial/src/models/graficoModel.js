@@ -3,7 +3,6 @@ var database = require("../database/config")
 function coletarTemperaturaUmidade(req, res) {
     var instrucaoSql = `
     SELECT dados.*,
-	condicao AS condicao,
     umidadeMin,
     umidadeMax,
     temperaturaMin,
