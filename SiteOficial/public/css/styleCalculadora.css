@@ -32,8 +32,8 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #38412A;
-    height: 140px;
+    background-color: #414C30;
+    height: 120px;
     width: 100%;
     z-index: 5;
     box-shadow: 6px 6px 16px 0px rgba(0,0,0,0.6);
