@@ -27,7 +27,8 @@ function autenticar(email, senha) {
         JOIN empresa as e
         ON u.fkEmpresa = e.idEmpresa
         WHERE email = '${email}' 
-        AND senha = '${senha}';`    
+        AND senha = sha2('${senha}', 256);
+        `    
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
@@ -115,6 +116,12 @@ function infoEstufasAtencao() {
     return database.executar(instrucaoSql);
 }
 
+<<<<<<< Updated upstream
+=======
+
+
+
+>>>>>>> Stashed changes
 module.exports = {
     autenticar,
     cadastrar,
