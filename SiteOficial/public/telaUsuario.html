@@ -74,28 +74,28 @@
             </div>
         </div>
         <div class="boxEstufas">
-            <div class="boxEstatisticas" >
+            <div class="boxEstatisticas">
                 <div class="boxEstufasAlerta">
                     <div class="titleAlerta">
                         <h2>Total de Estufas</h2>
                         <h2 style="color: rgb(241, 74, 74);">(Alerta)</h2>
                     </div>
-                    <div  id="saida_alerta"></div>
+                    <div id="saida_alerta"></div>
                 </div>
                 <div class="boxEstufasAtencao">
                     <div class="titleAtencao">
                         <h2>Total de Estufas</h2>
                         <h2 style="color: rgb(247, 218, 50);">(Atenção)</h2>
                     </div>
-                    <div  id="saida_atencao"></div>
+                    <div id="saida_atencao"></div>
 
                 </div>
             </div>
-                <div class="boxListaEstufas" id="listaEstufas">
-                    
-                </div>
+            <div class="boxListaEstufas" id="listaEstufas">
+
             </div>
         </div>
+    </div>
     </div>
 
     <script>
@@ -110,37 +110,37 @@
 
 
         fetch('/usuarios/infoEstufas')
-        .then(response => response.json())
-        .then(data => {
-            const estufasCount = data.estufasCount; 
-            document.getElementById('saida_alerta').innerHTML = estufasCount;
-        })
-        .catch(error => {
-            console.error('Erro ao buscar dados das estufas:', error);
-        });
-        
-        
+            .then(response => response.json())
+            .then(data => {
+                const estufasCount = data.estufasCount;
+                document.getElementById('saida_alerta').innerHTML = estufasCount;
+            })
+            .catch(error => {
+                console.error('Erro ao buscar dados das estufas:', error);
+            });
+
+
 
         fetch('/usuarios/infoEstufasAtencao')
-        .then(response => response.json())
-        .then(data => {
-            const estufasCount = data.estufasCount; 
-            document.getElementById('saida_atencao').innerHTML = estufasCount;
-        })
-        .catch(error => {
-            console.error('Erro ao buscar dados das estufas:', error);
-        });
+            .then(response => response.json())
+            .then(data => {
+                const estufasCount = data.estufasCount;
+                document.getElementById('saida_atencao').innerHTML = estufasCount;
+            })
+            .catch(error => {
+                console.error('Erro ao buscar dados das estufas:', error);
+            });
 
         fetch("/usuarios/estufasCadastradas", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    idUsuarioServer: idUsuario,
-                    idEmpresaServer:idEmpresa,
-                })
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                idUsuarioServer: idUsuario,
+                idEmpresaServer: idEmpresa,
             })
+        })
             .then(resposta => {
                 console.log(resposta)
 
@@ -156,7 +156,7 @@
 
                             var estufa = res[qtdEstufas];
 
-                            inserirEstufas.innerHTML+=`<div class="estufa">
+                            inserirEstufas.innerHTML += `<div class="estufa">
                                 <div class="estufaNome">
                                     <h3>estf_1x</h3>
                                 </div>
@@ -179,9 +179,62 @@
                 console.error(resposta);
             });
 
-
-
+        setInterval(exibirTemperaturaUmidade, 1500);
         
+        function exibirTemperaturaUmidade() {
+            fetch("/grafico/coletarTemperaturaUmidade")
+                .then(resposta => {
+                    console.log(resposta);
+
+                    if (resposta.ok) {
+                        resposta.json().then(res => {
+                            console.log(res[0]);
+
+                            let temperatura = Math.trunc(Number(res[0].temperatura));
+                            let umidade = Math.trunc(Number(res[0].umidade));
+                            let condicao = res[0].condicao;
+                            let horario = res[0].horario;
+                            let temperaturaMax = Math.trunc(Number(res[0].temperaturaMax));
+                            let temperaturaMin = Math.trunc(Number(res[0].temperaturaMin));
+                            let umidadeMax = Math.trunc(Number(res[0].umidadeMax));
+                            let umidadeMin = Math.trunc(Number(res[0].umidadeMin));
+
+                            let exibirTemperatura = document.getElementById("exibirTemperatura");
+                            let exibirUmidade = document.getElementById("exibirUmidade");
+                            let exibirCondicao = document.getElementById("exibirCondicao");
+                            let exibirHorario = document.getElementById("exibirHorario");
+                            let exibirTemperaturaMax = document.getElementById("exibirTemperaturaMax");
+                            let exibirTemperaturaMin = document.getElementById("exibirTemperaturaMin");
+                            let exibirUmidadeMax = document.getElementById("exibirUmidadeMax");
+                            let exibirUmidadeMin = document.getElementById("exibirUmidadeMin");
+
+                            exibirTemperatura.innerHTML = `${temperatura}°C`;
+                            exibirUmidade.innerHTML = `${umidade}%`;
+                            exibirTemperaturaMax.innerHTML = `${temperaturaMax}°C`;
+                            exibirTemperaturaMin.innerHTML = `${temperaturaMin}°C`;
+                            exibirUmidadeMax.innerHTML = `${umidadeMax}%`;
+                            exibirUmidadeMin.innerHTML = `${umidadeMin}%`;
+
+                            let titleTemperatura = document.querySelector(".cardTempTitle");
+
+                            console.log(`${temperaturaMax - 1}, ${temperaturaMin + 2}, ${temperaturaMin + 3}`);
+
+                            if (temperatura >= temperaturaMax - 1 || temperatura <= temperaturaMin + 1) {
+                                titleTemperatura.style.backgroundColor = "#FF0000";
+                            } else if ((temperatura <= temperaturaMax - 2 || temperatura >= temperaturaMax - 3) || (temperatura >= temperaturaMin + 2 || temperatura <= temperaturaMin + 3)) {
+                                titleTemperatura.style.backgroundColor = "#FFA500";
+                            } else if (temperatura < temperaturaMax - 3 || temperatura > temperaturaMin + 3) {
+                                titleTemperatura.style.backgroundColor = "#008000";
+                            }
+                        });
+                    } else {
+                        console.log(`JSON não coletado`);
+                    }
+                })
+                .catch(function (resposta) {
+                    console.error(resposta);
+                });
+        }
     </script>
 
 </body>

@@ -66,7 +66,7 @@ CREATE TABLE parametro (
 ); 	
 
 insert into parametro values
-	(default, 65.00, 80.00, 25.00, 28.00);
+	(default, 65.00, 80.00, 15.00, 28.00);
 
 CREATE TABLE estufa (
 	idEstufa INT PRIMARY KEY AUTO_INCREMENT,
@@ -124,7 +124,7 @@ CREATE TABLE dados (
 );
 
 insert into dados values
-	(default, 26.04, 83.05, now(), 1);
+	(default, 15.04, 83.05, now(), 1);
 
 SELECT * FROM usuario;
 SELECT * FROM endereco;

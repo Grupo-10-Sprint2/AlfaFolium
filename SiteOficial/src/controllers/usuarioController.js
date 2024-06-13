@@ -203,10 +203,12 @@ function infoEstufasAtencao(req, res) {
 function coletarTemperaturaUmidade(req, res) {
     graficoModel.coletarTemperaturaUmidade()
             .then(function (resultado) {
-                    if (resultado.length >= 1) {
+                    if (resultado.length >= 0) {
+                        console.log(`DEU CERTO`);
                         console.log(resultado);
                         res.status(200).json(resultado);
                     } else {
+                        console.log(`DEU ERRO AQUI`);
                         res.status(403).send("Nenhum dado encontrado.");
                     }
                 }

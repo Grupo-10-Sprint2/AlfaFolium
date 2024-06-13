@@ -405,12 +405,14 @@
             exibirUmidadeMin.innerHTML = `${umidadeMin}%`;
 
             let titleTemperatura = document.querySelector(".cardTempTitle");
+            
+            console.log(`${temperaturaMax - 1}, ${temperaturaMin + 2}, ${temperaturaMin + 3}`);
 
             if (temperatura >= temperaturaMax - 1 || temperatura <= temperaturaMin + 1) {
               titleTemperatura.style.backgroundColor = "#FF0000";
             } else if ((temperatura <= temperaturaMax - 2 || temperatura >= temperaturaMax - 3) || (temperatura >= temperaturaMin + 2 || temperatura <= temperaturaMin + 3)) {
               titleTemperatura.style.backgroundColor = "#FFA500";
-            } else {
+            } else if (temperatura < temperaturaMax - 3 || temperatura > temperaturaMin + 3) {
               titleTemperatura.style.backgroundColor = "#008000";
             }
           });
