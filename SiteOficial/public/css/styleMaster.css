@@ -290,7 +290,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 70%;
+    width: 80%;
     height: 420px;
     background-color: rgba(251, 224, 192, 0.158);
     backdrop-filter: blur(4px);
