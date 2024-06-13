@@ -374,5 +374,34 @@ body {
     color: yellow;
 }
 
+.status_estufas{
+    background-color: #fff0ac;
+    border-radius:15px;
+    height: 35px;
+    width: 300px;
+    margin-left: 30px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: space-between;  
+}
+
+.nome_status{
+    font-weight: bold;
+    margin-left: 15px;
+}
+.ultima_captura{
+    font-weight: bold;
+    margin-left: 15px;
+}
+.bolinha_status_estufas{
+    background-color: lawngreen;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
 
 

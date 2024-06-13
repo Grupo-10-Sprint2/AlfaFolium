@@ -23,10 +23,10 @@ const serial = async (
             // altere!
             // CREDENCIAIS DO BANCO - MYSQL WORKBENCH
             host: 'localhost',
-            user: 'usuarioTeste',
-            password: 'Usuario#10',
-            database: 'alfafolium',
-            port: '3307'
+            user: 'root',
+            password: 'vidanova123',
+            database: 'AlfaFolium',
+            port: '3306'
         }
     ).promise();
 
@@ -62,7 +62,7 @@ const serial = async (
             // Este insert irá inserir dados de fk_aquario id=1 (fixo no comando do insert abaixo)
             // >> você deve ter o aquario de id 1 cadastrado.
             await poolBancoDados.execute(
-                'INSERT INTO Dados (Umidade, Temperatura, Horario, fkSensor) VALUES (?, ?, now(), 1)',
+                'INSERT INTO dados (umidade, temperatura, horario, fkSensor) VALUES (?, ?, now(), 1)',
                 [dht11Umidade, dht11Temperatura]
             );
             console.log("valores inseridos no banco: ", dht11Umidade + ", " + dht11Temperatura)

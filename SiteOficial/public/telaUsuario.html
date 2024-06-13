@@ -91,14 +91,9 @@
 
                 </div>
             </div>
-            <div class="boxListaEstufas">
-                <div class="estufa">
-                    <div class="estufaNome">
-                        <h3>estf_1x</h3>
-                    </div>
+                <div class="boxListaEstufas" id="listaEstufas">
+                    
                 </div>
-                <div class="estufa"></div>
-                <div class="estufa"></div>
             </div>
         </div>
     </div>
@@ -111,6 +106,8 @@
         document.getElementById('saidaFuncao').innerHTML = sessionStorage.FUNCAO_USUARIO;
 
         const idUsuario = sessionStorage.ID_USUARIO;
+        const idEmpresa = sessionStorage.ID_EMPRESA;
+
 
         fetch('/usuarios/infoEstufas')
         .then(response => response.json())
@@ -133,6 +130,58 @@
         .catch(error => {
             console.error('Erro ao buscar dados das estufas:', error);
         });
+
+        fetch("/usuarios/estufasCadastradas", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    idUsuarioServer: idUsuario,
+                    idEmpresaServer:idEmpresa,
+                })
+            })
+            .then(resposta => {
+                console.log(resposta)
+
+                if (resposta.ok) {
+                    resposta.json().then(res => {
+
+                        var inserirEstufas = document.getElementById("listaEstufas");
+                        console.log(res);
+
+                        for (let qtdEstufas = 0;
+                            qtdEstufas < res.length;
+                            qtdEstufas++) {
+
+                            var estufa = res[qtdEstufas];
+
+                            inserirEstufas.innerHTML+=`<div class="estufa">
+                                <div class="estufaNome">
+                                    <h3>estf_1x</h3>
+                                </div>
+                                <div class="status_estufas">
+                                    <p class="nome_status">Status:</p>
+                                    <div class="bolinha_status_estufas"></div>
+                                </div>
+                                <div class="status_estufas">
+                                    <p class="ultima_captura">Última captura:</p>
+                                </div>
+                            </div>`
+                        }
+                    });
+
+                } else {
+                    console.log(`JSON não coletado`);
+                }
+            })
+            .catch(function (resposta) {
+                console.error(resposta);
+            });
+
+
+
+        
     </script>
 
 </body>
