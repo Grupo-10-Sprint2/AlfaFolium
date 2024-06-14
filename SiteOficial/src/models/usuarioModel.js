@@ -84,7 +84,7 @@ function usuariosCadastrados(req, res) {
 
 function cadastrar(nome, CPF, email, telFixo, telCelular, idEmpresa, idTipoUsuario) {
     var instrucaoSql = `
-        INSERT INTO usuario (nome, CPF, email, senha, telFixo, telCelular, dataCriacao, fkEmpresa, fkTipoUsuario) VALUES ('${nome}', '${CPF}', '${email}', sha2('AF#${CPF}', 256), '${telFixo}', '${telCelular}', now(), '${idEmpresa}', '${idTipoUsuario}');
+        INSERT INTO usuario (nome, CPF, email, senha, telFixo, telCelular, dataCriacao, fkEmpresa, fkTipoUsuario) VALUES ('${nome}', '${CPF}', '${email}', sha2('AF#${CPF.slice(12,14)}', 256), '${telFixo}', '${telCelular}', now(), '${idEmpresa}', 2);
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -92,7 +92,7 @@ function cadastrar(nome, CPF, email, telFixo, telCelular, idEmpresa, idTipoUsuar
 
 function cadastrarFuncionario(nome, CPF, email, telFixo, telCelular, idEmpresa) {
     var instrucaoSql = ` 
-        INSERT INTO usuario (nome, CPF, email, senha, telFixo, telCelular, dataCriacao, fkEmpresa, fkTipoUsuario) VALUES ('${nome}', '${CPF}', '${email}', sha2('AF#${CPF}', 256), '${telFixo}', '${telCelular}', now(), '${idEmpresa}', 3);
+        INSERT INTO usuario (nome, CPF, email, senha, telFixo, telCelular, dataCriacao, fkEmpresa, fkTipoUsuario) VALUES ('${nome}', '${CPF}', '${email}', sha2('AF#${CPF.slice(12,14)}', 256), '${telFixo}', '${telCelular}', now(), '${idEmpresa}', 3);
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

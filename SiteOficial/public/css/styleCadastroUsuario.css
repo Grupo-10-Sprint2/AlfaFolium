@@ -218,6 +218,7 @@ body {
     flex-direction: column;
     animation: opacity 1.5s ease-in-out;
     transform: translateY(200%);
+    margin-top: 30px;
 }
 
 .boxInput h3 {
