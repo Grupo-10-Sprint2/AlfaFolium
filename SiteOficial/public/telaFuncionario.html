@@ -31,7 +31,7 @@
                     <span></span>
                     <ul class="menu" id="menu">
                         <li><img src="./assets/assetsMaster/iconHome.png"><a href="http://localhost:3333/telaFuncionario.html">Home</a></li>
-                        <li><img src="./assets/assetsMaster/iconSuporte.png"><a href="http://localhost:8080">Suporte</a></li>
+                        <li><img src="./assets/assetsTelaUsuario/image.png" class="iconeMenu"><a href="https://dl.dropboxusercontent.com/s/lflzrxr41mcelxjp8srpn/Manual-de-instala-o.pdf?rlkey=wiflrnhxz3n9dov08z2cgtcj3&st=6vmfmeiw&dl=0&raw=1">Manual de Instalação</a></li>
                         <li><img src="./assets/assetsMaster/iconSair.png"><a href="index.html">Sair</a></li>
                     </ul>
                 </div>
@@ -80,6 +80,8 @@
         </div>
     </div>
     </div>
+    <script data-jsd-embedded data-key="94f714d8-5c09-48e8-b318-a69ba2b7b55a" data-base-url="https://jsd-widget.atlassian.com" src="https://jsd-widget.atlassian.com/assets/embed.js"></script>
+
 
     <script>
         document.getElementById('saidaNome').innerHTML = sessionStorage.NOME_USUARIO;
@@ -90,29 +92,6 @@
 
         const idUsuario = sessionStorage.ID_USUARIO;
         const idEmpresa = sessionStorage.ID_EMPRESA;
-
-
-        // fetch('/usuarios/infoEstufas')
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         const estufasCount = data.estufasCount;
-        //         document.getElementById('saida_alerta').innerHTML = estufasCount;
-        //     })
-        //     .catch(error => {
-        //         console.error('Erro ao buscar dados das estufas:', error);
-        //     });
-
-
-
-        // fetch('/usuarios/infoEstufasAtencao')
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         const estufasCount = data.estufasCount;
-        //         document.getElementById('saida_atencao').innerHTML = estufasCount;
-        //     })
-        //     .catch(error => {
-        //         console.error('Erro ao buscar dados das estufas:', error);
-        //     });
 
         function listarEstufas(){
             fetch("/usuarios/listarEstufas", {
@@ -141,16 +120,25 @@
 
                             var estufa = res[qtdEstufas];
 
+                            var ultimaCapturaId = `ultimaCaptura${qtdEstufas}`;
+                            var ultimaCaptura = document.getElementById(ultimaCapturaId);
+                            var horarioFormatado = formatarDataHora(estufa.horario);
+
                             inserirEstufas.innerHTML += `<div class="estufa">
-                                <div class="estufaNome">
-                                    <h3>Estufa ${estufa.idEstufa}</h3>
+                                <div>
+                                    <div class="estufaNome">
+                                        <h3>Estufa ${estufa.idEstufa}</h3>
+                                    </div>
+                                    <div class="status_estufas">
+                                        <p class="nome_status">Status: ${estufa.status}</p>
+                                        <div class="bolinha_status_estufas" id="bolinha${qtdEstufas}"></div>
+                                    </div>
+                                    <div class="status_estufas">
+                                        <p class="ultima_captura" id="ultimaCaptura${qtdEstufas}">Última captura:</p>
+                                    </div>
                                 </div>
-                                <div class="status_estufas">
-                                    <p class="nome_status">Status: ${estufa.status}</p>
-                                    <div class="bolinha_status_estufas" id="bolinha${qtdEstufas}"></div>
-                                </div>
-                                <div class="status_estufas">
-                                    <p class="ultima_captura">Última captura:</p>
+                                <div id="div_button">
+                                    
                                 </div>
                             </div>`
                         }
@@ -166,6 +154,20 @@
         }
 
         setInterval(exibirTemperaturaUmidade, 1500);
+
+        function formatarDataHora(dataHoraString) {
+            const dateObj = new Date(dataHoraString);
+
+            const ano = dateObj.getFullYear();
+            const mes = String(dateObj.getMonth() + 1).padStart(2, '0'); // meses são 0-indexados
+            const dia = String(dateObj.getDate()).padStart(2, '0');
+
+            const horas = String(dateObj.getHours()).padStart(2, '0');
+            const minutos = String(dateObj.getMinutes()).padStart(2, '0');
+            const segundos = String(dateObj.getSeconds()).padStart(2, '0');
+
+            return `${horas}:${minutos}:${segundos}`;
+        }
 
         function atualizarEstufa(corBolinha){
             fetch("/usuarios/listarEstufas", {
@@ -190,18 +192,24 @@
                         for (let qtdEstufas = 0;
                             qtdEstufas < res.length;
                             qtdEstufas++) {
-                            var estufa = res[qtdEstufas];
+                                var estufa = res[qtdEstufas];
+                            var bolinhaId = `bolinha${qtdEstufas}`
+                            var bolinhaAtualizada = document.getElementById(bolinhaId);
+                            var ultimaCapturaId = `ultimaCaptura${qtdEstufas}`;
+                            var ultimaCaptura = document.getElementById(ultimaCapturaId);
+                            var divButton = document.getElementById('div_button');
+                            var horarioFormatado = formatarDataHora(estufa.horario);
 
                             if(estufa.status == 'Ativa'){
                                 if(estufa.idDados == undefined){
-                                    var bolinhaId = `bolinha${qtdEstufas}`
-                                    var bolinhaAtualizada = document.getElementById(bolinhaId);
                                     bolinhaAtualizada.style.backgroundColor = '#444444'
                                 }
                                 else{
-                                    var bolinhaId = `bolinha${qtdEstufas}`
-                                    var bolinhaAtualizada = document.getElementById(bolinhaId);
-                                    bolinhaAtualizada.style.backgroundColor = corBolinha
+                                    bolinhaAtualizada.style.backgroundColor = corBolinha;
+                                    ultimaCaptura.innerHTML = `Última captura: ${horarioFormatado}`;
+                                    divButton.innerHTML = `<button onclick="irParaDash()" class="button_dash">
+                                        >
+                                    </button>`;
                                 }
                                 
                             }
@@ -210,7 +218,6 @@
                                 var bolinhaAtualizada = document.getElementById(bolinhaId);
                                 bolinhaAtualizada.style.backgroundColor = '#444444'    
                             }
-                            
                         }
                     });
 

@@ -353,10 +353,13 @@ body {
 
 .estufa {
     background-color: #232323;
-    width: 60%;
+    width: 50%;
     height: 200px; 
     border-radius: 20px;
-    flex-shrink: 0; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 50px;
 }
 
 .estufaNome{
@@ -369,7 +372,7 @@ body {
     border-radius: 20px;
     padding: 5px;
     position: relative;
-    bottom: 10px;
+    bottom: 30px;
 }
 
 .estufaNome h3{
@@ -422,5 +425,18 @@ body {
     margin-right: 15px;
 }
 
+.button_dash{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 32px;
+    border: none;
+    background-color: #1B3606;
+    color: #FBE0C0;
+    cursor: pointer;
+}
 
+.iconeMenu{
+    width: 25px;
+}
 

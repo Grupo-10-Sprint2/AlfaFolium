@@ -55,14 +55,17 @@ CREATE TABLE usuario (
 		REFERENCES empresa(idEmpresa)
 );
 
-select * from usuario;
 
+-- Insert dos usuários master:
 insert into usuario values
-	(default, 'Kauan Dono', '545454454541', 'kauanDono@gmail.com', 'kauan123');
+	(default, 'Diogo Polastrine', '131.872.938-67', 'diogoP@alfa.folium', sha2('AF#13187293867',256), '(11)2393-1191','(11)98735-4411','2024-06-14',1,1),
+    (default, 'Kauan França', '283.994.182-74', 'kauanF@alfa.folium', sha2('AF#28399418274',256), '(11)2643-6112','(11)97125-6421','2024-06-14',1,1),
+    (default, 'Anilmar Choque', '494.102.588-23', 'anilms@alfa.folium', sha2('AF#49410258823',256), '(11)2566-1844','(11)91029-6761','2024-06-14',1,1),
+    (default, 'Giovanna Gomes', '858.318.755-21', 'giGomes@alfa.folium', sha2('AF#85831875521',256), '(11)2401-1293','(11)97774-1745','2024-06-14',1,1),
+    (default, 'Kauan Marques', '948.181.823-75', 'kauanMarques@alfa.folium', sha2('AF#94818182375',256), '(11)2155-6533','(11)99423-1698','2024-06-14',1,1),
+    (default, 'Guilherme Neris', '133.884.854-94', 'guiNeris@alfa.folium', sha2('AF#13388485494',256), '(11)2112-2325','(11)91553-0943','2024-06-14',1,1);
 
-insert into usuario values 
-	(default, 'Kauan Dependente', '51358595975', 'kkDep@gmail.com', 'fjdcklsm', '1184588458', '11984588458', now(), 3, 3);
-    
+
 CREATE TABLE parametro (
 	idParametro INT PRIMARY KEY AUTO_INCREMENT,
     umidadeMin DECIMAL (4, 2),
@@ -71,8 +74,6 @@ CREATE TABLE parametro (
     temperaturaMax DECIMAL (4, 2)
 ); 	
 
-insert into parametro values
-	(default, 65.00, 80.00, 15.00, 28.00);
 
 CREATE TABLE estufa (
 	idEstufa INT PRIMARY KEY AUTO_INCREMENT,
@@ -89,24 +90,6 @@ CREATE TABLE estufa (
 			REFERENCES parametro (idParametro)
 );
 
-select dados.*,
-	condicao as condicao,
-    umidadeMin,
-    umidadeMax,
-    temperaturaMin,
-    temperaturaMax from dados join sensor
-    on dados.fkSensor = sensor.idSensor join estufa
-    on sensor.fkEstufa = estufa.idEstufa join parametro
-    on estufa.fkParametro = parametro.idParametro
-    order by idDados desc
-    limit 1;
-    
-select * from estufa;
-
-SELECT COUNT(idEstufa) AS totalEstufasCadastradas from estufa;
-
-insert into estufa values
-	(default, 5, 'Ativa', 'Estavel', 3, 1);
 
 CREATE TABLE sensor (
 	idSensor INT,
@@ -116,10 +99,6 @@ CREATE TABLE sensor (
 	FOREIGN KEY (fkEstufa) REFERENCES estufa (idEstufa)
 );
 
-select * from sensor;
-
-insert into sensor values
-	(1, 'DHT_11', 4);
             
 CREATE TABLE dados (
 	idDados INT AUTO_INCREMENT,
@@ -131,27 +110,7 @@ CREATE TABLE dados (
 	FOREIGN KEY (fkSensor) REFERENCES sensor (idSensor)
 );
 
-select * from dados;
 
-SELECT e.*, s.idSensor, d.*, umidadeMin, umidadeMax, temperaturaMin, temperaturaMax FROM estufa e
-    JOIN empresa ON e.fkEmpresa = empresa.idEmpresa
-    JOIN usuario ON usuario.fkEmpresa = empresa.idEmpresa
-    LEFT JOIN sensor s ON s.fkEstufa = e.idEstufa
-    LEFT JOIN dados d ON d.idDados = (
-        SELECT idDados
-        FROM dados
-        WHERE dados.fkSensor = s.idSensor
-        ORDER BY dados.idDados DESC
-        LIMIT 1
-    )
-    JOIN parametro
-    ON e.fkParametro = parametro.idParametro
-    WHERE empresa.idEmpresa = 3
-    AND usuario.idUsuario= 4;
-
-
-insert into dados values
-	(default, 19.04, 79.05, now(), 1);
 
 SELECT * FROM usuario;
 SELECT * FROM endereco;
@@ -164,3 +123,5 @@ SELECT * FROM dados;
             
 SHOW TABLES;
 
+INSERT INTO dados VALUES
+	(default, '23', '60', '2024-06-14 02:45:25', 1);
