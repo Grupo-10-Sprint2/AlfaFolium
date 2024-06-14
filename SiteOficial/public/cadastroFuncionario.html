@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Funcionário - Alfa Folium</title>
+    <link rel="stylesheet" href="./css/styleCadastroUsuario.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ysabeau:ital,wght@0,1..1000;1,1..1000&display=swap"
+        rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/800a4bbd88.js" crossorigin="anonymous"></script>
+</head>
+
+
+<body>
+    <div id="blurTela" class="blurTela">
+
+    </div>
+
+    <div class="alertaBox">
+        <h1 class="textAlerta"> Cadastro inválido! </h1>
+        <div onclick="fecharAviso()" class="btnFechar">
+            <h3>X</h3>
+        </div>
+        <div class="mensagemBox">
+        </div>
+        <div class="alfaceAlerta"><img src="./assets/assetsCadastro/alface.png"></div>
+    </div>
+
+
+    <div class="headerBox">
+        <div class="boxLogo">
+
+            <img src="./assets/assetsDashboard/logoNav.png">
+
+        </div>
+        <div class="boxMenu">
+
+            <nav role="navigation">
+                <div id="menuToggle">
+                    <input type="checkbox">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                    <ul class="menu" id="menu">
+                        <li><img src="./assets/assetsMaster/iconHome.png"><a href="http://localhost:3333">Home</a></li>
+                        <li><img src="./assets/assetsMaster/iconEmpresa.png"><a
+                                href="http://localhost:3333/cadastroEmpresa.html">Cadastro de Empresa</a></li>
+                        <li><img src="./assets/assetsMaster/iconUsuario.png"><a
+                                href="http://localhost:3333/cadastroProprietario.html">Cadastro de Usuário</a></li>
+                        <li><img src="./assets/assetsMaster/iconEstufa.png"><a
+                                href="http://localhost:3333/cadastroEstufa.html">Cadastro de Estufa</a></li>
+                        <li><img src="./assets/assetsMaster/iconSuporte.png"><a href="http://localhost:8080">Suporte</a>
+                        </li>
+                        <li><img src="./assets/assetsMaster/iconSair.png"><a href="index.html">Sair</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+        </div>
+    </div>
+
+
+
+    <div class="boxContent">
+        <div class="boxGreen">
+            <div class="boxCadastro">
+                <div class="quadrado_titulo">
+                    <div class="titulo">
+                        <p>Insira os dados do funcionário</p>
+                    </div>
+                </div>
+                <div class="boxInputs">
+                    <div class="boxInput">
+                        <h3>Nome:</h3>
+                        <input placeholder="João Pessoa" class="input" id="input_nomeUsuario" type="text">
+                    </div>
+                    <div class="boxInput">
+                        <h3>Email:</h3>
+                        <input placeholder="joao@email.com" class="input" id="input_emailUsuario" type="text">
+                    </div>
+                    <div class="boxInput">
+                        <h3>CPF:</h3>
+                        <input placeholder="012.345.678-90" class="input" id="input_cpfUsuario" type="text">
+                    </div>
+                    <div class="boxInput">
+                        <h3>TelFixo:</h3>
+                        <input placeholder="(00)1234-5678" class="input" id="input_telFixoUsuario" type="text">
+                    </div>
+                    <div class="boxInput">
+                        <h3>TelCel:</h3>
+                        <input placeholder="(00)12345-6789" class="input" id="input_telCelUsuario" type="text">
+                    </div>
+                    <div class="boxInput">
+                        <h3>Empresa:</h3>
+                        <select class="select" id="input_empresaUsuario" type="text">
+                            <option value=""> --- </option>
+                        </select>
+                    </div>
+                </div>
+                <button onclick="cadastrarUsuarioDependente()" class="btn_cadastrar">
+                    <h3> Cadastrar </h3>
+                </button>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+</body>
+
+</html>
+
+<script src="https://unpkg.com/vanilla-masker/build/vanilla-masker.min.js"></script>
+<script src="./js/scriptCadastroFuncionario.js"></script>
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        VMasker(document.querySelector("#input_cpfUsuario")).maskPattern("999.999.999-99");
+        VMasker(document.querySelector("#input_telFixoUsuario")).maskPattern("(99)9999-9999");
+        VMasker(document.querySelector("#input_telCelUsuario")).maskPattern("(99)99999-9999");
+    });
+
+    function mostrarAlerta(mensagemAlerta) {
+        let boxAlerta = document.querySelector('.alertaBox');
+        let boxMensagem = document.querySelector('.mensagemBox');
+        let blurTela = document.getElementById('blurTela');
+
+        boxMensagem.innerHTML = `<p>${mensagemAlerta}</p>`;
+        blurTela.style.display = 'block';
+        boxAlerta.classList.add('aparecer');
+    }
+
+    function fecharAviso() {
+        let boxAlerta = document.querySelector('.alertaBox');
+        let blurTela = document.getElementById('blurTela');
+
+        boxAlerta.classList.remove('aparecer');
+        setTimeout(() => {
+            blurTela.style.display = 'none';
+        }, 500);
+    }
+
+    function marcarErro(input) {
+        input.style.border = 'solid 2px #FF0000';
+        setTimeout(() => {
+            input.style.border = '';
+        }, 3000);
+    }
+
+
+
+    function carregarEmpresas() {
+        fetch('/empresas/listar')
+            .then(response => response.json())
+            .then(data => {
+                let selectEmpresa = document.getElementById('input_empresaUsuario');
+                data.forEach(empresa => {
+                    let option = document.createElement('option');
+                    option.value = empresa.idEmpresa;
+                    option.textContent = empresa.nome;
+                    selectEmpresa.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Erro ao carregar empresas:', error));
+    }
+
+    document.addEventListener('DOMContentLoaded', carregarEmpresas())
+
+
+    function cadastrarUsuarioDependente() {
+        let nome = document.getElementById('input_nomeUsuario').value;
+        let email = document.getElementById('input_emailUsuario').value;
+        let cpf = document.getElementById('input_cpfUsuario').value;
+        let telFixo = document.getElementById('input_telFixoUsuario').value;
+        let telCel = document.getElementById('input_telCelUsuario').value;
+        let empresa = document.getElementById('input_empresaUsuario').value;
+
+        let nomeInput = document.getElementById('input_nomeUsuario');
+        let emailInput = document.getElementById('input_emailUsuario');
+        let cpfInput = document.getElementById('input_cpfUsuario');
+        let telFixoInput = document.getElementById('input_telFixoUsuario');
+        let telCelInput = document.getElementById('input_telCelUsuario');
+        let empresaInput = document.getElementById('input_empresaUsuario');
+
+        nomeInput.style.border = '';
+        emailInput.style.border = '';
+        cpfInput.style.border = '';
+        telFixoInput.style.border = '';
+        telCelInput.style.border = '';
+        empresaInput.style.border = '';
+
+        let validado = true;
+
+        if (nome === '') {
+            marcarErro(nomeInput);
+            validado = false;
+        }
+        if (email === '') {
+            marcarErro(emailInput);
+            validado = false;
+        }
+        if (cpf === '') {
+            marcarErro(cpfInput);
+            validado = false;
+        }
+        if (telFixo === '') {
+            marcarErro(telFixoInput);
+            validado = false;
+        }
+        if (telCel === '') {
+            marcarErro(telCelInput);
+            validado = false;
+        }
+        if (empresa === '') {
+            marcarErro(empresaInput);
+            validado = false;
+        }
+        if (!validado) {
+            mostrarAlerta('Preencha todos os campos!');
+            return;
+        }
+
+        if (email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+            marcarErro(emailInput);
+            mostrarAlerta('Insira um email válido!');
+            validado = false;
+        }
+
+        if (validado) {
+            fetch("/usuarios/cadastrarDependente", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    nomeServer: nome,
+                    emailServer: email,
+                    cpfServer: cpf,
+                    telFixoServer: telFixo,
+                    telCelServer: telCel,
+                    idEmpresaServer: empresa,
+                }),
+            })
+                .then(function (resposta) {
+                    console.log('Resposta:', resposta);
+
+                    if (resposta.ok) {
+                        setTimeout(() => {
+                            let mensagemSucesso = 'Usuário Cadastrado com Sucesso.'
+                            let titleAlerta = document.querySelector('.textAlerta')
+
+                            titleAlerta.innerHTML = 'Cadastro Efetuado!'
+                            mostrarAlerta(mensagemSucesso)
+                        }, 2000);
+                    }
+                    window.location.href = "./telaMaster.html";
+
+                })
+        }
+    }
+
+</script>

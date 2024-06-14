@@ -149,7 +149,7 @@
                   <h3> Horário </h3>
                 </div>
                 <div id="relogio">
-                  <h1></h1>
+                  <!-- <h1 id="hora"></h1> -->
                 </div>
               </div>
             </div>
@@ -188,101 +188,31 @@
   let numLeituras2 = 0; // Variável para rastrear o número de leituras
 
 
-  setInterval(exibirTemperaturaUmidade, 3500);
-  function adicionarDadosAleatorios() {
+  
 
-    if (numLeituras1 % 10 == 0) {
-      graficoTemp.data.labels = [];
-
-      // Atualiza o gráfico
-      graficoTemp.update();
-
-    } else {
-      const min = 18;
-      const max = 34;
-
-      let dadosAleatorios = Math.floor(Math.random() * (max - min + 1) + min);
-      let dadosAleatorios_formatado1 = Number(dadosAleatorios.toFixed(2));
-      let dadosAleatorios_formatado2 = Math.trunc(dadosAleatorios_formatado1);
-      // const caixaTexto = document.getElementById('alertTemp');
-
-      if (dadosAleatorios_formatado2 >= 29 && dadosAleatorios_formatado2 <= 31 || (dadosAleatorios_formatado2 >= 21 && dadosAleatorios_formatado2 <= 23)) {
-        // document.getElementById('card1').style.backgroundColor = '#ffa500';
-        // document.getElementById('alertTemp').style.color = '#ffa500';
-        // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}°C`;
-        // imgAlertaTemp.innerHTML = '';
-      } else if (dadosAleatorios_formatado2 <= 20 || dadosAleatorios_formatado2 >= 32) {
-        // document.getElementById('card1').style.backgroundColor = 'red';
-        // document.getElementById('alertTemp').style.color = 'red';
-        // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}°C`;
-        // imgAlertaTemp.innerHTML = '<img src="./assetsDashboard/alerta-1.png" width="40px" alt="">';
-      } else {
-        // document.getElementById('card1').style.backgroundColor = 'green';
-        // document.getElementById('alertTemp').style.color = 'green';
-        // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}°C`;
-        // imgAlertaTemp.innerHTML = '';
-      }
-
-      // Adiciona os dados ao array de dados
-      graficoTemp.data.datasets[0].data.push(dadosAleatorios);
-
-      // Atualiza os rótulos usando o número de leituras
-      graficoTemp.data.labels.push(`Leitura ${numLeituras1}`);
-
-      // Atualiza o gráfico
-      graficoTemp.update();
-
-    }
-    numLeituras1++
-
-    if (numLeituras2 % 10 == 0) {
-      graficoBarras.data.labels = [];
-
-      // Atualiza o gráfico
-      graficoBarras.update();
-
-    } else {
-      const min = 55
-      const max = 88
-
-      let dadosAleatorios = Math.floor(Math.random() * (max - min + 1) + min);
-      let dadosAleatorios_formatado1 = Number(dadosAleatorios.toFixed(2));
-      let dadosAleatorios_formatado2 = Math.trunc(dadosAleatorios_formatado1);
-      // const caixaTexto = document.getElementById('alertUmi');
-
-      if (dadosAleatorios_formatado2 >= 57 && dadosAleatorios_formatado2 <= 59 || (dadosAleatorios_formatado2 >= 81 && dadosAleatorios_formatado2 <= 85)) {
-        // document.getElementById('card2').style.backgroundColor = '#ffa500';
-        // document.getElementById('alertUmi').style.color = '#ffa500';
-        // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}%`;
-        // imgAlertaUmidade.innerHTML = '';
-      } else if (dadosAleatorios_formatado2 <= 56 || dadosAleatorios_formatado2 >= 86) {
-        // document.getElementById('card2').style.backgroundColor = 'red';
-        // document.getElementById('alertUmi').style.color = 'red';
-        // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}%`;
-        // imgAlertaUmidade.innerHTML = '<img src="./assetsDashboard/alerta-1.png" width="40px" alt="">';
-      } else {
-        // document.getElementById('card2').style.backgroundColor = 'green';
-        // document.getElementById('alertUmi').style.color = 'green';
-        // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}%`;
-        // imgAlertaUmidade.innerHTML = '';
-      }
-
-      // caixaTexto.innerHTML = `${dadosAleatorios_formatado2}%`;
-
-      // Adiciona os dados ao array de dados
-      graficoBarras.data.datasets[0].data.push(dadosAleatorios);
-
-      // Atualiza os rótulos usando o número de leituras
-      graficoBarras.data.labels.push(`Leitura ${numLeituras2}`);
-
-      // Atualiza o gráfico
-      graficoBarras.update();
-
-    }
-    numLeituras2++
+  function adicionarDadosCapturados(temperatura, umidade) {
+  if (numLeituras1 % 10 === 0) {
+    graficoTemp.data.labels = [];
+    graficoTemp.data.datasets[0].data = [];
   }
 
-  setInterval(adicionarDadosAleatorios, 3000);
+  graficoTemp.data.datasets[0].data.push(temperatura);
+  graficoTemp.data.labels.push(`Leitura ${numLeituras1}`);
+  graficoTemp.update();
+  numLeituras1++;
+
+  if (numLeituras2 % 10 === 0) {
+    graficoUmi.data.labels = [];
+    graficoUmi.data.datasets[0].data = [];
+  }
+
+  graficoUmi.data.datasets[0].data.push(umidade);
+  graficoUmi.data.labels.push(`Leitura ${numLeituras2}`);
+  graficoUmi.update();
+  numLeituras2++;
+}
+
+
 
 
   var graficoTemp = new Chart(ctx1, {
@@ -329,7 +259,7 @@
   });
 
 
-  var graficoBarras = new Chart(ctx2, {
+  var graficoUmi = new Chart(ctx2, {
     type: 'bar',
     data: {
       labels: [],
@@ -372,6 +302,10 @@
   });
 
 
+
+
+
+  setInterval(exibirTemperaturaUmidade, 3000);
   function exibirTemperaturaUmidade() {
     fetch("/grafico/coletarTemperaturaUmidade")
       .then(resposta => {
@@ -437,6 +371,7 @@
             // SAÍDA PARA O USUÁRIO
             tituloTemperatura.style.backgroundColor = `${corTemperatura}`;
             tituloUmidade.style.backgroundColor = `${corUmidade}`;
+            adicionarDadosCapturados(temperatura, umidade)
           });
         } else { 
           console.log(`JSON não coletado`);

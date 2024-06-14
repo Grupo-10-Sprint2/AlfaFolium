@@ -18,6 +18,7 @@ CREATE TABLE empresa (
 			REFERENCES endereco(idEndereco)
 );
 
+
 -- Empresa padrão para que os donos do projeto possam acessar:
 INSERT INTO empresa (nome, CNPJ) VALUES
 	('Alfa Folium', '21.886.895/0001-83');
@@ -65,17 +66,13 @@ CREATE TABLE parametro (
     temperaturaMax DECIMAL (4, 2)
 ); 	
 
-insert into parametro values
-	(default, 65.00, 80.00, 15.00, 28.00);
 
 CREATE TABLE estufa (
 	idEstufa INT PRIMARY KEY AUTO_INCREMENT,
-	tamanho INT,
+	tamanho VARCHAR (10),
 	status VARCHAR (25),
-    condicao VARCHAR(25),
     fkEmpresa INT, 
 	fkParametro INT,
-		CONSTRAINT chkCondicao CHECK (condicao IN ('Estavel', 'Atencao', 'Alerta')),
 		CONSTRAINT chkStatus CHECK (status IN ('Ativa', 'Inativa')),
 		CONSTRAINT fkEstufaEmpresa FOREIGN KEY (fkEmpresa)
 			REFERENCES empresa (idEmpresa),
@@ -83,24 +80,6 @@ CREATE TABLE estufa (
 			REFERENCES parametro (idParametro)
 );
 
-select dados.*,
-	condicao as condicao,
-    umidadeMin,
-    umidadeMax,
-    temperaturaMin,
-    temperaturaMax from dados join sensor
-    on dados.fkSensor = sensor.idSensor join estufa
-    on sensor.fkEstufa = estufa.idEstufa join parametro
-    on estufa.fkParametro = parametro.idParametro
-    order by idDados desc
-    limit 1;
-    
-select * from estufa;
-
-SELECT COUNT(idEstufa) AS totalEstufasCadastradas from estufa;
-
-insert into estufa values
-	(default, 5, 'Ativa', 'Estavel', 1, 1);
 
 CREATE TABLE sensor (
 	idSensor INT,
@@ -109,9 +88,7 @@ CREATE TABLE sensor (
 	PRIMARY KEY (idSensor, fkEstufa),
 	FOREIGN KEY (fkEstufa) REFERENCES estufa (idEstufa)
 );
-
-insert into sensor values
-	(1, 'DHT_11', 2);
+            
             
 CREATE TABLE dados (
 	idDados INT AUTO_INCREMENT,
@@ -123,9 +100,11 @@ CREATE TABLE dados (
 	FOREIGN KEY (fkSensor) REFERENCES sensor (idSensor)
 );
 
-insert into dados values
-	(default, 17.04, 53.05, now(), 1);
 
+insert into dados values
+	(default, 20.04, 77.05, now(), 1);
+ 
+  
 SELECT * FROM usuario;
 SELECT * FROM endereco;
 SELECT * FROM empresa;
