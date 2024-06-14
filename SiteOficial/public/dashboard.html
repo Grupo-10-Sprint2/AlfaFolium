@@ -125,7 +125,7 @@
               </div>
               <div class="boxHorario">
                 <div class="horarioTitle">
-                  <h3> Horário </h3>
+                  <h3> Data de Registro Atual </h3>
                 </div>
                 <div id="relogio">
                   <h1 id="exibirHorario"></h1>
@@ -340,7 +340,7 @@
             exibirTemperaturaMin.innerHTML = `${temperaturaMin}°C`;
             exibirUmidadeMax.innerHTML = `${umidadeMax}%`;
             exibirUmidadeMin.innerHTML = `${umidadeMin}%`;
-            exibirHorario.innerHTML = `${horario}`; 
+            exibirHorario.innerHTML = `${horario.slice(0,10)}`; 
 
             let tituloTemperatura = document.querySelector(".cardTempTitle");
             let tituloUmidade = document.querySelector(".cardUmiTitle");
