@@ -92,7 +92,7 @@
                         <input placeholder="(00)12345-6789" class="input" id="input_telCelUsuario" type="text">
                     </div>
                 </div>
-                <button onclick="cadastrarUsuarioDependente()" class="btn_cadastrar">
+                <button onclick="cadastrarUsuarioFuncionario()" class="btn_cadastrar">
                     <h3> Cadastrar </h3>
                 </button>
             </div>
@@ -162,7 +162,7 @@
     document.addEventListener('DOMContentLoaded', carregarEmpresas())
 
 
-    function cadastrarUsuarioDependente() {
+    function cadastrarUsuarioFuncionario() {
         let nome = document.getElementById('input_nomeUsuario').value;
         let email = document.getElementById('input_emailUsuario').value;
         let cpf = document.getElementById('input_cpfUsuario').value;
@@ -217,7 +217,7 @@
         }
 
         if (validado) {
-            fetch("/usuarios/cadastrarDependente", {
+            fetch("/usuarios/cadastrarFuncionario", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -235,15 +235,18 @@
                     console.log('Resposta:', resposta);
 
                     if (resposta.ok) {
-                        setTimeout(() => {
+                        // setTimeout(() => {
                             let mensagemSucesso = 'Usuário Cadastrado com Sucesso.'
                             let titleAlerta = document.querySelector('.textAlerta')
 
                             titleAlerta.innerHTML = 'Cadastro Efetuado!'
                             mostrarAlerta(mensagemSucesso)
-                        }, 2000);
+                            setTimeout(() => {
+                                window.location.href = "./telaDono.html";
+                            }, 3000)
+                            
+                        // }, 2000);
                     }
-                    window.location.href = "./telaDono.html";
 
                 })
         }

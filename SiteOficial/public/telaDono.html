@@ -16,7 +16,7 @@
 </head>
 
 
-<body>
+<body onload="listarEstufas()">
 
     <div class="headerBox">
         <div class="boxLogo">
@@ -91,29 +91,6 @@
 
         const idUsuario = sessionStorage.ID_USUARIO;
         const idEmpresa = sessionStorage.ID_EMPRESA;
-
-
-        // fetch('/usuarios/infoEstufas')
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         const estufasCount = data.estufasCount;
-        //         document.getElementById('saida_alerta').innerHTML = estufasCount;
-        //     })
-        //     .catch(error => {
-        //         console.error('Erro ao buscar dados das estufas:', error);
-        //     });
-
-
-
-        // fetch('/usuarios/infoEstufasAtencao')
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         const estufasCount = data.estufasCount;
-        //         document.getElementById('saida_atencao').innerHTML = estufasCount;
-        //     })
-        //     .catch(error => {
-        //         console.error('Erro ao buscar dados das estufas:', error);
-        //     });
 
         function listarEstufas(){
             fetch("/usuarios/listarEstufas", {
@@ -192,17 +169,14 @@
                             qtdEstufas < res.length;
                             qtdEstufas++) {
                             var estufa = res[qtdEstufas];
-
+                            var bolinhaId = `bolinha${qtdEstufas}`
+                            var bolinhaAtualizada = document.getElementById(bolinhaId);
                             if(estufa.status == 'Ativa'){
                                 if(estufa.idDados == undefined){
-                                    var bolinhaId = `bolinha${qtdEstufas}`
-                                    var bolinhaAtualizada = document.getElementById(bolinhaId);
                                     bolinhaAtualizada.style.backgroundColor = '#444444'
                                 }
                                 else{
-                                    var bolinhaId = `bolinha${qtdEstufas}`
-                                    var bolinhaAtualizada = document.getElementById(bolinhaId);
-                                    bolinhaAtualizada.style.backgroundColor = corBolinha;
+                                    bolinhaAtualizada.style.backgroundColor = corBolinha
                                 }
                                 
                             }
@@ -279,7 +253,6 @@
                             if(verificarTemperatura == 'vermelho' || verificarUmidade == 'vermelho'){
                                 corBolinha = '#FF0000';
                             }
-                            
                             atualizarEstufa(corBolinha);
                             
                         });
