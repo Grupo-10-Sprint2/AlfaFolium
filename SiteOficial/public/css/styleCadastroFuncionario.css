@@ -160,12 +160,13 @@ body {
 
 .quadrado_titulo {
     position: relative;
-    top: -50px;
+    top: -100px;
     width: 500px;
     height: 60px;
     border-radius: 30px;
     background-color: #1C3707;
     display: flex;
+    margin-top: 80px;
 }
 
 .titulo {
@@ -264,6 +265,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    position: relative;
+    bottom: 50px;
 }
 
 .btn_cadastrar {
