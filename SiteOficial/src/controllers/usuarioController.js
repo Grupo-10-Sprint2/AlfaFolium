@@ -169,7 +169,7 @@ function cadastrar(req, res) {
     }
 }
 
-function cadastrarDependente(req, res) {
+function cadastrarFuncionario(req, res) {
     let nome = req.body.nomeServer
     let email = req.body.emailServer;
     let cpf = req.body.cpfServer;
@@ -191,7 +191,7 @@ function cadastrarDependente(req, res) {
         res.status(400).send("Sua empresa está indefinido!");
     } else {
 
-        usuarioModel.cadastrarDependente(nome, cpf, email, telFixo, telCel, idEmpresa)
+        usuarioModel.cadastrarFuncionario(nome, cpf, email, telFixo, telCel, idEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -290,7 +290,7 @@ function listarEstufas(req, res) {
 module.exports = {
     autenticar,
     cadastrar,
-    cadastrarDependente,
+    cadastrarFuncionario,
     usuariosCadastrados,
     infoEstufas,
     infoEstufasAtencao,

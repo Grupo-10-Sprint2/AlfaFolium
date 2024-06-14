@@ -157,10 +157,10 @@
                         setTimeout(() => {
                             if(sessionStorage.FUNCAO_USUARIO == 'Master'){
                                 window.location.href = './telaMaster.html';
-                            }
-                            else
-                            {
-                                window.location.href = './telaUsuario.html'
+                            } else if (sessionStorage.FUNCAO_USUARIO == 'Funcionario'){
+                                window.location.href = './telaFuncionario.html';
+                            } else {
+                                window.location.href = './telaDono.html'
                             }
                             
                         }, 2000);
