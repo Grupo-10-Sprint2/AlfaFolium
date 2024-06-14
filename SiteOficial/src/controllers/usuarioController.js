@@ -185,7 +185,7 @@ function infoEstufas(req, res) {
         });
 }
 function infoEstufasAtencao(req, res) {
-    usuarioModel.infoEstufas()
+    usuarioModel.infoEstufasAtencao()
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.json({ estufasCount: resultado[0].quantidadeEstufas });
@@ -222,11 +222,11 @@ function coletarTemperaturaUmidade(req, res) {
 }
 
 
-function estufasCadastradas(req, res) {    
+function listarEstufas(req, res) {    
     let idUsuario = req.body.idUsuarioServer;
     let idEmpresa = req.body.idEmpresaServer;
 
-    usuarioModel.estufasCadastradas(idEmpresa,idUsuario)
+    usuarioModel.listarEstufas(idEmpresa,idUsuario)
         .then(function (resultado) {
                 if (resultado.length >= 1) {
                     console.log(resultado);
@@ -256,5 +256,6 @@ module.exports = {
     totalEmpresas,
     usuariosAtivos,
     estufasCadastradas,
-    coletarTemperaturaUmidade
+    coletarTemperaturaUmidade,
+    listarEstufas
 }

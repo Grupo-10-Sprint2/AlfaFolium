@@ -3,7 +3,6 @@ var database = require("../database/config")
 function coletarTemperaturaUmidade(req, res) {
     var instrucaoSql = `
     SELECT dados.*,
-	condicao AS condicao,
     umidadeMin,
     umidadeMax,
     temperaturaMin,
@@ -54,7 +53,7 @@ function usuariosAtivos(req, res) {
 
 function estufasCadastradas(req, res) {
     var instrucaoSql = `
-        SELECT COUNT(idEstufa) AS totalEstufasCadastradas from estufa;
+        SELECT COUNT(idEstufa) AS totalEstufasCadastradas from estufa WHERE fkEmpresa > 1;
         `;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -74,7 +73,7 @@ function usuariosCadastrados(req, res) {
         from usuario as u join empresa as e
         on u.fkEmpresa = e.idEmpresa join tipoUsuario as t
         on u.fkTipoUsuario = t.idTipoUsuario
-        where u.fkTipoUsuario > 1;
+        where u.fkTipoUsuario > 1 AND e.nome != 'Alfa Folium';
         `
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
@@ -116,6 +115,27 @@ function infoEstufasAtencao() {
     return database.executar(instrucaoSql);
 }
 
+function listarEstufas(idEmpresa,idUsuario) {
+    var instrucaoSql = `
+    SELECT e.*, s.idSensor, d.*, umidadeMin, umidadeMax, temperaturaMin, temperaturaMax FROM estufa e
+    JOIN empresa ON e.fkEmpresa = empresa.idEmpresa
+    JOIN usuario ON usuario.fkEmpresa = empresa.idEmpresa
+    LEFT JOIN sensor s ON s.fkEstufa = e.idEstufa
+    LEFT JOIN dados d ON d.idDados = (
+        SELECT idDados
+        FROM dados
+        WHERE dados.fkSensor = s.idSensor
+        ORDER BY dados.idDados DESC
+        LIMIT 1
+    )
+    JOIN parametro
+    ON e.fkParametro = parametro.idParametro
+    WHERE empresa.idEmpresa = ${idEmpresa}
+    AND usuario.idUsuario=${idUsuario};`;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
@@ -125,7 +145,8 @@ module.exports = {
     totalEmpresas,
     usuariosAtivos,
     estufasCadastradas,
-    coletarTemperaturaUmidade
+    coletarTemperaturaUmidade,
+    listarEstufas
 };
 
 

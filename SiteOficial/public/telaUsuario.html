@@ -16,7 +16,7 @@
 </head>
 
 
-<body>
+<body onload="listarEstufas()">
 
     <div class="headerBox">
         <div class="boxLogo">
@@ -77,23 +77,6 @@
             </div>
         </div>
         <div class="boxEstufas">
-            <div class="boxEstatisticas">
-                <div class="boxEstufasAlerta">
-                    <div class="titleAlerta">
-                        <h2>Total de Estufas</h2>
-                        <h2 style="color: rgb(241, 74, 74);">(Alerta)</h2>
-                    </div>
-                    <div id="saida_alerta"></div>
-                </div>
-                <div class="boxEstufasAtencao">
-                    <div class="titleAtencao">
-                        <h2>Total de Estufas</h2>
-                        <h2 style="color: rgb(247, 218, 50);">(Atenção)</h2>
-                    </div>
-                    <div id="saida_atencao"></div>
-
-                </div>
-            </div>
             <div class="boxListaEstufas" id="listaEstufas">
 
             </div>
@@ -112,38 +95,39 @@
         const idEmpresa = sessionStorage.ID_EMPRESA;
 
 
-        fetch('/usuarios/infoEstufas')
-            .then(response => response.json())
-            .then(data => {
-                const estufasCount = data.estufasCount;
-                document.getElementById('saida_alerta').innerHTML = estufasCount;
+        // fetch('/usuarios/infoEstufas')
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         const estufasCount = data.estufasCount;
+        //         document.getElementById('saida_alerta').innerHTML = estufasCount;
+        //     })
+        //     .catch(error => {
+        //         console.error('Erro ao buscar dados das estufas:', error);
+        //     });
+
+
+
+        // fetch('/usuarios/infoEstufasAtencao')
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         const estufasCount = data.estufasCount;
+        //         document.getElementById('saida_atencao').innerHTML = estufasCount;
+        //     })
+        //     .catch(error => {
+        //         console.error('Erro ao buscar dados das estufas:', error);
+        //     });
+
+        function listarEstufas(){
+            fetch("/usuarios/listarEstufas", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    idUsuarioServer: idUsuario,
+                    idEmpresaServer: idEmpresa
+                })
             })
-            .catch(error => {
-                console.error('Erro ao buscar dados das estufas:', error);
-            });
-
-
-
-        fetch('/usuarios/infoEstufasAtencao')
-            .then(response => response.json())
-            .then(data => {
-                const estufasCount = data.estufasCount;
-                document.getElementById('saida_atencao').innerHTML = estufasCount;
-            })
-            .catch(error => {
-                console.error('Erro ao buscar dados das estufas:', error);
-            });
-
-        fetch("/usuarios/estufasCadastradas", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                idUsuarioServer: idUsuario,
-                idEmpresaServer: idEmpresa,
-            })
-        })
             .then(resposta => {
                 console.log(resposta)
 
@@ -152,6 +136,7 @@
 
                         var inserirEstufas = document.getElementById("listaEstufas");
                         console.log(res);
+                        inserirEstufas.innerHTML = '';
 
                         for (let qtdEstufas = 0;
                             qtdEstufas < res.length;
@@ -161,11 +146,11 @@
 
                             inserirEstufas.innerHTML += `<div class="estufa">
                                 <div class="estufaNome">
-                                    <h3>estf_1x</h3>
+                                    <h3>Estufa ${estufa.idEstufa}</h3>
                                 </div>
                                 <div class="status_estufas">
-                                    <p class="nome_status">Status:</p>
-                                    <div class="bolinha_status_estufas"></div>
+                                    <p class="nome_status">Status: ${estufa.status}</p>
+                                    <div class="bolinha_status_estufas" id="bolinha${qtdEstufas}"></div>
                                 </div>
                                 <div class="status_estufas">
                                     <p class="ultima_captura">Última captura:</p>
@@ -181,8 +166,65 @@
             .catch(function (resposta) {
                 console.error(resposta);
             });
+        }
 
         setInterval(exibirTemperaturaUmidade, 1500);
+
+        function atualizarEstufa(corBolinha){
+            fetch("/usuarios/listarEstufas", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    idUsuarioServer: idUsuario,
+                    idEmpresaServer: idEmpresa
+                })
+            })
+            .then(resposta => {
+                console.log(resposta)
+
+                if (resposta.ok) {
+                    resposta.json().then(res => {
+
+                        var inserirEstufas = document.getElementById("listaEstufas");
+                        console.log(res);
+
+                        for (let qtdEstufas = 0;
+                            qtdEstufas < res.length;
+                            qtdEstufas++) {
+                            var estufa = res[qtdEstufas];
+
+                            if(estufa.status == 'Ativa'){
+                                if(estufa.idDados == undefined){
+                                    var bolinhaId = `bolinha${qtdEstufas}`
+                                    var bolinhaAtualizada = document.getElementById(bolinhaId);
+                                    bolinhaAtualizada.style.backgroundColor = '#444444'
+                                }
+                                else{
+                                    var bolinhaId = `bolinha${qtdEstufas}`
+                                    var bolinhaAtualizada = document.getElementById(bolinhaId);
+                                    bolinhaAtualizada.style.backgroundColor = corBolinha
+                                }
+                                
+                            }
+                            else{
+                                var bolinhaId = `bolinha${qtdEstufas}`
+                                var bolinhaAtualizada = document.getElementById(bolinhaId);
+                                bolinhaAtualizada.style.backgroundColor = '#444444'    
+                            }
+                            
+                        }
+                    });
+
+                } else {
+                    console.log(`JSON não coletado`);
+                }
+            })
+            .catch(function (resposta) {
+                console.error(resposta);
+            });
+        }
         
         function exibirTemperaturaUmidade() {
             fetch("/grafico/coletarTemperaturaUmidade")
@@ -202,33 +244,44 @@
                             let umidadeMax = Math.trunc(Number(res[0].umidadeMax));
                             let umidadeMin = Math.trunc(Number(res[0].umidadeMin));
 
-                            let exibirTemperatura = document.getElementById("exibirTemperatura");
-                            let exibirUmidade = document.getElementById("exibirUmidade");
-                            let exibirCondicao = document.getElementById("exibirCondicao");
-                            let exibirHorario = document.getElementById("exibirHorario");
-                            let exibirTemperaturaMax = document.getElementById("exibirTemperaturaMax");
-                            let exibirTemperaturaMin = document.getElementById("exibirTemperaturaMin");
-                            let exibirUmidadeMax = document.getElementById("exibirUmidadeMax");
-                            let exibirUmidadeMin = document.getElementById("exibirUmidadeMin");
+                            let corTemperatura = `#008000`;
+                            let verificarTemperatura = 'verde';
 
-                            exibirTemperatura.innerHTML = `${temperatura}°C`;
-                            exibirUmidade.innerHTML = `${umidade}%`;
-                            exibirTemperaturaMax.innerHTML = `${temperaturaMax}°C`;
-                            exibirTemperaturaMin.innerHTML = `${temperaturaMin}°C`;
-                            exibirUmidadeMax.innerHTML = `${umidadeMax}%`;
-                            exibirUmidadeMin.innerHTML = `${umidadeMin}%`;
-
-                            let titleTemperatura = document.querySelector(".cardTempTitle");
-
-                            console.log(`${temperaturaMax - 1}, ${temperaturaMin + 2}, ${temperaturaMin + 3}`);
-
+                            // VALIDAÇÃO TEMPERATURA
+                            if ((temperatura <= temperaturaMax - 2 && temperatura >= temperaturaMax - 3) || (temperatura >= temperaturaMin + 2 && temperatura <= temperaturaMin + 3)) {
+                                corTemperatura = `#FFA500`;
+                                verificarTemperatura = 'amarelo';
+                            } 
+                            
                             if (temperatura >= temperaturaMax - 1 || temperatura <= temperaturaMin + 1) {
-                                titleTemperatura.style.backgroundColor = "#FF0000";
-                            } else if ((temperatura <= temperaturaMax - 2 || temperatura >= temperaturaMax - 3) || (temperatura >= temperaturaMin + 2 || temperatura <= temperaturaMin + 3)) {
-                                titleTemperatura.style.backgroundColor = "#FFA500";
-                            } else if (temperatura < temperaturaMax - 3 || temperatura > temperaturaMin + 3) {
-                                titleTemperatura.style.backgroundColor = "#008000";
+                                corTemperatura = `#FF0000`;
+                                verificarTemperatura = 'vermelho';
                             }
+
+                            let corUmidade = `#008000`;
+                            let verificarUmidade = 'verde'
+                            // VALIDAÇÃO UMIDADE
+                            if ((umidade <= umidadeMax - 2 && umidade >= umidadeMax - 3) || (umidade >= umidadeMin + 2 && umidade <= umidadeMin + 3)) {
+                                corUmidade = `#FFA500`;
+                                verificarUmidade = 'amarelo';
+                            } 
+                            
+                            if (umidade >= umidadeMax - 1 || umidade <= umidadeMin + 1) {
+                                corUmidade = `#FF0000`;
+                                verificarUmidade = 'vermelho';
+                            }
+
+                            let corBolinha = '#008000';
+                            if(verificarTemperatura == 'amarelo' || verificarUmidade == 'amarelo'){
+                                corBolinha = '#FFA500';
+                            }
+
+                            if(verificarTemperatura == 'vermelho' || verificarUmidade == 'vermelho'){
+                                corBolinha = '#FF0000';
+                            }
+                            
+                            atualizarEstufa(corBolinha);
+                            
                         });
                     } else {
                         console.log(`JSON não coletado`);
