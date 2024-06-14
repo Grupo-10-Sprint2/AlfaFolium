@@ -128,7 +128,7 @@
                   <h3> Horário </h3>
                 </div>
                 <div id="relogio">
-                  <!-- <h1 id="hora"></h1> -->
+                  <h1 id="exibirHorario"></h1>
                 </div>
               </div>
             </div>
@@ -321,7 +321,7 @@
             let temperaturaMax = Math.trunc(Number(res[0].temperaturaMax));
             let temperaturaMin = Math.trunc(Number(res[0].temperaturaMin));
             let umidadeMax = Math.trunc(Number(res[0].umidadeMax));
-            let umidadeMin = Math.trunc(Number(res[0].umidadeMin));
+            let umidadeMin = Math.trunc(Number(res[0].umidadeMin)); 
 
             sessionStorage.TEMPERATURA = temperatura;
             sessionStorage.UMIDADE = umidade;
@@ -340,6 +340,7 @@
             exibirTemperaturaMin.innerHTML = `${temperaturaMin}°C`;
             exibirUmidadeMax.innerHTML = `${umidadeMax}%`;
             exibirUmidadeMin.innerHTML = `${umidadeMin}%`;
+            exibirHorario.innerHTML = `${horario}`; 
 
             let tituloTemperatura = document.querySelector(".cardTempTitle");
             let tituloUmidade = document.querySelector(".cardUmiTitle");
