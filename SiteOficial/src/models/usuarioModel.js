@@ -28,7 +28,7 @@ function autenticar(email, senha) {
         ON u.fkEmpresa = e.idEmpresa
         WHERE email = '${email}' 
         AND senha = sha2('${senha}', 256);
-        `    
+        `
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
@@ -91,6 +91,14 @@ function cadastrar(nome, CPF, email, telFixo, telCelular, idEmpresa, idTipoUsuar
     return database.executar(instrucaoSql);
 }
 
+function cadastrarDependente(nome, CPF, email, telFixo, telCelular, idEmpresa) {
+    var instrucaoSql = ` 
+        INSERT INTO usuario (nome, CPF, email, senha, telFixo, telCelular, dataCriacao, fkEmpresa, fkTipoUsuario) VALUES ('${nome}', '${CPF}', '${email}', sha2('AF#${CPF}', 256), '${telFixo}', '${telCelular}', now(), '${idEmpresa}', 3);
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 function infoEstufas(idUsuario) {
     var instrucaoSql = `
     SELECT COUNT( e.idEstufa) AS quantidadeEstufas
@@ -119,6 +127,7 @@ function infoEstufasAtencao() {
 module.exports = {
     autenticar,
     cadastrar,
+    cadastrarDependente,
     infoEstufas,
     infoEstufasAtencao,
     usuariosCadastrados,

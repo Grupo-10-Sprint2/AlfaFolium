@@ -52,52 +52,52 @@ function autenticar(req, res) {
 
 function totalEmpresas(req, res) {
     usuarioModel.totalEmpresas()
-            .then(function (resultado) {
-                    if (resultado.length >= 1) {
-                        console.log(resultado);
-                        res.status(200).json(resultado);
-                    } else {
-                        res.status(403).send("Nenhuma empresa encontrada.");
-                    }
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao procurar empresas! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
+        .then(function (resultado) {
+            if (resultado.length >= 1) {
+                console.log(resultado);
+                res.status(200).json(resultado);
+            } else {
+                res.status(403).send("Nenhuma empresa encontrada.");
+            }
+        }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao procurar empresas! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
 }
 
 function usuariosAtivos(req, res) {
     usuarioModel.usuariosAtivos()
-            .then(function (resultado) {
-                    if (resultado.length >= 1) {
-                        console.log(resultado);
-                        res.status(200).json(resultado);
-                    } else {
-                        res.status(403).send("Nenhum usuário encontrado.");
-                    }
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao procurar usuários! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
+        .then(function (resultado) {
+            if (resultado.length >= 1) {
+                console.log(resultado);
+                res.status(200).json(resultado);
+            } else {
+                res.status(403).send("Nenhum usuário encontrado.");
+            }
+        }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao procurar usuários! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
 }
 
-function estufasCadastradas(req, res) {    
+function estufasCadastradas(req, res) {
     usuarioModel.estufasCadastradas()
         .then(function (resultado) {
-                if (resultado.length >= 1) {
-                    console.log(resultado);
-                    res.status(200).json(resultado)
-                } else {
-                    res.status(403).send("Nenhuma estufa encontrada.");
-                }
+            if (resultado.length >= 1) {
+                console.log(resultado);
+                res.status(200).json(resultado)
+            } else {
+                res.status(403).send("Nenhuma estufa encontrada.");
             }
+        }
         ).catch(
             function (erro) {
                 console.log(erro);
@@ -107,24 +107,24 @@ function estufasCadastradas(req, res) {
         );
 }
 
-function usuariosCadastrados(req, res) {    
-        usuarioModel.usuariosCadastrados()
-            .then(function (resultado) {
-                    if (resultado.length >= 1) {
-                        console.log(resultado);
-                        res.status(200).json(resultado)
-                    } else {
-                        res.status(403).send("Nenhum usuário encontrado.");
-                    }
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao procurar usuários! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
+function usuariosCadastrados(req, res) {
+    usuarioModel.usuariosCadastrados()
+        .then(function (resultado) {
+            if (resultado.length >= 1) {
+                console.log(resultado);
+                res.status(200).json(resultado)
+            } else {
+                res.status(403).send("Nenhum usuário encontrado.");
+            }
+        }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao procurar usuários! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
 
 function cadastrar(req, res) {
     let nome = req.body.nomeServer
@@ -152,6 +152,46 @@ function cadastrar(req, res) {
     } else {
 
         usuarioModel.cadastrar(nome, cpf, email, telFixo, telCel, idEmpresa, idTipoUsuario)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
+function cadastrarDependente(req, res) {
+    let nome = req.body.nomeServer
+    let email = req.body.emailServer;
+    let cpf = req.body.cpfServer;
+    let telFixo = req.body.telFixoServer;
+    let telCel = req.body.telCelServer;
+    let idEmpresa = req.body.idEmpresaServer;
+
+    if (nome == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (email == undefined) {
+        res.status(400).send("Seu email está indefinido!");
+    } else if (cpf == undefined) {
+        res.status(400).send("Seu cpf está indefinido!");
+    } else if (telFixo == undefined) {
+        res.status(400).send("Seu telefone fixo está indefinido!");
+    } else if (telCel == undefined) {
+        res.status(400).send("Seu telefone celular está indefinido!");
+    } else if (idEmpresa == undefined) {
+        res.status(400).send("Sua empresa está indefinido!");
+    } else {
+
+        usuarioModel.cadastrarDependente(nome, cpf, email, telFixo, telCel, idEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -202,39 +242,39 @@ function infoEstufasAtencao(req, res) {
 
 function coletarTemperaturaUmidade(req, res) {
     graficoModel.coletarTemperaturaUmidade()
-            .then(function (resultado) {
-                    if (resultado.length >= 0) {
-                        console.log(`DEU CERTO`);
-                        console.log(resultado);
-                        res.status(200).json(resultado);
-                    } else {
-                        console.log(`DEU ERRO AQUI`);
-                        res.status(403).send("Nenhum dado encontrado.");
-                    }
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log("\nHouve um erro ao coletar dados! Erro: ", erro.sqlMessage);
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
+        .then(function (resultado) {
+            if (resultado.length >= 0) {
+                console.log(`DEU CERTO`);
+                console.log(resultado);
+                res.status(200).json(resultado);
+            } else {
+                console.log(`DEU ERRO AQUI`);
+                res.status(403).send("Nenhum dado encontrado.");
+            }
+        }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("\nHouve um erro ao coletar dados! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
 }
 
 
-function estufasCadastradas(req, res) {    
+function estufasCadastradas(req, res) {
     let idUsuario = req.body.idUsuarioServer;
     let idEmpresa = req.body.idEmpresaServer;
 
-    usuarioModel.estufasCadastradas(idEmpresa,idUsuario)
+    usuarioModel.estufasCadastradas(idEmpresa, idUsuario)
         .then(function (resultado) {
-                if (resultado.length >= 1) {
-                    console.log(resultado);
-                    res.status(200).json(resultado)
-                } else {
-                    res.status(403).send("Nenhum usuário encontrado.");
-                }
+            if (resultado.length >= 1) {
+                console.log(resultado);
+                res.status(200).json(resultado)
+            } else {
+                res.status(403).send("Nenhum usuário encontrado.");
             }
+        }
         ).catch(
             function (erro) {
                 console.log(erro);
@@ -250,6 +290,7 @@ function estufasCadastradas(req, res) {
 module.exports = {
     autenticar,
     cadastrar,
+    cadastrarDependente,
     usuariosCadastrados,
     infoEstufas,
     infoEstufasAtencao,
