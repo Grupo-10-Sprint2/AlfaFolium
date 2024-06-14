@@ -133,7 +133,6 @@ function cadastrar(req, res) {
     let telFixo = req.body.telFixoServer;
     let telCel = req.body.telCelServer;
     let idEmpresa = req.body.idEmpresaServer;
-    let idTipoUsuario = req.body.idTipoUsuarioServer;
 
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
@@ -147,11 +146,9 @@ function cadastrar(req, res) {
         res.status(400).send("Seu telefone celular está indefinido!");
     } else if (idEmpresa == undefined) {
         res.status(400).send("Sua empresa está indefinido!");
-    } else if (idTipoUsuario == undefined) {
-        res.status(400).send("Sua função está indefinida!");
     } else {
 
-        usuarioModel.cadastrar(nome, cpf, email, telFixo, telCel, idEmpresa, idTipoUsuario)
+        usuarioModel.cadastrar(nome, cpf, email, telFixo, telCel, idEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);

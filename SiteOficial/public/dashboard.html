@@ -58,7 +58,7 @@
         <div class="boxLegendaNome">
           <p></p>
           <div class="boxNome">
-            <p>Estufa:1X_estf</p>
+            <h2>Estufa 1</h2>
           </div>
           <div class="legendas">
             <div class="legendaAlerta">
@@ -215,91 +215,112 @@
 
 
 
-  var graficoTemp = new Chart(ctx1, {
-    type: 'line',
-    data: {
-      labels: [],
-      datasets: [{
-        label: 'Temperatura (°C)',
-        data: [],
-        borderColor: '#ffffff', // Cor da linha branca
-        borderWidth: 3
-      }]
-    },
-    options: {
-      plugins: {
-        legend: {
-          labels: {
-            color: '#ffffff' // Cor das fontes da legenda
-          }
+var graficoTemp = new Chart(ctx1, {
+  type: 'line',
+  data: {
+    labels: [], // Adicione os labels aqui
+    datasets: [{
+      label: 'Temperatura (°C)',
+      data: [], // Adicione os dados aqui
+      borderColor: '#f5240c', // Cor da linha branca
+      borderWidth: 3,
+      cubicInterpolationMode: 'monotone', // Linha curva suave
+      tension: 0.4, // Ajuste a tensão para suavizar as curvas
+      fill: true, // Preencher a área abaixo da linha
+      backgroundColor: 'rgba(240, 44, 22, 0.5)' // Cor de fundo transparente
+    }]
+  },
+  options: {
+    plugins: {
+      legend: {
+        labels: {
+          color: '#ffffff' // Cor das fontes da legenda
         }
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-          ticks: {
-            color: '#ffffff', // Cor das fontes do eixo y
-            fontSize: 14 // Tamanho da fonte para o eixo y
-          },
-          grid: {
-            color: '#ffffff' // Cor dos traços de fundo do eixo y
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 50, // Ajuste o valor máximo da escala y conforme necessário
+        ticks: {
+          color: '#ffffff', // Cor das fontes do eixo y
+          font: {
+            size: 14 // Tamanho da fonte para o eixo y
           }
         },
-        x: {
-          ticks: {
-            color: '#ffffff', // Cor das fontes do eixo x
-            fontSize: 14 // Tamanho da fonte para o eixo x
-          },
-          grid: {
-            color: '#ffffff' // Cor dos traços de fundo do eixo x
+        grid: {
+          color: 'rgba(255, 255, 255, 0.2)' // Cor dos traços de fundo do eixo y
+        }
+      },
+      x: {
+        ticks: {
+          color: '#ffffff', // Cor das fontes do eixo x
+          font: {
+            size: 14 // Tamanho da fonte para o eixo x
           }
+        },
+        grid: {
+          color: 'rgb(255, 255, 255, 0.2)' // Cor dos traços de fundo do eixo x
         }
       }
     }
-  });
+  }
+});
 
 
-  var graficoUmi = new Chart(ctx2, {
-    type: 'bar',
-    data: {
-      labels: [],
-      datasets: [{
-        label: 'Umidade (%)',
-        data: [],
-        backgroundColor: '#ffffff', // Cor de fundo forte
-        borderColor: '#ffffff', // Cor da borda branca
-        borderWidth: 3
-      }]
-    },
-    options: {
-      plugins: {
-        legend: {
-          labels: {
-            color: '#ffffff' // Cor das fontes da legenda
-          }
+
+
+var graficoUmi = new Chart(ctx2, {
+  type: 'bar',
+  data: {
+    labels: [], // Adicione os labels aqui
+    datasets: [{
+      label: 'Umidade (%)',
+      data: [], // Adicione os dados aqui
+      backgroundColor: [
+        'rgba(93, 133, 194, 0.8)', // Azul vibrante
+      ], // Cores de fundo divertidas
+      borderColor: '#0063fa', // Cor da borda branca
+      borderWidth: 3
+    }]
+  },
+  options: {
+    plugins: {
+      legend: {
+        labels: {
+          color: '#ffffff' // Cor das fontes da legenda
         }
-      },
-      scales: {
-        y: {
-          beginAtZero: true,
-          ticks: {
-            color: '#ffffff', // Cor das fontes do eixo y
-          },
-          grid: {
-            color: '#ffffff' // Cor dos traços de fundo do eixo y
+      }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        max: 100,
+        ticks: {
+          color: '#ffffff', // Cor das fontes do eixo y
+          font: {
+            size: 14 // Tamanho da fonte para o eixo y
           }
         },
-        x: {
-          ticks: {
-            color: '#ffffff', // Cor das fontes do eixo x
-          },
-          grid: {
-            color: '#ffffff' // Cor dos traços de fundo do eixo x
+        grid: {
+          color: '#444444' // Cor dos traços de fundo do eixo y
+        }
+      },
+      x: {
+        ticks: {
+          color: '#ffffff', // Cor das fontes do eixo x
+          font: {
+            size: 14 // Tamanho da fonte para o eixo x
           }
+        },
+        grid: {
+          color: '#444444' // Cor dos traços de fundo do eixo x
         }
       }
     }
-  });
+  }
+});
+
 
 
 
@@ -344,12 +365,11 @@
             let tituloTemperatura = document.querySelector(".cardTempTitle");
             let tituloUmidade = document.querySelector(".cardUmiTitle");
 
-            console.log(`${temperaturaMax - 1}, ${temperaturaMin + 2}, ${temperaturaMin + 3}`);
 
             let corTemperatura = `#008000`;
 
             // VALIDAÇÃO TEMPERATURA
-            if ((temperatura <= temperaturaMax - 2 && temperatura >= temperaturaMax - 3) || (temperatura >= temperaturaMin + 2 && temperatura <= temperaturaMin + 3)) {
+            if ((temperatura <= temperaturaMax - 1 && temperatura >= temperaturaMax - 2) || (temperatura >= temperaturaMin + 1 && temperatura <= temperaturaMin + 2)) {
               corTemperatura = `#FFA500`;
             } 
             

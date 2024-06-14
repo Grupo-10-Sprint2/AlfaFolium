@@ -177,7 +177,6 @@
         let telFixo = document.getElementById('input_telFixoUsuario').value;
         let telCel = document.getElementById('input_telCelUsuario').value;
         let empresa = document.getElementById('input_empresaUsuario').value;
-        let tipoUsuario = document.getElementById('input_tipoUsuario').value;
 
         let nomeInput = document.getElementById('input_nomeUsuario');
         let emailInput = document.getElementById('input_emailUsuario');
@@ -185,7 +184,6 @@
         let telFixoInput = document.getElementById('input_telFixoUsuario');
         let telCelInput = document.getElementById('input_telCelUsuario');
         let empresaInput = document.getElementById('input_empresaUsuario');
-        let tipoUsuarioInput = document.getElementById('input_tipoUsuario');
 
         nomeInput.style.border = '';
         emailInput.style.border = '';
@@ -193,7 +191,6 @@
         telFixoInput.style.border = '';
         telCelInput.style.border = '';
         empresaInput.style.border = '';
-        tipoUsuarioInput.style.border = '';
 
         let validado = true;
 
@@ -221,10 +218,7 @@
             marcarErro(empresaInput);
             validado = false;
         }
-        if (tipoUsuario === '') {
-            marcarErro(tipoUsuarioInput);
-            validado = false;
-        }
+        
         if (!validado) {
             mostrarAlerta('Preencha todos os campos!');
             return;
@@ -249,22 +243,21 @@
                     telFixoServer: telFixo,
                     telCelServer: telCel,
                     idEmpresaServer: empresa,
-                    idTipoUsuarioServer: tipoUsuario
                 }),
             })
                 .then(function (resposta) {
                     console.log('Resposta:', resposta);
 
                     if (resposta.ok) {
-                        setTimeout(() => {
                             let mensagemSucesso = 'Usuário Cadastrado com Sucesso.'
                             let titleAlerta = document.querySelector('.textAlerta')
 
                             titleAlerta.innerHTML = 'Cadastro Efetuado!'
                             mostrarAlerta(mensagemSucesso)
-                        }, 2000);
+                            setTimeout(() => {
+                                window.location.href = "./telaMaster.html";
+                            }, 3000)
                     }
-                    window.location.href = "./telaMaster.html"
 
                 })                  
         }
