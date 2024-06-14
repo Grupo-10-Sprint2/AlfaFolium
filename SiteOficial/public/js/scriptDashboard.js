@@ -1,5 +1,16 @@
 let buttonBox = document.querySelector('.navBarContent')
 
+function sairDashboard() {
+
+    if (sessionStorage.ID_TIPO_USUARIO == 2) {
+        window.location.href = './telaDono.html';
+    }
+
+    if (sessionStorage.ID_TIPO_USUARIO == 3) {
+        window.location.href = './telaFuncionario.html';
+    }
+}
+
 function menuAbrir() {
     buttonBox.innerHTML = `
     <div class="menuHamburguer">

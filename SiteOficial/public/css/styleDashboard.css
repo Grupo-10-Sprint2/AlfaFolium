@@ -15,6 +15,9 @@ body {
 }
 
 .headerBox {
+   display: flex;
+   justify-content: center;
+   align-items: center;
    background-color: #414C30;
    height: 70px;
    width: 100%;
@@ -32,6 +35,12 @@ body {
    position: relative;
    bottom: 45px;
    scale: 0.9;
+}
+
+.logoImg {
+   width: 200px;
+   height: auto;
+   margin-top: 10px;
 }
 
 .boxGreen {

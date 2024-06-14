@@ -19,32 +19,11 @@
 </head>
 
 <body>
+
   <header>
     <div class="headerBox">
-      <div class="boxLogo">
-
-        <img src="./assets/assetsDashboard/logoNav.png">
-      </div>
-      <div class="boxMenu">
-
-        <nav role="navigation">
-          <div id="menuToggle">
-            <input type="checkbox">
-            <span></span>
-            <span></span>
-            <span></span>
-
-            <ul class="menu" id="menu">
-              <li><img src="./assets/assetsMaster/iconHome.png"><a href="http://localhost:3333">Home</a></li>
-              <li><img src="./assets/assetsMaster/iconEmpresa.png"><a href="http://localhost:3333/cadastroEmpresa.html">Cadastro de Empresa</a></li>
-              <li><img src="./assets/assetsMaster/iconUsuario.png"><a href="http://localhost:3333/cadastroProprietario.html">Cadastro de Usuário</a></li>
-              <li><img src="./assets/assetsMaster/iconEstufa.png"><a href="http://localhost:3333/cadastroEstufa.html">Cadastro de Estufa</a></li>
-              <li><img src="./assets/assetsMaster/iconSuporte.png"><a href="http://localhost:8080">Suporte</a></li>
-              <li><img src="./assets/assetsMaster/iconSair.png"><a href="index.html">Sair</a></li>
-          </ul>
-          </div>
-        </nav>
-
+      <div class="logoBox">
+        <a onclick="sairDashboard()"><img class="logoImg" src="./assets/Logo/logoNav.png"></a>
       </div>
     </div>
   </header>
@@ -188,138 +167,138 @@
   let numLeituras2 = 0; // Variável para rastrear o número de leituras
 
 
-  
+
 
   function adicionarDadosCapturados(temperatura, umidade) {
-  if (numLeituras1 % 10 === 0) {
-    graficoTemp.data.labels = [];
-    graficoTemp.data.datasets[0].data = [];
+    if (numLeituras1 % 10 === 0) {
+      graficoTemp.data.labels = [];
+      graficoTemp.data.datasets[0].data = [];
+    }
+
+    graficoTemp.data.datasets[0].data.push(temperatura);
+    graficoTemp.data.labels.push(`Leitura ${numLeituras1}`);
+    graficoTemp.update();
+    numLeituras1++;
+
+    if (numLeituras2 % 10 === 0) {
+      graficoUmi.data.labels = [];
+      graficoUmi.data.datasets[0].data = [];
+    }
+
+    graficoUmi.data.datasets[0].data.push(umidade);
+    graficoUmi.data.labels.push(`Leitura ${numLeituras2}`);
+    graficoUmi.update();
+    numLeituras2++;
   }
 
-  graficoTemp.data.datasets[0].data.push(temperatura);
-  graficoTemp.data.labels.push(`Leitura ${numLeituras1}`);
-  graficoTemp.update();
-  numLeituras1++;
-
-  if (numLeituras2 % 10 === 0) {
-    graficoUmi.data.labels = [];
-    graficoUmi.data.datasets[0].data = [];
-  }
-
-  graficoUmi.data.datasets[0].data.push(umidade);
-  graficoUmi.data.labels.push(`Leitura ${numLeituras2}`);
-  graficoUmi.update();
-  numLeituras2++;
-}
 
 
 
-
-var graficoTemp = new Chart(ctx1, {
-  type: 'line',
-  data: {
-    labels: [], // Adicione os labels aqui
-    datasets: [{
-      label: 'Temperatura (°C)',
-      data: [], // Adicione os dados aqui
-      borderColor: '#f5240c', // Cor da linha branca
-      borderWidth: 3,
-      cubicInterpolationMode: 'monotone', // Linha curva suave
-      tension: 0.4, // Ajuste a tensão para suavizar as curvas
-      fill: true, // Preencher a área abaixo da linha
-      backgroundColor: 'rgba(240, 44, 22, 0.5)' // Cor de fundo transparente
-    }]
-  },
-  options: {
-    plugins: {
-      legend: {
-        labels: {
-          color: '#ffffff' // Cor das fontes da legenda
-        }
-      }
+  var graficoTemp = new Chart(ctx1, {
+    type: 'line',
+    data: {
+      labels: [], // Adicione os labels aqui
+      datasets: [{
+        label: 'Temperatura (°C)',
+        data: [], // Adicione os dados aqui
+        borderColor: '#f5240c', // Cor da linha branca
+        borderWidth: 3,
+        cubicInterpolationMode: 'monotone', // Linha curva suave
+        tension: 0.4, // Ajuste a tensão para suavizar as curvas
+        fill: true, // Preencher a área abaixo da linha
+        backgroundColor: 'rgba(240, 44, 22, 0.5)' // Cor de fundo transparente
+      }]
     },
-    scales: {
-      y: {
-        beginAtZero: true,
-        max: 50, // Ajuste o valor máximo da escala y conforme necessário
-        ticks: {
-          color: '#ffffff', // Cor das fontes do eixo y
-          font: {
-            size: 14 // Tamanho da fonte para o eixo y
+    options: {
+      plugins: {
+        legend: {
+          labels: {
+            color: '#ffffff' // Cor das fontes da legenda
           }
-        },
-        grid: {
-          color: 'rgba(255, 255, 255, 0.2)' // Cor dos traços de fundo do eixo y
         }
       },
-      x: {
-        ticks: {
-          color: '#ffffff', // Cor das fontes do eixo x
-          font: {
-            size: 14 // Tamanho da fonte para o eixo x
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 50, // Ajuste o valor máximo da escala y conforme necessário
+          ticks: {
+            color: '#ffffff', // Cor das fontes do eixo y
+            font: {
+              size: 14 // Tamanho da fonte para o eixo y
+            }
+          },
+          grid: {
+            color: 'rgba(255, 255, 255, 0.2)' // Cor dos traços de fundo do eixo y
           }
         },
-        grid: {
-          color: 'rgb(255, 255, 255, 0.2)' // Cor dos traços de fundo do eixo x
+        x: {
+          ticks: {
+            color: '#ffffff', // Cor das fontes do eixo x
+            font: {
+              size: 14 // Tamanho da fonte para o eixo x
+            }
+          },
+          grid: {
+            color: 'rgb(255, 255, 255, 0.2)' // Cor dos traços de fundo do eixo x
+          }
         }
       }
     }
-  }
-});
+  });
 
 
 
 
-var graficoUmi = new Chart(ctx2, {
-  type: 'bar',
-  data: {
-    labels: [], // Adicione os labels aqui
-    datasets: [{
-      label: 'Umidade (%)',
-      data: [], // Adicione os dados aqui
-      backgroundColor: [
-        'rgba(93, 133, 194, 0.8)', // Azul vibrante
-      ], // Cores de fundo divertidas
-      borderColor: '#0063fa', // Cor da borda branca
-      borderWidth: 3
-    }]
-  },
-  options: {
-    plugins: {
-      legend: {
-        labels: {
-          color: '#ffffff' // Cor das fontes da legenda
-        }
-      }
+  var graficoUmi = new Chart(ctx2, {
+    type: 'bar',
+    data: {
+      labels: [], // Adicione os labels aqui
+      datasets: [{
+        label: 'Umidade (%)',
+        data: [], // Adicione os dados aqui
+        backgroundColor: [
+          'rgba(93, 133, 194, 0.8)', // Azul vibrante
+        ], // Cores de fundo divertidas
+        borderColor: '#0063fa', // Cor da borda branca
+        borderWidth: 3
+      }]
     },
-    scales: {
-      y: {
-        beginAtZero: true,
-        max: 100,
-        ticks: {
-          color: '#ffffff', // Cor das fontes do eixo y
-          font: {
-            size: 14 // Tamanho da fonte para o eixo y
+    options: {
+      plugins: {
+        legend: {
+          labels: {
+            color: '#ffffff' // Cor das fontes da legenda
           }
-        },
-        grid: {
-          color: '#444444' // Cor dos traços de fundo do eixo y
         }
       },
-      x: {
-        ticks: {
-          color: '#ffffff', // Cor das fontes do eixo x
-          font: {
-            size: 14 // Tamanho da fonte para o eixo x
+      scales: {
+        y: {
+          beginAtZero: true,
+          max: 100,
+          ticks: {
+            color: '#ffffff', // Cor das fontes do eixo y
+            font: {
+              size: 14 // Tamanho da fonte para o eixo y
+            }
+          },
+          grid: {
+            color: '#444444' // Cor dos traços de fundo do eixo y
           }
         },
-        grid: {
-          color: '#444444' // Cor dos traços de fundo do eixo x
+        x: {
+          ticks: {
+            color: '#ffffff', // Cor das fontes do eixo x
+            font: {
+              size: 14 // Tamanho da fonte para o eixo x
+            }
+          },
+          grid: {
+            color: '#444444' // Cor dos traços de fundo do eixo x
+          }
         }
       }
     }
-  }
-});
+  });
 
 
 
@@ -343,7 +322,7 @@ var graficoUmi = new Chart(ctx2, {
             let temperaturaMin = Math.trunc(Number(res[0].temperaturaMin));
             let umidadeMax = Math.trunc(Number(res[0].umidadeMax));
             let umidadeMin = Math.trunc(Number(res[0].umidadeMin));
-            
+
             sessionStorage.TEMPERATURA = temperatura;
             sessionStorage.UMIDADE = umidade;
 
@@ -371,8 +350,8 @@ var graficoUmi = new Chart(ctx2, {
             // VALIDAÇÃO TEMPERATURA
             if ((temperatura <= temperaturaMax - 1 && temperatura >= temperaturaMax - 2) || (temperatura >= temperaturaMin + 1 && temperatura <= temperaturaMin + 2)) {
               corTemperatura = `#FFA500`;
-            } 
-            
+            }
+
             if (temperatura >= temperaturaMax - 1 || temperatura <= temperaturaMin + 1) {
               corTemperatura = `#FF0000`;
             }
@@ -382,18 +361,18 @@ var graficoUmi = new Chart(ctx2, {
             // VALIDAÇÃO UMIDADE
             if ((umidade <= umidadeMax - 2 && umidade >= umidadeMax - 3) || (umidade >= umidadeMin + 2 && umidade <= umidadeMin + 3)) {
               corUmidade = `#FFA500`;
-            } 
-            
+            }
+
             if (umidade >= umidadeMax - 1 || umidade <= umidadeMin + 1) {
               corUmidade = `#FF0000`;
             }
-            
+
             // SAÍDA PARA O USUÁRIO
             tituloTemperatura.style.backgroundColor = `${corTemperatura}`;
             tituloUmidade.style.backgroundColor = `${corUmidade}`;
             adicionarDadosCapturados(temperatura, umidade)
           });
-        } else { 
+        } else {
           console.log(`JSON não coletado`);
         }
       })
